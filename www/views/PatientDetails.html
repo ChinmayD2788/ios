@@ -1,0 +1,84 @@
+﻿<div id="ptchart-ptdetails" ng-controller="PatientDetailsController">
+    <div class="ptchart-ptdetails-div">
+        <div class="ptchart-ptdetails-bold">
+            <div ng-if="PatientDetailsModel.Demographics.dob" id="ptchart-ptdetails-dob">
+                DOB: {{ PatientDetailsModel.Demographics.dob }} ({{ PatientDetailsModel.Demographics.age }})
+            </div>
+            <div ng-if="PatientDetailsModel.Demographics.sig" class="crd-ptdetails-sig">
+                SIG: {{ PatientDetailsModel.Demographics.sig }}
+            </div>
+        </div>
+
+        <div class="ptdetails-address-view">
+            <div>{{ PatientDetailsModel.Demographics.mailingAddress.address1 }}</div>
+            <div>{{ PatientDetailsModel.Demographics.mailingAddress.citystatezip }}</div>
+            <div>{{ PatientDetailsModel.Demographics.phone.primaryphone }}</div>
+        </div>
+
+        <div class="vhnrounding-smalltext">
+            <div ng-if="PatientDetailsModel.Demographics.dialysisCenter">
+                {{ PatientDetailsModel.Demographics.dialysisCenter }}
+            </div>
+            <div ng-if="PatientDetailsModel.Demographics.shift">
+                {{ PatientDetailsModel.Demographics.shift }}
+            </div>
+            <div ng-if="PatientDetailsModel.Demographics.payor">
+                Payor: {{ PatientDetailsModel.Demographics.payor }}
+            </div>
+        </div>
+    </div>
+    <div class="ptchart-ptdetails-div ptchart-ptdetails-comorbids">
+        <span ng-if="PatientDetailsModel.Demographics.comorbidstop3" class="ptchart-ptdetails-bold">COMORBIDS</span>
+        <div ng-repeat="item in PatientDetailsModel.Demographics.comorbidstop3 track by $index">
+            <span ng-if="item">
+                {{ item | getLookupText : "Comorbid"  }}
+            </span><kendo-mobile-button ng-if="$index == 2 && PatientDetailsModel.Demographics.comorbidsother.length > 0" k-rel="'popover'" href="#ComorbidsOtherPopover">...</kendo-mobile-button>
+        </div>
+    </div>
+    <div class="ptchart-ptdetails-div">
+        <span ng-if="PatientDetailsModel.Demographics.complaintstop3" class="ptchart-ptdetails-bold">COMPLAINTS</span>
+        <div ng-repeat="item in PatientDetailsModel.Demographics.complaintstop3 track by $index">
+            <span ng-if="item">
+                {{ item }}
+            </span><kendo-mobile-button ng-if="$index == 2 && PatientDetailsModel.Demographics.complaintsother.length > 0" k-rel="'popover'" href="#ComplaintOtherPopover">...</kendo-mobile-button>
+        </div>
+    </div>
+    <div class="ptchart-ptdetails-div">
+        <span ng-if="PatientDetailsModel.Demographics.careteamtop3" class="ptchart-ptdetails-bold">CARE TEAM</span>
+        <div ng-repeat="item in PatientDetailsModel.Demographics.careteamtop3 track by $index">
+            <span>{{ item.TypeText }} : </span>
+            <span>{{ item.Name }}</span>
+            <kendo-mobile-button ng-if="$index == 2 && PatientDetailsModel.Demographics.careteamother.length > 0" k-rel="'popover'" href="#CareteamOtherPopover">...</kendo-mobile-button>
+        </div>
+    </div>
+</div> 
+
+<kendo-mobile-pop-over id="ComorbidsOtherPopover"  k-popup='{"height": "12em", "width": "16em"}'>
+    <kendo-mobile-view ng-controller="ComorbidsotherController" class="crd-popover-listview do-not-destroy">                
+        <kendo-mobile-list-view k-data-source="model.Demographics.comorbidsother">
+            <div k-template>
+                {{ dataItem | getLookupText : "Comorbid"  }}
+            </div>                                          
+        </kendo-mobile-list-view> 
+    </kendo-mobile-view>   
+</kendo-mobile-pop-over>
+<kendo-mobile-pop-over id="ComplaintOtherPopover"  k-popup='{"height": "12em", "width": "16em"}'>
+    <kendo-mobile-view ng-controller="ComorbidsotherController" class="crd-popover-listview do-not-destroy">      
+        <kendo-mobile-list-view k-data-source="model.Demographics.complaintsother">
+            <div k-template>
+                {{ dataItem }}
+            </div>                                          
+        </kendo-mobile-list-view>                                        
+    </kendo-mobile-view>   
+</kendo-mobile-pop-over>
+<kendo-mobile-pop-over id="CareteamOtherPopover"  k-popup='{"height": "12em", "width": "16em"}'>
+    <kendo-mobile-view ng-controller="ComorbidsotherController" class="crd-popover-listview do-not-destroy">  
+        <kendo-mobile-list-view k-data-source="model.Demographics.careteamother">
+            <div k-template>
+                {{ dataItem.TypeText }} : {{ dataItem.Name }}  
+            </div>                                          
+        </kendo-mobile-list-view>                                 
+    </kendo-mobile-view>   
+</kendo-mobile-pop-over>
+
+    

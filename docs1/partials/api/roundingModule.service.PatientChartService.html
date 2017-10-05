@@ -1,0 +1,192 @@
+<h1><code ng:non-bindable="">PatientChartService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-service-page roundingmodule-service-patientchartservice-page"><ul>
+<li>PatientChartService is being used by PatientChartHeaderController,PatientChartPathwayController,PatientChartMenuController</li>
+<li><p>VersionOne Requirements - <a href="https://www13.v1host.com/DaVitaInc/Task.mvc/Summary?oidToken=Task%3A328784">TK-28510</a></p>
+</li>
+</ul>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">PatientChartService(ServiceConstants, RoundingService, $rootScope, $timeout);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>ServiceConstants</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="roundingmodule-service-page roundingmodule-service-patientchartservice-page"><p>Common Constants.</p>
+</div></td></tr><tr><td>RoundingService</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="roundingmodule-service-page roundingmodule-service-patientchartservice-page"><p>Common Function.</p>
+</div></td></tr><tr><td>$rootScope</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="roundingmodule-service-page roundingmodule-service-patientchartservice-page"><p>AngularJS global scope object </p>
+</div></td></tr><tr><td>$timeout</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="roundingmodule-service-page roundingmodule-service-patientchartservice-page"><p>AngularJS timeout function</p>
+</div></td></tr></tbody></table></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_addscrmenu">addScrMenu(newObj)</h3>
+<div class="addscrmenu"><div class="addscrmenu-page"><ul>
+<li>Set screen menus        </li>
+</ul>
+</div><h5 id="methods_addscrmenu_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>newObj</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="addscrmenu-page"><p>Array of objects containing screen details.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_doinit">doInit()</h3>
+<div class="doinit"><div class="doinit-page"><ul>
+<li>Broadcasts &quot;PtChartInit&quot; event on global scope.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_getmao">getMao()</h3>
+<div class="getmao"><div class="getmao-page"><ul>
+<li>return mao Object        </li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_getmenuclick">getMenuClick()</h3>
+<div class="getmenuclick"><div class="getmenuclick-page"><ul>
+<li>Retrieve menu</li>
+</ul>
+</div><h5 id="methods_getmenuclick_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getmenuclick-page"><p>menuClick menuClickObject</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getmoa">getMoa(params, method, dataType, callBack)</h3>
+<div class="getmoa"><div class="getmoa-page"><ul>
+<li>Retrieve menu of Action items.</li>
+<li>Service call to &quot;Utility/GetMoa&quot;</li>
+<li>Gets called when the user taps on &quot;PtChart&quot; button on &quot;Contact Recap&quot; Screen</li>
+</ul>
+</div><h5 id="methods_getmoa_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>params</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getmoa-page"><p>Contains properties such as AppCode, PatientUID, etc        </p>
+</div></td></tr><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getmoa-page"><p>Method: POST</p>
+</div></td></tr><tr><td>dataType</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getmoa-page"><p>DataType: JSON.</p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getmoa-page"><p>$scope.onGetMoaRetrieved</p>
+</div></td></tr></tbody></table><h5 id="methods_getmoa_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getmoa-page"><p>retrun array of Action Items(Menus).</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getpathwayparam">getPathwayParam()</h3>
+<div class="getpathwayparam"><div class="getpathwayparam-page"><ul>
+<li>Returns selected Pathway&#39;s details        </li>
+</ul>
+</div><h5 id="methods_getpathwayparam_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getpathwayparam-page"><p>pathwayParam
+returns Pathway details</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getpatientuid">getPatientUid()</h3>
+<div class="getpatientuid"><div class="getpatientuid-page"><ul>
+<li>Set menuClick with changeflage         </li>
+</ul>
+</div><h5 id="methods_getpatientuid_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="getpatientuid-page"><p>patientUid
+Patient&#39;s UID returned.                  </p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getptclinicalmetric">getPtClinicalMetric(params, method, dataType, callBack)</h3>
+<div class="getptclinicalmetric"><div class="getptclinicalmetric-page"><ul>
+<li>Retrieve Patient&#39;s Clinical Metric data..</li>
+</ul>
+</div><h5 id="methods_getptclinicalmetric_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>params</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getptclinicalmetric-page"><p>contains PatientUid          </p>
+</div></td></tr><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getptclinicalmetric-page"><p>Method: POST</p>
+</div></td></tr><tr><td>dataType</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getptclinicalmetric-page"><p>DataType: JSON.</p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getptclinicalmetric-page"><p>$scope.onGetPtClinicalMetricRetrieved</p>
+</div></td></tr></tbody></table><h5 id="methods_getptclinicalmetric_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getptclinicalmetric-page"><p>Clinical metric for patient.</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getscrmenu">getScrMenu()</h3>
+<div class="getscrmenu"><div class="getscrmenu-page"><ul>
+<li>Retrieved source menu object        </li>
+</ul>
+</div><h5 id="methods_getscrmenu_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getscrmenu-page"><p>srcMenu
+Array of objects containing screen details.</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getsubmenu">getSubmenu()</h3>
+<div class="getsubmenu"><div class="getsubmenu-page"><ul>
+<li>Retrieve Submenu.       </li>
+</ul>
+</div><h5 id="methods_getsubmenu_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getsubmenu-page"><p>subemnu
+return submenu details</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_loadpathway">loadPathway()</h3>
+<div class="loadpathway"><div class="loadpathway-page"><ul>
+<li>Broadcasts &quot;LoadPathway&quot; event on global scope to load Pathways.     </li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_loadtabs">loadTabs()</h3>
+<div class="loadtabs"><div class="loadtabs-page"><ul>
+<li>Broadcasts &quot;LoadTabs&quot; event on global scope to load tabs.        </li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_setmenuclick">setMenuClick(changeflag)</h3>
+<div class="setmenuclick"><div class="setmenuclick-page"><ul>
+<li>Set menuClick with changeflag</li>
+</ul>
+</div><h5 id="methods_setmenuclick_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>changeflag</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="setmenuclick-page"><p>Set flage value for menuclick         </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setmoa">setMoa(newObj)</h3>
+<div class="setmoa"><div class="setmoa-page"><ul>
+<li>Set mao with newObj </li>
+</ul>
+</div><h5 id="methods_setmoa_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>newObj</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="setmoa-page"><p>fro Moa</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setpathwayparam">setPathwayParam(newObj)</h3>
+<div class="setpathwayparam"><div class="setpathwayparam-page"><ul>
+<li>Set pathways </li>
+</ul>
+</div><h5 id="methods_setpathwayparam_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>newObj</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="setpathwayparam-page"><p>Pathway details.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setpatientuid">setPatientUid(newObj)</h3>
+<div class="setpatientuid"><div class="setpatientuid-page"><ul>
+<li>Set patient Uid with newObj                </li>
+</ul>
+</div><h5 id="methods_setpatientuid_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>newObj</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="setpatientuid-page"><p>Patient&#39;s UID</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setsubmenu">setSubmenu()</h3>
+<div class="setsubmenu"><div class="setsubmenu-page"><ul>
+<li>Set submenus of selected menu     </li>
+</ul>
+</div><h5 id="methods_setsubmenu_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="setsubmenu-page"><p>newObj
+Array of objects containins submenu details.</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_scrmenu">scrMenu</h3>
+<div class="scrmenu"><div class="roundingmodule-service-page roundingmodule-service-patientchartservice-page"><ul>
+<li>to store menu details.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_pathwayparam">pathwayParam</h3>
+<div class="pathwayparam"><div class="roundingmodule-service-page roundingmodule-service-patientchartservice-page"><ul>
+<li>to store pathways details.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_submenu">subMenu</h3>
+<div class="submenu"><div class="roundingmodule-service-page roundingmodule-service-patientchartservice-page"><ul>
+<li>to store submenu details.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_mao">mao</h3>
+<div class="mao"><div class="roundingmodule-service-page roundingmodule-service-patientchartservice-page"><ul>
+<li>local variable</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_patientuid">patientUid</h3>
+<div class="patientuid"><div class="roundingmodule-service-page roundingmodule-service-patientchartservice-page"><ul>
+<li>Patient&#39;s UID</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_menuclick">menuClick</h3>
+<div class="menuclick"><div class="roundingmodule-service-page roundingmodule-service-patientchartservice-page"><ul>
+<li>local variable to change flag.</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

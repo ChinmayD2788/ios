@@ -1,0 +1,440 @@
+<h1><code ng:non-bindable="">CommonFunctions</code>
+<div><span class="hint">service in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-service-page roundingmodule-service-commonfunctions-page"><p>Factory for  Common Functions</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_applogout">appLogout()</h3>
+<div class="applogout"><div class="applogout-page"><ul>
+<li>logs out user                </li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_applogoutwithoutconfirmation">appLogoutWithoutConfirmation(alertMessage)</h3>
+<div class="applogoutwithoutconfirmation"><div class="applogoutwithoutconfirmation-page"><ul>
+<li>logs out user without confirmation</li>
+</ul>
+</div><h5 id="methods_applogoutwithoutconfirmation_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>alertMessage</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="applogoutwithoutconfirmation-page"><p>message to be displayed after log out</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_blockelement">blockElement(element)</h3>
+<div class="blockelement"><div class="blockelement-page"><ul>
+<li>blocks element using block UI library</li>
+</ul>
+</div><h5 id="methods_blockelement_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>element</td><td><a href="" class="label type-hint type-hint-element">element</a></td><td><div class="blockelement-page"><p>which needs to be block</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_blockkendoview">blockKendoView(element, message)</h3>
+<div class="blockkendoview"><div class="blockkendoview-page"><ul>
+<li>blocks Kendo View using kendo.ui.progress for more info visit kendo documentation</li>
+</ul>
+</div><h5 id="methods_blockkendoview_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>element</td><td><a href="" class="label type-hint type-hint-element">element</a></td><td><div class="blockkendoview-page"><p>kendo view which needs to be block</p>
+</div></td></tr><tr><td>message</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="blockkendoview-page"><p>message to be shown while element is blocked</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_blockui">blockui()</h3>
+<div class="blockui"><div class="blockui-page"><ul>
+<li>blocks UI using block ui library</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_calladdpresavecontact">callAddPreSaveContact(isAddingNewPreSaveContact, preSaveContact)</h3>
+<div class="calladdpresavecontact"><div class="calladdpresavecontact-page"><ul>
+<li>calls addPreSaveContact api</li>
+</ul>
+</div><h5 id="methods_calladdpresavecontact_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>isAddingNewPreSaveContact</td><td><a href="" class="label type-hint type-hint-bool">bool</a></td><td><div class="calladdpresavecontact-page"><p>index of the preSaveContact which needs to set in Global</p>
+</div></td></tr><tr><td>preSaveContact</td><td><a href="" class="label type-hint type-hint-json">json</a></td><td><div class="calladdpresavecontact-page"><p>index of the preSaveContact which needs to be set in Global</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_checkuichange">checkUIChange(onOK, onCancel)</h3>
+<div class="checkuichange"><div class="checkuichange-page"><ul>
+<li>checks if there UI change and based on that shows confirm message box </li>
+</ul>
+</div><h5 id="methods_checkuichange_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>onOK</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="checkuichange-page"><p>callback function for onOk</p>
+</div></td></tr><tr><td>onCancel</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="checkuichange-page"><p>callback function for onCancel</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_clearclientsession">clearClientSession(alertMessage)</h3>
+<div class="clearclientsession"><div class="clearclientsession-page"><ul>
+<li>calls clearnGlobalObjects and cleanupResources</li>
+</ul>
+</div><h5 id="methods_clearclientsession_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>alertMessage</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="clearclientsession-page"><p>message to be displayed</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_clearglobalobjects">clearGlobalObjects()</h3>
+<div class="clearglobalobjects"><div class="clearglobalobjects-page"><ul>
+<li>clean up resources, destroys kendo views</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_clearglobalobjects">clearGlobalObjects()</h3>
+<div class="clearglobalobjects"><div class="clearglobalobjects-page"><ul>
+<li>clear global objects and timers</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_closepopover">closePopover(e)</h3>
+<div class="closepopover"><div class="closepopover-page"><ul>
+<li>closes pop over</li>
+</ul>
+</div><h5 id="methods_closepopover_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-event">event</a></td><td><div class="closepopover-page"><p>event data of the popover</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_createbasicauthenticationheader">createBasicAuthenticationHeader(authType, credentials)</h3>
+<div class="createbasicauthenticationheader"><div class="createbasicauthenticationheader-page"><ul>
+<li>creates header for service calls</li>
+</ul>
+</div><h5 id="methods_createbasicauthenticationheader_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>authType</td><td><a href="" class="label type-hint type-hint-json">json</a></td><td><div class="createbasicauthenticationheader-page"><p>json object</p>
+</div></td></tr><tr><td>credentials</td><td><a href="" class="label type-hint type-hint-json">json</a></td><td><div class="createbasicauthenticationheader-page"><p>json object</p>
+</div></td></tr></tbody></table><h5 id="methods_createbasicauthenticationheader_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-json">json</a></td><td><div class="createbasicauthenticationheader-page"><p>header which will be used for login service call</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_createpresavecontact">createPreSaveContact()</h3>
+<div class="createpresavecontact"><div class="createpresavecontact-page"><ul>
+<li>creates presave contact based on User Role</li>
+<li>calls callAddPreSaveContact</li>
+<li>runs preSaveTimer</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_createscroller">createScroller(scrollId)</h3>
+<div class="createscroller"><div class="createscroller-page"><ul>
+<li>creates scroller on the element or resets if already exist</li>
+</ul>
+</div><h5 id="methods_createscroller_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>scrollId</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="createscroller-page"><p>id of the element</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_datefromdatetime">DatefromDatetime(thisdate, isTwoDigitYearNeeded)</h3>
+<div class="datefromdatetime"><div class="datefunctions-datefromdatetime-page"><p>Build string with 2 or 4 digits year.</p>
+</div><h5 id="methods_datefromdatetime_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>thisdate</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="datefunctions-datefromdatetime-page"><p>Included string with date and time </p>
+</div></td></tr><tr><td>isTwoDigitYearNeeded</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="datefunctions-datefromdatetime-page"><p>indicated 2 (true) or 4(false) digit year is needed</p>
+</div></td></tr></tbody></table><h5 id="methods_datefromdatetime_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="datefunctions-datefromdatetime-page"><p>String with date only or empty string</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_todaydatestring">TodayDateString(dateMask, isTimeNeeded)</h3>
+<div class="todaydatestring"><div class="datefunctions-todaydatestring-page"><p>Build Today Date string with or without time</p>
+</div><h5 id="methods_todaydatestring_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dateMask</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="datefunctions-todaydatestring-page"><p>Date mask string </p>
+</div></td></tr><tr><td>isTimeNeeded</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="datefunctions-todaydatestring-page"><p>indicates if time needed (true)</p>
+</div></td></tr></tbody></table><h5 id="methods_todaydatestring_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="datefunctions-todaydatestring-page"><p>String with date or empty string</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_dateformat">dateFormat()</h3>
+<div class="dateformat"><div class="datefunctions-dateformat-page"><p>Build Date string </p>
+</div><h5 id="methods_dateformat_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="datefunctions-dateformat-page"><p>String with formatted date</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_sysdate">sysDate()</h3>
+<div class="sysdate"><div class="datefunctions-sysdate-page"><p>Build Date string base string includes number of milliseconds</p>
+</div><h5 id="methods_sysdate_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="datefunctions-sysdate-page"><p>String with date </p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_deleteselectedpatient">deleteSelectedPatient(patientTobeDeleted)</h3>
+<div class="deleteselectedpatient"><div class="deleteselectedpatient-page"><ul>
+<li>removes patient from PreSaveContactList</li>
+</ul>
+</div><h5 id="methods_deleteselectedpatient_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>patientTobeDeleted</td><td><a href="" class="label type-hint type-hint-json">json</a></td><td><div class="deleteselectedpatient-page"><p>selected row item</p>
+</div></td></tr></tbody></table><h5 id="methods_deleteselectedpatient_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-int">int</a></td><td><div class="deleteselectedpatient-page"><p>patientIndex int value of patient index</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_displayalertmessage">displayAlertMessage(message, callback)</h3>
+<div class="displayalertmessage"><div class="displayalertmessage-page"><ul>
+<li>calls openAlertBox function       </li>
+</ul>
+</div><h5 id="methods_displayalertmessage_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>message</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="displayalertmessage-page"><p>message for user</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="displayalertmessage-page"><p>which needs to call on ok button click</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_displayalertmessages">displayAlertMessages(messages)</h3>
+<div class="displayalertmessages"><div class="displayalertmessages-page"><ul>
+<li>calls displayAlertMessage function       </li>
+</ul>
+</div><h5 id="methods_displayalertmessages_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>messages</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="displayalertmessages-page"><p>array of message</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_displayfadingmessage">displayFadingMessage(message)</h3>
+<div class="displayfadingmessage"><div class="displayfadingmessage-page"><ul>
+<li>displays fading message using block UI library</li>
+</ul>
+</div><h5 id="methods_displayfadingmessage_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>message</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="displayfadingmessage-page"><p>which needs to be shown</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_formatphonenumber">formatPhoneNumber(str)</h3>
+<div class="formatphonenumber"><div class="formatphonenumber-page"><p>Format Phone Number string</p>
+</div><h5 id="methods_formatphonenumber_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>str</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="formatphonenumber-page"><p>String including date</p>
+</div></td></tr></tbody></table><h5 id="methods_formatphonenumber_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="formatphonenumber-page"><p>String with formatted phone data</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getcontactmethod">getContactMethod(contactMethod)</h3>
+<div class="getcontactmethod"><div class="getcontactmethod-page"><ul>
+<li>gets image for contact method</li>
+</ul>
+</div><h5 id="methods_getcontactmethod_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>contactMethod</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getcontactmethod-page"><p>contact method during contact</p>
+</div></td></tr></tbody></table><h5 id="methods_getcontactmethod_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-image">image</a></td><td><div class="getcontactmethod-page"><p>based on contactMethod</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getpatientfrompresavelist">getPatientFromPresaveList(patientUID)</h3>
+<div class="getpatientfrompresavelist"><div class="getpatientfrompresavelist-page"><ul>
+<li>gets patient from pre save contact list based on patient UID</li>
+</ul>
+</div><h5 id="methods_getpatientfrompresavelist_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>patientUID</td><td><a href="" class="label type-hint type-hint-int">int</a></td><td><div class="getpatientfrompresavelist-page"><p>UID of the patient</p>
+</div></td></tr></tbody></table><h5 id="methods_getpatientfrompresavelist_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getpatientfrompresavelist-page"><p>preSaveContact item of PreSaveContactList or null</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getsig">getSIG(sig)</h3>
+<div class="getsig"><div class="getsig-page"><ul>
+<li>gets sig value based on sig status</li>
+</ul>
+</div><h5 id="methods_getsig_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>sig</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getsig-page"><p>&quot;HIGH&quot;, &quot;MEDIUM&quot; or &quot;LOW&quot;</p>
+</div></td></tr></tbody></table><h5 id="methods_getsig_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-char">char</a></td><td><div class="getsig-page"><p>returns &quot;H&quot;, &quot;M&quot;, &quot;L&quot; or &quot;&quot;</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getselectedpatientuid">getSelectedPatientUID()</h3>
+<div class="getselectedpatientuid"><div class="getselectedpatientuid-page"><ul>
+<li>gets selected patient id</li>
+</ul>
+</div><h5 id="methods_getselectedpatientuid_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="getselectedpatientuid-page"><p>selected patient&#39;s UID</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_handleexception">handleException(exceptionDetails)</h3>
+<div class="handleexception"><div class="handleexception-page"><ul>
+<li>creates options for exception service call</li>
+</ul>
+</div><h5 id="methods_handleexception_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>exceptionDetails</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="handleexception-page"><p>json object</p>
+</div></td></tr></tbody></table><h5 id="methods_handleexception_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-json">json</a></td><td><div class="handleexception-page"><p>serviceCallOptions object which needs to pass to exception service</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_handlenullfordisplay">handleNullForDisplay(str)</h3>
+<div class="handlenullfordisplay"><div class="handlenullfordisplay-page"><ul>
+<li>checks if string is null or empty</li>
+</ul>
+</div><h5 id="methods_handlenullfordisplay_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>str</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="handlenullfordisplay-page"><p>string which needs to be handled</p>
+</div></td></tr></tbody></table><h5 id="methods_handlenullfordisplay_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="handlenullfordisplay-page"><p>&#39; &#39; if string is null or empty otherwise returns as it is</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_isconnectedtonetwork">isConnectedToNetwork()</h3>
+<div class="isconnectedtonetwork"><div class="isconnectedtonetwork-page"><ul>
+<li>checks if device is connected to network and displays alert</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_isnotnullorempty">isNotNullOrEmpty(str)</h3>
+<div class="isnotnullorempty"><div class="isnotnullorempty-page"><ul>
+<li>checks if string is not null or empty</li>
+</ul>
+</div><h5 id="methods_isnotnullorempty_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>str</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="isnotnullorempty-page"><p>string which needs to be handled</p>
+</div></td></tr></tbody></table><h5 id="methods_isnotnullorempty_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-bool">bool</a></td><td><div class="isnotnullorempty-page"><p>true if string otherwise false</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_ispresaverecordfound">isPreSaveRecordFound()</h3>
+<div class="ispresaverecordfound"><div class="ispresaverecordfound-page"><ul>
+<li>checks if preSaveRecordList exists</li>
+</ul>
+</div><h5 id="methods_ispresaverecordfound_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-bool">bool</a></td><td><div class="ispresaverecordfound-page"><p>true or false</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_isrunningonphonegap">isRunningOnPhoneGap()</h3>
+<div class="isrunningonphonegap"><div class="isrunningonphonegap-page"><p>Check if the application is running on PhoneGap</p>
+</div><h5 id="methods_isrunningonphonegap_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="isrunningonphonegap-page"><p>true - if it is running, false - if not</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_navigatetoselectedpatient">navigatetoSelectedPatient(dataItem)</h3>
+<div class="navigatetoselectedpatient"><div class="navigatetoselectedpatient-page"><ul>
+<li>updates $rootScope.Global.Objects.SelectedPatient and $rootScope.Global.Contacts.PreSaveContact</li>
+</ul>
+</div><h5 id="methods_navigatetoselectedpatient_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-json">json</a></td><td><div class="navigatetoselectedpatient-page"><p>selected row item from datagrid</p>
+</div></td></tr></tbody></table><h5 id="methods_navigatetoselectedpatient_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-bool">bool</a></td><td><div class="navigatetoselectedpatient-page"><p>convertToJSON whether data item needs to be converted to JSON</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_nonprodenvalert">nonProdEnvAlert()</h3>
+<div class="nonprodenvalert"><div class="nonprodenvalert-page"><ul>
+<li>displays alert for non production environment</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_objectpropertyexist">objectPropertyExist(ObjectVal, PropertyVal)</h3>
+<div class="objectpropertyexist"><div class="objectpropertyexist-page"><ul>
+<li>checks if property exists in object</li>
+</ul>
+</div><h5 id="methods_objectpropertyexist_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>ObjectVal</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="objectpropertyexist-page"><p>value of the object</p>
+</div></td></tr><tr><td>PropertyVal</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="objectpropertyexist-page"><p>property</p>
+</div></td></tr></tbody></table><h5 id="methods_objectpropertyexist_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="objectpropertyexist-page"><p>object property or null</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_onhomeclick">onHomeClick()</h3>
+<div class="onhomeclick"><div class="onhomeclick-page"><ul>
+<li>checks if UI changed and then naviagtes to Home screen RCMDashboard or MyPatients</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_ontap">onTap()</h3>
+<div class="ontap"><div class="ontap-page"><ul>
+<li>gets call on each tap on the screen</li>
+<li>updates session timer and calls session alive api</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_openalertbox">openAlertBox(title, messages, onOk)</h3>
+<div class="openalertbox"><div class="openalertbox-page"><ul>
+<li>shows alert based on browser or phonegap</li>
+</ul>
+</div><h5 id="methods_openalertbox_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>title</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="openalertbox-page"><p>title for message box</p>
+</div></td></tr><tr><td>messages</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="openalertbox-page"><p>array of messages</p>
+</div></td></tr><tr><td>onOk</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="openalertbox-page"><p>which needs to call on ok button click</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_openconfirmbox">openConfirmBox(title, message, callback)</h3>
+<div class="openconfirmbox"><div class="openconfirmbox-page"><ul>
+<li>shows alert for user&#39;s confirmation</li>
+</ul>
+</div><h5 id="methods_openconfirmbox_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>title</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="openconfirmbox-page"><p>title for message box</p>
+</div></td></tr><tr><td>message</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="openconfirmbox-page"><p>message for user</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="openconfirmbox-page"><p>which needs to call on ok button click</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_opencustomconfirmbox">openCustomConfirmBox(title, message, buttons, callback)</h3>
+<div class="opencustomconfirmbox"><div class="opencustomconfirmbox-page"><ul>
+<li>shows alert for user&#39;s confirmation with custom button names</li>
+</ul>
+</div><h5 id="methods_opencustomconfirmbox_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>title</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="opencustomconfirmbox-page"><p>title for message box</p>
+</div></td></tr><tr><td>message</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="opencustomconfirmbox-page"><p>message for user</p>
+</div></td></tr><tr><td>buttons</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="opencustomconfirmbox-page"><p>comma separated string for button names</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="opencustomconfirmbox-page"><p>which needs to call on button click</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_parsedate">parseDate()</h3>
+<div class="parsedate"><div class="parsedate-page"><p>Build Date string </p>
+</div><h5 id="methods_parsedate_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="parsedate-page"><p>String with date</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_postponecontact">postPoneContact(preSaveToBeSaved)</h3>
+<div class="postponecontact"><div class="postponecontact-page"><ul>
+<li>postpones contact</li>
+<li>calls callAddPreSaveContact</li>
+</ul>
+</div><h5 id="methods_postponecontact_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>preSaveToBeSaved</td><td><a href="" class="label type-hint type-hint-json">json</a></td><td><div class="postponecontact-page"><p>contact which needs to save</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_resetscroller">resetScroller(scrollId)</h3>
+<div class="resetscroller"><div class="resetscroller-page"><ul>
+<li>resets scroller on the element</li>
+</ul>
+</div><h5 id="methods_resetscroller_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>scrollId</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="resetscroller-page"><p>id of the element</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setindicatorcolor">setIndicatorColor(indicatorColor)</h3>
+<div class="setindicatorcolor"><div class="setindicatorcolor-page"><ul>
+<li>sets indication color based on string </li>
+</ul>
+</div><h5 id="methods_setindicatorcolor_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>indicatorColor</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="setindicatorcolor-page"><p>color name</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setpresavecontactbyindex">setPreSaveContactbyIndex(index)</h3>
+<div class="setpresavecontactbyindex"><div class="setpresavecontactbyindex-page"><ul>
+<li>sets $rootScope.Global.Contacts.PreSaveContact from $rootScope.Global.Contacts.PreSaveContactList </li>
+</ul>
+</div><h5 id="methods_setpresavecontactbyindex_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>index</td><td><a href="" class="label type-hint type-hint-int">int</a></td><td><div class="setpresavecontactbyindex-page"><p>index of the preSaveContact which needs to set in Global</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_shouldgetdata">shouldGetData(property, event)</h3>
+<div class="shouldgetdata"><div class="shouldgetdata-page"><ul>
+<li>checks whether string length is greater than 3 or pressed key code 8 or 46</li>
+</ul>
+</div><h5 id="methods_shouldgetdata_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>property</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="shouldgetdata-page"><p>text entered by user</p>
+</div></td></tr><tr><td>event</td><td><a href="" class="label type-hint type-hint-e">e</a></td><td><div class="shouldgetdata-page"><p>event data</p>
+</div></td></tr></tbody></table><h5 id="methods_shouldgetdata_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-bool">bool</a></td><td><div class="shouldgetdata-page"><p>true or false</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_sortarray">sortArray(array, key, isAscending)</h3>
+<div class="sortarray"><div class="sortarray-page"><ul>
+<li>sorts array </li>
+</ul>
+</div><h5 id="methods_sortarray_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>array</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="sortarray-page"><p>which needs to sorted</p>
+</div></td></tr><tr><td>key</td><td><a href="" class="label type-hint type-hint-property">property</a></td><td><div class="sortarray-page"><p>property on which array needs to sorted</p>
+</div></td></tr><tr><td>isAscending</td><td><a href="" class="label type-hint type-hint-bool">bool</a></td><td><div class="sortarray-page"><p>whether to sort ascending or descending</p>
+</div></td></tr></tbody></table><h5 id="methods_sortarray_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="sortarray-page"><p>sorted array</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_stripalphachars">stripAlphaChars(srcstring)</h3>
+<div class="stripalphachars"><div class="stripalphachars-page"><ul>
+<li>strips alpha character from string</li>
+</ul>
+</div><h5 id="methods_stripalphachars_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>srcstring</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="stripalphachars-page"><p>string for which alpha character to be removed</p>
+</div></td></tr></tbody></table><h5 id="methods_stripalphachars_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="stripalphachars-page"><p>newstr string with removed alpha character</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_uicanceled">uiCanceled()</h3>
+<div class="uicanceled"><div class="uicanceled-page"><ul>
+<li>sets isUIChanged flag to false</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_uichanged">uiChanged()</h3>
+<div class="uichanged"><div class="uichanged-page"><ul>
+<li>sets isUIChanged flag to true</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_uisaved">uiSaved()</h3>
+<div class="uisaved"><div class="uisaved-page"><ul>
+<li>sets isUIChanged flag to false</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_unblockelement">unblockElement(element)</h3>
+<div class="unblockelement"><div class="unblockelement-page"><ul>
+<li>unblocks element using block UI library </li>
+</ul>
+</div><h5 id="methods_unblockelement_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>element</td><td><a href="" class="label type-hint type-hint-element">element</a></td><td><div class="unblockelement-page"><p>which needs to be unblock</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_unblockkendoview">unblockKendoView(view)</h3>
+<div class="unblockkendoview"><div class="unblockkendoview-page"><ul>
+<li>unblocks Kendo View </li>
+</ul>
+</div><h5 id="methods_unblockkendoview_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>view</td><td><a href="" class="label type-hint type-hint-element">element</a></td><td><div class="unblockkendoview-page"><p>which needs to be unblock</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_unblockui">unblockui()</h3>
+<div class="unblockui"><div class="unblockui-page"><ul>
+<li>unblocks UI using block UI library </li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_updatepresavecontactlist">updatePreSaveContactList()</h3>
+<div class="updatepresavecontactlist"><div class="updatepresavecontactlist-page"><ul>
+<li>updates PreSaveContactList</li>
+<li>calls callAddPreSaveContact</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_updateselectedpatient">updateSelectedPatient()</h3>
+<div class="updateselectedpatient"><div class="updateselectedpatient-page"><ul>
+<li>updates global selected patient</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_isuichanged">isUIChanged</h3>
+<div class="isuichanged"><div class="roundingmodule-service-page roundingmodule-service-commonfunctions-page"><p>default value: false</p>
+</div></div>
+</li>
+<li><h3 id="properties_datefunctions">dateFunctions</h3>
+<div class="datefunctions"><div class="roundingmodule-service-page roundingmodule-service-commonfunctions-page"><p>default value: {}</p>
+</div></div>
+</li>
+<li><h3 id="properties_presavetimer">preSaveTimer</h3>
+<div class="presavetimer"><div class="roundingmodule-service-page roundingmodule-service-commonfunctions-page"><p>default value: null</p>
+</div></div>
+</li>
+<li><h3 id="properties_closepop">closePop</h3>
+<div class="closepop"><div class="roundingmodule-service-page roundingmodule-service-commonfunctions-page"><p>default value: false</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,297 @@
+<h1><code ng:non-bindable="">MedicationsController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-medicationscontroller-page"><ul>
+<li>Main Controller for Medications Screen </li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_cancelcurrentallergy">cancelCurrentAllergy()</h3>
+<div class="cancelcurrentallergy"><div class="cancelcurrentallergy-page"><ul>
+<li>Cancels added allergy            </li>
+<li>Changes UI behaviour            </li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_closeautocomplete">closeAutoComplete()</h3>
+<div class="closeautocomplete"><div class="closeautocomplete-page"><ul>
+<li>Closes AutoComplete only for less then 3 character input</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_getlastreviewdate">getLastReviewDate()</h3>
+<div class="getlastreviewdate"><div class="getlastreviewdate-page"><ul>
+<li>Calls MedicationsService.GetMedReviewDate</li>
+<li>Changes UI behaviour</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_getlookupitem">getLookupItem(lookupType, item)</h3>
+<div class="getlookupitem"><div class="getlookupitem-page"><ul>
+<li>Gets call from Medications view for lookup text based on value   </li>
+</ul>
+</div><h5 id="methods_getlookupitem_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>lookupType</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getlookupitem-page"><p>type of lookup</p>
+</div></td></tr><tr><td>item</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getlookupitem-page"><p>lookup item whose text needs to get</p>
+</div></td></tr></tbody></table><h5 id="methods_getlookupitem_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getlookupitem-page"><p>lookup item text</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getsurvey">getSurvey()</h3>
+<div class="getsurvey"><div class="getsurvey-page"><ul>
+<li>Calls MedicationsService.GetSurveyDetails</li>
+<li>Changes UI behaviour  </li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_onactionitemsretrieved">onActionItemsRetrieved(result)</h3>
+<div class="onactionitemsretrieved"><div class="onactionitemsretrieved-page"><ul>
+<li>Callback function of MedicationsService.GetActionItems</li>
+</ul>
+</div><h5 id="methods_onactionitemsretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onactionitemsretrieved-page"><p>returned by service</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_onpatientallergiesretrieved">onPatientAllergiesRetrieved(result)</h3>
+<div class="onpatientallergiesretrieved"><div class="onpatientallergiesretrieved-page"><ul>
+<li>Callback function of MedicationsService.GetPatientAllergies</li>
+<li>Populates Allergies</li>
+<li>Calls MedicationsService.SetAllergyFilter</li>
+<li>Changes UI behaviour</li>
+</ul>
+</div><h5 id="methods_onpatientallergiesretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onpatientallergiesretrieved-page"><p>returned by service</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_onpatientmedicationretrieved">onPatientMedicationRetrieved(result)</h3>
+<div class="onpatientmedicationretrieved"><div class="onpatientmedicationretrieved-page"><ul>
+<li>Callback function of MedicationsService.GetPatientMedication</li>
+<li>Populates Medications</li>
+<li>Calls getLastReviewDatw()</li>
+<li>Changes UI behaviour</li>
+</ul>
+</div><h5 id="methods_onpatientmedicationretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onpatientmedicationretrieved-page"><p>returned by service</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_refreshautocomplete">refreshAutoComplete()</h3>
+<div class="refreshautocomplete"><div class="refreshautocomplete-page"><ul>
+<li>Refreshes autocomplete manually after retriving data from server</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_setallergysuggestionlist">setAllergySuggestionList()</h3>
+<div class="setallergysuggestionlist"><div class="setallergysuggestionlist-page"><ul>
+<li>Call back function of MedicationsService.GetAllergyList</li>
+<li>Call back function of MedicationsService.GetMedicationsList</li>
+<li>Updates allergy suggestion list after GetAllergyList or GetMedicationsList service call is over</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_showmedications">showMedications()</h3>
+<div class="showmedications"><div class="showmedications-page"><ul>
+<li>Gets call when Medications Screen loads</li>
+<li>Calls MedicationsService.GetActionItems</li>
+<li>Calls MedicationsService.GetPatientMedication</li>
+<li>Calls MedicationsService.GetPatientAllergies</li>
+<li>Calls $scope.getSurvey()</li>
+<li>Changes UI behaviour  </li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemodel">$scope.model</h3>
+<div class="$scopemodel"><div class="roundingmodule-controller-page roundingmodule-controller-medicationscontroller-page"><p>model of MedicationsController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelalerts">$scope.model.Alerts</h3>
+<div class="$scopemodelalerts"><div class="roundingmodule-controller-page roundingmodule-controller-medicationscontroller-page"><p>property of $scope.model used for Alerts</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelmedications">$scope.model.Medications</h3>
+<div class="$scopemodelmedications"><div class="roundingmodule-controller-page roundingmodule-controller-medicationscontroller-page"><p>property of $scope.model used for Medications</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodellastreviewdate">$scope.model.LastReviewDate</h3>
+<div class="$scopemodellastreviewdate"><div class="roundingmodule-controller-page roundingmodule-controller-medicationscontroller-page"><p>property of $scope.model used for LastReviewDate</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodellastreviewdatevisible">$scope.model.LastReviewDateVisible</h3>
+<div class="$scopemodellastreviewdatevisible"><div class="roundingmodule-controller-page roundingmodule-controller-medicationscontroller-page"><p>property of $scope.model used for LastReviewDate Visibility</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelallergies">$scope.model.Allergies</h3>
+<div class="$scopemodelallergies"><div class="roundingmodule-controller-page roundingmodule-controller-medicationscontroller-page"><p>property of $scope.model used for Allergies</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelnodatavisible">$scope.model.NoDataVisible</h3>
+<div class="$scopemodelnodatavisible"><div class="roundingmodule-controller-page roundingmodule-controller-medicationscontroller-page"><p>property of $scope.model used for NoData Visibility</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelfilters">$scope.model.Filters</h3>
+<div class="$scopemodelfilters"><div class="roundingmodule-controller-page roundingmodule-controller-medicationscontroller-page"><p>property of $scope.model used for Filters  of Allergies</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelallergylistconfig">$scope.model.AllergyListConfig</h3>
+<div class="$scopemodelallergylistconfig"><div class="roundingmodule-controller-page roundingmodule-controller-medicationscontroller-page"><p>property of $scope.model used for Allergy List AutoCompleteBox</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelallergymodel">$scope.model.AllergyModel</h3>
+<div class="$scopemodelallergymodel"><div class="roundingmodule-controller-page roundingmodule-controller-medicationscontroller-page"><p>property of $scope.model used for Allergy</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelmedicationmodel">$scope.model.MedicationModel</h3>
+<div class="$scopemodelmedicationmodel"><div class="roundingmodule-controller-page roundingmodule-controller-medicationscontroller-page"><p>property of $scope.model used for Medication</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_getallergydata">getAllergyData</h3>
+<div class="getallergydata"><div class="getallergydata-page"><ul>
+<li>key-up event of Allergy Auto Complete Box</li>
+<li>Calls MedicationsService.GetAllergyList</li>
+<li>Calls refereshAutoComplete</li>
+<li>Calls closeAutoComplete</li>
+<li>Changes UI behaviour</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_getallergydata_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getallergydata-page"><p>event data</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_allergytype">AllergyType</h3>
+<div class="allergytype"><div class="model-allergymodel-allergytype-page"><ul>
+<li>Watches changes for model.AllergyModel.AllergyType</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_onactionitemsretrieved">onActionItemsRetrieved</h3>
+<div class="onactionitemsretrieved"><div class="onactionitemsretrieved-page"><ul>
+<li>subscriber of onActionItemsRetrieved broadcast event which will call $scope.onActionItemsRetrieved passing arg</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_onactionitemsretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="onactionitemsretrieved-page"><p>event data</p>
+</div></td></tr><tr><td>arg</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="onactionitemsretrieved-page"><p>arg with filter data</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_onaddallergyclick">onAddAllergyClick</h3>
+<div class="onaddallergyclick"><div class="onaddallergyclick-page"><ul>
+<li>ng-click event of Add Alergy Button from medications view</li>
+<li>Creates new $scope.model.AllergyModel</li>
+<li>Changes UI behaviour</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_oncancelallergyclick">onCancelAllergyClick</h3>
+<div class="oncancelallergyclick"><div class="oncancelallergyclick-page"><ul>
+<li>k-on-tap event of Cancel Allergy Button from medications view</li>
+<li>Calls cancelCurrentAllergy            </li>
+<li>Changes UI behaviour            </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_ondeleteallergytap">onDeleteAllergyTap</h3>
+<div class="ondeleteallergytap"><div class="ondeleteallergytap-page"><ul>
+<li>k-on-tap event of Delete Allergy Button from medications view</li>
+<li>Calls MedicationsService.SavePatientAllergy</li>
+<li>Calls MedicationsService.GetPatientAllergies</li>
+<li>Changes UI behaviour            </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_ondeleteallergytap_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ondeleteallergytap-page"><p>item of $scope.model.Allergies</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_onlastmedreviewdateretrieved">onLastMedReviewDateRetrieved</h3>
+<div class="onlastmedreviewdateretrieved"><div class="onlastmedreviewdateretrieved-page"><ul>
+<li>subscriber of onLastMedReviewDateRetrieved broadcast event which will set $scope.model.LastReviewDate </li>
+<li>Changes UI behaviour  </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_onlastmedreviewdateretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="onlastmedreviewdateretrieved-page"><p>event data</p>
+</div></td></tr><tr><td>arg</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="onlastmedreviewdateretrieved-page"><p>arg with filter data</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_onmededitclick">onMedEditClick</h3>
+<div class="onmededitclick"><div class="onmededitclick-page"><ul>
+<li>k-on-tap event of Edit Entry from medications list view</li>
+<li>Prepares Comboboxes, LookUp Data etc and opens Add Medication ModalView  </li>
+<li>Calls MedicationsService.SetSelectedMedication</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_onmededitclick_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onmededitclick-page"><p>item of $scope.model.Medications list</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_onsaveallergyclick">onSaveAllergyClick</h3>
+<div class="onsaveallergyclick"><div class="onsaveallergyclick-page"><ul>
+<li>k-on-tap event of Save Allergy Button from medications view</li>
+<li>Calls MedicationsService.SavePatientAllergy</li>
+<li>Calls MedicationsService.GetPatientAllergies</li>
+<li>Changes UI behaviour            </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_ontabselect">onTabSelect</h3>
+<div class="ontabselect"><div class="ontabselect-page"><ul>
+<li>ng-click event of tab select from medications view</li>
+<li>Changes UI behaviour</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_ontabselect_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>tab</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ontabselect-page"><p>text of the tab</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_refreshmedications">refreshMedications</h3>
+<div class="refreshmedications"><div class="refreshmedications-page"><ul>
+<li>subscriber of refreshMedications broadcast event which will call MedicationsService.GetPatientMedication</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_setallergyfilter">setAllergyFilter</h3>
+<div class="setallergyfilter"><div class="setallergyfilter-page"><ul>
+<li>subscriber of setAllergyFilter broadcast event which will filter allergies list</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_setallergyfilter_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="setallergyfilter-page"><p>event data</p>
+</div></td></tr><tr><td>arg</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="setallergyfilter-page"><p>arg with filter data</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_setmedicationfilter">setMedicationFilter</h3>
+<div class="setmedicationfilter"><div class="setmedicationfilter-page"><ul>
+<li>subscriber of setMedicationFilter broadcast event which will filter medications list</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_setmedicationfilter_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="setmedicationfilter-page"><p>event data</p>
+</div></td></tr><tr><td>arg</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="setmedicationfilter-page"><p>arg with filter data</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_showfullmedication">showFullMedication</h3>
+<div class="showfullmedication"><div class="showfullmedication-page"><ul>
+<li>ng-click event of showFullMedication div from medications view</li>
+<li>Show hide medication            </li>
+<li>Changes UI behaviour            </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_showfullmedication_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="showfullmedication-page"><p>item of $scope.model.Medications list</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

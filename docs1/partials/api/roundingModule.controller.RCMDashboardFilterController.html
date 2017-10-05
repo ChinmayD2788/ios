@@ -1,0 +1,40 @@
+<h1><code ng:non-bindable="">RCMDashboardFilterController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardfiltercontroller-page"><ul>
+<li>Controller for Filter pop over on RCM Dashboard screen</li>
+<li>VersionOne Requirements - Filter and sort patient list - <a href="https://www13.v1host.com/DaVitaInc/Task.mvc/Summary?oidToken=Task%3A226707">TK-21706</a></li>
+</ul>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">RCMDashboardFilterController($scope, RCMDashboardService, ExceptionService, CommonFunctions);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>$scope</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardfiltercontroller-page"><p>Scope object</p>
+</div></td></tr><tr><td>RCMDashboardService</td><td><a href="" class="label type-hint type-hint-service">service</a></td><td><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardfiltercontroller-page"><p>Service Call</p>
+</div></td></tr><tr><td>ExceptionService</td><td><a href="" class="label type-hint type-hint-service">service</a></td><td><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardfiltercontroller-page"><p>Service for error handling</p>
+</div></td></tr><tr><td>CommonFunctions</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardfiltercontroller-page"><p>Commonly used functions</p>
+</div></td></tr></tbody></table></div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemodelfilterlist">$scope.model.FilterList</h3>
+<div class="$scopemodelfilterlist"><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardfiltercontroller-page"><p>Array of objects containing values for filtering</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelrcmdashboardfiltertype">$scope.model.RCMDashboardFilterType</h3>
+<div class="$scopemodelrcmdashboardfiltertype"><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardfiltercontroller-page"><p>Store filter values after selection from filter popover</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_onfilterclick">onFilterClick</h3>
+<div class="onfilterclick"><div class="onfilterclick-page"><p>Gets called when the user selects any option on  filter list popover</p>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_onfilterclick_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onfilterclick-page"><p>Contains data  of the selected option for filtering</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

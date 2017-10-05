@@ -1,0 +1,21 @@
+﻿#screeningstab-container
+{
+    background-color: White;
+    border: 1px solid lightgray;
+    height: 600px !important;
+}
+
+.patient-screeningstab-view
+{
+    background: white;
+    padding: 10px;
+    clear: both;
+}
+
+.container-column
+{
+    float: left;
+    line-height: 20px;
+    width: 50% !important;
+    padding: 5px 0px;
+}

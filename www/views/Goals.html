@@ -1,0 +1,53 @@
+﻿<kendo-mobile-view class="crd-view" ng-controller="PatientCarePlanGoalController">
+    <div class="crd-view">
+        <div class="crd-screenname-container">
+            <div class="crd-screennameheader">GOALS</div>
+        </div>
+        <div class="no-data-available" ng-if="NoDataAvailable">{{NoData}}</div>
+        <div id="goals-container">
+            <div class="crd-kendo-mobile-scroller" id="patient-care-plan-goal-scroller" kendo-mobile-scroller ng-if="!NoDataAvailable">
+                <div class="goals-tab-listview goals-tab-listview-bottom" ng-repeat="carePlanData in PatientCarePlanModel">
+                    <div class=" goals-item-row">
+                        <span class="goals-item-row-care-topic">{{carePlanData.CarePlanTopicText}}</span>
+                    </div>
+                    <div class="goals-item-row">
+                        <div class="goals-item-column-one">
+                            <span class="goals-item-row-label crd-width-50-percent float-left">Started</span>
+                            <span class="goals-item-row-val crd-width-50-percent float-left">{{carePlanData.StartDate}}</span>
+                        </div>
+                        <div class="goals-item-column-two">
+                            <span class="goals-item-row-label crd-width-30-percent float-left">Importance</span>
+                            <span class="goals-item-row-val crd-width-70-percent float-left">{{carePlanData.GoalImportanceLevelText}}</span>
+                        </div>
+                    </div>
+                    <div class="goals-item-row">
+                        <div class="goals-item-column-one">
+                            <span class="goals-item-row-label width-50-pr-left float-left">Due</span>
+                            <span class="goals-item-row-val width-50-pr-right float-left">{{carePlanData.DueDate}}</span>
+                        </div>
+                        <div class="goals-item-column-two">
+                            <span class="goals-item-row-label crd-width-30-percent float-left"> Confidence Level</span>
+                            <span class="goals-item-row-val width-70-pr-right float-left">{{carePlanData.GoalConfidenceLevelText}}</span>
+                        </div>
+                    </div>
+                    <div class="goals-item-row">
+                        <div class="goals-item-column-one">
+                            <span class="goals-item-row-label width-50-pr-left float-left">Review</span>
+                            <span class="goals-item-row-val width-50-pr-right float-left">{{carePlanData.ReviewDate}}</span>
+                        </div>
+                        <div class="goals-item-column-two">
+                            <span class="goals-item-row-label crd-width-30-percent float-left">Priority</span>
+                            <span class="goals-item-row-val width-70-pr-right float-left">{{carePlanData.GoalPriorityText}}</span>
+                        </div>
+                    </div>
+                    <div class="goals-item-row">
+                        <div class="">
+                            <span class="goals-item-row-label width-20-pr-left float-left">Behavioral Plan</span>
+                            <span class="goals-item-row-val width-80-pr-right float-left">{{carePlanData.BehavioralPlan}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</kendo-mobile-view>

@@ -1,0 +1,203 @@
+<kendo-mobile-view  ng-controller="ProviderInfoController" class="crd-view"> 
+	<div class="crd-screenname-container">
+        <div class="crd-screennameheader">PROVIDER INFO</div>
+		<div class="provider-pop-menu">
+           <kendo-mobile-button href="#popover-provider-menu" k-rel="'popover'">ADD PROVIDER</kendo-mobile-button>
+            <kendo-mobile-pop-over id="popover-provider-menu" k-popup='{"width": "12em"}'>
+                <kendo-mobile-view ng-controller="ProviderMenuController" class="crd-popover-listview do-not-destroy">
+                    <kendo-mobile-list-view class="logout-list">
+                        <li>
+                            <label class="km-listview-label">
+                                <input name="medmenu" type="radio" value="PerformScreening" ng-click="onProviderMenuClick('DC')" />
+                               Ad as DC
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input name="medmenu" type="radio" value="AddMedicationReview" ng-click="onProviderMenuClick('Peph')" />
+                                Add as Neph
+                        </li>
+                        <li>
+                            <label>
+                                <input name="medmenu" type="radio" value="AddMedication" ng-click="onMedsMenuClick('PCP')" />
+                                Add as PCP
+                            </label>
+                        </li>
+                    </kendo-mobile-list-view>
+                </kendo-mobile-view>
+            </kendo-mobile-pop-over>
+        </div>
+    </div>
+	<div id="provider-content">
+		<div class="provider-header padding-10">
+			<div class="provider-col padding-left-8">TYPE</div>
+			<div class="provider-col width-18-percent padding-left-8">DETAILS</div>
+			<div class="provider-col">BEGIN DATE</div>
+			<div class="provider-col">END DATE</div>
+			<div class="provider-col width-18-percent">ALLOW COMMUNICATION</div>
+			<div class="provider-col width-8-percent">EDIT</div>
+			<div class="provider-col width-8-percent">DELETE</div>
+		</div>
+		<div id="provider-scroller">
+			<div ng-show="model.noDataVisible">No Providers listed for member</div>
+			<kendo-mobile-list-view k-data-source="model.Providers" ng-hide="model.noDataVisible">
+				<div k-template>
+					<div k-on-tap="selectRow(dataItem)" class="provider-col">{{getLookupItem("AssociationType", dataItem.AssociationType)}}</div>
+					<div class="provider-col width-18-percent">
+						<div ng-repeat="addrLine in dataItem.Address track by $index">{{addrLine === "" ? '&nbsp;' :  addrLine}}</div>
+					</div>
+					<div class="provider-col">{{ dataItem.EffectiveDate | date : "dd/MM/y"}}</div>
+					<div class="provider-col">{{dataItem.EndDate | date : "dd/MM/y"}}</div>
+					<div class="provider-col width-18-percent">
+						<img class="provider-icon" ng-if=" dataItem.ProviderInfo.AllowCommunication === true" src="Images/Icon-CheckMark.png">
+ 						<span ng-if="dataItem.ProviderInfo.AllowCommunication === null || dataItem.ProviderInfo.AllowCommunication === false">&nbsp;</span>
+					</div>
+					<div class="provider-col width-8-percent">
+					  <kendo-mobile-button kendo-touch k-on-tap="onEditProviderInfo(dataItem)">EDIT</kendo-mobile-button>
+					</div>  
+					<div class="provider-col width-8-percent icon-padding">
+						<div class="icon-delete-button" kendo-touch k-on-tap="onDeleteProviderInfo(dataItem)"></div>
+					</div>
+				</div>
+			</kendo-mobile-list-view>
+		</div>
+	</div>
+	
+	 <!-- modalview for Add Provider -->
+        <kendo-mobile-modal-view ng-controller="ProviderMenuController" id="add-provider-modalview" class="crd-modalview"
+                                 kendo-validator="addProviderValidator">
+            <kendo-mobile-header>
+                <kendo-mobile-nav-bar>
+                    <kendo-mobile-button kendo-touch k-on-tap="onAddProviderClick()" k-align="'right'">Save</kendo-mobile-button>
+                    <span>Add New Provider</span>
+                    <kendo-mobile-button kendo-touch k-on-tap="onCancelAddProviderClick()" k-align="'left'">Cancel</kendo-mobile-button>
+                </kendo-mobile-nav-bar>
+            </kendo-mobile-header>
+			<div class="add-provider-wrap">  
+				<div kendo-tab-strip><!--k-content-urls="[ null, null]" -->
+					  <!-- tab list -->
+					  <ul>
+						<li class="k-state-active">Provider Detail</li>
+						<li>Provider Address</li>
+						<li>Identification</li>
+						<li>Provider Affiliation</li>
+					  </ul>
+					  <div style="padding: 1em">
+						<div class="modalview-edit-row">                        
+							<span class="add-provider-column">
+								<label>First Name</label>
+								<div><input id="add-alrg-symptom-text" type="text" class="k-textbox" ng-model="providerDetails.Name" placeholder="First Name" /></div>               
+							</span> 
+							<span class="add-provider-column">
+								<label>Middle Name</label>
+								<div><input id="add-alrg-symptom-text" type="text" class="k-textbox" ng-model="providerDetails.MiddleName" placeholder="Middle Name" /></div>             
+							</span>
+							<span class="add-provider-column">
+								<label>Last Name</label>
+								<div><input id="add-alrg-symptom-text" type="text" class="k-textbox" ng-model="providerDetails.LastName" placeholder="Last Name" /></div>             
+							</span> 
+						</div>
+						<div class="modalview-edit-row height-90">
+							<span class="add-provider-column">
+								<label>Gender</label>
+								<select id="add-provider-gender"
+                                    name="add-provider-gender-name"
+                                    class="ptchart-dbts-scrn-dd-div-select"
+                                    k-data-auto-bind="false" k-data-value-primitive="true"
+                                    kendo-drop-down-list
+                                    k-data-text-field="'Text'"
+                                    k-data-value-field="'Value'"
+                                    k-data-source="providerDetails.Genders"
+                                    k-ng-model="providerDetails.SelectedGender"
+                                    k-on-change="onGenderChange()"></select>
+							</span> 
+							 <span class="add-provider-column crd-kendocheck-big">
+								<input type="checkbox" id="add-provider-acceptsreports" name="add-provider-acceptsreports-name" ng-model="providerDetails.AccessReports" class="k-checkbox">
+								<label class="k-checkbox-label" for="add-provider-acceptsreports"><span>Accepts Reports</span></label>                                             				
+							</span> 
+							<span class="add-provider-column crd-kendocheck-big">
+								<input type="checkbox" id="add-provider-acceptsrfi" name="add-provider-acceptsacceptsrfi-name" 
+								ng-model="providerDetails.AcceptsRFI" class="k-checkbox">
+								<label class="k-checkbox-label" for="add-provider-acceptsrfi"><span>Accepts RFI</span></label>                                             				
+							</span> 
+							<span class="add-provider-column crd-kendocheck-big">
+								<input type="checkbox" id="add-provider-verifiedpatient" name="add-provider-verifiedpatient-name" 
+								ng-model="providerDetails.VerifiedPatient" class="k-checkbox">
+								<label class="k-checkbox-label" for="add-provider-verifiedpatient"><span>Verified Patient</span></label>                                             				
+							</span> 	
+						</div>
+						<div class="modalview-edit-row">
+							<span class="add-provider-column-long crd-kendocheck-big">
+								<input type="checkbox" id="add-provider-priorseeing" name="add-provider-priorseeing-name" 
+								ng-model="providerDetails.PriorSeeing" class="k-checkbox">
+								<label class="k-checkbox-label" for="add-provider-priorseeing"><span>Patient Seeing Prior to VH Program</span></label>                                             				
+							</span> 
+							<span class="add-provider-column margin-left-50">
+								<label class="crd-inline">Patient Seeing Since</label>   
+								<input kendo-date-picker class="crd-datepicker" id="add-provider-patient-date" name="add-provider-patient-date" 
+									   k-max="providerDetails.MaxDate" k-ng-model="providerDetails.SelectedDate" k-format="'MM/dd/yyyy'"/>
+							</span> 
+						</div>
+						<div class="modalview-edit-row">
+							<span class="add-provider-column-long">
+								<label>Provider Type</label>
+								<select id="add-provider-SelectedProviderType"
+                                    name="add-provider-SelectedProviderType-name"
+                                    class="ptchart-dbts-scrn-dd-div-select"
+                                    k-data-auto-bind="false" k-data-value-primitive="true"
+                                    kendo-drop-down-list
+                                    k-data-text-field="'Text'"
+                                    k-data-value-field="'Value'"
+                                    k-data-source="providerDetails.Genders"
+                                    k-ng-model="providerDetails.SelectedGender"
+                                    k-on-change="onGenderChange()"></select>	`
+								<span data-for="modalview-access-add-lastresortreason" class="k-invalid-msg"></span>
+							</span> 
+							<span class="add-provider-column-long">
+								<label>Contracted To</label>
+								<select id="add-provider-contractedTo"
+                                    name="add-provider-contractedTo-name"
+                                    class="ptchart-dbts-scrn-dd-div-select"
+                                    k-data-auto-bind="false" k-data-value-primitive="true"
+                                    kendo-drop-down-list
+                                    k-data-text-field="'Text'"
+                                    k-data-value-field="'Value'"
+                                    k-data-source="providerDetails.Genders"
+                                    k-ng-model="providerDetails.SelectedGender"
+                                    k-on-change="onGenderChange()"></select>		
+								<span data-for="modalview-access-add-lastresortreason" class="k-invalid-msg"></span>
+							</span>  		
+						</div>
+						<div class="modalview-edit-row">
+							<span class="add-provider-column-long">
+								<label>Preferred Method of Contact</label>
+								<select id="add-provider-PreferredContactMethod"
+                                    name="add-provider-PreferredContactMethod-name"
+                                    class="ptchart-dbts-scrn-dd-div-select"
+                                    k-data-auto-bind="false" k-data-value-primitive="true"
+                                    kendo-drop-down-list
+                                    k-data-text-field="'Text'"
+                                    k-data-value-field="'Value'"
+                                    k-data-source="providerDetails.Genders"
+                                    k-ng-model="providerDetails.SelectedGender"
+                                    k-on-change="onGenderChange()"></select>									
+								<span data-for="modalview-access-add-lastresortreason" class="k-invalid-msg"></span>
+							</span> 	
+						</div>
+					  </div>
+				  
+					  <div style="padding: 1em">
+						This is the second tab
+					  </div>
+					  <div style="padding: 1em">
+						This is the third tab
+					  </div>
+					  <div style="padding: 1em">
+						This is the fourth tab
+					  </div>
+				</div>	  
+						
+			</div>
+        </kendo-mobile-modal-view>
+
+</kendo-mobile-view>

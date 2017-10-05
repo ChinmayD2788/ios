@@ -1,0 +1,146 @@
+﻿<kendo-mobile-view class="crd-view" ng-controller="ActiveCarePlansController">
+    <div class="crd-screenname-container">
+        <div class="crd-screennameheader" ng-if="!IsPatientCarePlan">ACTIVE CARE PLANS</div>
+        <div class="crd-float-right">
+            <kendo-mobile-button kendo-touch k-on-tap="onAccessAddClick()" k-align="'right'">ADD CARE PLAN</kendo-mobile-button>
+        </div>
+    </div>
+    <div id="activecareplans-content">
+        <div class="padding-15">
+            <div class="meds-header">
+                <div class="patient-care-plan-overdue">&nbsp;</div>
+                <div class="patient-care-plan-topic">Care Plan Topic</div>
+                <div class="clinical-relevance">Clinical Relevance</div>
+                <div class="duedate">Due Date</div>
+                <div class="status">Status</div>
+            </div>
+            <div id="activecareplan-list-scrolls">
+                <div ng-show="model.noDataVisible">No Active Care Plan</div>
+                <kendo-mobile-list-view id="activeCarePlanList" k-data-source="model.ActiveCarePlanList" ng-hide="model.noDataVisible" style="cursor: pointer;">
+                    <div k-template ng-click="showFullActivePlan(dataItem)" style="padding-top: 1px;">
+                        <div class="meds-content">
+                            <div class="patient-care-plan-overdue" ng-if="dataItem.OverDue"><img src="Images/Icon_Priority_Overdue.png" /></div>
+                            <div class="patient-care-plan-overdue" ng-if="!dataItem.OverDue">&nbsp;</div>
+                            <div class="patient-care-plan-topic">{{ dataItem.CarePlanTopicText }}</div>
+                            <div class="clinical-relevance">{{ dataItem.ClinicalRelevanceDisplayText}}</div>
+                            <div class="duedate">
+                                <span>{{ dataItem.DueDate | date: 'MM/dd/yyyy'}}</span>
+                            </div>
+                            <div class="status">
+                                <span>{{ dataItem.GoalStatusText }}</span>
+                            </div>
+                        </div>
+                        <div id="activecareplan-details-{{ dataItem.UID }}" class="active-care-plan-details">
+                            <div class="meds-header-separator" style="height: 1px !important; margin-top: 15px !important;"></div>
+                            <div class="med-details-header"></div>
+                            <div class="active-care-plan-detail-panel">
+                                <div class="patient-care-plan-overdue">&nbsp;</div>
+                                <div class="active-care-plan-view-details-panel-col">
+                                    <div class="active-care-plan-details-c">
+                                        <div class="active-care-plan-details-label">Care Plan Name</div>
+                                        <div class="active-care-plan-details-value">
+                                            <span>{{ dataItem.GoalName }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="active-care-plan-details-c">
+                                        <div class="active-care-plan-details-label">Importance</div>
+                                        <div class="active-care-plan-details-value">{{ getLookupItem("GoalImportanceLevel", (dataItem.ImportanceLevel).toString() + "" ) }}</div>
+                                    </div>
+                                    <div class="active-care-plan-details-c">
+                                        <div class="active-care-plan-details-label">Confidence Level</div>
+                                        <div class="active-care-plan-details-value">
+                                            <span>{{ getLookupItem("GoalConfidenceLevel", (dataItem.OverallConfidenceLevel).toString() + "" ) }} </span>
+                                        </div>
+                                    </div>
+                                    <div class="active-care-plan-details-c">
+                                        <div class="active-care-plan-details-label">Status</div>
+                                        <div class="active-care-plan-details-value">
+                                            <span>{{ dataItem.GoalStatusText }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="active-care-plan-details-c">
+                                        <div class="active-care-plan-details-label">Clinical Relevance</div>
+                                        <div class="active-care-plan-details-value">
+                                            <span>{{ dataItem.ClinicalRelevanceDisplayText }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="active-care-plan-view-details-panel-col">
+                                    <div class="active-care-plan-details-c">
+                                        <div class="active-care-plan-details-label">Barrier</div>
+                                        <div class="active-care-plan-details-value padding-left-0">
+                                            <div ng-if="dataItem.HasEquipmentIssue" class="active-care-plan-details-value">
+                                                <span> Equipment Issue </span>
+                                            </div>
+                                            <div ng-if="dataItem.HasKnowledgeDeficit" class="active-care-plan-details-value">
+                                                <span>Knowledge Deficit </span>
+                                            </div>
+                                            <div ng-if="dataItem.HasPhysicalLimitation" class="active-care-plan-details-value">
+                                                <span> Physical Limitation </span>
+                                            </div>
+                                            <div ng-if="dataItem.HasPoorHabitsPractices" class="active-care-plan-details-value">
+                                                <span> PoorHabits Practices</span>
+                                            </div>
+                                            <div ng-if="dataItem.HasPsychologicalIssue" class="active-care-plan-details-value">
+                                                <span> Psychological </span>
+                                            </div>
+                                            <div ng-if="dataItem.HasSocioEconomicIssue" class="active-care-plan-details-value">
+                                                <span> SocioEconomic </span>
+                                            </div>
+                                            <div ng-if="dataItem.HasSupport" class="active-care-plan-details-value">
+                                                <span>No Support System</span>
+                                            </div>
+                                            <div ng-if="dataItem.NoBarrier" class="active-care-plan-details-value">
+                                                <span>No Barriers</span>
+                                            </div>
+
+                                            <div ng-if="dataItem.HasOtherBarries" class="active-care-plan-details-value">
+                                                <b>Other:</b> <span> {{ dataItem.OtherBarrierNotes }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="active-care-plan-details-c">
+                                        <div class="active-care-plan-details-label">Start Date</div>
+                                        <div class="active-care-plan-details-value">
+                                            <span>{{ dataItem.StartDate | date: 'MM/dd/yyyy'}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="active-care-plan-details-c">
+                                        <div class="active-care-plan-details-label">Due Date</div>
+                                        <div class="active-care-plan-details-value">
+                                            <span>{{ dataItem.DueDate | date: 'MM/dd/yyyy'}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="active-care-plan-details-c">
+                                        <div class="active-care-plan-details-label">Review Date</div>
+                                        <div class="active-care-plan-details-value">
+                                            <span>{{ dataItem.ReviewDate | date: 'MM/dd/yyyy'}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="active-care-plan-edit">
+                                    <kendo-mobile-button id="edit-meds" kendo-touch k-on-tap="onActiveCarePlanEditClick(dataItem)">EDIT PLAN</kendo-mobile-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </kendo-mobile-list-view>
+                <div class="active-care-plan-container-empty-space"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Add Patient Care Plan Modal View -->
+    <kendo-mobile-modal-view id="add-patientcareplan-modalview" ng-controller="EditCarePlanController" class="crd-modalview">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <kendo-mobile-button kendo-touch k-on-tap="onSaveAddCarePlanClick()" k-align="'right'">Save</kendo-mobile-button>
+                <span ng-bind="model.CarePlanTitle"></span>
+                <kendo-mobile-button kendo-touch k-on-tap="onCancelAddCarePlanClick()" k-align="'left'">Cancel</kendo-mobile-button>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+        <edit-patient-care-plan class="patient-care-pathway-template"></edit-patient-care-plan>
+    </kendo-mobile-modal-view>
+
+</kendo-mobile-view>

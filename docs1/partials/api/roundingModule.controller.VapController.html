@@ -1,0 +1,120 @@
+<h1><code ng:non-bindable="">VapController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-vapcontroller-page"><ul>
+<li>Main Controller for VAP (Vascular Access Plan) Screen </li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getlookupitem">getLookupItem(lookupType, item)</h3>
+<div class="getlookupitem"><div class="getlookupitem-page"><ul>
+<li>Gets call from VAP view for lookup text based on value   </li>
+</ul>
+</div><h5 id="methods_getlookupitem_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>lookupType</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getlookupitem-page"><p>type of lookup</p>
+</div></td></tr><tr><td>item</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getlookupitem-page"><p>lookup item whose text needs to get</p>
+</div></td></tr></tbody></table><h5 id="methods_getlookupitem_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getlookupitem-page"><p>lookup item text</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_onpatientvascularaccessplanretrieved">onPatientVascularAccessPlanRetrieved(result)</h3>
+<div class="onpatientvascularaccessplanretrieved"><div class="onpatientvascularaccessplanretrieved-page"><ul>
+<li>Callback function of AccessInfoService.GetPatientVascularAccessPlan</li>
+<li>Populates $scope.model.ActiveVapStepDetail </li>
+<li>Populates $scope.model.ActiveVapStepDetail.StepDetails         </li>
+<li>Calls VapService.SetCopyVapStepDetails</li>
+<li>Calls VapService.SetCopyActivateVapStepDetails</li>
+<li>Changes UI Behavior</li>
+</ul>
+</div><h5 id="methods_onpatientvascularaccessplanretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onpatientvascularaccessplanretrieved-page"><p>returned by service</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_showvap">showVap()</h3>
+<div class="showvap"><div class="showvap-page"><ul>
+<li>Calls VapService.GetPatientVascularAccessPlan</li>
+<li>Start point of the VAP screen</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemodel">$scope.model</h3>
+<div class="$scopemodel"><div class="roundingmodule-controller-page roundingmodule-controller-vapcontroller-page"><p>model of VapController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelvapstepdetails">$scope.model.VapStepDetails</h3>
+<div class="$scopemodelvapstepdetails"><div class="roundingmodule-controller-page roundingmodule-controller-vapcontroller-page"><p>property of $scope.model used for Vap Step Details List</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelcopyvapstepdetails">$scope.model.CopyVapStepDetails</h3>
+<div class="$scopemodelcopyvapstepdetails"><div class="roundingmodule-controller-page roundingmodule-controller-vapcontroller-page"><p>property of $scope.model used for Copy Vap Step Details List</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodellastitemuid">$scope.model.LastItemUID</h3>
+<div class="$scopemodellastitemuid"><div class="roundingmodule-controller-page roundingmodule-controller-vapcontroller-page"><p>property of $scope.model used for Last Item of Vap Step Details List</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelvapdatacount">$scope.model.VapDataCount</h3>
+<div class="$scopemodelvapdatacount"><div class="roundingmodule-controller-page roundingmodule-controller-vapcontroller-page"><p>property of $scope.model used for count of VapData</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelactivevapstepdetail">$scope.model.ActiveVapStepDetail</h3>
+<div class="$scopemodelactivevapstepdetail"><div class="roundingmodule-controller-page roundingmodule-controller-vapcontroller-page"><p>property of $scope.model used for Active Vap Step Detail</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_oneditvapstepclick">onEditVapStepClick</h3>
+<div class="oneditvapstepclick"><div class="oneditvapstepclick-page"><ul>
+<li>k-on-tap event of Edit Step button on Vap Step</li>
+<li>Calls VapService.SetSelectedStep         </li>
+<li>Opens Edit Vap Step Modal view</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_oneditvapstepclick_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="oneditvapstepclick-page"><p>item of $scope.model.ActiveVapStepDetail.StepDetails</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_onnewplanclicked">onNewPlanClicked</h3>
+<div class="onnewplanclicked"><div class="onnewplanclicked-page"><ul>
+<li>k-on-tap event of NEW PLAN button on Vap Screen</li>
+<li>Opens New Vap Step Modal view</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_onstopplanclicked">onStopPlanClicked</h3>
+<div class="onstopplanclicked"><div class="onstopplanclicked-page"><ul>
+<li>k-on-tap event of STOP PLAN button on Vap Screen</li>
+<li>Opens Stop Vap Step Modal view</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_ontoprowclicked">onTopRowClicked</h3>
+<div class="ontoprowclicked"><div class="ontoprowclicked-page"><ul>
+<li>ng-click event of top row of VAP Step detail block</li>
+<li>Flips bottom row of VAP Step detail block         </li>
+<li>Changes UI Behavior</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_ontoprowclicked_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ontoprowclicked-page"><p>item of $scope.model.ActiveVapStepDetail.StepDetails</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_refreshvap">refreshVap</h3>
+<div class="refreshvap"><div class="refreshvap-page"><ul>
+<li>subscriber of refreshVap broadcast event which will call $scope.showVap()</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

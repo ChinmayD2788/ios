@@ -1,0 +1,187 @@
+﻿<kendo-mobile-view class="crd-view" ng-controller="PatientDemographicsController">
+    <!-- Patient Details comes from template -->
+    <div id="ptchart-ptdetails-container" ng-include="Global.Templates.PatientDetails.Url">
+    </div>
+
+    <div class="crd-screennameheader">Demographics</div>
+
+    <div id="demographics-container" >
+        <div kendo-tab-strip id="demographics-tab-strip">            
+            <!-- tab list -->
+            <ul>
+                <li class="crd-tabstrip-header-tabs k-state-active">MAILING</li>
+                <li class="crd-tabstrip-header-tabs">HOME</li>
+                <li class="crd-tabstrip-header-tabs">TEMPORARY</li>
+            </ul>
+            <!-- Mailing Tab -->
+            <div id="demographics-pts-mailing-address" class="demographics-tab">
+                <div class="demographics-pts-tabstrip-details">
+                    <div>
+                        <span class="crd-pthway-screening-label">ADDRESS </span>
+                        <span class="crd-pathway-screening-value rcm-demographics-pts-values ">{{ PatientDemographicsModel.mailingAddress.address1 }} , {{ PatientDemographicsModel.mailingAddress.citystatezip }}</span>
+                    </div>
+                    <div>
+                        <span class="crd-pthway-screening-label ">EMAIL </span>
+                        <span class="crd-pathway-screening-value rcm-demographics-pts-values ">{{ patientEmailAddress }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Home Tab -->
+            <div id="demographics-pts-home-address" class="demographics-tab">
+                <div class="demographics-pts-tabstrip-details">
+                    <span class="crd-pthway-screening-label">ADDRESS </span>
+                    <span class="crd-pathway-screening-value rcm-demographics-pts-values"> {{ PatientDemographicsModel.mailingAddress.homeaddress }} </span>
+                </div>
+            </div>
+
+            <!-- TEMPORARY -->
+
+            <div id="dempographics-pts-temporary-address" class="demographics-tab">
+                <div class="demographics-pts-tabstrip-details">
+                    <div>
+                        <span class="crd-tab-label crd-pthway-screening-label">ADDRESS</span>
+                        <span class="crd-pathway-screening-value rcm-demographics-pts-values">{{ PatientDemographicsModel.mailingAddress.tempaddress }}</span>
+                    </div>
+                    <div>
+                        <div>
+                            <span class="crd-tab-label crd-pthway-screening-label">Start Date </span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values" >{{ PatientDemographicsModel.mailingAddress.tempaddstartdate }}</span>
+                        </div>
+                        <div>
+                            <span class="crd-tab-label crd-pthway-screening-label">End Date </span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">{{ PatientDemographicsModel.mailingAddress.tempaddenddate }}</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="demographics-pt-details" >
+        <!-- Printing phone & Fax -->
+        <div class="demographics-pts-profile">
+            <div>
+                <span class="crd-pthway-screening-label" >HOME PHONE</span>
+                <span class="crd-pthway-screening-label">MOBILE PHONE</span>
+                <span class="crd-pthway-screening-label">WORK PHONE</span>
+                <span class="crd-pthway-screening-label">FAX </span>
+            </div>
+            <div>
+                <span class="crd-pathway-screening-value"> {{ landlinePhoneNo }}</span>
+                <span class="crd-pathway-screening-value">{{ mobilePhoneNo }}</span>
+                <span class="crd-pathway-screening-value">{{ workPhoneNo }}</span>
+                <span class="crd-pathway-screening-value">{{ faxNumber }} </span>
+            </div>
+        </div>
+
+        <div class="demographics-pts-profile">
+            <div>
+                <span class="crd-pthway-screening-label"> MARITAL STATUS </span>
+                <span class="crd-pthway-screening-label"> GENDER </span>
+                <span class="crd-pthway-screening-label"> RACE </span>
+                <span class="crd-pthway-screening-label" > LANGUAGE </span>
+            </div>
+            <div>
+                <span class="crd-pathway-screening-value" > {{ patientMaritalStatus }} </span>
+                <span class="crd-pathway-screening-value"> {{ patientGender }} </span>
+                <span class="crd-pathway-screening-value"> {{ patientRace }} </span>
+                <span class="crd-pathway-screening-value"> {{ patientLangauge }} </span>
+            </div>
+        </div>
+
+        <div class="demographics-pts-profile">
+            <div>
+                <span class="crd-pthway-screening-label"> CONTACT PREF TIME </span>
+                <span class="crd-pthway-screening-label"> CONTACT PREF DAY </span>
+                <span class="crd-pthway-screening-label"> RELIGION </span>
+                <span class="crd-pthway-screening-label"> WORK STATUS </span>        
+            </div>
+            <div>
+                <span class="crd-pathway-screening-value" > {{ patientContactPreferredTime }} </span>
+                <span class="crd-pathway-screening-value"> {{ patientContactPreferredDay }} </span>
+                <span class="crd-pathway-screening-value"> {{ patientReligion }} </span>
+                <span class="crd-pathway-screening-value"> {{ patientWorkStatus }} </span>            
+            </div>
+        </div>
+
+        <div class="demographics-pts-profile">
+            <div class="crd-pthway-screening-label">
+                DATE OF FIRST EVER DIALYSIS
+            </div>
+            <div class="crd-pathway-screening-value">
+                {{ patientDateOfFirstDialysis }}
+            </div>
+        </div>
+
+        <div id="demographics-ptdetails-patient-information">
+            <div class="demographics-impairments-id-header">
+                <span class="crd-tab-label crd-pthway-screening-label"> IMPAIRMENT </span>
+                <div class="demographics-separator"></div>
+            </div>
+            
+            <div class="demographics-pts-profile">
+               <div>
+                    <span class="crd-pthway-screening-label">HEARING</span>
+                    <span class="crd-pthway-screening-label">VISION</span>
+                    <span class="crd-pthway-screening-label">COGNITIVE</span>
+                    <span class="crd-pthway-screening-label">DIFFICULTY WALKING </span>                    
+               </div>
+                <div>
+                    <span class="crd-pathway-screening-value">{{ patientHearingImpairment }}</span>
+                    <span class="crd-pathway-screening-value">{{ patientVisionImpairment }}</span>
+                    <span class="crd-pathway-screening-value">{{ patientCognitiveImpairment }}</span>
+                    <span class="crd-pathway-screening-value">{{ patientIsHavingDiffWalking }}</span>
+                </div>
+            </div>
+
+            <div class="demographics-pts-profile">
+                <div>
+                    <span class="crd-pthway-screening-label">STAIRS IN HOME</span>
+                    <span class="crd-pthway-screening-label">OTHER</span>   
+                </div>
+                <div class="rcm-demographics-pts-values">
+                    <span class="crd-pathway-screening-value">{{ patientIsHavingStairsHome }}</span>
+                    <span class="crd-pathway-screening-value">{{ patientIsMCOtherYN }}</span>
+                </div>
+            </div>
+
+            <div class="demographics-impairments-id-header">
+                <span class="crd-tab-label crd-pthway-screening-label" > ID </span>  
+                 <div class="demographics-separator"></div>           
+            </div>
+           
+            <div class="demographics-pts-profile">
+                <div>
+                    <span class="crd-pthway-screening-label">SSN</span>
+                    <span class="crd-pthway-screening-label">DAVITA MPI ID</span>
+                    <span class="crd-pthway-screening-label">MEDICARE ID</span>
+                    <span class="crd-pthway-screening-label">MEDICAL RECORD NO. </span>
+                </div>
+                <div>
+                    <span class="crd-pathway-screening-value"> {{ ssn }}</span>
+                    <span class="crd-pathway-screening-value">{{ davitaMPI_ID }}</span>
+                    <span class="crd-pathway-screening-value">{{ medicareID }}</span>
+                    <span class="crd-pathway-screening-value">{{ medicalRecordNumber }}</span>
+                </div>
+            </div>
+
+            <div class="demographics-pts-profile">
+                <div>
+                    <span class="crd-pthway-screening-label">MEMBER ID</span>
+                    <span class="crd-pthway-screening-label">Payer Grp No.</span>
+                    <span class="crd-pthway-screening-label">Special Payor ID</span>
+                    <span class="crd-pthway-screening-label">USI</span>
+                </div>
+                <div>
+                    <span class="crd-pathway-screening-value">{{ patientMemberID }}</span>
+                    <span class="crd-pathway-screening-value">{{ payerGroupNo }}</span>
+                    <span class="crd-pathway-screening-value">{{ specialPayorID }}</span>
+                    <span class="crd-pathway-screening-value">{{ usi }}</span>
+                </div>
+            </div>
+        </div>
+    </div>    
+</kendo-mobile-view>

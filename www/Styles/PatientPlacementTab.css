@@ -1,0 +1,477 @@
+﻿#plcmnt-choosedc-near, #plcmnt-notreqd
+{
+    margin-top: 60px;
+}
+
+#plcmnt-choosedc-txtbox-container
+{
+    height: 90px !important;
+}
+
+#plcmnt-choosedc-txtbox
+{
+    width: 535px !important;
+    border-color: #124C7B;
+    height: 58px;
+    font-size: 25px !important;
+    float: left;
+}
+
+#plcmnt-notreqd label
+{
+    width: 550px !important;
+    margin-top: 20px;
+}
+
+#plcmnt-notreqd-modalview, #plcmnt-reason-ptchosefacility-modalview, #plcmnt-reason-delay-modalview, #plcmnt-decline-reason-modalview
+{
+    width: 450px;
+    height: 450px;
+}
+
+#plcmnt-dc-listview-container
+{
+    width: 200px;
+    float: left;
+   /* height: 620px !important; */
+   height: 565px !important;
+    overflow: auto;
+    background: white;
+}
+
+#plcmnt-map
+{
+    width: calc(100% - 200px);
+    float: left;
+    height: 565px !important;
+}
+
+#plcmnt-modalview-addressvalidationarea
+{
+     padding: 3px;
+     height: 350px;
+}
+
+#plcmnt-provider-address-leftview
+{
+    float: left;
+    font-size: 13px !important;
+    font-weight: normal !important;
+}
+
+.plcmnt-provider-address-addtextpos
+{
+    float: left;
+    padding-top: 4px;
+    margin-right:10px;
+}
+
+.plcmnt-provider-address-addpos
+{
+    float: left;
+
+}
+#plcmnt-dclist-map-container
+{
+    width: 100%;
+    float: left;
+    height:580px;
+ 
+}
+#plcmnt-provider-address-rightview
+{
+    float: right;
+   
+}
+
+.plcmnt-provider-address
+{
+    font-size: 10px !important;
+    font-weight: normal !important;
+	cursor: pointer;
+	display:flex; 
+    
+}
+
+.plcmnt-provider-address-bold
+{
+  font-weight: bold !important;
+}
+.plcmnt-provider-address-bigbold
+{
+  font-weight: bold !important;
+  font-size: 14px !important;
+}
+
+#plcmnt-dc-listview.km-list>li
+{
+    padding: .5em 0em .5em .2em !important;
+}
+
+.plcmnt-provider-address-id
+{
+    vertical-align: middle;
+    float: left;
+    width: 20px;
+    line-height: 34px;
+    text-align: center;
+}
+
+.plcmnt-provider-address-detail
+{
+    float: left;
+    width: calc(100% - 20px);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.k-marker-plcmnt-marker 
+{
+    background-image:none !important;
+    width: 28px !important;
+	height: 24px !important;
+    border-radius: 50%;
+    background-color: rgb(0, 147, 255);
+    color: white;
+    font-size: 18px;
+    border: 3px solid white;
+    text-align: center;
+    padding-top: 2.5px;
+}
+
+.k-marker-icon-addressbar-pin {
+	background-image: url("../Images/Icon-MapPoint.png") !important;
+	width: 36px !important;
+	height: 44px !important;
+	display: inline-block !important;
+	background-position: 50% !important;
+	background-color: transparent !important;
+	z-index: 2000;
+}
+
+#faxpreview-modalview
+{
+    width: 800px;
+    height: 660px;
+}
+
+#fax-pdf-holder
+{
+    width: 780px; 
+    margin: 10px;
+}
+
+.fax-preview-canvas
+{
+    border: 1px solid;
+    margin: 20px 20px 10px;
+}
+
+.plcmnt-provider-select
+{
+    float: right;
+    display: inline-block;
+    margin-top: -5px;
+}
+
+#plcmnt-criteria-listview .km-button {
+    background-color: transparent;
+    border-radius: 15px !important;
+    border-bottom-color: #2B618C !important;
+    border-top-color: #134F80 !important;
+    border-left-color: #22537A !important;
+    border-right-color: #134F80 !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    text-shadow: none !important;
+    color: #124C7B;
+    font-size: 10px !important;
+    text-transform: uppercase;
+}
+
+#plcmnt-criteria-listview.km-list>li
+{
+    padding: 0em 0em 0em 0em !important;
+}
+
+#plcmnt-dc-listview.km-list>li
+{
+    padding: 0em 0em 0em 0em !important;
+}
+
+#plcmnt-map-providerlist-neweditsearchview
+{
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    color: #636363;
+}
+
+
+.plcmnt-edit-select {
+    vertical-align: middle;
+    width: 200px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/* Slider style */
+
+#plcmnt-map-sliderview  {
+    margin-bottom:30px;       
+    margin-top: 10px;
+}
+
+#plcmnt-map-sliderview .k-tick {
+    height: 30px !important;
+}
+
+#plcmnt-map-sliderview .k-slider-track
+{
+    width: 450px !important;
+    margin-left: 24px;
+}
+#plcmnt-map-sliderview .k-slider
+{
+    width: 490px !important;
+   
+}
+#plcmnt-map-sliderview .k-tick, #plcmnt-map-sliderview .k-label, #plcmnt-map-sliderview .k-button-increase, #plcmnt-map-sliderview .k-button-decrease
+{
+    display: block !important;
+    margin-top: -10px;
+}
+
+#plcmnt-map-sliderview .k-slider-items
+{
+    margin-left: 37px !important;
+}
+
+#plcmnt-map-sliderview .k-button-increase
+{
+    right: -30px
+}
+
+#plcmnt-map-sliderview .k-slider-selection
+{
+    background-color: #134F80 !important;
+}
+#plcmnt-map-sliderview
+{
+    display: block !important;
+}
+/* Slider style */
+
+#plcmnt-provider-address-section{
+    display: inline-block;
+    width: 100%;
+}
+
+.plcmnt-search-provider-errorMessage
+{
+	color:red;
+	padding-top:20px;	
+}
+
+#signaturepad-footer
+{
+    float: right !important;
+}
+
+#plcmnt-modal-selection 
+{
+	width:680px;
+	height:600px;
+}
+
+#plcmnt-modal-selection-details 
+{
+	padding:0; 
+	margin-left:6px;
+}
+
+.plcmnt-modal-selection-panel
+{
+	width: 50%; 
+	float: left;
+	margin-top: 16px
+}
+
+.plcmnt-modal-selection-left-subpanel
+{ 
+	font-size: 15px; 
+	width: 54px; 
+	float: left;
+	height: 60px;
+    margin-left: 24px;
+}
+
+.plcmnt-modal-selection-right-subpanel
+{
+	color: gray; 
+	/*width: calc(100% - 64px); */
+	margin-bottom: 40px;
+	margin-left: 4px;
+}
+
+.plcmnt-modal-selection-number
+{ 
+	margin: 0 4px; 
+	width: 30px; 
+	border: solid 2px #9E9FA1; 
+	border-radius: 50%; 
+	padding: 4px 8px;
+}
+
+.plcmnt-modal-selection-miles
+{
+	color:#9E9FA1; 
+	margin: 1px;
+}
+
+.plcmnt-modal-selection-name
+{
+	font-weight: bold; 
+	font-size: 12px;
+}
+
+.plcmnt-modal-selection-input, .plcmnt-modal-selection-button-div
+{
+	margin: 24px 0 24px 70px;
+}	
+
+.plcmnt-modal-selection-chkbox 
+{
+	margin-left: 75px; 
+	margin-bottom: 15px;
+}	
+
+#placement-preview-btn .k-button
+{
+    background-color: transparent;
+    border-radius: 15px !important;
+    border-bottom-color: #2B618C !important;
+    border-top-color: #134F80 !important;
+    border-left-color: #22537A !important;
+    border-right-color: #134F80 !important;
+    border-style: solid !important;
+    border-width: 1px !important;
+    text-shadow: none !important;
+    color: #124C7B;
+    font-size: 12px !important;
+    text-transform: uppercase;
+    height: 24px;
+}
+ 
+span.plcmnt-modal-selection-checkbox-text
+{
+	color: rgb(156,156,156); 
+	padding-left: 4px; 
+	text-shadow: 0 1px rgba(255,255,255,0.8);
+	font-weight: bold;
+	font-size: 13px;
+}
+
+label.plcmnt-modal-selection-radio-label
+{
+	line-height: 1.3em !important;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
+	color: rgb(156,156,156);
+	min-width: 22px;
+	margin-right: 5px;
+	border-radius: 5px;
+	text-shadow: 0 1px rgba(255,255,255,0.8);
+	font-weight: bold;
+	font-size: small;
+}	
+
+span.plcmnt-modal-selection-inv-msg {
+float:left;
+margin-top:4px;
+}
+
+.plcmnt-value {
+    color: rgb(33, 97, 160);
+    font-weight: bold;
+}
+
+.plcmnt-key {
+    color: #808285 !important;
+}
+
+#plcmnt-signature-slideup
+{     
+    border: 1px solid lightgrey;;   
+    color: #ffffff;
+    vertical-align: bottom;    
+    position: relative;   
+    background-color: #EDF1F1 !important;
+    display: inline-block;
+    width: 100%;
+    height: 155px;
+    margin-top: 55px;
+}
+
+.signature-slide-down
+{
+    -webkit-animation-name: signature-down;
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-name: signature-down;
+    -moz-animation-duration: 0.1s;
+    -moz-animation-fill-mode: forwards;
+    animation-name: signature-down;
+    animation-duration: 0.1s; 
+    animation-fill-mode: forwards;
+}
+
+@keyframes signature-down 
+{
+    from { bottom: 150px; }
+    to { bottom: 0px; }
+}
+
+@-webkit-keyframes signature-down 
+{
+    from { bottom: 150px; }
+    to { bottom: 0px; }
+}
+
+@-moz-keyframes signature-down 
+{
+    from { bottom: 150px; }
+    to { bottom: 0px; }
+}
+
+.signature-slide-up 
+{
+    -webkit-animation-name: signature-up;
+    -webkit-animation-duration: 0.6s;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-name: signature-up;
+    -moz-animation-duration: 0.6s;
+    -moz-animation-fill-mode: forwards;
+    animation-name: signature-up;
+    animation-duration: 0.6s; 
+    animation-fill-mode: forwards;
+}
+
+@keyframes signature-up 
+{
+    from { bottom: 0px; }
+    to { bottom: 150px; }
+}
+
+@-webkit-keyframes signature-up 
+{
+    from { bottom: 0px; }
+    to { bottom: 150px; }
+}
+
+@-moz-keyframes signature-up 
+{
+    from { bottom: 0px; }
+    to { bottom: 150px; }
+}

@@ -1,0 +1,96 @@
+<h1><code ng:non-bindable="">MyPatientsService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-service-page roundingmodule-service-mypatientsservice-page"><ul>
+<li>MyPatientsService service is used by following controllers</li>
+<li>MyPatientsController</li>
+<li>MyPatientsDialysisCenterController</li>
+<li>MyPatientsSortlistController</li>
+<li>MyPatientsFilterController</li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_onaddlfilterclick">onAddlFilterClick()</h3>
+<div class="onaddlfilterclick"><div class="mypatientsservice-onaddlfilterclick-page"><ul>
+<li>This service method is used for broadcast onAddlFilterClick for controller(MyPatientsFilterController) .</li>
+<li>It passes data parameter(add filter name and checkbox value true or false).</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_getactionitems">getActionItems(data, method, dataType, callBack)</h3>
+<div class="getactionitems"><div class="getactionitems-page"><ul>
+<li>This service method is used to get all alerts.</li>
+</ul>
+</div><h5 id="methods_getactionitems_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getactionitems-page"><p>Contains capellaUserUid,datafilter(Alerts) EndDate and StartDate.  </p>
+</div></td></tr><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getactionitems-page"><p>Method: GET/POST.</p>
+</div></td></tr><tr><td>dataType</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getactionitems-page"><p>DataType of the object, example:JSON </p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getactionitems-page"><p>$scope.onGetActionItemsRetrieved in &quot;AlertsController&quot;.</p>
+</div></td></tr></tbody></table><h5 id="methods_getactionitems_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getactionitems-page"><p>list of ActionItems</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getpatients">getPatients(data, method, dataType, callBack)</h3>
+<div class="getpatients"><div class="getpatients-page"><ul>
+<li>Makes a service call to &quot;User/GetPatients&quot;.</li>
+<li>Used to get the list of patients for &quot;My Patients&quot; screen.</li>
+</ul>
+</div><h5 id="methods_getpatients_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getpatients-page"><p>Contains &quot;capellaUserUid&quot; to retrived data from capella database</p>
+</div></td></tr><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getpatients-page"><p>Method: GET/POST.</p>
+</div></td></tr><tr><td>dataType</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getpatients-page"><p>DataType of the return object.</p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-callback">callBack</a></td><td><div class="getpatients-page"><p>$scope.onGetPatientsRetrived.</p>
+</div></td></tr></tbody></table><h5 id="methods_getpatients_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getpatients-page"><p>List of Patients along with their details</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_ondialysiscenterfilter">onDialysisCenterFilter()</h3>
+<div class="ondialysiscenterfilter"><div class="ondialysiscenterfilter-page"><ul>
+<li>This service method is used for broadcast &quot;onDialysisCenterFilter&quot; for MyPatientsDialysisCenterController. It passes filter dialysis centername as parameter.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_onswitchrosterevent">onSwitchRosterEvent()</h3>
+<div class="onswitchrosterevent"><div class="onswitchrosterevent-page"><ul>
+<li>This service method is used to broadcast &quot;SwitchRosterEvent&quot;. </li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_resetmypatientslist">resetMyPatientsList()</h3>
+<div class="resetmypatientslist"><div class="resetmypatientslist-page"><ul>
+<li>This service method is used to broadcast filter &quot;resetMyPatientsList&quot; which will be used in other controllers, Eg: MyPatientsSortlistController,alerts etc. </li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_searchfilter">searchFilter()</h3>
+<div class="searchfilter"><div class="searchfilter-page"><ul>
+<li>This service method is used to broadcast &quot;onSearchPatients&quot;. </li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_searchpatient">searchPatient(data, method, dataType, callBack)</h3>
+<div class="searchpatient"><div class="searchpatient-page"><ul>
+<li>Makes a service call to &quot;User/SearchPatient&quot;</li>
+<li>This service method will be used to search patient.</li>
+</ul>
+</div><h5 id="methods_searchpatient_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="searchpatient-page"><p>Contains &quot;capellaUserUid&quot; and searchFilter to retrive data from capella database</p>
+</div></td></tr><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="searchpatient-page"><p>Method: GET/POST.</p>
+</div></td></tr><tr><td>dataType</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="searchpatient-page"><p>DataType of the return object.</p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-callback">callBack</a></td><td><div class="searchpatient-page"><p>$scope.onSearchPatientRetrieved.</p>
+</div></td></tr></tbody></table><h5 id="methods_searchpatient_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="searchpatient-page"><p>returns searched patient/s</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_updatealert">updateAlert(data, method, dataType, callBack)</h3>
+<div class="updatealert"><div class="updatealert-page"><ul>
+<li>This service method is used to update the alerts.</li>
+</ul>
+</div><h5 id="methods_updatealert_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-data">data</a></td><td><div class="updatealert-page"><p>Contains UID and CategoryCode (example AlbuminLessThan3_5) </p>
+</div></td></tr><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="updatealert-page"><p>Method: GET/POST.</p>
+</div></td></tr><tr><td>dataType</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="updatealert-page"><p>DataType of the object, example:JSON </p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-callback">callback</a></td><td><div class="updatealert-page"><p>$scope.onUpdateAlertCompleted in &quot;AlertsController&quot;</p>
+</div></td></tr></tbody></table><h5 id="methods_updatealert_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="updatealert-page"><p>string
+Return true</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+</div>

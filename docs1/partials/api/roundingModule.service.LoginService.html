@@ -1,0 +1,64 @@
+<h1><code ng:non-bindable="">LoginService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-service-page roundingmodule-service-loginservice-page"><ul>
+<li>LoginService is being used by LoginController</li>
+<li>This will be used for all service calls for Login Screen</li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_authenticate">Authenticate(username, password, passcode, callback, onerror)</h3>
+<div class="authenticate"><div class="authenticate-page"><ul>
+<li>Calls Account/GetToken api using $http </li>
+<li>If service call succeeds then populates $rootScope.Global.Objects with all Session and Current User details and callbacks $scope.loginSuccessful </li>
+<li>If service call errors out then callbacks $scope.loginFailed        </li>
+</ul>
+</div><h5 id="methods_authenticate_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>username</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="authenticate-page"><p>AD Username of the user</p>
+</div></td></tr><tr><td>password</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="authenticate-page"><p>AD Password of the user</p>
+</div></td></tr><tr><td>passcode</td><td><a href="" class="label type-hint type-hint-undefined">undefined</a></td><td><div class="authenticate-page"><p>not used anymore just passing undefined to service (for two factor authentication but not used in rounding)</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="authenticate-page"><p>callback function $scope.loginSuccessful</p>
+</div></td></tr><tr><td>onerror</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="authenticate-page"><p>callback function $scope.loginFailed</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getclientversion">GetClientVersion()</h3>
+<div class="getclientversion"><div class="getclientversion-page"><ul>
+<li>First service call of the application</li>
+<li>Calls Account/GetClientVersionSupportDetails api using $http </li>
+<li>Passes current app build version in query string</li>
+<li>If client version supported is true then only it goes further to login screen or goes to app upgrade screen</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_getmodifiedlookuptypes">GetModifiedLookupTypes(updatedDate)</h3>
+<div class="getmodifiedlookuptypes"><div class="getmodifiedlookuptypes-page"><ul>
+<li>Calls Account/GetModifiedLookupTypes api using $http         </li>
+<li>Populates updated lookup items         </li>
+</ul>
+</div><h5 id="methods_getmodifiedlookuptypes_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>updatedDate</td><td><a href="" class="label type-hint type-hint-date">date</a></td><td><div class="getmodifiedlookuptypes-page"><p>last updated date of lookups</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setversion">SetVersion()</h3>
+<div class="setversion"><div class="setversion-page"><p>Populates Login Model with Environment, AppCode and App Version         </p>
+</div><h5 id="methods_setversion_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="setversion-page"><p>model of Rounding.Models.Login type</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_updatelookups">UpdateLookUps()</h3>
+<div class="updatelookups"><div class="updatelookups-page"><ul>
+<li>Clears datastorage of LastUpdatedDate if lastupdateddate is null</li>
+<li>Calls GetModifiedLookupTypes                      </li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_dataresult">dataresult</h3>
+<div class="dataresult"><div class="roundingmodule-service-page roundingmodule-service-loginservice-page"><p>local variable</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

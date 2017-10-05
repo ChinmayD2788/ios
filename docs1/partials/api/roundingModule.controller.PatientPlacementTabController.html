@@ -1,0 +1,598 @@
+<h1><code ng:non-bindable="">PatientPlacementTabController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>Controller for  the the Placement Screen</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_bingdataretrieved">bingDataRetrieved(resdata)</h3>
+<div class="bingdataretrieved"><div class="-scope-bingdataretrieved-page"><p>This function is used to get coordinates using BING API</p>
+</div><h5 id="methods_bingdataretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>resdata</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-bingdataretrieved-page"><p>Result object</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_displaymarkertooltip">displayMarkerToolTip(selectedMarker, addresses)</h3>
+<div class="displaymarkertooltip"><div class="-scope-displaymarkertooltip-page"><p>This function displaying Marker ToolTip</p>
+</div><h5 id="methods_displaymarkertooltip_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>selectedMarker</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-displaymarkertooltip-page"><p>Selected Marker object</p>
+</div></td></tr><tr><td>addresses</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-displaymarkertooltip-page"><p>Addresses object</p>
+</div></td></tr></tbody></table><h5 id="methods_displaymarkertooltip_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="-scope-displaymarkertooltip-page"><p>tooltip div.html
+The result object with status property</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getlatlanvalbyaddress">getLatLanValByAddress(selectedAddress, flag)</h3>
+<div class="getlatlanvalbyaddress"><div class="-scope-getlatlanvalbyaddress-page"><p>This function is used to get coordinates using bing API</p>
+</div><h5 id="methods_getlatlanvalbyaddress_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>selectedAddress</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-getlatlanvalbyaddress-page"><p>address object</p>
+</div></td></tr><tr><td>flag</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="-scope-getlatlanvalbyaddress-page"><p>This argument is not using now</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_onsaveplacementsselectionretrieved">onSavePlacementsSelectionRetrieved()</h3>
+<div class="onsaveplacementsselectionretrieved"><div class="-scope-onsaveplacementsselectionretrieved-page"><p>This a backup function  for savePlacementsSelection function </p>
+</div></div>
+</li>
+<li><h3 id="methods_plcmtviewaddressvalidation">plcmtViewAddressValidation()</h3>
+<div class="plcmtviewaddressvalidation"><div class="-scope-plcmtviewaddressvalidation-page"><p>This function opening modal window</p>
+</div></div>
+</li>
+<li><h3 id="methods_renderpdf">renderPDF(url, canvasContainer, options)</h3>
+<div class="renderpdf"><div class="-scope-renderpdf-page"><p>render pdf document to HTML5 Canvas.</p>
+</div><h5 id="methods_renderpdf_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>url</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="-scope-renderpdf-page"><p>PDF url</p>
+</div></td></tr><tr><td>canvasContainer</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-renderpdf-page"><p>Canvas handler </p>
+</div></td></tr><tr><td>options</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-renderpdf-page"><p>Canvas options </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_saveplacementdetails">savePlacementDetails(dataItem, request)</h3>
+<div class="saveplacementdetails"><div class="-scope-saveplacementdetails-page"><p>This function saving Placement details </p>
+</div><h5 id="methods_saveplacementdetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-saveplacementdetails-page"><p>Placement object </p>
+</div></td></tr><tr><td>request</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-saveplacementdetails-page"><p>Request object         </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_show">show()</h3>
+<div class="show"><div class="-scope-show-page"><p>Using to  display the Patient Placement tab.</p>
+</div></div>
+</li>
+<li><h3 id="methods_showmap">showMap(isPlacementCriteria)</h3>
+<div class="showmap"><div class="-scope-showmap-page"><p>This function showing Map</p>
+</div><h5 id="methods_showmap_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>isPlacementCriteria</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="-scope-showmap-page"><p>This flag that indicated that isPlacementCriteria initialized or not         </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getcommaseperatedaddress">getCommaSeperatedAddress(address)</h3>
+<div class="getcommaseperatedaddress"><div class="getcommaseperatedaddress-page"><p>Building the full address comma separated.</p>
+</div><h5 id="methods_getcommaseperatedaddress_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>address</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getcommaseperatedaddress-page"><p>address object</p>
+</div></td></tr></tbody></table><h5 id="methods_getcommaseperatedaddress_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getcommaseperatedaddress-page"><p>newAddress</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getplacements">getPlacements()</h3>
+<div class="getplacements"><div class="getplacements-page"><p>Using to gets placements of the patient.</p>
+</div></div>
+</li>
+<li><h3 id="methods_ongetplacementproviderretrieved">onGetPlacementProviderRetrieved(resdata)</h3>
+<div class="ongetplacementproviderretrieved"><div class="ongetplacementproviderretrieved-page"><p>This function is used to get Placement Provider Retrieved data</p>
+</div><h5 id="methods_ongetplacementproviderretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>resdata</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetplacementproviderretrieved-page"><p>Result object</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_ongetplacementsretrieved">onGetPlacementsRetrieved()</h3>
+<div class="ongetplacementsretrieved"><div class="ongetplacementsretrieved-page"><p>callBack for get Placements data from service</p>
+</div></div>
+</li>
+<li><h3 id="methods_returndate">returnDate()</h3>
+<div class="returndate"><div class="returndate-page"><p>Using to  convert String with date value to Date object.</p>
+</div><h5 id="methods_returndate_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="returndate-page"><p>Date
+Capella format date</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_updateaddressvalue">updateAddressValue(thisclickedItem)</h3>
+<div class="updateaddressvalue"><div class="updateaddressvalue-page"><p>This function updating Address</p>
+</div><h5 id="methods_updateaddressvalue_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>thisclickedItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="updateaddressvalue-page"><p>clicked object</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopeselectedaddress">$scope.SelectedAddress</h3>
+<div class="$scopeselectedaddress"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value null</p>
+</div></div>
+</li>
+<li><h3 id="properties_selectedaddresstext">SelectedAddressText</h3>
+<div class="selectedaddresstext"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default values &#39;&#39;</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scoperadius">$scope.Radius</h3>
+<div class="$scoperadius"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value: PlacementConstants.MIN_SELECTED_RADIUS</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeplcmtmappatientdetails">$scope.PlcmtMapPatientDetails</h3>
+<div class="$scopeplcmtmappatientdetails"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value null</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeistextquery">$scope.IsTextQuery</h3>
+<div class="$scopeistextquery"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopenoactiveadmissionrecord">$scope.NoActiveAdmissionRecord</h3>
+<div class="$scopenoactiveadmissionrecord"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeselplacementcriteria">$scope.SelPlacementCriteria</h3>
+<div class="$scopeselplacementcriteria"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value null</p>
+</div></div>
+</li>
+<li><h3 id="properties_getplacementsdata">GetPlacementsData</h3>
+<div class="getplacementsdata"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value null  </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeisplacementrequired">$scope.IsPlacementRequired</h3>
+<div class="$scopeisplacementrequired"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeplacementnotrequiredreasoncode">$scope.PlacementNotRequiredReasonCode</h3>
+<div class="$scopeplacementnotrequiredreasoncode"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default values &#39;&#39;</p>
+</div></div>
+</li>
+<li><h3 id="properties_placementnotrequiredreasoncodetext">PlacementNotRequiredReasonCodeText</h3>
+<div class="placementnotrequiredreasoncodetext"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default values &#39;&#39;</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshowbuttons">$scope.ShowButtons</h3>
+<div class="$scopeshowbuttons"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false      </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshowsaveselection">$scope.ShowSaveSelection</h3>
+<div class="$scopeshowsaveselection"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false      </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeisnewsearch">$scope.IsNewSearch</h3>
+<div class="$scopeisnewsearch"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false       </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshownew">$scope.ShowNew</h3>
+<div class="$scopeshownew"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshowedit">$scope.ShowEdit</h3>
+<div class="$scopeshowedit"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false    </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshowrecentview">$scope.ShowRecentView</h3>
+<div class="$scopeshowrecentview"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false    </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshowrecent">$scope.ShowRecent</h3>
+<div class="$scopeshowrecent"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false     </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshowsavesearch">$scope.ShowSaveSearch</h3>
+<div class="$scopeshowsavesearch"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false   </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshowmodifysearch">$scope.ShowModifySearch</h3>
+<div class="$scopeshowmodifysearch"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false   </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshowsignature">$scope.ShowSignature</h3>
+<div class="$scopeshowsignature"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false      </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeplacementcriteriaslist">$scope.PlacementCriteriasList</h3>
+<div class="$scopeplacementcriteriaslist"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value []     </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopegetplacementproviderdata">$scope.GetPlacementProviderData</h3>
+<div class="$scopegetplacementproviderdata"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value null    </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeselecteddc">$scope.SelectedDC</h3>
+<div class="$scopeselecteddc"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value null     </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshowmapaddressarea">$scope.ShowMapAddressArea</h3>
+<div class="$scopeshowmapaddressarea"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false    </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshoweditarea">$scope.ShowEditArea</h3>
+<div class="$scopeshoweditarea"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false     </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemapareadisabled">$scope.MapAreaDisabled</h3>
+<div class="$scopemapareadisabled"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false    </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeseldcforapprovedecline">$scope.SelDCForApproveDecline</h3>
+<div class="$scopeseldcforapprovedecline"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value null      </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeselecteddcindexforfax">$scope.SelectedDCIndexForFax</h3>
+<div class="$scopeselecteddcindexforfax"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value null    </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopefaxreporttype">$scope.FaxReportType</h3>
+<div class="$scopefaxreporttype"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value null   </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopefaxnum">$scope.Faxnum</h3>
+<div class="$scopefaxnum"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value &#39;&#39;    </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeselectfacilityvalidationvisible">$scope.SelectFacilityValidationVisible</h3>
+<div class="$scopeselectfacilityvalidationvisible"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false    </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeselectdeclinereasonvalidationvisible">$scope.SelectDeclineReasonValidationVisible</h3>
+<div class="$scopeselectdeclinereasonvalidationvisible"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false      </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopereasonptchosefacilitylookup">$scope.ReasonPtChoseFacilityLookup</h3>
+<div class="$scopereasonptchosefacilitylookup"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value []   </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeplacementdelayreasonlookup">$scope.PlacementDelayReasonLookup</h3>
+<div class="$scopeplacementdelayreasonlookup"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value []     </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeproviderdeclinedreasonlookup">$scope.ProviderDeclinedReasonLookup</h3>
+<div class="$scopeproviderdeclinedreasonlookup"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value []     </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopestatelookup">$scope.StateLookup</h3>
+<div class="$scopestatelookup"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value []    </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeplacementnotrequiredlookup">$scope.PlacementNotRequiredLookup</h3>
+<div class="$scopeplacementnotrequiredlookup"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value []    </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshownodcfoundmsg">$scope.ShowNoDCFoundMsg</h3>
+<div class="$scopeshownodcfoundmsg"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false     </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopesavebuttonvisible">$scope.SaveButtonVisible</h3>
+<div class="$scopesavebuttonvisible"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value false     </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopedateproviderapprovedpatientconfig">$scope.DateProviderApprovedPatientConfig</h3>
+<div class="$scopedateproviderapprovedpatientconfig"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default values min: new Date(), max: new Date(), value: new Date()    </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeapprovedeclinecounter">$scope.ApproveDeclineCounter</h3>
+<div class="$scopeapprovedeclinecounter"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value 0 </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeapprovedeclinecounttobecompared">$scope.ApproveDeclineCountTobeCompared</h3>
+<div class="$scopeapprovedeclinecounttobecompared"><div class="roundingmodule-controller-page roundingmodule-controller-patientplacementtabcontroller-page"><p>default value 0</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_approveddcselection">approvedDCSelection</h3>
+<div class="approveddcselection"><div class="-scope-approveddcselection-page"><ul>
+<li>ng-click event of kendo mobile Approve button</li>
+<li>It approves DC.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_approveddcselection_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-approveddcselection-page"><p>Placement object   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_cancelapproveddc">cancelApprovedDC</h3>
+<div class="cancelapproveddc"><div class="-scope-cancelapproveddc-page"><ul>
+<li>ng-click event of kendo mobile Cancel button.  </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_cancelapproveddc_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-cancelapproveddc-page"><p>Placement object   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_canceldeclineddc">cancelDeclinedDC</h3>
+<div class="canceldeclineddc"><div class="-scope-canceldeclineddc-page"><ul>
+<li>ng-click event of kendo mobile cancel button</li>
+<li>This function cleaning dataItem object </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_canceldeclineddc_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-canceldeclineddc-page"><p>Placement object   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_canceledit">cancelEdit</h3>
+<div class="canceledit"><div class="-scope-canceledit-page"><p>k-on-tap event of kendo mobile Cancel button</p>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_canceledit_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-canceledit-page"><p>Placement object (This argument is not using in the view)</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_changeplacementcriteria">changePlacementCriteria</h3>
+<div class="changeplacementcriteria"><div class="-scope-changeplacementcriteria-page"><ul>
+<li>ng-click event of input type radio</li>
+<li>Changing Placement Criteria</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_changeplacementcriteria_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-changeplacementcriteria-page"><p>Requested $scope properties changes</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_clearsignaturepadselection">clearSignaturePadSelection</h3>
+<div class="clearsignaturepadselection"><div class="-scope-clearsignaturepadselection-page"><p>This function clearing the Signature Pad</p>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_closefaxpreviewwindow">closeFaxPreviewWindow</h3>
+<div class="closefaxpreviewwindow"><div class="-scope-closefaxpreviewwindow-page"><ul>
+<li>k-on-tap event of kendo mobile Cancel button</li>
+<li>Closing the Fax Preview Window.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_closemodalviewcaddressvalidation">closeModalViewcAddressValidation</h3>
+<div class="closemodalviewcaddressvalidation"><div class="-scope-closemodalviewcaddressvalidation-page"><ul>
+<li>k-on-tap event of kendo mobile cancel button</li>
+<li>This function closing modal window</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_closeplacementnotreqdmodal">closePlacementNotReqdModal</h3>
+<div class="closeplacementnotreqdmodal"><div class="-scope-closeplacementnotreqdmodal-page"><ul>
+<li>ng-click event of kendo mobile Cancel button</li>
+<li>Closing the Placement Not Required modal window</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_closeplacementselection">closePlacementSelection</h3>
+<div class="closeplacementselection"><div class="-scope-closeplacementselection-page"><ul>
+<li>k-on-tap event of kendo mobile cancel button</li>
+<li>This function closing Placement Selection</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_closeplacementselection_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>isCancelModal</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="-scope-closeplacementselection-page"><p>using to clear or not  $scope.SelectedDC array   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_confirmsignaturepadselection">confirmSignaturePadSelection</h3>
+<div class="confirmsignaturepadselection"><div class="-scope-confirmsignaturepadselection-page"><ul>
+<li>Click event of kendo mobile confirm button</li>
+<li>This function sending save request to Service for the User Signature confirmation  </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_declinedcselection">declineDCSelection</h3>
+<div class="declinedcselection"><div class="-scope-declinedcselection-page"><ul>
+<li>ng-click event of kendo mobile decline button</li>
+<li>This function declining the DC Selection </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_declinedcselection_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-declinedcselection-page"><p>Placement object   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_faxpreview">faxPreview</h3>
+<div class="faxpreview"><div class="-scope-faxpreview-page"><ul>
+<li>k-on-tap event of kendo preview button</li>
+<li>Using to get Fax details from Service and display them.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_faxpreview_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>index</td><td><a href="" class="label type-hint type-hint-integer">integer</a></td><td><div class="-scope-faxpreview-page"><p>Selected index for Fax</p>
+</div></td></tr><tr><td>reportType</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="-scope-faxpreview-page"><p>Fax report type</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_faxsendmanually">faxSendManually</h3>
+<div class="faxsendmanually"><div class="-scope-faxsendmanually-page"><ul>
+<li>k-on-tap event of kendo mobile save button</li>
+<li>Using to let know Service that Fax is send manually and provides details to Service</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_openplacementnotreqdmodal">openPlacementNotReqdModal</h3>
+<div class="openplacementnotreqdmodal"><div class="-scope-openplacementnotreqdmodal-page"><p>Opening the Placement Not Required modal window</p>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_placementdeclinereasoncancel">placementDeclineReasonCancel</h3>
+<div class="placementdeclinereasoncancel"><div class="-scope-placementdeclinereasoncancel-page"><ul>
+<li>ng-click event of kendo mobile cancel button</li>
+<li>This function closing Modal window  </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_placementdeclinereasoncancel_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-placementdeclinereasoncancel-page"><p>Placement object   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_placementdeclinereasonok">placementDeclineReasonOk</h3>
+<div class="placementdeclinereasonok"><div class="-scope-placementdeclinereasonok-page"><ul>
+<li>ng-click event of kendo mobile ok button</li>
+<li>This function closing Modal window  </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_placementdeclinereasonok_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-placementdeclinereasonok-page"><p>Placement object   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_placementdelayreasoncancel">placementDelayReasonCancel</h3>
+<div class="placementdelayreasoncancel"><div class="-scope-placementdelayreasoncancel-page"><ul>
+<li>ng-click event of kendo mobile cancel button</li>
+<li>This function closing Modal window  </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_placementdelayreasoncancel_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-placementdelayreasoncancel-page"><p>Placement object   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_placementdelayreasonok">placementDelayReasonOk</h3>
+<div class="placementdelayreasonok"><div class="-scope-placementdelayreasonok-page"><ul>
+<li>ng-click event of kendo mobile ok button</li>
+<li>This function closing Modal window  </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_placementdelayreasonok_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-placementdelayreasonok-page"><p>using to clear or not  $scope.SelectedDC array   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_placementdelayyeschosen">placementDelayYesChosen</h3>
+<div class="placementdelayyeschosen"><div class="-scope-placementdelayyeschosen-page"><ul>
+<li>ng-click event of input type radio</li>
+<li>This function closing Modal window  </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_placementdelayyeschosen_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-placementdelayyeschosen-page"><p>Placement object   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_plcmntnotreqdselected">plcmntNotReqdSelected</h3>
+<div class="plcmntnotreqdselected"><div class="-scope-plcmntnotreqdselected-page"><ul>
+<li>ng-click event of input type radio</li>
+<li>Assigning value to $scope.PlacementNotRequiredReasonCode variable.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_plcmntnotreqdselected_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-plcmntnotreqdselected-page"><p>assigning dataItem.Value (string) </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_ptchosefacilitycancel">ptChoseFacilityCancel</h3>
+<div class="ptchosefacilitycancel"><div class="-scope-ptchosefacilitycancel-page"><ul>
+<li>ng-click event of kendo mobile cancel button</li>
+<li>This function closing Modal window  </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_ptchosefacilitycancel_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-ptchosefacilitycancel-page"><p>Placement object   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_ptchosefacilityok">ptChoseFacilityOk</h3>
+<div class="ptchosefacilityok"><div class="-scope-ptchosefacilityok-page"><ul>
+<li>ng-click event of kendo mobile ok button</li>
+<li>This function closing Modal window  </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_ptchosefacilityok_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-ptchosefacilityok-page"><p>Placement object   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_saveapproveddc">saveApprovedDC</h3>
+<div class="saveapproveddc"><div class="-scope-saveapproveddc-page"><ul>
+<li>ng-click event of kendo mobile save button</li>
+<li>This function run the validation  and send request to Service asking to save Approved DC  </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_saveapproveddc_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-saveapproveddc-page"><p>Placement object   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_savedeclineddc">saveDeclinedDC</h3>
+<div class="savedeclineddc"><div class="-scope-savedeclineddc-page"><ul>
+<li>ng-click of kendo mobile save button</li>
+<li>This function saving Decline request </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_savedeclineddc_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-savedeclineddc-page"><p>Placement object   </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_saveplacementnotreqd">savePlacementNotReqd</h3>
+<div class="saveplacementnotreqd"><div class="-scope-saveplacementnotreqd-page"><ul>
+<li>ng-click event of kendo mobile save button</li>
+<li>Using to send the Save Schedule Request to Service.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_saveplacementsdata">savePlacementsData</h3>
+<div class="saveplacementsdata"><div class="-scope-saveplacementsdata-page"><ul>
+<li>k-on-tap event of kendo mobile save search button</li>
+<li>Sending request to service to save Placements data</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_saveselection">saveSelection</h3>
+<div class="saveselection"><div class="-scope-saveselection-page"><ul>
+<li>k-on-tap event of kendo mobile save selection button</li>
+<li>This function is triggered when the user clicks Save Selection button</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_searchdcfromaddress">searchDCfromAddress</h3>
+<div class="searchdcfromaddress"><div class="-scope-searchdcfromaddress-page"><ul>
+<li>ng-click event of kendo mobile search button</li>
+<li>searching for DC from Address</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_searchdcfromaddress_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>address</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-searchdcfromaddress-page"><p>address object</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_searchdcfromnewaddress">searchDCfromNewAddress</h3>
+<div class="searchdcfromnewaddress"><div class="-scope-searchdcfromnewaddress-page"><ul>
+<li>k-on-tap event of kendo mobile search button</li>
+<li>This function is triggered when the user clicks Search button</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_selectplacement">selectPlacement</h3>
+<div class="selectplacement"><div class="-scope-selectplacement-page"><ul>
+<li>k-on-tap event of kendo mobile select placement button</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_selectplacement_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-selectplacement-page"><p>Placement object (This argument is not using in the view)</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_sendfax">sendFax</h3>
+<div class="sendfax"><div class="-scope-sendfax-page"><ul>
+<li>k-on-openPlacementNotReqdModal event of kendo mobile send fax button</li>
+<li>Using to send the Fax by notifying Service of the request.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_sendfax_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-sendfax-page"><p>DOM event object</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_showedit">showEdit</h3>
+<div class="showedit"><div class="-scope-showedit-page"><ul>
+<li>k-on-tap event of kendo  mobile button</li>
+<li>This function is triggered when the user clicks Modify SEARCH  or NEW or EDIT buttons</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_showedit_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-showedit-page"><p>Placement object. (This argument is not using in the view)</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_showrecent">showRecent</h3>
+<div class="showrecent"><div class="-scope-showrecent-page"><ul>
+<li>k-on-tap event of kendo mobile recent button</li>
+<li>This function is triggered when the user clicks Recent button</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_updateaddress">updateAddress</h3>
+<div class="updateaddress"><div class="-scope-updateaddress-page"><ul>
+<li>ng-click event of input type radio</li>
+<li>This function updating address information </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_updateaddress_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-updateaddress-page"><p>Placement object </p>
+</div></td></tr><tr><td>request</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-updateaddress-page"><p>Request object         </p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

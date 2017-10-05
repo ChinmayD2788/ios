@@ -1,0 +1,380 @@
+<h1><code ng:non-bindable="">AllScreeningsController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><p>Controller for Screenings</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_bindscreeningdatepicker">bindScreeningDatePicker()</h3>
+<div class="bindscreeningdatepicker"><div class="-scope-bindscreeningdatepicker-page"><ul>
+<li>Populate date picker control with pre-defined values.</li>
+<li>Sets datepicker&#39;s min/max values.</li>
+<li>Handles change and/or open event.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_bindsurveydetails">bindSurveyDetails(surveyDetails, survey)</h3>
+<div class="bindsurveydetails"><div class="bindsurveydetails-page"><ul>
+<li>Set survey details properties.   </li>
+<li>Set default values for screenings.</li>
+</ul>
+</div><h5 id="methods_bindsurveydetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>surveyDetails</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="bindsurveydetails-page"><p>Survey Details</p>
+</div></td></tr><tr><td>survey</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="bindsurveydetails-page"><p>Flag for surveys</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_callgetptsurveydetails">callGetPtSurveyDetails()</h3>
+<div class="callgetptsurveydetails"><div class="callgetptsurveydetails-page"><ul>
+<li>Calls AllScreeningsService.GetPatientSurveyDetails.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_cansavedepressionscreening">canSaveDepressionScreening(Questions, selQuestion)</h3>
+<div class="cansavedepressionscreening"><div class="cansavedepressionscreening-page"><ul>
+<li>Checks for the depression screening question&#39;s responses to make save button visible.</li>
+</ul>
+</div><h5 id="methods_cansavedepressionscreening_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>Questions</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="cansavedepressionscreening-page"><p>Array of objects containing Depression Screening Pathway</p>
+</div></td></tr><tr><td>selQuestion</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="cansavedepressionscreening-page"><p>Response of the selected question</p>
+</div></td></tr></tbody></table><h5 id="methods_cansavedepressionscreening_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-booelan">booelan</a></td><td><div class="cansavedepressionscreening-page"><p>canSaveDepressionScreening
+Boolean value,if true will display the save button , if false will keep it hidden.</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_clearresponses">clearResponses()</h3>
+<div class="clearresponses"><div class="clearresponses-page"><ul>
+<li>Clear the survey question&#39;s responses.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_isstartdatevalid">isStartDateValid()</h3>
+<div class="isstartdatevalid"><div class="isstartdatevalid-page"><ul>
+<li>Checks the screening date with previous survey dates.</li>
+<li>Multiple screenings can&#39;t be saved on the same screening date.</li>
+</ul>
+</div><h5 id="methods_isstartdatevalid_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-booelan">booelan</a></td><td><div class="isstartdatevalid-page"><p>isValidStartDate Returns true if the screening date is valid, else returns false.</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_ongetpatientsurveydetailsretrieved">onGetPatientSurveyDetailsRetrieved(result)</h3>
+<div class="ongetpatientsurveydetailsretrieved"><div class="ongetpatientsurveydetailsretrieved-page"><ul>
+<li>Service based call back function of GetPatientSurveyDetails Service call.</li>
+<li>Calls $scope.bindSurveyDetails.</li>
+<li>Calls $scope.setDisabledDates.</li>
+</ul>
+</div><h5 id="methods_ongetpatientsurveydetailsretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetpatientsurveydetailsretrieved-page"><p>return result data of WebApi call.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_ongetsurveydetailsretrieved">onGetSurveyDetailsRetrieved(result)</h3>
+<div class="ongetsurveydetailsretrieved"><div class="ongetsurveydetailsretrieved-page"><ul>
+<li>Service based call back function of GetSurveyDetails Service call.</li>
+<li>Calls bindSurveyDetails.</li>
+</ul>
+</div><h5 id="methods_ongetsurveydetailsretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetsurveydetailsretrieved-page"><p>return result data of WebApi call.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_onsavesurveydetailsretrieved">onSaveSurveyDetailsRetrieved(result)</h3>
+<div class="onsavesurveydetailsretrieved"><div class="onsavesurveydetailsretrieved-page"><ul>
+<li>Service based call back function of SaveSurveyDetails Service call.</li>
+<li>Calls $scope.callGetPtSurveyDetails after successfully saving survey detail.</li>
+</ul>
+</div><h5 id="methods_onsavesurveydetailsretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onsavesurveydetailsretrieved-page"><p>return result data of WebApi call</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_openlink">openLink()</h3>
+<div class="openlink"><div class="openlink-page"><ul>
+<li>Opens a link for kindney smart.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_prepareforpostpone">prepareForPostPone()</h3>
+<div class="prepareforpostpone"><div class="prepareforpostpone-page"><ul>
+<li>Calls $scope.setResponsesToSave.</li>
+<li>Sets SurveyStatus to &quot;P&quot;(postpone).</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_prepareforsave">prepareForSave()</h3>
+<div class="prepareforsave"><div class="prepareforsave-page"><ul>
+<li>Calls $scope.setResponsesToSave.</li>
+<li>Sets SurveyStatus to &quot;C&quot;(complete).</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_setdisableddates">setDisabledDates()</h3>
+<div class="setdisableddates"><div class="setdisableddates-page"><ul>
+<li>Blocks screening dates using previous screening dates and current date.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_setresponsestosave">setResponsesToSave()</h3>
+<div class="setresponsestosave"><div class="setresponsestosave-page"><ul>
+<li>Makes the collection of answered questions to save the screening.</li>
+</ul>
+</div><h5 id="methods_setresponsestosave_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="setresponsestosave-page"><p>responseQuestions
+Saving questions and their responses</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_setscreeningheader">setScreeningHeader()</h3>
+<div class="setscreeningheader"><div class="setscreeningheader-page"><ul>
+<li>Sets the screening header using selected CRDSelectedMenu screen.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_setsurveytype">setSurveyType()</h3>
+<div class="setsurveytype"><div class="setsurveytype-page"><ul>
+<li>Set survey type based on selected menu item.</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemodel">$scope.model</h3>
+<div class="$scopemodel"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>model of AllScreeningsController.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelsurveydetails">$scope.model.SurveyDetails</h3>
+<div class="$scopemodelsurveydetails"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>property of $scope.model used to store SurveyDetails data.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelscreeningdate">$scope.model.screeningDate</h3>
+<div class="$scopemodelscreeningdate"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>property of $scope.model used for screeningDate.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelscreeningdatestring">$scope.model.screeningDateString</h3>
+<div class="$scopemodelscreeningdatestring"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>property of $scope.model used for screeningDateString.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopebuttons">$scope.Buttons</h3>
+<div class="$scopebuttons"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>property of $scope used for Buttons.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopebuttonsaddbuttonvisible">$scope.Buttons.AddButtonVisible</h3>
+<div class="$scopebuttonsaddbuttonvisible"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>if true, will display the add button, if false the add button will be hidden.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopebuttonspostponebuttonvisible">$scope.Buttons.PostponeButtonVisible</h3>
+<div class="$scopebuttonspostponebuttonvisible"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>if true, will display the postpone button,else hidden.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopebuttonssavebuttonvisible">$scope.Buttons.SaveButtonVisible</h3>
+<div class="$scopebuttonssavebuttonvisible"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>if true, will display the Save button, else hidden.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopebuttonscancelbuttonvisible">$scope.Buttons.CancelButtonVisible</h3>
+<div class="$scopebuttonscancelbuttonvisible"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>if true will display the Cancel button, else hidden.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopecanaddsurvey">$scope.CanAddSurvey</h3>
+<div class="$scopecanaddsurvey"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>if true will display the add button after survey completion.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeisaddingsurvey">$scope.IsAddingSurvey</h3>
+<div class="$scopeisaddingsurvey"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>if true will add new survey.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopehaschanges">$scope.hasChanges</h3>
+<div class="$scopehaschanges"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>set to true if there are changes in the survey.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeisdepressionscreening">$scope.IsDepressionScreening</h3>
+<div class="$scopeisdepressionscreening"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>set to true if the current screen is Depression screening otherwise set to false.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelsurveytype">$scope.model.surveyType</h3>
+<div class="$scopemodelsurveytype"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>Sets the survey type.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelispainassessmentscreening">$scope.model.IsPainAssessmentScreening</h3>
+<div class="$scopemodelispainassessmentscreening"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>set to true, if the current screen is Pain Assessment Screening, otherwise false.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeisdepressionscreening">$scope.IsDepressionScreening</h3>
+<div class="$scopeisdepressionscreening"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>set to true, if the current screen is Depression Screening, otherwise false.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelisadl">$scope.model.IsAdl</h3>
+<div class="$scopemodelisadl"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>set to true, if the current screen is ADL SCREENING, otherwise false.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopedisablescreeingdate">$scope.disableScreeingDate</h3>
+<div class="$scopedisablescreeingdate"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>if true will disable the screening date, otherwise will enable it.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodeldisableddates">$scope.model.disabledDates</h3>
+<div class="$scopemodeldisableddates"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>List of dates in parsed format.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelscreeningdate">$scope.model.screeningDate</h3>
+<div class="$scopemodelscreeningdate"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>Screening date on date picker.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelscreeningmindate">$scope.model.screeningMinDate</h3>
+<div class="$scopemodelscreeningmindate"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>Minimum date displayed on date picker.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelscreeningmaxdate">$scope.model.screeningMaxDate</h3>
+<div class="$scopemodelscreeningmaxdate"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>Maximum date displayed on date picker.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelprevsurveydates">$scope.model.prevSurveyDates</h3>
+<div class="$scopemodelprevsurveydates"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>Date of last completed screening.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepathwayscreentitle">$scope.PathwayScreenTitle</h3>
+<div class="$scopepathwayscreentitle"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>Display Header for respective screening.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshowtooltip">$scope.ShowToolTip</h3>
+<div class="$scopeshowtooltip"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>If true, tooltip will be displayed based on response to a question , otherwise false.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopecanpostponesurvey">$scope.CanPostponeSurvey</h3>
+<div class="$scopecanpostponesurvey"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>set to true if survey is postponed, otherwise false.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopetooltip">$scope.ToolTip</h3>
+<div class="$scopetooltip"><div class="roundingmodule-controller-page roundingmodule-controller-allscreeningscontroller-page"><ul>
+<li>Display Tool tip based on the response to a question.</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_addpathways">addPathways</h3>
+<div class="addpathways"><div class="addpathways-page"><ul>
+<li>ng-click event of add screening button.</li>
+<li>Calls AllScreeningsService.GetSurveyDetails to generate a new survey. </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_cancelscreening">cancelScreening</h3>
+<div class="cancelscreening"><div class="cancelscreening-page"><ul>
+<li>ng-click event of cancel button.</li>
+<li>Cancel the survey detail changes.     </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_cgchanged">cgChanged</h3>
+<div class="cgchanged"><div class="cgchanged-page"><ul>
+<li>ng-click event of caregiversurveyrequired checkbox.</li>
+<li>Changes UI behavior on depression screening.</li>
+<li>Calls $scope.clearResponses if caregiversurveyrequired checkbox is checked.</li>
+<li>Makes save button visible and hides postpone button if checkbox is checked.</li>
+<li>Makes postpone button visible and hides save button if checkbox is unchecked.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_onswitchchange">onSwitchChange</h3>
+<div class="onswitchchange"><div class="onswitchchange-page"><ul>
+<li>k-on-change event of kendo mobile swtich.</li>
+<li>Calls thingsChange ng-click event of input type radio.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_onswitchchange_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onswitchchange-page"><p>Object containing status and response of the question</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_postponescreening">postPoneScreening</h3>
+<div class="postponescreening"><div class="postponescreening-page"><ul>
+<li>ng-click event of postpone button.</li>
+<li>Calls $scope.prepareForPostPone.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_ptrefused">ptRefused</h3>
+<div class="ptrefused"><div class="ptrefused-page"><ul>
+<li>ng-click event of patientrefusedsurvey checkbox.</li>
+<li>Changes UI behavior on depression screening.</li>
+<li>Calls $scope.clearResponses if caregiversurveyrequired checkbox is checked.</li>
+<li>Makes save button visible and hides postpone button if checkbox is checked.</li>
+<li>Makes postpone button visible and hides save button if checkbox is unchecked.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_savescreening">saveScreening</h3>
+<div class="savescreening"><div class="savescreening-page"><ul>
+<li>ng-click event of save button.</li>
+<li>Calls $scope.prepareForSave.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_thingschange">thingsChange</h3>
+<div class="thingschange"><div class="thingschange-page"><ul>
+<li>ng-click event of input type radio.</li>
+<li>Sets the visibility of postpone/save buttons based on the selected questions response.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_thingschange_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>questionUID</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="thingschange-page"><p>UID of the question selected</p>
+</div></td></tr><tr><td>uid</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="thingschange-page"><p>UID of the question group</p>
+</div></td></tr><tr><td>optionOrder</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="thingschange-page"><p>Selected option order number</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

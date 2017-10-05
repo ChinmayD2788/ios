@@ -1,0 +1,73 @@
+﻿<kendo-mobile-view class="crd-view" ng-controller="HospitalizationTabController">
+	<div class="crd-screenname-container">
+		<div class="crd-screennameheader">Review</div>
+	</div>                     
+	<div class="no-data-available" ng-hide="noDataAvailable">No Data Available</div>
+	<div id="hospitalizations-container" ng-hide="!noDataAvailable">
+		<div class="crd-kendo-mobile-scroller" kendo-mobile-scroller>
+			<div id="hospitalizationtab-listview" ng-repeat="x in Hospitalizations"> 
+				<div id="patient-hospitalizationtab-view">
+					<div id="hospitalizationtab-header"> 
+                        <div class="crd-pthway-screening-label hospitalizationtab-note"><label>{{x.IsReAdmit}}</label></div>
+						<div class="hospitalizationtab-row-one">
+							<div class="hospitalizationtab-row-one-column-one">
+								<label class="hospitalizationtab_label crd-pthway-screening-label">Admitted :</label>
+								<span class="crd-pathway-screening-value">{{x.AdmitDate | date: 'MM-dd-yyyy'}}</span >
+							</div>
+							<div class="hospitalizationtab-row-two-column-three">
+								<label class="hospitalizationtab_label crd-pthway-screening-label">LOS :</label>
+								<span class="crd-pathway-screening-value">{{x.LOS? x.LOS : '0'}} Days</span>
+							</div>
+						</div>
+						<div class="hospitalizationtab-row-row-two">
+							<div class="hospitalizationtab-row-two-column-one">
+								<label class="hospitalizationtab_label crd-pthway-screening-label">Facility :</label>
+								<span class="crd-pathway-screening-value">{{x.FacilityName}}</span>
+							</div>
+							<div class="hospitalizationtab-row-two-column-two">
+								<label class="hospitalizationtab_label crd-pthway-screening-label">Discharged :</label>
+								<span class="crd-pathway-screening-value">{{x.DischargeDate | date: 'MM-dd-yyyy'}}</span>
+							</div>
+							<div class="hospitalizationtab-row-two-column-three">
+								<label class="hospitalizationtab_label crd-pthway-screening-label">Disposition :</label>                           
+								<span class="crd-pathway-screening-value">{{ x.Disposition | getLookupText : "DischargePlan" }}</span>     
+							</div>           
+						</div>
+					</div>
+					<div class="hospitalizationtab-separator"></div>           
+					<div id="hospitalizationtab-footer">
+						<div class="hospitalizationtab-row">
+							<label class="hospitalizationtab_label crd-pthway-screening-label">Admit Type :</label>
+							<label class="crd-pathway-screening-value">{{ x.AdmitType | getLookupText : "AdmitType" }}</label>     
+						</div>
+						<div class="hospitalizationtab-row">
+							<label class="hospitalizationtab_label crd-pthway-screening-label">Admitting Diagnosis :</label>
+							<label class="crd-pathway-screening-value">{{x.AdmittingDiagnosis}}</label>
+						</div>
+						<div class="hospitalizationtab-row">
+							<label class="hospitalizationtab_label crd-pthway-screening-label">Working Diagnosis :</label>
+							<label class="crd-pathway-screening-value">{{x.WorkingDiagnosis}}</label>
+						</div>
+						<div class="hospitalizationtab-row">
+							<label class="hospitalizationtab_label crd-pthway-screening-label">Discharge Diagnosis :</label>
+							<label class="crd-pathway-screening-value">{{x.DischargeDiagnosis}}</label>
+						</div>
+			   
+						<div class="hospitalizationtab-row">
+							<label class="hospitalizationtab_label crd-pthway-screening-label">Readmit Reason :</label>
+							<label class="crd-pathway-screening-value">{{ x.ReadmitReason | getLookupText : "ReadmitReason" }}</label>
+						</div>
+						<div class="hospitalizationtab-row">
+							<label class="hospitalizationtab_label crd-pthway-screening-label">Primary Diagnoses :</label>
+							<label class="crd-pathway-screening-value">{{ x.PrimaryDx | getLookupText : "PrimaryDx" }}</label>
+ 						</div>
+						<div class="hospitalizationtab-row">
+							<label class="hospitalizationtab_label crd-pthway-screening-label">Related Subcategory :</label>
+							<label class="crd-pathway-screening-value">{{ x.PrimaryDxSubCategory | getLookupText : "PrimaryDxSubCategory" }}</label>
+						</div>                        
+					</div>
+				</div>
+			</div>
+		</div> 
+	</div>	
+ </kendo-mobile-view>

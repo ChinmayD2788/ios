@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head> 
+        <title>Rounding</title>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1, minimum-scale=1, height=device-height" />
+
+        <link rel="stylesheet" type="text/css" href="Styles/Kendo/kendo.common.min.css" />
+        <link rel="stylesheet" type="text/css" href="Styles/Kendo/kendo.default.min.css" />
+        <link rel="stylesheet" type="text/css" href="Styles/Kendo/kendo.dataviz.min.css" />
+        <link rel="stylesheet" type="text/css" href="Styles/Kendo/kendo.dataviz.default.min.css" />
+        <link rel="stylesheet" type="text/css" href="Styles/Kendo/kendo.default.mobile.min.css" />
+        <link rel="stylesheet" type="text/css" href="Styles/Kendo/kendo.mobile.all.min.css" />
+        <link rel="stylesheet" type="text/css" href="Styles/Rounding.css" />
+        <link rel="stylesheet" type="text/css" href="Styles/index.css" />
+        <link rel="stylesheet" type="text/css" href="Styles/PatientChart.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/MyTasks.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/MyPatients.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/Alerts.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/OpenPatients.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/Labs.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/Story.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/Screenings.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/ShiftNSchedule.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/AppUpgrade.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/AllScreenings.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/HospitalizationTab.css" />
+		<link rel="Stylesheet" type="text/css" href="Styles/FluidReviewTab.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/Medications.css" />      
+        <link rel="Stylesheet" type="text/css" href="Styles/PathwaysTab.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/RCMDashboard.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/PatientPathwaysTab.css" />
+		<link rel="Stylesheet" type="text/css" href="Styles/PatientDemographics.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/AccessInfo.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/Vap.css" />
+		<link rel="Stylesheet" type="text/css" href="Styles/ContactRecap.css" />  
+        <link rel="Stylesheet" type="text/css" href="Styles/PatientPlacementTab.css" />
+		<link rel="Stylesheet" type="text/css" href="Styles/PatientAssessment.css" />
+        <link rel="Stylesheet" type="text/css" href="Styles/PatientCarePlan.css" />
+		<link rel="Stylesheet" type="text/css" href="Styles/Comorbids.css" /> 	
+		
+          
+		<!-- Libraries -->
+        <script type="text/javascript" src="libraries/jquery.min.js"></script>    
+        <script type="text/javascript" src="libraries/angular.min.js"></script>
+        <script type="text/javascript" src="libraries/kendo.all.min.js"></script>               
+        <script type="text/javascript" src="libraries/kendo.angular.min.js"></script>
+		<script type="text/javascript" src="libraries/lodash.js"></script>
+		
+        <!-- Plugins -->
+		<script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="plugins/jquery.base64.min.js"></script>
+		<script type="text/javascript" src="plugins/jquery.blockUI.js"></script>
+        <script type="text/javascript" src="plugins/jquery.maskedinput-1.4.min.js"></script>
+        <script type="text/javascript" src="plugins/pdf.js"></script>
+        <script type="text/javascript">PDFJS.workerSrc = 'plugins/pdf.worker.js';</script>
+		<!--SpellCheck -->
+		<script src="plugins/SpellCheck/BJSpell.js" type="text/javascript"></script>
+		<script src="plugins/SpellCheck/dictionary.js" type="text/javascript"></script>
+		<script src="plugins/SpellCheck/en_US.js" type="text/javascript"></script>
+
+		<!-- SignaturePad -->
+		<link rel="stylesheet" href="Styles/SignaturePad/jquery.signaturepad.css" />
+		<script type="text/javascript" src="plugins/SignaturePad/jquery.signaturepad.min.js"></script>
+		<script type="text/javascript" src="plugins/SignaturePad/json2.min.js"></script>
+		<script type="text/javascript" src="plugins/SignaturePad/flashcanvas.js"></script>
+		              
+		<!-- Utilities -->
+        <script type="text/javascript" src="RoundingModule.js"></script>
+		<script type="text/javascript" src="Utils/Constants.js"></script>      
+        <script type="text/javascript" src="Utils/Global.js"></script>    
+        <script type="text/javascript" src="Utils/Common.js"></script>  
+        <script type="text/javascript" src="Utils/Filters.js"></script>            
+        <script type="text/javascript" src="Utils/Configuration.js"></script>           
+        <script type="text/javascript" src="Utils/RoundingService.js"></script> 
+        <script type="text/javascript" src="Utils/StackTrace.js"></script>
+		<script type="text/javascript" src="Utils/DataStorage.js"></script>
+		<script type="text/javascript" src="Utils/LookUp.js"></script>
+        <script type="text/javascript" src="Utils/ThirdPartyService.js"></script>
+
+        <!-- Models -->
+        <script type="text/javascript" src="models/LoginModel.js"></script>
+        <script type="text/javascript" src="models/MyPatientsModel.js"></script>
+        <script type="text/javascript" src="models/PatientChartModel.js"></script>                   
+        
+        <!-- Controllers -->
+        <script type="text/javascript" src="controllers/IndexController.js"></script> 
+        <script type="text/javascript" src="controllers/AppUpgradeController.js"></script> 
+        <script type="text/javascript" src="controllers/LoginController.js"></script>
+        <script type="text/javascript" src="controllers/MyPatientsController.js"></script> 
+        <script type="text/javascript" src="controllers/AlertsController.js"></script>
+        <script type="text/javascript" src="controllers/OpenPatientsController.js"></script>
+        <script type="text/javascript" src="controllers/PatientChartController.js"></script> 
+        <script type="text/javascript" src="controllers/PatientDetailsController.js"></script> 
+		<script type="text/javascript" src="controllers/PatientAssessmentController.js"></script>
+        <script type="text/javascript" src="controllers/MyTasksController.js"></script>           
+        <script type="text/javascript" src="controllers/ScreeningsController.js"></script>
+        <script type="text/javascript" src="controllers/LabsController.js"></script>
+        <script type="text/javascript" src="controllers/StoryController.js"></script>
+        <script type="text/javascript" src="controllers/ShiftNScheduleController.js"></script>        
+        <script type="text/javascript" src="controllers/LogoutPopoverController.js"></script>
+        <script type="text/javascript" src="controllers/AllScreeningsController.js"></script>             
+        <script type="text/javascript" src="controllers/SwitchRosterController.js"></script>
+		<script type="text/javascript" src="controllers/FluidReviewTabController.js"></script>
+		<script type="text/javascript" src="controllers/HospitalizationTabController.js"></script>
+        <script type="text/javascript" src="controllers/MedicationsController.js"></script>        
+        <script type="text/javascript" src="controllers/PathwaysTabController.js"></script>
+		<script type="text/javascript" src="controllers/RCMDashboardController.js"></script>       
+        <script type="text/javascript" src="controllers/ReloadController.js"></script>
+        <script type="text/javascript" src="controllers/PatientPathwaysTabController.js"></script>
+        <script type="text/javascript" src="controllers/PatientDemographicsController.js"></script>
+        <script type="text/javascript" src="controllers/PatientPlacementTabController.js"></script>
+        <script type="text/javascript" src="controllers/AccessInfoController.js"></script>
+        <script type="text/javascript" src="controllers/VapController.js"></script>
+		<script type="text/javascript" src="controllers/ContactRecapController.js"></script>    
+        <script type="text/javascript" src="controllers/PatientCarePlanGoalController.js"></script>
+		<script type="text/javascript" src="controllers/ComorbidsController.js"></script>
+        <script type="text/javascript" src="controllers/PatientCarePlanController.js"></script>
+        <script type="text/javascript" src="controllers/ActiveCarePlansController.js"></script>
+        <script type="text/javascript" src="Directive.js"></script>
+		
+        
+
+        <script type="text/javascript" src="https://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&s=1&mkt=en-us"></script>
+
+        <!--<link href="Styles/jquery.highlighttextarea.css" rel="stylesheet" />-->
+
+        <script type="text/javascript" src="plugins/SpellCheck/jquery.highlighttextarea.js"></script>
+
+
+        <!-- MixPanel Implementation-->
+        <!-- start Mixpanel -->
+        <script type="text/javascript">
+            (function (e, b) {
+                if (!b.__SV) {
+                    var a, f, i, g;
+                    window.mixpanel = b;
+                    b._i = [];
+                    b.init = function (a, e, d) {
+                        function f(b, h) {
+                            var a = h.split(".");
+                            2 == a.length && (b = b[a[0]], h = a[1]);
+                            b[h] = function () {
+                                b.push([h].concat(Array.prototype.slice.call(arguments, 0)))
+                            }
+                        }
+                        var c = b;
+                        "undefined" !== typeof d ? c = b[d] = [] : d = "mixpanel";
+                        c.people = c.people || [];
+                        c.toString = function (b) {
+                            var a = "mixpanel";
+                            "mixpanel" !== d && (a += "." + d);
+                            b || (a += " (stub)");
+                            return a
+                        };
+                        c.people.toString = function () {
+                            return c.toString(1) + ".people (stub)"
+                        };
+                        i = "disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+                        for (g = 0; g < i.length; g++)
+                            f(c, i[g]);
+                        b._i.push([a, e, d])
+                    };
+                    b.__SV = 1.2;
+                    a = e.createElement("script");
+                    a.type = "text/javascript";
+                    a.async = !0;
+                    a.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" === e.location.protocol && "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js" : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";
+                    f = e.getElementsByTagName("script")[0];
+                    f.parentNode.insertBefore(a, f)
+                }
+            })(document, window.mixpanel || []);
+            mixpanel.init("54302b680edb901100a05760fdb75068", { api_host: "https://api.mixpanel.com" });
+        </script>
+    </head>
+
+    <body kendo-mobile-application k-hash-bang="true" k-transition="'slide'" kendo-touch k-enable-swipe="true" 
+        k-on-tap="Global.Functions.tap()"  ng-app="roundingModule" class="crd"> 
+        <kendo-mobile-view ng-controller="IndexController" id="crd-index-view">
+            
+            <!--Common LogOut Popover -->
+            <kendo-mobile-pop-over id="logOutPopOver" k-popup='{"height": "2em", "width": "15em"}'> 
+                <kendo-mobile-view ng-controller="LogoutPopoverController" class="crd-popover-listview do-not-destroy">
+                    <kendo-mobile-list-view class="logout-list">                                                        
+                        <li>
+                            <label>
+                                <input name="logoutradio" type="radio" value="logout" ng-click="logout()" />Logout
+                            </label> 
+                        </li>                               
+                    </kendo-mobile-list-view>
+                </kendo-mobile-view>
+            </kendo-mobile-pop-over>  
+        </kendo-mobile-view>                                                                           
+    </body>      
+</html>

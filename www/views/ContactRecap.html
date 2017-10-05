@@ -1,0 +1,493 @@
+﻿<kendo-mobile-split-view k-transition="'slide'" id="contactrecap-view" ng-controller="ContactRecapController" k-reload="true">
+	<kendo-mobile-pane id="contactrecap-snippets-pane" k-layout="'side-default'">
+		<kendo-mobile-view id="contactrecap-snippets-view" k-reload="true" k-layout="'mobile-tabstrip'">
+           <div id="contactrecap-edit-snippest">
+				<a id="contactrecap-edit-snippest-a" class="km-flat" ng-show="IsSnippetAddMode" ng-click="onEditSnippetClicked()">
+					Edit
+				</a>
+				<a id="contactrecap-done-snippest-a" class="km-flat" ng-show="IsSnippetEditMode" ng-click="onEditDoneSnippetClicked()">
+					Done
+				</a>
+				<span id="mysnippet-header-text">My Snippets</span>
+			</div>
+			<div id="contactrecap-view-submenus-list">
+				<kendo-mobile-list-view id="contactrecap-snippetslist"  k-data-source="Snippets" k-ng-delay="Snippets" ng-show="IsSnippetAddMode">
+					<div k-template>
+						<div class="contactrecap-gray-border">
+							<div id="dataItem.UID" class="contactrecap-snippet-item-margin" kendo-draggable  k-options="draggableConfig" >
+								<div class="contactrecap-snippetstext">{{ dataItem.Text }}</div>
+								<div class="contactrecap-snippet-dragicon">
+									<span class="icon-snippets">&nbsp;</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</kendo-mobile-list-view>
+				<kendo-mobile-list-view id="contactrecap-edit-snippetslist" k-data-source="ModifiedSnippets" ng-show="IsSnippetEditMode">
+					<div k-template>
+						<div class="contactrecap-gray-border">
+							<div class="contactrecap-snippet-deleteicon">
+								<a data-role="button" class="icon-deletesnippets" ng-click="onDeleteSnippetClick(dataItem.UID)" ></a>
+							</div>
+							<div class="contactrecap-edit-snippetstext">
+								<textarea class="contactrecap-snippet-textarea" required rows="4" cols="50" maxlength="150" ng-model="dataItem.Text"></textarea>
+							</div>
+						</div>
+					</div>
+				</kendo-mobile-list-view>
+			</div>
+            <!-- Create Snippet Modal View-->
+			<kendo-mobile-modal-view ng-controller="CreateSnippetController" id="contactrecap-create-snippet-modalview" class="crd-modalview" 
+									 kendo-validator="createSnippetValidator">
+				<kendo-mobile-header>
+					<kendo-mobile-nav-bar>
+						<kendo-mobile-button kendo-touch k-on-tap="closeModalViewcCreateSnippet()" k-align="'left'">Cancel</kendo-mobile-button>
+						<kendo-mobile-button kendo-touch k-on-tap="onCreateSnippetSaveClicked()" k-align="'right'">Save</kendo-mobile-button>
+					</kendo-mobile-nav-bar>
+				</kendo-mobile-header>
+
+				<textarea type="text" class="k-textbox" name="contactrecap-create-snippet-text" maxlength="150" 
+						  ng-model="model.Comments" id="contactrecap-create-snippet-text" rows="8" 
+						  required validationmessage="required">
+				</textarea>
+				<span class="k-invalid-msg" data-for="contactrecap-create-snippet-text"></span>
+			</kendo-mobile-modal-view>
+            <kendo-mobile-footer id="contactrecap-create-snippest">
+                <kendo-mobile-button id="contactrecap-create-snippest-a" k-rel="'modalview'" class="km-flat" href="#contactrecap-create-snippet-modalview" style="float: center">
+                    <div id="contactrecap-create-snippest-div">Create New Snippet</div>
+                </kendo-mobile-button>
+            </kendo-mobile-footer>
+
+            <kendo-mobile-header class="crd-headerbg">
+                <kendo-mobile-nav-bar>
+                    <div data-align="left">
+                        <kendo-mobile-button kendo-touch class="ptchart-header-submenu-crumb" k-on-tap="ptChartButtonClick()">Pt Chart</kendo-mobile-button>
+                    </div>
+                </kendo-mobile-nav-bar>
+            </kendo-mobile-header>
+		</kendo-mobile-view>	
+	</kendo-mobile-pane>
+
+	<kendo-mobile-pane id="main-pane" k-layout="'main-default'">
+		<kendo-mobile-view k-reload="true">
+			<kendo-mobile-header class="crd-headerbg">
+				<kendo-mobile-nav-bar>
+					<div id="contactrecap-ptnameheader">
+						<span class="crd-header-center-text">{{ Patient.Name}}</span> 
+						<span class="crd-header-center-text-memid">(Mem ID : {{ Patient.ID }})</span>
+					</div>										
+					<kendo-mobile-button class="username-header" k-align="'right'" k-rel="'popover'" href="#logOutPopOver">
+						<span class="icon-user"></span>
+						<span>{{ LoggedInUser.FirstName }} {{ LoggedInUser.LastName }}</span>
+					</kendo-mobile-button>
+                    <kendo-mobile-button kendo-touch k-on-tap="homeButtonClick()" k-align="'right'" class="ptchart-header-homeicon">
+                        <span class="homeicon"></span>
+                    </kendo-mobile-button>					
+				</kendo-mobile-nav-bar>
+			</kendo-mobile-header>
+
+				
+			<div id="contactrecap-contactdetails">
+                <div id="contactrecap-buttons">
+                    <kendo-mobile-button kendo-touch k-on-click="editTopics()">Edit Topics</kendo-mobile-button>
+                    <kendo-mobile-button kendo-touch ng-show="IsRoutineCarePlanActiveStatus" k-on-click="changeContact()">Change Contact</kendo-mobile-button>
+                    <kendo-mobile-button kendo-touch k-on-click="postPoneContact()">Postpone</kendo-mobile-button>
+                    <kendo-mobile-button kendo-touch k-on-click="finalizeContact()">Finalize</kendo-mobile-button>
+                </div>
+                <!-- Contact Recap Tabs List -->
+                <div kendo-tab-strip id="contact-recap-tab-strip">
+                    <ul>
+                        <li class="contact-recap-header-tabs k-state-active" ng-click="onRecapTabSelect('RoutineContact')">Routine Contact</li>
+                        <li class="contact-recap-header-tabs" ng-show="IsMemberCarePlanActiveTab" ng-click="onRecapTabSelect('MemberCarePlan')">Member Care Plan</li>
+                    </ul>
+                    <!-- Routine Contact Tab -->
+                    <div id="contact-recap-routine-contact" class="contact-recap-tab">
+                        <div class="contact-recap-member-care-plan-details">
+                            <span class="contactrecap-contacttime">
+                                {{PreSaveContact.NoteDate}}
+                            </span>
+                            <textarea id="contactrecap-contactnote" rows="{{contactrecapContactnoteRows}}" cols="52" wrap="hard"
+                                      ng-model="PreSaveContact.PtContacts.PtContacts[tabBaseCarePlanKey].ContactNotes[0].NoteDetail" ng-model-options="{debounce:1000}"
+                                      ng-change="updateContactNote('RoutineContact')" kendo-droptarget k-drop="onDrop">
+                            </textarea>
+                            <div id="contactrecaps-tags-deletecontact">
+                                <div id="contactrecap-tagslist">
+                                    <span ng-if="IsRoutineCarePlanActiveStatus == true" ng-repeat="Tag in PreSaveContact.TagsList"><span class="crd-tags">{{Tag.Text}}<span ng-show="$index< PreSaveContact.TagsList.length -1">,</span></span></span>
+                                    <span ng-if="IsRoutineCarePlanActiveStatus == false " ng-repeat="Tag in PreSaveContact.TagsList"><span class="crd-tags">{{Tag.Text}}<span ng-show="$index < PreSaveContact.TagsList.length -1">,</span></span></span>
+                                </div>
+
+                                <span id="contactrecap-deletecontact" class="crd-kendocheck-small">
+                                    <span id="contactrecap-deletecontact-chkbox">
+                                        <input class="k-checkbox" id="deletecontact-chkbox" type="checkbox" ng-model="PreSaveContact.IsDeleteChecked" />
+                                        <label class="k-checkbox-label" for="deletecontact-chkbox">
+                                            <span>Delete Contact</span>
+                                        </label>
+                                    </span>
+                                    <!--<span id="contactrecap-spellcheck-btn">
+                                        <kendo-mobile-button k-on-click="spellCheck()">
+                                            <span class="spellcheckicon"></span>
+                                        </kendo-mobile-button>
+                                    </span>-->
+                                </span>
+                            </div>
+                        </div>                        
+                    </div>
+                    <!-- /Routine Contact Tab-->
+                    <!-- Member Care Plan Tab -->
+                    <div id="contact-recap-member-care-plan" class="contact-recap-tab">
+                        <div class="contact-recap-member-care-plan-details">
+                            <span class="contactrecap-contacttime">
+                                {{PreMemberSaveContactNoteDate}}
+                            </span>
+                            <textarea id="contactrecap-contactnote-member" rows="{{contactrecapContactnoteMemberRows}}" cols="52"
+                                      ng-model="PreSaveContact.PtContacts.PtContacts[memberCarePlanKey].ContactNotes[0].NoteDetail" ng-model-options="{debounce:1000}"
+                                      ng-change="updateContactNote('MemberCarePlan')" kendo-droptarget k-drop="onDropMember">
+                            </textarea>
+                            <div id="contactrecaps-tags-deletecontact-mem">
+                                <div id="contactrecap-tagslist-member">
+                                    <span ng-if="IsRoutineCarePlanActiveStatus == true" ng-repeat="Tag in PreSaveContact.TagsList"><span class="crd-tags">{{Tag.Text}}<span ng-show="$index< PreSaveContact.TagsList.length -1">,</span></span></span>
+                                    <span ng-if="IsRoutineCarePlanActiveStatus == false " ng-repeat="Tag in PreSaveContact.TagsList"><span class="crd-tags">{{Tag.Text}}<span ng-show="$index < PreSaveContact.TagsList.length -1">,</span></span></span>
+                                </div>
+                                <span id="contactrecap-deletecontact-mem" class="crd-kendocheck-small">
+                                    <span id="contactrecap-deletecontact-chkbox-mem">
+                                        <input class="k-checkbox" id="deletecontact-chkbox-mem" type="checkbox" ng-model="PreSaveContact.IsDeleteCheckedMember" />
+                                        <label class="k-checkbox-label" for="deletecontact-chkbox-mem">
+                                            <span>Delete Contact</span>
+                                        </label>
+                                    </span>
+                                    <!--<span id="contactrecap-spellcheck-btn">
+                <kendo-mobile-button k-on-click="spellCheck()">
+                    <span class="spellcheckicon"></span>
+                </kendo-mobile-button>
+            </span>-->
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Member Care Plan Tab -->
+                </div>
+                <!-- /Contact Recap Tabs List -->
+				
+                <!--<kendo-mobile-button k-on-click="spellCheck()">Spell Check</kendo-mobile-button>-->
+            </div>
+			<div id="contactrecap-tasks-list" ng-show="isTasksVisible">
+				<div class="contactrecap-mytasks">
+					<div class="contactrecap-mytasks-header">
+						<span class="mytasksicon"></span><span>My Tasks ({{MyTasks.length}})</span>
+					</div>
+					<div id="contactrecap-mytaskslist-area" kendo-droptarget k-drop="taskOnDrop">
+						<div id="contactrecap-mytaskslist" ng-repeat="x in MyTasks">
+							<div data-uid="{{x.UID}}" class="contactrecap-mytask-taskdetails">
+								<div class="contactrecap-mytask-description">
+									<div class="cm-bold">{{x.Description}}</div>
+									<div>
+										<span>Due: {{x.DueDate != null ? (x.DueDate | date: 'MM/dd/yyyy') : '-'}}</span>
+										&nbsp;&nbsp;<span class="icon-completetask" ng-if="x.IsTaskCompletable">&nbsp;</span>
+										<span class="label-completetask">Complete Task</span>  
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="contactrecap-delegatedtasks">
+					<div class="contactrecap-delegatedtasks-header">
+						<span class="delegatedtasksicon"></span>
+						<span>Delegated Tasks ({{DelegatedTasks.length}})</span>
+					</div>
+					<div id="contactrecap-delegatedtaskslist-area">
+						<div id="contactrecap-delegatedtaskslist" ng-repeat="x in DelegatedTasks">
+							<div data-uid="{{x.UID}}" class="contactrecap-delegatedtask-taskdetails" kendo-draggable k-options="taskDraggableConfig">
+								<div class="contactrecap-delegatedtask-description">
+									<div class="cm-bold">{{x.Description}}</div>
+									<div>Due: {{x.DueDate != null ? (x.DueDate | date: 'MM/dd/yyyy') : '-'}}</div>
+									<div class="delegated-task" ng-if="x.IsDelegatable && (x.DelegatedDate)">Delegated to {{x.DelegateRole}} on: {{ x.DelegatedDate != null ? (x.DelegatedDate | date: 'MM/dd/yyyy') : '-' }}
+									</div>
+								</div>
+								<div class="contactrecap-snippet-task-dragicon">
+									<span class="icon-snippets">&nbsp;</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+            <!-- Edit Topics Modal view-->
+			<kendo-mobile-modal-view id="edittopics-modalview" class="crd-modalview">
+				<kendo-mobile-header>
+					<kendo-mobile-nav-bar>
+						<kendo-mobile-button kendo-touch k-on-click="editTopicsCancel()" k-align="'left'">Cancel</kendo-mobile-button>
+						<span>Tags/Topics</span>
+						<kendo-mobile-button kendo-touch k-on-click="editTopicsOK()" k-align="'right'">OK</kendo-mobile-button>
+					</kendo-mobile-nav-bar>
+				</kendo-mobile-header>
+				<div id="edittopics-taglist-container">
+					<div class="parenttags-list" ng-repeat="parentlookup in TagsLookup.ParentLookUp">
+						<div class="crd-modalview-label">{{parentlookup.Text}}</div>
+						<div class="childtags-list" ng-repeat="childlookup in parentlookup.Children">
+							<div class="tagitem crd-kendocheck-small">
+                                <input id="{{childlookup.Text}}-{{parentlookup.UID}}" type="checkbox" ng-model="childlookup.IsSelected" class="k-checkbox" />
+                                <label class="k-checkbox-label" for="{{childlookup.Text}}-{{parentlookup.UID}}">
+                                    <span>{{childlookup.Text}}</span>
+                                </label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</kendo-mobile-modal-view>
+
+            <!-- Member Care Plan Edit Topics Modal view-->
+            <kendo-mobile-modal-view id="member-edittopics-modalview" class="crd-modalview">
+                <kendo-mobile-header>
+                    <kendo-mobile-nav-bar>
+                        <kendo-mobile-button kendo-touch k-on-click="editTopicsCancel()" k-align="'left'">Cancel</kendo-mobile-button>
+                        <span>Tags/Topics</span>
+                        <kendo-mobile-button kendo-touch k-on-click="editTopicsOK()" k-align="'right'">OK</kendo-mobile-button>
+                    </kendo-mobile-nav-bar>
+                </kendo-mobile-header>
+                <div id="member-edittopics-taglist-container">
+                    <div class="parenttags-list" ng-repeat="memberParentlookup in MemberTagsLookup.ParentLookUp">
+                        <div class="crd-modalview-label">{{memberParentlookup.Text}}</div>
+                        <div class="childtags-list" ng-repeat="memberChildlookup in memberParentlookup.Children">
+                            <div class="tagitem crd-kendocheck-small">
+                                <input id="member-{{memberChildlookup.Text}}-{{memberParentlookup.UID}}" type="checkbox" ng-model="memberChildlookup.IsSelected" class="k-checkbox" />
+                                <label class="k-checkbox-label" for="member-{{memberChildlookup.Text}}-{{memberParentlookup.UID}}">
+                                    <span>{{memberChildlookup.Text}}</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </kendo-mobile-modal-view>
+            <!-- Member Care Plan Edit Topics Modal view-->
+
+            <!-- Spell Check Modal view -->
+            <kendo-mobile-modal-view id="SpellCheck-modalview" class="crd-modalview">
+				<kendo-mobile-header>
+					<kendo-mobile-nav-bar>                    
+                        <kendo-mobile-button kendo-touch k-on-click="closeSpellChecker()" k-align="'left'">Cancel</kendo-mobile-button>
+						<span class="spellcheck-header">Spell Check</span>
+						<kendo-mobile-button kendo-touch k-on-click="correctedSpell()" k-align="'right'">OK</kendo-mobile-button>
+					</kendo-mobile-nav-bar>
+				</kendo-mobile-header>
+                    
+                <div id="txtSpellCorr">
+
+                    <div style="width:100%">
+                        <div class="cellcaption">
+                            Not in Dictionary:
+                        </div>
+                        <span ng-show="model.completecheck">Spell check is completed </span>
+                    </div>
+
+                    <!--style="display:table-row">-->
+                    <div style="width:100%">
+
+                        <div id="txtdiv" style="width:70%">
+                            <textarea id="txtSpell" rows="120" cols="100"></textarea>
+                        </div>
+
+                        <div style="width:30%;float:left;">
+                            <kendo-mobile-button kendo-touch id="crd-modalview-btn1" k-align="'Top'" k-on-click="ignoreAll()" style="vertical-align: top;">Ignore All</kendo-mobile-button>
+                            <kendo-mobile-button kendo-touch id="crd-modalview-btn2" k-on-click="addToDictionary()" style="vertical-align: top;">Add to dictionary</kendo-mobile-button>
+                        </div>
+                    </div>
+
+                    <!--style="display:table-row">-->
+                    <div style="width: 100%; display: inline-block; margin-top: 10px;">
+                        <span class="cellcaption">Change To:</span>                           
+                    </div>
+                    
+                        
+                    <div style="width:100%">
+                        <div style="width:70%;display:inline-block;">
+                            <input id="selectedword" type="text" /> <!--style="width:100%;margin-left:0px"-->
+                        </div>
+                        <div style="width:25%;display:inline-block;vertical-align:top;">
+                            <kendo-mobile-button id="crd-modalview-btn3" k-on-click="changespell()">Change</kendo-mobile-button>
+                        </div>
+
+                    </div>    
+                                                                    
+                    <div style="width:100%">
+                        Suggestions:
+                    </div>
+                    <div class="suggword">
+                        <div style="padding: 5px;" ng-repeat="word in model.suggestion">
+                            <div id="myword_{{$index}}" ng-click="selectrow(word,$index)"> {{ word }} </div>
+                        </div>
+                    </div>   
+                    <kendo-mobile-button id="crd-modalview-btn4" k-on-click="editDictionary()">Edit Dictionary</kendo-mobile-button>
+                </div>                                  
+            </kendo-mobile-modal-view>
+
+            <!--Edit Dictionary Modal View-->
+            <kendo-mobile-modal-view id="editdict-modalview" class="crd-modalview">
+                <kendo-mobile-header>
+                    <kendo-mobile-nav-bar>
+                        <kendo-mobile-button kendo-touch k-on-click="closeeditdict()" k-align="'left'">Cancel</kendo-mobile-button>
+                        <span>Edit Custom Dictionary</span>                        
+                    </kendo-mobile-nav-bar>
+                </kendo-mobile-header>
+
+                <div id="editcustdictable">                        
+                    <div class="tablerow">
+                        <div class="cellcaption">
+                            Word:
+                        </div>
+                    </div>
+
+                    <div class="tablerow">
+                        <div class="tablecell">
+                            <input id="AddWord" type="text" /><input id="deleteword" name="deleteword" type="hidden" />
+                        </div>
+                    </div>
+
+                    <div class="tablerow">
+                        <div class="cellcaption">
+                            Dictionary:
+                        </div>
+                    </div>
+
+                    <div class="tablerow">
+                        <div id="edit-dic" class="tablecellbrd" style="height:50px">
+                            <div style="padding: 5px;" ng-repeat="word in model.AddedDictionary track by $index">
+                                <div id="editdic_{{$index}}" ng-click="editSelected(word,$index)"> {{word}} </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tablerow">
+                        <div style="display: table-cell;">
+                            <kendo-mobile-button kendo-touch id="crd-modalview-btn5" k-align="'Top'" k-on-click="editdicAddnewWord()" style="vertical-align: top;">Add</kendo-mobile-button>
+                            <kendo-mobile-button kendo-touch id="crd-modalview-btn6" k-on-click="editdicDeleteItem()" style="vertical-align: top;">Delete</kendo-mobile-button>
+                            <kendo-mobile-button kendo-touch id="crd-modalview-btn7" k-on-click="editdicDeleteAllItems()" style="vertical-align: top;">Delete All</kendo-mobile-button>
+                        </div>
+                    </div>
+                </div>                    
+            </kendo-mobile-modal-view>
+            
+            <!-- Change Contact Modal View-->
+            <kendo-mobile-modal-view id="changecontact-modalview" class="crd-modalview">
+                <kendo-mobile-header>
+                    <kendo-mobile-nav-bar>
+                        <kendo-mobile-button kendo-touch k-on-click="changeContactCancel()" k-align="'left'">Cancel</kendo-mobile-button>
+                        <span>Choose Contact Method</span>
+                        <kendo-mobile-button kendo-touch k-on-click="changeContactOK()" k-align="'right'">OK</kendo-mobile-button>
+                    </kendo-mobile-nav-bar>
+                </kendo-mobile-header>
+
+                <div>
+                    <!-- Change Contact Methods-->
+                    <div id="contactmethods-container" ng-repeat="method in ContactMethodLookup">
+                        <div id="contactmethods-list" ng-if="method.UID > 0">
+                            <kendo-mobile-button class="browsing-icon" ng-if="method.Value == 'I'" ng-click="contactMethodSelected(method.Value,false)">&nbsp;</kendo-mobile-button>
+                            <kendo-mobile-button class="email-icon" ng-if="method.Value == 'E'" ng-click="contactMethodSelected(method.Value,false)">&nbsp;</kendo-mobile-button>
+                            <kendo-mobile-button class="fax-icon" ng-if="method.Value == 'F'" ng-click="contactMethodSelected(method.Value,false)">&nbsp;</kendo-mobile-button>
+                            <kendo-mobile-button class="inperson-icon" ng-if="method.Value == 'IP'" ng-click="contactMethodSelected(method.Value,false)">&nbsp;</kendo-mobile-button>
+                            <kendo-mobile-button class="mail-icon" ng-if="method.Value == 'M'" ng-click="contactMethodSelected(method.Value,false)">&nbsp;</kendo-mobile-button>
+                            <kendo-mobile-button class="phone-icon" ng-if="method.Value == 'P'" ng-click="contactMethodSelected(method.Value,false)">&nbsp;</kendo-mobile-button>
+                        </div>
+                        <div class="contactmethodtext">{{method.Text}}</div>
+                    </div>
+
+                    <div id="contactmethod-details" ng-if="PreSaveContact.PtContacts.PtContacts[0].ContactMethod != 'I'">
+                        <div class="changecontact-leftcolumn">
+                            <div class="crd-modalview-label">Date</div>
+                            <input name="contactmethod-contactdate" class="time-picker" kendo-date-picker k-options="contactDateOptions" required validationmessage="required" k-ng-model="PreSaveContact.ContactDate" /> <!--k-min="MinContactDate" k-max="MaxContactDate" />-->
+                            <span class="k-invalid-msg" data-for="contactmethod-contactdate"></span>
+                        </div>
+
+                        <div class="changecontact-rightcolumn">
+                            <div class="crd-modalview-label">Time</div>
+                            <input name="contactmethod-contacttime" class="time-picker" kendo-time-picker k-format="'hh:mm tt'" required validationmessage="required" k-ng-model="PreSaveContact.ContactTime" />
+                            <span class="k-invalid-msg" data-for="contactmethod-contacttime"></span>
+                        </div>
+
+                        <div class="changecontact-leftcolumn">
+                            <div class="crd-modalview-label">Engagement Start Score</div>
+                            <select kendo-drop-down-list class="drop-down"
+                                    ng-model="PreSaveContact.PtContacts.PtContacts[0].EngagementBeginScale"
+                                    k-options="EngagementScaleLookup"></select>
+                        </div>
+
+                        <div class="changecontact-rightcolumn">
+                            <div class="crd-modalview-label">Engagement End Score</div>
+                            <select kendo-drop-down-list class="drop-down"
+                                    ng-model="PreSaveContact.PtContacts.PtContacts[0].EngagementEndScale"
+                                    k-options="EngagementScaleLookup"></select>
+                        </div>
+
+                        <div class="changecontact-leftcolumn">
+                            <div class="crd-modalview-label">Location</div>
+                            <select name="contactmethod-contactlocation" kendo-drop-down-list class="drop-down"
+                                    ng-disabled="PreSaveContact.PtContacts.PtContacts[0].ContactMethod != 'IP'"
+                                    ng-model="PreSaveContact.PtContacts.PtContacts[0].ContactLocation"
+                                    k-options="ContactLocationLookup"></select>
+                        </div>
+
+                        <div class="changecontact-rightcolumn">
+                            <div class="crd-modalview-label">Direction of Contact</div>
+                            <select name="contactmethod-direction" kendo-drop-down-list class="drop-down"
+                                    data-fieldrequired-msg="Direction Required"
+                                    ng-model="PreSaveContact.PtContacts.PtContacts[0].Direction"
+                                    k-options="DirectionLookup"></select>
+                            <span data-for="contactmethod-direction" class="k-invalid-msg"></span>
+                        </div>
+
+                        <div class="changecontact-leftcolumn">
+                            <div class="crd-modalview-label">External Team</div>
+                            <select name="contactmethod-externalteam" kendo-drop-down-list class="drop-down"
+                                    data-fieldrequired-msg="External Team Required"
+                                    ng-model="PreSaveContact.PtContacts.PtContacts[0].ExternalTeam"
+                                    k-options="ExternalTeamLookup"></select>
+                            <span data-for="contactmethod-externalteam" class="k-invalid-msg"></span>
+                        </div>
+
+                        <div class="changecontact-rightcolumn">
+                            <div class="crd-modalview-label">Reason</div>
+                            <select name="contactmethod-contactreason" kendo-drop-down-list class="drop-down"
+                                    required validationmessage="Reason Required"
+                                    ng-model="PreSaveContact.PtContacts.PtContacts[0].ContactReason"
+                                    k-options="ContactReasonLookup"></select>
+                            <span data-for="contactmethod-contactreason" class="k-invalid-msg"></span>
+                        </div>
+
+                        <div class="changecontact-leftcolumn">
+                            <div class="crd-modalview-label">Internal Team</div>
+                            <select name="contactmethod-internalteam" kendo-drop-down-list class="drop-down"
+                                    data-fieldrequired-msg="Internal Team Required"
+                                    ng-model="PreSaveContact.PtContacts.PtContacts[0].InternalTeam"
+                                    k-options="InternalTeamLookup"></select>
+                            <span data-for="contactmethod-internalteam" class="k-invalid-msg"></span>
+                        </div>
+
+                        <div class="changecontact-rightcolumn">
+                            <div class="crd-modalview-label">Resolution</div>
+                            <select name="contactmethod-resolution" kendo-drop-down-list class="drop-down"
+                                    required validationmessage="Resolution Required"
+                                    ng-model="PreSaveContact.PtContacts.PtContacts[0].Resolution"
+                                    k-options="ResolutionLookup"></select>
+                            <span data-for="contactmethod-resolution" class="k-invalid-msg"></span>
+                        </div>
+                    </div>
+
+                    <div id="contactmethod-browsing-details" ng-if="PreSaveContact.PtContacts.PtContacts[0].ContactMethod == 'I'">
+                        <div class="crd-modalview-label" id="contactrecap-browsing-details">You are currently reviewing patient information</div>
+                    </div>
+                </div>
+            </kendo-mobile-modal-view>
+        </kendo-mobile-view>
+
+        <kendo-mobile-layout k-id="'main-default'">
+            <kendo-mobile-footer>
+                <div class="actionitems-view ptchart-actionitems-view" ng-include="Global.Templates.Alerts.Url">
+                </div>
+                <div class="openpatients-view" ng-include="Global.Templates.OpenPatients.Url">
+                </div>
+            </kendo-mobile-footer>
+        </kendo-mobile-layout>
+	</kendo-mobile-pane>
+</kendo-mobile-split-view>
+

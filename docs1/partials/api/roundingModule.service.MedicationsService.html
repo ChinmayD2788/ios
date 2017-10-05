@@ -1,0 +1,245 @@
+<h1><code ng:non-bindable="">MedicationsService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-service-page roundingmodule-service-medicationsservice-page"><ul>
+<li>MedicationsService is being used by MedicationsController, AllergyFilterController, MedicationFilterController, MedicationMenuController, MedsReviewDateController and AddMedicationController</li>
+<li>This will be used for all service calls for Medication Screen</li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getactionitems">GetActionItems(data, callback)</h3>
+<div class="getactionitems"><div class="getactionitems-page"><ul>
+<li>Calls GetActionItems api &#39;User/GetActionItems&#39; using RoundingService   </li>
+</ul>
+</div><h5 id="methods_getactionitems_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getactionitems-page"><p>actionItemFilter</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getactionitems-page"><p>$scope.onActionItemsRetrieved</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getallergyfilter">GetAllergyFilter()</h3>
+<div class="getallergyfilter"><div class="getallergyfilter-page"><ul>
+<li>Returns selectedAllergyFilter    </li>
+</ul>
+</div><h5 id="methods_getallergyfilter_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getallergyfilter-page"><p>local variable selectedAllergyFilter</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getallergylist">GetAllergyList(data, callback)</h3>
+<div class="getallergylist"><div class="getallergylist-page"><ul>
+<li>Calls GetAllergyList api &#39;DIB/GetAllergyList&#39; using RoundingService   </li>
+</ul>
+</div><h5 id="methods_getallergylist_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getallergylist-page"><p>search text</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getallergylist-page"><p>$scope.setAllergySuggestionList</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getintmedicationsurvey">GetIntMedicationSurvey()</h3>
+<div class="getintmedicationsurvey"><div class="getintmedicationsurvey-page"><ul>
+<li>Sets screeningDate    </li>
+</ul>
+</div><h5 id="methods_getintmedicationsurvey_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getintmedicationsurvey-page"><p>surveyDetails local variable</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getlastmedreviewdate">GetLastMedReviewDate()</h3>
+<div class="getlastmedreviewdate"><div class="getlastmedreviewdate-page"><ul>
+<li>returns lastMedReviewDate    </li>
+</ul>
+</div><h5 id="methods_getlastmedreviewdate_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getlastmedreviewdate-page"><p>local variable lastMedReviewDate</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getmedreviewdate">GetMedReviewDate(data, callback)</h3>
+<div class="getmedreviewdate"><div class="getmedreviewdate-page"><ul>
+<li>Calls GetMedReviewDate api &#39;Clinical/GetMedReviewDate&#39; using RoundingService   </li>
+</ul>
+</div><h5 id="methods_getmedreviewdate_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getmedreviewdate-page"><p>{ patientUID: $rootScope.Global.Objects.SelectedPatient.UID }</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getmedreviewdate-page"><p>inline function</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getmedicationfilter">GetMedicationFilter()</h3>
+<div class="getmedicationfilter"><div class="getmedicationfilter-page"><ul>
+<li>Returns selectedMedicationFilter    </li>
+</ul>
+</div><h5 id="methods_getmedicationfilter_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getmedicationfilter-page"><p>local variable selectedMedicationFilter</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getmedicationslist">GetMedicationsList(data, callback)</h3>
+<div class="getmedicationslist"><div class="getmedicationslist-page"><ul>
+<li>Calls GetMedList api &#39;DIB/GetMedList&#39; using RoundingService   </li>
+</ul>
+</div><h5 id="methods_getmedicationslist_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getmedicationslist-page"><p>search text</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getmedicationslist-page"><p>$scope.setAllergySuggestionList or inline function</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getpatientallergies">GetPatientAllergies(data, callback)</h3>
+<div class="getpatientallergies"><div class="getpatientallergies-page"><ul>
+<li>Calls GetPatientAllergies api &#39;Clinical/GetPatientAllergies&#39; using RoundingService </li>
+</ul>
+</div><h5 id="methods_getpatientallergies_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getpatientallergies-page"><p>{ patientUID: $rootScope.Global.Objects.SelectedPatient.UID, IsIpe: false or true }</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getpatientallergies-page"><p>$scope.onPatientAllergiesRetrieved</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getpatientmedication">GetPatientMedication(data, callback)</h3>
+<div class="getpatientmedication"><div class="getpatientmedication-page"><ul>
+<li>Calls GetPatientMedication api &#39;Clinical/GetPatientMedication&#39; using RoundingService </li>
+</ul>
+</div><h5 id="methods_getpatientmedication_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getpatientmedication-page"><p>{ patientUID: $rootScope.Global.Objects.SelectedPatient.UID, IsIpe: false or true }</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getpatientmedication-page"><p>$scope.onPatientMedicationRetrieved</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getscreeningdate">GetScreeningDate()</h3>
+<div class="getscreeningdate"><div class="getscreeningdate-page"><ul>
+<li>returns screeningDate    </li>
+</ul>
+</div><h5 id="methods_getscreeningdate_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getscreeningdate-page"><p>local variable screeningDate</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getsurveydetails">GetSurveyDetails(data, callback)</h3>
+<div class="getsurveydetails"><div class="getsurveydetails-page"><ul>
+<li>Calls GetSurveyDetails api &#39;Pathways/GetSurveyDetails&#39; using RoundingService   </li>
+</ul>
+</div><h5 id="methods_getsurveydetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getsurveydetails-page"><p>{ PatientUID: $rootScope.Global.Objects.SelectedPatient.UID, HarUID: &#39;&#39;, SurveyTypeCode: &quot;InterventionMedication&quot;, NoOfSurveys: 1 }</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getsurveydetails-page"><p>MedicationsService.SetIntMedicationSurvey</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_newmedicationmodel">NewMedicationModel(datastate, flag)</h3>
+<div class="newmedicationmodel"><div class="newmedicationmodel-page"><ul>
+<li>creates new MedicationModel and returns it</li>
+</ul>
+</div><h5 id="methods_newmedicationmodel_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>datastate</td><td><a href="" class="label type-hint type-hint-enum">enum</a></td><td><div class="newmedicationmodel-page"><p>CommonConstants.DataState</p>
+</div></td></tr><tr><td>flag</td><td><a href="" class="label type-hint type-hint-bool">bool</a></td><td><div class="newmedicationmodel-page"><p>if true then add and false then edit mode</p>
+</div></td></tr></tbody></table><h5 id="methods_newmedicationmodel_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="newmedicationmodel-page"><p>new medicationModel</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_onactionitemsretrieved">OnActionItemsRetrieved(data)</h3>
+<div class="onactionitemsretrieved"><div class="onactionitemsretrieved-page"><ul>
+<li>Broadcasts onActionItemsRetrieved    </li>
+</ul>
+</div><h5 id="methods_onactionitemsretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="onactionitemsretrieved-page"><p>returned by service</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_performaggregatescreening">PerformAggregateScreening(data, callback)</h3>
+<div class="performaggregatescreening"><div class="performaggregatescreening-page"><ul>
+<li>Calls PerformAggregateScreening api &#39;DIB/PerformAggregateScreening&#39; using RoundingService   </li>
+</ul>
+</div><h5 id="methods_performaggregatescreening_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="performaggregatescreening-page"><p>$.param({ &#39;&#39;: $rootScope.Global.Objects.SelectedPatient.UID }</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="performaggregatescreening-page"><p>inline function</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_refreshmedications">RefreshMedications()</h3>
+<div class="refreshmedications"><div class="refreshmedications-page"><ul>
+<li>Broadcasts refreshMedications</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_savepatientallergy">SavePatientAllergy(data, callback)</h3>
+<div class="savepatientallergy"><div class="savepatientallergy-page"><ul>
+<li>Calls SavePatientAllergy api &#39;Clinical/SavePatienttAllergy&#39; using RoundingService   </li>
+</ul>
+</div><h5 id="methods_savepatientallergy_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="savepatientallergy-page"><p>$scope.model.AllergyModel</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="savepatientallergy-page"><p>inline function</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_savepatientmedication">SavePatientMedication(data, callback)</h3>
+<div class="savepatientmedication"><div class="savepatientmedication-page"><ul>
+<li>Calls SavePatientMedication api &#39;Clinical/SavePatientMedication&#39; using RoundingService   </li>
+</ul>
+</div><h5 id="methods_savepatientmedication_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="savepatientmedication-page"><p>addMedsRequest</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="savepatientmedication-page"><p>inline function</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_savesurveydetails">SaveSurveyDetails(data, callback)</h3>
+<div class="savesurveydetails"><div class="savesurveydetails-page"><ul>
+<li>Calls SaveSurveyDetails api &#39;Pathways/SaveSurveyDetails&#39; using RoundingService   </li>
+</ul>
+</div><h5 id="methods_savesurveydetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="savesurveydetails-page"><p>surveyResponse</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="savesurveydetails-page"><p>inline function</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_searchmedicalconditions">SearchMedicalConditions(data, callback)</h3>
+<div class="searchmedicalconditions"><div class="searchmedicalconditions-page"><ul>
+<li>Calls SearchMedicalConditions api &#39;DIB/SearchMedicalConditions&#39; using RoundingService   </li>
+</ul>
+</div><h5 id="methods_searchmedicalconditions_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="searchmedicalconditions-page"><p>search text</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="searchmedicalconditions-page"><p>inline function</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setallergyfilter">SetAllergyFilter(filter)</h3>
+<div class="setallergyfilter"><div class="setallergyfilter-page"><ul>
+<li>Sets selectedAllergyFilter and Broadcasts setAllergyFilter   </li>
+</ul>
+</div><h5 id="methods_setallergyfilter_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>filter</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="setallergyfilter-page"><p>selectedAllergyFilter</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setintmedicationsurvey">SetIntMedicationSurvey(result)</h3>
+<div class="setintmedicationsurvey"><div class="setintmedicationsurvey-page"><ul>
+<li>Sets screeningDate    </li>
+</ul>
+</div><h5 id="methods_setintmedicationsurvey_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="setintmedicationsurvey-page"><p>result returned by service</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setlastmedreviewdate">SetLastMedReviewDate(date)</h3>
+<div class="setlastmedreviewdate"><div class="setlastmedreviewdate-page"><ul>
+<li>Sets lastMedReviewDate   </li>
+<li>Broadcasts onLastMedReviewDateRetrieved</li>
+</ul>
+</div><h5 id="methods_setlastmedreviewdate_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>date</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="setlastmedreviewdate-page"><p>med review date</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setmedicationfilter">SetMedicationFilter(filter)</h3>
+<div class="setmedicationfilter"><div class="setmedicationfilter-page"><ul>
+<li>Sets selectedMedicationFilter and Broadcasts setMedicationFilter   </li>
+</ul>
+</div><h5 id="methods_setmedicationfilter_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>filter</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="setmedicationfilter-page"><p>selectedMedicationFilter</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setscreeningdate">SetScreeningDate(date)</h3>
+<div class="setscreeningdate"><div class="setscreeningdate-page"><ul>
+<li>Sets screeningDate    </li>
+</ul>
+</div><h5 id="methods_setscreeningdate_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>date</td><td><a href="" class="label type-hint type-hint-date">date</a></td><td><div class="setscreeningdate-page"><p>screening date which needs to be set</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setselectedmedication">SetSelectedMedication(medication)</h3>
+<div class="setselectedmedication"><div class="setselectedmedication-page"><ul>
+<li>sets selectedMedication    </li>
+</ul>
+</div><h5 id="methods_setselectedmedication_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>medication</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="setselectedmedication-page"><p>local variable medication</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setselectedmedication">SetSelectedMedication()</h3>
+<div class="setselectedmedication"><div class="setselectedmedication-page"><ul>
+<li>returns selectedMedication    </li>
+</ul>
+</div><h5 id="methods_setselectedmedication_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="setselectedmedication-page"><p>local variable medication</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_selectedallergyfilter">selectedAllergyFilter</h3>
+<div class="selectedallergyfilter"><div class="roundingmodule-service-page roundingmodule-service-medicationsservice-page"><p>local variable, default value &#39;All&#39;</p>
+</div></div>
+</li>
+<li><h3 id="properties_selectedmedicationfilter">selectedMedicationFilter</h3>
+<div class="selectedmedicationfilter"><div class="roundingmodule-service-page roundingmodule-service-medicationsservice-page"><p>local variable, default value &#39;All&#39;</p>
+</div></div>
+</li>
+<li><h3 id="properties_screeningdate">screeningDate</h3>
+<div class="screeningdate"><div class="roundingmodule-service-page roundingmodule-service-medicationsservice-page"><p>local variable, default value &#39;&#39;</p>
+</div></div>
+</li>
+<li><h3 id="properties_surveydetails">surveyDetails</h3>
+<div class="surveydetails"><div class="roundingmodule-service-page roundingmodule-service-medicationsservice-page"><p>local variable, default value []</p>
+</div></div>
+</li>
+<li><h3 id="properties_lastmedreviewdate">lastMedReviewDate</h3>
+<div class="lastmedreviewdate"><div class="roundingmodule-service-page roundingmodule-service-medicationsservice-page"><p>local variable, default value &#39;&#39;</p>
+</div></div>
+</li>
+<li><h3 id="properties_selectedmedication">selectedMedication</h3>
+<div class="selectedmedication"><div class="roundingmodule-service-page roundingmodule-service-medicationsservice-page"><p>local variable, default value {}</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

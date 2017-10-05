@@ -1,0 +1,541 @@
+﻿<kendo-mobile-view class="crd-view" id="patientPlacementTab-view" ng-controller="PatientPlacementTabController">
+    <div class="crd-screenname-container">
+        <div class="crd-screennameheader">Placement</div>
+    </div>
+    <div ng-if="NoActiveAdmissionRecord" class="no-data-available">No Active Admission Record </div> 
+    <div id="plcmnt-choosedc-near" ng-show="IsPlacementRequired">
+        <div class="crd-screenname-container">
+            <div class="crd-screennameheader">Choose Dialysis Center Near</div>
+        </div>
+        <kendo-mobile-modal-view id="faxpreview-modalview" class="crd-modalview">
+            <kendo-mobile-header>
+                <kendo-mobile-nav-bar>
+                    <kendo-mobile-button kendo-touch k-on-tap="closeFaxPreviewWindow()" k-align="'left'">Cancel</kendo-mobile-button>
+                    <span>Fax Preview</span>
+                    <kendo-mobile-button kendo-touch k-on-tap="sendFax()" k-align="'right'">Send Fax</kendo-mobile-button>
+                </kendo-mobile-nav-bar>
+            </kendo-mobile-header>
+            <div id="fax-pdf-holder">
+            </div>
+        </kendo-mobile-modal-view>
+
+        <div id="plcmnt-choosedc-txtbox-container">
+            <input id="plcmnt-choosedc-txtbox" type="text" class="k-textbox" ng-model="SelectedAddressText" />
+            <kendo-mobile-button ng-click="searchDCfromAddress()" class="icon-pin-location"></kendo-mobile-button>
+        </div>
+
+        <div id="plcmnt-choosedc-or">
+            <span class="icon-line-left-small">&nbsp;</span>
+            <span class="crd-screennameheader">OR</span>
+            <span class="icon-line-right-small">&nbsp;</span>
+        </div>
+
+        <div id="plcmnt-notreqd">
+            <label class="crd-screennameheader">Dialysis Center Placement Not Required</label>
+            <kendo-mobile-button ng-click="openPlacementNotReqdModal()" class="icon-edit">&nbsp;</kendo-mobile-button>
+            <div class="crd-pthway-screening-label">
+                {{ PlacementNotRequiredReasonCodeText }}
+            </div>
+        </div>
+    </div>
+
+    <div id="plcmnt-search-address-area" ng-show="ShowMapAddressArea" >
+        <div id="plcmnt-provider-address-section">
+            <div id="plcmnt-provider-address-leftview">
+                <div class="plcmnt-provider-address-addpos">
+                    <span class="icon-addressbar-pin-small"/>
+                </div>
+                <div class="plcmnt-provider-address-addtextpos">
+                    {{ SelectedAddressText }}
+                </div>
+                <div class="plcmnt-provider-address-addpos">
+                    <span class="icon-addressbar-radius-small"/>
+                </div>
+                <div class="plcmnt-provider-address-addtextpos">
+                    {{Radius}} Miles
+                </div>
+                <div ng-if="LastPlacementSaveDatetime" class="plcmnt-provider-address-addpos">
+                    <span class="icon-addressbar-timeblue-small"/>
+                </div>
+                <div ng-if="LastPlacementSaveDatetime" class="plcmnt-provider-address-addtextpos">
+                    {{ LastPlacementSaveDatetime }}
+                </div>
+            </div>
+            <div id="plcmnt-provider-address-rightview">
+                <div id="plcmnt-provider-address-rightsearch" ng-show="ShowButtons">
+                    <kendo-mobile-button kendo-touch k-on-tap="showRecent()" ng-show="ShowRecent">Recent</kendo-mobile-button>
+                    <kendo-mobile-button kendo-touch k-on-tap="showEdit()" ng-show="ShowModifySearch">Modify SEARCH</kendo-mobile-button>
+                    <kendo-mobile-button kendo-touch k-on-tap="savePlacementsData()" ng-show="ShowSaveSearch" >SAVE SEARCH</kendo-mobile-button>
+                    <kendo-mobile-button kendo-touch k-on-tap="showEdit()" ng-show="ShowNew">NEW</kendo-mobile-button>
+                    <kendo-mobile-button kendo-touch k-on-tap="showEdit()" ng-show="ShowEdit">Edit</kendo-mobile-button>
+                    <kendo-mobile-button kendo-touch k-on-tap="saveSelection()" ng-show="ShowSaveSelection">Save Selection</kendo-mobile-button>
+                </div>
+            </div>
+
+        </div>
+        <div id="plcmnt-map-recent-view" ng-show="ShowRecentView">
+            <kendo-mobile-list-view class="radio-list" k-data-source="GetPlacementsData.Placements[0].PlacementCrietrias"
+                                    k-ng-delay="GetPlacementsData.Placements[0].PlacementCrietrias" >
+                <label k-template>
+                    <input name="worklistfilteritem" type="radio" ng-model="dataItem.SelectedPlacement"
+                           value="{{ dataItem.UID }}" ng-click="changePlacementCriteria(dataItem)"/>
+                    <span class="crd-display-middle icon-addressbar-pingrey-small"></span>
+                    <span class="crd-display-middle">{{dataItem.Address.Address1 }} {{dataItem.Address.City }} {{dataItem.Address.StateCode }} {{dataItem.Address.Zip }}</span>
+                    <span class="crd-display-middle icon-addressbar-radiusgrey-small"> </span>
+                    <span class="crd-display-middle">{{dataItem.SearchRadius }} Miles </span>
+                    <span class="crd-display-middle icon-addressbar-timegrey-small"> </span>
+                    <span class="crd-display-middle">{{dataItem.Date | formatPlacementDate }} </span>
+                </label>
+            </kendo-mobile-list-view>
+        </div>
+        <div id="plcmnt-map-providerlist-neweditsearchview" ng-show="ShowEditArea">
+            <div id="plcmnt-map-providerlist-neweditsearchitems">              
+                <div id="plcmnt-dcs-address" class="topBottomPadding">
+
+                    <input type="text" name="plcmnt-dcs-street-addr" 
+                           class="k-textbox" placeholder="Street Address" autocomplete="off" width="200px;" ng-model="SelectedAddress.Address1" />
+                    <input type="text" name="plcmnt-dcs-city-addr" 
+                           class="k-textbox" placeholder="City" autocomplete="off"  ng-model="SelectedAddress.City"/>
+                    <select kendo-drop-down-list name="plcmnt-dcs-state" class="plcmnt-edit-select" 
+                            id="plcmnt-dcs-state" k-options="StateLookup" ng-model="SelectedAddress.StateCode">
+                    </select>
+                    <input type="text" name="plcmnt-dcs-zip-addr" id="plcmnt-dcs-zip-addr" class="k-textbox masked-zip"
+                           placeholder="Zip" autocomplete="off" ng-model="SelectedAddress.Zip"/>
+                </div>
+                <div style="margin-top: 5px;">
+                    Miles
+                </div>
+                <div id="plcmnt-map-sliderview">
+                    <kendo-slider  ng-model="width"  k-min="5" k-max="100" k-smallStep="5" k-largestep="10"></kendo-slider>
+                </div>
+
+                <div id="plcmnt-provider-address-rightedit">
+                    <kendo-mobile-button kendo-touch k-on-tap="cancelEdit()" >Cancel</kendo-mobile-button>
+                    <kendo-mobile-button kendo-touch k-on-tap="searchDCfromNewAddress()">Search</kendo-mobile-button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="plcmnt-dclist-map-container" ng-show="ShowMapAddressArea" style="pointer-events: {{ MapAreaDisabled === true ? 'none' : 'auto' }}">
+        <div id="plcmnt-dc-listview-container">
+            <div class="plcmnt-search-provider-errorMessage" ng-show="ShowNoDCFoundMsg">No Dialysis Center available for this miles and address, please change the address or miles</div>
+            <kendo-mobile-list-view id="plcmnt-dc-listview" k-data-source="DCListPvdInfo" class="radio-list" ng-show="IsNewSearch">
+                <div k-template class="plcmnt-provider-address" ng-click="selectMarker(dataItem.Index)">
+                    <div class="plcmnt-provider-address-id">
+                        <span style="vertical-align: middle;">{{ dataItem.Index }}</span>
+                    </div>
+                    <div class="plcmnt-provider-address-detail">
+                        <div class="plcmnt-provider-address-bigbold" style="margin-bottom: 8px;">
+                            <div class="plcmnt-provider-address-addpos">
+                                <span class="icon-addressbar-pin-verysmall"/>
+                            </div>
+                            <div ng-repeat="item in dataItem.ProviderAddress">
+                                <div ng-if="item.IsPrimary">
+                                    {{item.Distance}} mi
+                                </div>
+                            </div>
+                        </div>
+                        <div class="plcmnt-provider-address-bold">{{ dataItem.Name }}</div>
+                        <div ng-repeat="item in dataItem.ProviderAddress">
+                            <div ng-if="item.IsPrimary">
+                                <div >
+                                    {{item.Address1}}<span ng-if="item.Address2 != null">, {{item.Address2}}</span>
+                                </div>
+                                <div>{{item.City}}, {{item.StateCode}} {{item.Zip}} </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </kendo-mobile-list-view>
+
+            <kendo-mobile-list-view id="plcmnt-criteria-listview" k-data-source="PlacementCriteriasList" class="radio-list" ng-hide="IsNewSearch">
+                <div k-template class="plcmnt-provider-address" ng-click="selectMarker(dataItem.Index)"> <!-- -->
+
+                    <div class="plcmnt-provider-address-id">
+                        <span style="vertical-align: middle;">{{ dataItem.Index }}</span>
+                    </div>
+                    <div class="plcmnt-provider-address-detail">
+                        <div class="plcmnt-provider-address-bigbold" style="margin-bottom: 8px;">
+                            <div class="plcmnt-provider-address-addpos">
+                                <span class="icon-addressbar-pin-verysmall"/>
+                            </div>
+                            <div ng-repeat="item in dataItem.Provider.ProviderAddress">
+                                <div ng-if="item.IsPrimary">
+                                    {{item.Distance}} mi
+                                    <div class="plcmnt-provider-select" ng-show="{{dataItem.SelectedVisible}}">
+                                        <kendo-mobile-button kendo-touch k-on-tap="selectPlacement(dataItem)" id="{{dataItem.UID}}">{{dataItem.Selected ? "De-select" : "Select"}}</kendo-mobile-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+						<div class="plcmnt-provider-address-bold">{{ dataItem.Provider.Name }}</div>
+						<div ng-repeat="item in dataItem.Provider.ProviderAddress" >
+							<div ng-if="item.IsPrimary" class="plcmnt-key">
+								<div>
+									{{item.Address1}}<span ng-if="item.Address2 != null">, {{item.Address2}}</span>
+								</div>
+								<div>{{item.City}}, {{item.StateCode}} {{item.Zip}} </div>
+							</div>                            
+						</div>
+                        
+                        <div ng-if="dataItem.DatePtChoseProvider">
+                            <hr />
+                            <span class="plcmnt-key">Chosen: </span>
+                            <span class="plcmnt-value">{{dataItem.DatePtChoseProvider | date: 'MM/dd/yyyy' }}</span>
+                        </div>
+                        <div ng-if="dataItem.LastFaxSentDate">
+                            <span class="plcmnt-key">Last Faxed: </span>
+                            <span class="plcmnt-value">{{dataItem.LastFaxSentDate | date: 'MM/dd/yyyy' }}</span>                            
+                        </div>
+
+                        <!-- Editable Section for PTC or FSP status -->
+                        <div ng-if="dataItem.Status == 'PTC' || dataItem.Status == 'FSP'" style="margin-top: 10px;">
+                            <div ng-if="!dataItem.DateProviderApprovedPatient && !dataItem.ProviderDeclinedPatientDate 
+                                        && !dataItem.IsApproveClicked && !dataItem.IsDeclineClicked">
+                                <kendo-mobile-button ng-click="approvedDCSelection(dataItem)">Approve</kendo-mobile-button>
+                                <kendo-mobile-button ng-click="declineDCSelection(dataItem)">Decline</kendo-mobile-button>
+                            </div>
+
+                            <!-- Edit Section for Approve Selection -->
+                            <div class="plcmnt-approve-decline-details" ng-if="dataItem.IsApproveClicked" 
+                                id="{{dataItem.Provider.UID}}-{{dataItem.Provider.ID}}">
+                                <div class="plcmnt-provider-address-bold">Chosen and Approved Facility:</div>
+                                <div class="plcmnt-value">{{dataItem.Provider.Name}}</div>
+
+                                <div class="plcmnt-provider-address-bold" style="margin-top: 10px;">Date Facility Approved Patient</div>
+                                <input  kendo-date-picker class="crd-datepicker" name="plcmnt-date-facility-approvedpt" id="plcmnt-date-facility-approvedpt" 
+                                        k-ng-model="dataItem.DateProviderApprovedPatient" k-options="DateProviderApprovedPatientConfig"  
+                                        data-datevalid-msg="" data-daterequired-msg="" data-datetoday-msg=""/>
+                                <span data-for="plcmnt-date-facility-approvedpt" class="k-invalid-msg"></span> 
+                               
+                                <div style="margin-top: 10px;">
+                                    <div class="plcmnt-provider-address-bold" style="margin-top: 5px;">Is this a Transient Facility?</div>
+                                    <div class="crd-kendoradio-small">
+                                        <input name="plcmnt-istransient-facility-yes" id="{{'plcmnt-transient-facility-yesradio' + $index}}" type="radio" class="k-radio" 
+                                               ng-model="dataItem.IsTransientProvider" ng-value="true">
+                                        <label class="k-radio-label" for="{{'plcmnt-transient-facility-yesradio' + $index}}">
+                                            <span>Yes</span>
+                                        </label>
+
+                                        <input name="plcmnt-istransient-facility-no" id="{{'plcmnt-transient-facility-noradio' + $index}}" type="radio" class="k-radio" 
+                                               ng-model="dataItem.IsTransientProvider" ng-value="false">
+                                        <label class="k-radio-label" for="{{'plcmnt-transient-facility-noradio' + $index}}">
+                                            <span>No</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div ng-show="dataItem.IsTransientProvider" style="margin-top: 10px;">
+                                    <div class="plcmnt-provider-address-bold" style="margin-top: 5px;">Transient Facility Start Date</div>
+                                    <input kendo-date-picker class="crd-datepicker" name="plcmnt-provider-transient-startdate" id="plcmnt-provider-transient-startdate" 
+                                           k-ng-model="dataItem.TransientProviderStartDate" k-format="'MM/dd/yyyy'" data-datevalid-msg="" data-transientProviderDate-msg=""
+                                           data-startDateGreater-msg="" />
+                                    <span data-for="plcmnt-provider-transient-startdate" class="k-invalid-msg"></span> 
+
+                                    <div class="plcmnt-provider-address-bold" style="margin-top: 5px;">Transient Facility End Date</div>
+                                    <input kendo-date-picker class="crd-datepicker" name="plcmnt-provider-transient-enddate" id="plcmnt-provider-transient-enddate" 
+                                           k-ng-model="dataItem.TransientProviderEndDate" k-format="'MM/dd/yyyy'" data-datevalid-msg="" data-transientProviderDate-msg=""
+                                           data-endDateGreater-msg="" data-transientProviderEndDateGreater-msg=""/> 
+                                    <span data-for="plcmnt-provider-transient-enddate" class="k-invalid-msg"></span> 
+                                </div>                                                                
+                                <div style="margin-top: 10px;">
+                                    <kendo-mobile-button data-rel="modalview" href="\#plcmnt-reason-ptchosefacility-modalview">
+                                        Reason patient chose facility
+                                    </kendo-mobile-button>                                    
+                                    <span ng-show="SelectFacilityValidationVisible" class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" 
+                                        role="alert">
+                                        <span class="k-icon k-warning"></span> 
+                                        required
+                                    </span>                                    
+                                </div>
+
+                                <div style="margin-top: 10px;">
+                                    <div class="plcmnt-provider-address-bold" style="margin-top: 5px;">Was there a placement delay?</div>
+                                    <div class="crd-kendoradio-small">
+                                        <input name="plcmnt-was-delayed-yes" id="{{'plcmnt-wasdelayed-yesradio' + $index}}" type="radio" class="k-radio" 
+                                               ng-model="dataItem.HasPlacementDelay" ng-value="true" ng-click="placementDelayYesChosen()">
+                                        <label class="k-radio-label" for="{{'plcmnt-wasdelayed-yesradio' + $index}}">
+                                            <span>Yes</span>
+                                        </label>
+
+                                        <input name="plcmnt-was-delayed-no" id="{{'plcmnt-wasdelayed-noradio' + $index}}" type="radio" class="k-radio" 
+                                               ng-model="dataItem.HasPlacementDelay" ng-value="false" ng-click="placementDelayReasonCancel()">
+                                        <label class="k-radio-label" for="{{'plcmnt-wasdelayed-noradio' + $index}}">
+                                            <span>No</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 10px;">
+                                    <kendo-mobile-button ng-click="saveApprovedDC(dataItem)">Save</kendo-mobile-button>
+                                    <kendo-mobile-button ng-click="cancelApprovedDC(dataItem)">Cancel</kendo-mobile-button>
+                                </div>
+                            </div>
+
+                            <!-- Edit Section for Decline Selection -->
+                            <div class="plcmnt-approve-decline-details" ng-if="dataItem.IsDeclineClicked" 
+                                id="{{dataItem.Provider.UID}}-{{dataItem.Provider.ID}}">
+                                <div class="plcmnt-provider-address-bold">Chosen and Declined Facility:</div>
+                                <div class="plcmnt-value">{{dataItem.Provider.Name}}</div>
+
+                                <div class="plcmnt-provider-address-bold" style="margin-top: 10px;">Date Facility Declined Patient</div>
+                                <input  kendo-date-picker class="crd-datepicker" name="plcmnt-date-facility-declinedpt" id="plcmnt-date-facility-declinedpt" 
+                                        k-ng-model="dataItem.ProviderDeclinedPatientDate" k-options="DateProviderApprovedPatientConfig"  
+                                        data-datevalid-msg="" data-daterequired-msg="" data-datetoday-msg=""/>
+                                <span data-for="plcmnt-date-facility-declinedpt" class="k-invalid-msg"></span> 
+
+                                <div style="margin-top: 10px;">
+                                    <kendo-mobile-button data-rel="modalview" href="\#plcmnt-decline-reason-modalview">
+                                        Reason For Decline
+                                    </kendo-mobile-button>                                    
+                                    <span ng-show="SelectDeclineReasonValidationVisible" class="k-widget k-tooltip k-tooltip-validation k-invalid-msg" 
+                                        role="alert">
+                                        <span class="k-icon k-warning"></span> 
+                                        required
+                                    </span>                                    
+                                </div>
+                                <div style="margin-top: 10px;">
+                                    <kendo-mobile-button ng-click="saveDeclinedDC(dataItem)">Save</kendo-mobile-button>
+                                    <kendo-mobile-button ng-click="cancelDeclinedDC(dataItem)">Cancel</kendo-mobile-button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Readonly Section for Status "APPROVED_BY_FACILITY_STATUS" = "FYA" -->
+                        <div ng-if="dataItem.Status == 'FYA'">
+                            <div ng-if="dataItem.DateProviderApprovedPatient">
+                                <span class="plcmnt-key">Approved: </span> 
+                                <span class="plcmnt-value">{{ dataItem.DateProviderApprovedPatient | date: 'MM/dd/yyyy' }}</span>
+                            </div>
+                            <div ng-if="dataItem.PtChoseFacilityReason">
+                                <span class="plcmnt-key">Reason Patient Chose Facility: </span> 
+                                <span class="plcmnt-value">{{ dataItem.PtChoseFacilityReason | getLookupText : "PtChoseFacilityReason" }}</span>
+                            </div>
+                            <div>
+                                <span class="plcmnt-key">Was there a Placement delay? </span> 
+                                <span class="plcmnt-value">{{ dataItem.HasPlacementDelay == true ? 'Yes' : 'No' }}</span>
+                            </div> 
+                            <div ng-if="dataItem.HasPlacementDelay && dataItem.PlacementDelayReasonCode">                                                           
+                                <span class="plcmnt-key">Reason for Placement delay: </span> 
+                                <span class="plcmnt-value">{{ dataItem.PlacementDelayReasonCode | getLookupText : "PlacementDelayReason" }}</span>
+                            </div>   
+                            <div>
+                                <span class="plcmnt-key">Is this a Transient Facility? </span> 
+                                <span class="plcmnt-value">{{ dataItem.IsTransientProvider == true ? 'Yes' : 'No' }}</span>
+                            </div>
+                            <div ng-if="dataItem.IsTransientProvider">
+                                <div>
+                                    <span class="plcmnt-key">Transient Facility Start Date: </span> 
+                                    <span class="plcmnt-value">{{ dataItem.TransientProviderStartDate | date: 'MM/dd/yyyy' }}</span>
+                                </div>
+                                <div>
+                                    <span class="plcmnt-key">Transient Facility End Date: </span> 
+                                    <span class="plcmnt-value">{{ dataItem.TransientProviderEndDate | date: 'MM/dd/yyyy' }}</span>
+                                </div>
+                            </div>                                                       
+                        </div>
+
+                        <!-- Readonly Section for Status "DECLINED_BY_FACILITY_STATUS" = "FYD" -->
+                        <div ng-if="dataItem.Status == 'FYD'">
+                            <div ng-if="dataItem.ProviderDeclinedPatientDate">
+                                <span class="plcmnt-key">Declined: </span> 
+                                <span class="plcmnt-value">{{ dataItem.ProviderDeclinedPatientDate | date: 'MM/dd/yyyy' }}</span>
+                            </div>
+                            <div ng-if="dataItem.ProviderDeclinedPatientReasonCode">
+                                <span class="plcmnt-key">Reason Patient Decline Facility: </span> 
+                                <span class="plcmnt-value">{{ dataItem.ProviderDeclinedPatientReasonCode | getLookupText : "ProviderDeclinedReason" }}</span>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </kendo-mobile-list-view>
+        </div>
+
+        <!-- div tag for Map-->
+        <div id="plcmnt-map"></div>
+
+        <!-- div tag for signature-->
+        <div id="plcmnt-signature-slideup" ng-show="ShowSignature">
+            <form method="post" action="#" class="sigPad">
+                <div class="sig sigWrapper current" style="display: block;float: left !important;">
+                    <canvas class="pad" width="430" height="150"></canvas>
+                    <input type="hidden" name="output" class="output" value="">
+                </div>
+            </form>
+
+            <div id="signaturepad-footer">
+                <a id="plcmnt-clearselection-button" type="button">Clear Selection</a>
+                <a id="plcmnt-confirmselection-button" type="button">Confirm Selection</a>
+            </div>
+        </div>        
+    </div>
+
+    <!-- Modal Window for Reason to Chose Facility -->
+    <kendo-mobile-modal-view id="plcmnt-reason-ptchosefacility-modalview" class="crd-modalview">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <kendo-mobile-button ng-click="ptChoseFacilityCancel()" k-align="'left'">Cancel</kendo-mobile-button>
+                <kendo-mobile-button ng-click="ptChoseFacilityOk()" k-align="'right'">Ok</kendo-mobile-button>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+        <kendo-mobile-list-view k-data-source="ReasonPtChoseFacilityLookup" class="radio-list">
+            <label k-template style="pointer-events: {{dataItem.Value === null || dataItem.Value === '' ? 'none' : 'auto'}}">
+                <input name="plcmnt-reason-chose-facility" ng-model="SelDCForApproveDecline.PtChoseFacilityReason" 
+                        value="{{dataItem.Value}}" type="radio" ng-disabled="dataItem.Value === null || dataItem.Value === ''"/>
+                {{ dataItem.Text }}
+            </label>
+        </kendo-mobile-list-view>                                    
+    </kendo-mobile-modal-view>
+
+    <!-- Modal Window for Delay Reason to Approve Facility-->
+    <kendo-mobile-modal-view id="plcmnt-reason-delay-modalview" class="crd-modalview">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <kendo-mobile-button ng-click="placementDelayReasonCancel()" k-align="'left'">Cancel</kendo-mobile-button>
+                <kendo-mobile-button ng-click="placementDelayReasonOk()" k-align="'right'">Ok</kendo-mobile-button>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+
+        <kendo-mobile-list-view k-data-source="PlacementDelayReasonLookup" class="radio-list">
+            <label k-template style="pointer-events: {{dataItem.Value === null || dataItem.Value === '' ? 'none' : 'auto'}}">
+                <input name="plcmnt-delay-chose-reason" ng-model="SelDCForApproveDecline.PlacementDelayReasonCode" 
+                       value="{{dataItem.Value}}" type="radio" ng-disabled="dataItem.Value === null || dataItem.Value === ''"/>
+                {{ dataItem.Text }}
+            </label>
+        </kendo-mobile-list-view>
+    </kendo-mobile-modal-view>
+
+    <!-- Modal Window for Decline Reason to Chose Facility -->
+    <kendo-mobile-modal-view id="plcmnt-decline-reason-modalview" class="crd-modalview">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <kendo-mobile-button ng-click="placementDeclineReasonCancel()" k-align="'left'">Cancel</kendo-mobile-button>
+                <kendo-mobile-button ng-click="placementDeclineReasonOk()" k-align="'right'">Ok</kendo-mobile-button>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+
+        <kendo-mobile-list-view k-data-source="ProviderDeclinedReasonLookup" class="radio-list">
+            <label k-template style="pointer-events: {{dataItem.Value === null || dataItem.Value === '' ? 'none' : 'auto'}}">
+                <input name="plcmnt-decline-chose-reason" ng-model="SelDCForApproveDecline.ProviderDeclinedPatientReasonCode" 
+                       value="{{dataItem.Value}}" type="radio" ng-disabled="dataItem.Value === null || dataItem.Value === ''"/>
+                {{ dataItem.Text }}
+            </label>
+        </kendo-mobile-list-view>
+    </kendo-mobile-modal-view>
+
+    <!-- Modal Window for Placement not required reason-->
+    <kendo-mobile-modal-view  id="plcmnt-notreqd-modalview" class="crd-modalview">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <kendo-mobile-button ng-click="closePlacementNotReqdModal()" k-align="'left'">Cancel</kendo-mobile-button>
+                <kendo-mobile-button ng-click="savePlacementNotReqd()" k-align="'right'">Save</kendo-mobile-button>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+
+        <kendo-mobile-list-view k-data-source="PlacementNotRequiredLookup" class="radio-list">
+            <label k-template>
+                <input name="plcmnt-notreqd-reasons" ng-click="plcmntNotReqdSelected(dataItem)" type="radio" />
+                {{ dataItem.Text }}
+            </label>
+        </kendo-mobile-list-view>
+
+    </kendo-mobile-modal-view>
+
+    <kendo-mobile-modal-view  id="plcmnt-addressvalidation-modalview" class="crd-modalview" style="width:350px; height:450px;">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <kendo-mobile-button kendo-touch k-on-tap="closeModalViewcAddressValidation()" k-align="'left'">Cancel</kendo-mobile-button>
+
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+
+        <div id="plcmnt-modalview-addressvalidationarea" >
+            <div class="crd-pthway-screening-label" style="margin-bottom: 10px;">You Meant </div>
+            <label style="margin-left: 13px;font-weight: bold;">{{ SelectedAddressText }}</label>
+            <div class="crd-pthway-screening-label" style="margin-top: 10px;">We Found</div>
+            <div id="plcmnt-modalview-foundlistviewarea" >
+                <kendo-mobile-list-view k-data-source="NewAddress.resources" class="radio-list">
+                    <label k-template>
+                        <input name="foundAddresses" type="radio" ng-click="updateAddress(dataItem)"/>
+                        {{ dataItem.name }}
+                    </label>
+                </kendo-mobile-list-view>
+            </div>
+        </div>
+    </kendo-mobile-modal-view>
+
+    <!-- Modal View -->
+    <kendo-mobile-modal-view class="crd-modalview" id="plcmnt-modal-selection" >
+        <kendo-mobile-header id="plcmnt-modal-selection-header" style="background-color: #B9BBBD;">
+            <kendo-mobile-nav-bar>
+                <kendo-mobile-button kendo-touch k-on-tap="closePlacementSelection(true)" k-align="'left'">Cancel</kendo-mobile-button>
+                <span>Placement Selection</span>
+                <kendo-mobile-button kendo-touch k-on-tap="faxSendManually()" k-align="'right'" ng-show='IsSaveButtonVisible()'>Save</kendo-mobile-button>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+
+        <div id="plcmnt-modal-selection-details">
+
+            <div class="plcmnt-modal-selection-panel" ng-repeat="x in SelectedDC">
+                <div class="plcmnt-modal-selection-left-subpanel">
+                    <div class="plcmnt-modal-selection-number">{{$index + 1}}</div>
+                    <div class="plcmnt-modal-selection-miles">{{x.Provider.ProviderAddress[0].Distance + " mi"}}</div>
+                </div>
+                <div class="plcmnt-modal-selection-right-subpanel">
+                    <span class="plcmnt-modal-selection-name" ng-bind="x.Provider.Name"></span>
+                    <div  ng-bind="ModalBuildAddress1($index)"></div>
+                    <div ng-bind="ModalBuildAddress2($index)"></div>
+                </div>
+
+                <div class="plcmnt-modal-selection-input crd-kendoradio-big">
+                    <input ng-model="x.SelectedReportType" value="{{x.ReportConstants[0]}}" type="radio" name="{{'plcmnt-reporttypes-radio' + $index}}" id="{{'pclmt-clinical-report-radio' + $index}}" class="k-radio"
+					 id="{{'pclmt-clinical-report-radio' + $index}}" class="k-radio" ng-click="x.CheckBoxChecked = false">
+                    <label class="plcmnt-modal-selection-radio-label ng-binding k-radio-label" for="{{'pclmt-clinical-report-radio' + $index}}">
+                        <span ng-bind="x.ReportTexts[0]"></span>
+                    </label>
+                </div>
+
+                <div class="plcmnt-modal-selection-input crd-kendoradio-big">
+                    <input ng-model="x.SelectedReportType" value="{{x.ReportConstants[1]}}" type="radio" name="{{'plcmnt-reporttypes-radio' + $index}}" id="{{'pclmt-qa-report-radio' + $index}}" class="k-radio"
+					 id="{{'pclmt-clinical-report-radio' + $index}}" class="k-radio" ng-click="x.CheckBoxChecked = false">
+                    <label class="plcmnt-modal-selection-radio-label ng-binding k-radio-label" for="{{'pclmt-qa-report-radio' + $index}}">
+                        <span ng-bind="x.ReportTexts[1]"></span>
+                    </label>
+                </div>
+
+                <div class="plcmnt-modal-selection-input crd-kendoradio-big">
+                    <input ng-model="x.SelectedReportType" value="{{x.ReportConstants[2]}}" type="radio" name="{{'plcmnt-reporttypes-radio' + $index}}" id="{{'pclmt-sbar-report-radio' + $index}}" class="k-radio"
+                     id="{{'pclmt-qa-report-radio' + $index}}" class="k-radio" ng-click="x.CheckBoxChecked = false">
+					<label class="plcmnt-modal-selection-radio-label  ng-binding k-radio-label" for="{{'pclmt-sbar-report-radio' + $index}}">
+                        <span ng-bind="x.ReportTexts[2]"></span>
+                    </label>
+                </div>
+
+                 <div class="plcmnt-modal-selection-input crd-kendocheck-small plcmnt-modal-selection-chkbox">
+                    <input ng-model="x.CheckBoxChecked" class="k-checkbox" id="{{'pclmt-send-fax-chkbox' + $index}}" ng-click="x.SelectedReportType = ''"
+                           ng-disabled="x.LastFaxSentDate" name="{{'plcmnt-reporttypes-radio' + $index}}" type="checkbox" />
+                    <label class="plcmnt-modal-selection-radio-label k-checkbox-label" for="{{'pclmt-send-fax-chkbox' + $index}}">
+                        <span ng-bind="x.ReportTexts[3]"></span>
+                    </label> 
+                </div>
+                <div class="plcmnt-modal-selection-input" ng-show="x.LastFaxSentDate">
+                    <span class="plcmnt-key">Fax sent: </span>
+                    <span class="plcmnt-value">{{x.LastFaxSentDate | date: 'MM/dd/yy' }}</span>
+                </div>
+                <div class="plcmnt-modal-selection-button-div" ng-show="x.CheckBoxChecked">
+                    <input kendo-date-picker class="crd-datepicker" id="plcmnt-modal-datepicker{{$index}}"
+                           name="plcmnt-modal-datepicker{{$index}}" k-options="DateProviderApprovedPatientConfig" k-format="'MM/dd/yyyy'"
+                           data-datevalid-msg="" data-daterequired-msg="" data-datetoday-msg="" />
+                    <span class="k-invalid-msg plcmnt-modal-selection-inv-msg" data-for="plcmnt-modal-datepicker{{$index}}"></span>
+                </div>
+				
+                <div class="plcmnt-modal-selection-button-div" id="placement-preview-btn" ng-show="!x.LastFaxSentDate">
+                    <kendo-button id="{{'pclmt-modal-button' + $index}}" class="plcmnt-modal-selection-button" ng-disabled="x.SelectedReportType === '' || x.CheckBoxChecked === true"
+                                         kendo-touch k-on-tap="faxPreview($index, x.SelectedReportType)">Preview</kendo-button>
+                </div>
+            </div>
+        </div>
+    </kendo-mobile-modal-view>
+</kendo-mobile-view>
+ 

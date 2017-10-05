@@ -1,0 +1,77 @@
+<h1><code ng:non-bindable="">StopVapPlanController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-stopvapplancontroller-page"><ul>
+<li>Controller for Stop Vap Plan Modal View</li>
+<li>Child Controller for VAP (Vascular Access Plan) Screen </li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_stopplanvalidator">stopPlanValidator()</h3>
+<div class="stopplanvalidator"><div class="stopplanvalidator-page"><ul>
+<li>Creates custom validator using kendo validator using diffrent business rules for stop vap plan modal view </li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemodel">$scope.model</h3>
+<div class="$scopemodel"><div class="roundingmodule-controller-page roundingmodule-controller-stopvapplancontroller-page"><p>model of StopVapPlanController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelplanstopdate">$scope.model.PlanStopDate</h3>
+<div class="$scopemodelplanstopdate"><div class="roundingmodule-controller-page roundingmodule-controller-stopvapplancontroller-page"><p>property of $scope.model used for VAP Stop date</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelstopreason">$scope.model.StopReason</h3>
+<div class="$scopemodelstopreason"><div class="roundingmodule-controller-page roundingmodule-controller-stopvapplancontroller-page"><p>property of $scope.model used for VAP Steps List</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelstopreasonother">$scope.model.StopReasonOther</h3>
+<div class="$scopemodelstopreasonother"><div class="roundingmodule-controller-page roundingmodule-controller-stopvapplancontroller-page"><p>property of $scope.model used for Selected Step Order</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopecopyvapstepdetails">$scope.CopyVapStepDetails</h3>
+<div class="$scopecopyvapstepdetails"><div class="roundingmodule-controller-page roundingmodule-controller-stopvapplancontroller-page"><p>property of $scope used for local copy of VAP Step Details</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeactivatevapstepdetails">$scope.ActivateVapStepDetails</h3>
+<div class="$scopeactivatevapstepdetails"><div class="roundingmodule-controller-page roundingmodule-controller-stopvapplancontroller-page"><p>property of $scope used for Active Vap Step Detail</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelstopreasons">$scope.model.StopReasons</h3>
+<div class="$scopemodelstopreasons"><div class="roundingmodule-controller-page roundingmodule-controller-stopvapplancontroller-page"><p>property of $scope.model used for Stop Reason dropdown</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_oncancelstopvapplanclick">onCancelStopVapPlanClick</h3>
+<div class="oncancelstopvapplanclick"><div class="oncancelstopvapplanclick-page"><ul>
+<li>k-on-tap event of Cancel Button of stop vap plan modal view              </li>
+<li>Closes stop vap plan modal view</li>
+<li>Changes UI behaviour</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_onstopvapplanclick">onStopVapPlanClick</h3>
+<div class="onstopvapplanclick"><div class="onstopvapplanclick-page"><ul>
+<li>k-on-tap event of Stop Button of stop vap plan modal view  </li>
+<li>Stops Current Vap Plan</li>
+<li>Calls VapService.SavePatientVascularAccess </li>
+<li>Calls VapService.RefreshVap</li>
+<li>Changes UI behaviour</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

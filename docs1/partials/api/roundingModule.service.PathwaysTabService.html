@@ -1,0 +1,73 @@
+<h1><code ng:non-bindable="">PathwaysTabService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-service-page roundingmodule-service-pathwaystabservice-page"><ul>
+<li>PathwaysTabService is being used by PathwaysTabController</li>
+<li>This will be used for all service calls for Pathways</li>
+</ul>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">PathwaysTabService(ServiceConstants, RoundingService);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>ServiceConstants</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="roundingmodule-service-page roundingmodule-service-pathwaystabservice-page"><p>Common Constants</p>
+</div></td></tr><tr><td>RoundingService</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="roundingmodule-service-page roundingmodule-service-pathwaystabservice-page"><p>Common Function</p>
+</div></td></tr></tbody></table></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_addptdiabscreening">addPtDiabScreening(data, callBack)</h3>
+<div class="addptdiabscreening"><div class="addptdiabscreening-page"><ul>
+<li>Calls AddPtDiabScreening api &#39;Patient/AddPtDiabScreening&#39; using RoundingService</li>
+<li>Saves diabetic screening      </li>
+</ul>
+</div><h5 id="methods_addptdiabscreening_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="addptdiabscreening-page"><p>Data: Diabetic screening survey detail</p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addptdiabscreening-page"><p>$scope.onAddPtDiabScreeningCompleted</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getpathwayheaderdata">getPathwayHeaderData(data, callBack)</h3>
+<div class="getpathwayheaderdata"><div class="getpathwayheaderdata-page"><ul>
+<li>Calls GetPathwayHeaderData api &#39;Patient/GetPathwayHeaderData&#39; using RoundingService  </li>
+<li>Retrieves header items from service      </li>
+</ul>
+</div><h5 id="methods_getpathwayheaderdata_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getpathwayheaderdata-page"><p>Data: Pathwaytype and PatientUID</p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getpathwayheaderdata-page"><p>$scope.onGetPathwayHeaderDataRetrieved</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getpatientsurveydetails">getPatientSurveyDetails(data, callBack)</h3>
+<div class="getpatientsurveydetails"><div class="getpatientsurveydetails-page"><ul>
+<li>Calls GetPatientSurveyDetails api &#39;Pathways/GetPatientSurveyDetails&#39; using RoundingService       </li>
+</ul>
+</div><h5 id="methods_getpatientsurveydetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getpatientsurveydetails-page"><p>Data: Patient survey detail filter</p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getpatientsurveydetails-page"><p>$scope.onGetPatientSurveyDetailsRetrieved</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getprepopulatedresponse">getPrePopulatedResponse(data, callBack)</h3>
+<div class="getprepopulatedresponse"><div class="getprepopulatedresponse-page"><ul>
+<li>Calls GetPrePopulatedResponse api &#39;Patient/GetPrePopulatedResponse&#39; using RoundingService </li>
+<li>Retrieve prePopulated response of the survey question from service</li>
+</ul>
+</div><h5 id="methods_getprepopulatedresponse_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getprepopulatedresponse-page"><p>Data: PatientUID and QuestionUID</p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getprepopulatedresponse-page"><p>$scope.onGetPrePopulatedResponseRetrieved</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getsurveydetails">getSurveyDetails(data, callBack)</h3>
+<div class="getsurveydetails"><div class="getsurveydetails-page"><ul>
+<li>Calls GetSurveyDetails api &#39;Pathways/GetSurveyDetails&#39; using RoundingService </li>
+<li>Retrieves survey detail from service</li>
+</ul>
+</div><h5 id="methods_getsurveydetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getsurveydetails-page"><p>Data: Survey detail filter</p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getsurveydetails-page"><p>$scope.onGetSurveyDetailsRetrieved</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_savesurveydetails">saveSurveyDetails(data, callBack)</h3>
+<div class="savesurveydetails"><div class="savesurveydetails-page"><ul>
+<li>Calls SaveSurveyDetails api &#39;Pathways/SaveSurveyDetails&#39; using RoundingService</li>
+<li>Saves survey details   </li>
+</ul>
+</div><h5 id="methods_savesurveydetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="savesurveydetails-page"><p>Data: Pathway survey response to be saved</p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="savesurveydetails-page"><p>$scope.onSaveSurveyDetailsCompleted</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,55 @@
+<h1><code ng:non-bindable="">CompleteTaskController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-completetaskcontroller-page"><ul>
+<li>Child controller of MyTaskController</li>
+<li>This will be called on click event of Complete Task button</li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_onupdatetaskcompleted">onUpdateTaskCompleted(result)</h3>
+<div class="onupdatetaskcompleted"><div class="onupdatetaskcompleted-page"><ul>
+<li>Callback function of MyTasksService.UpdateTask</li>
+<li>Calls MyTasksService.RefreshActionItems to broadcast refreshActionItems</li>
+<li>Calls MyTasksService.SetCompleteTaskData</li>
+</ul>
+</div><h5 id="methods_onupdatetaskcompleted_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onupdatetaskcompleted-page"><p>returned by MyTasksService.UpdateTask call</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemytaskmodel">$scope.MyTaskmodel</h3>
+<div class="$scopemytaskmodel"><div class="roundingmodule-controller-page roundingmodule-controller-completetaskcontroller-page"><ul>
+<li>model of AddNewTaskController.</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_closemodalviewcompletetask">closeModalViewCompleteTask</h3>
+<div class="closemodalviewcompletetask"><div class="closemodalviewcompletetask-page"><ul>
+<li>ng-click event of Cancel button on Complete Task modal view</li>
+<li>Changes UI behaviour</li>
+<li>Closes the modal view for complete task</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_completenewtask">completeNewTask</h3>
+<div class="completenewtask"><div class="completenewtask-page"><ul>
+<li>ng-click event of Save button on Complete Task modal view</li>
+<li>Completes task by calling MyTasksService.UpdateTask </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

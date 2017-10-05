@@ -1,0 +1,325 @@
+﻿#vap-content
+{
+    height: 100%;   
+    min-height: 650px;
+}
+
+#vap-screenname
+{
+    width: 100%; 
+    float: left;   
+}
+
+#vap-screenname-div1
+{
+    width: 75%; 
+    float: left;
+}
+
+#vap-screenname-div2
+{
+    width: 25%; 
+    float: right;
+}
+
+#vap-headers
+{    
+    height: 25px;
+    float: left;
+    width: 100%;
+    font-weight: normal;
+}
+
+.vap-headers-div
+{
+    float: left; 
+    margin-left: 3px;
+}
+
+#vaplist
+{   
+    width: 100%;
+    margin-top: 10px;
+    border: 2px solid rgb(218, 218, 218);
+}
+
+.vap-stepdetail-row
+{   
+    background-color: white;    
+    color: #808285;
+    font-weight: bold;
+}
+
+.vap-stepdetail-row-date
+{
+    float: right; 
+    margin-right: 5px;
+}
+
+.vap-stepdetail-row-top-left
+{
+    width: 50px;
+    float: left;
+    vertical-align: middle;
+    height: 36px;
+}
+
+.vap-stepdetail-row-top-left-div
+{
+    width: 60px;
+}
+
+.vap-stepdetail-row-top-left-upper
+{
+    height: 14px;    
+    margin-left: 24px;
+    border: 1px solid rgb(218, 218, 218);   
+    width: 0px;
+}
+
+.vap-stepdetail-row-top-left-middle
+{
+    margin-left: 18px;
+}
+
+.vap-stepdetail-row-top-left-lower
+{
+    height: 25px;  
+    margin-left: 24px;
+    border: 1px solid rgb(218, 218, 218);  
+    width: 0px;
+}
+
+.vap-stepdetail-row-top-right
+{
+    width: calc(100% - 50px);
+    display: inline-block;
+    vertical-align: middle;
+    border-bottom: 2px solid rgb(218, 218, 218);
+    padding: 15px 0px;
+    border-bottom-color: #E3E3E4;    
+    cursor: pointer;
+}
+
+.vap-stepdetail-row-bottom
+{
+    display: none;    
+    font-size: 12px;        
+}
+
+.vap-stepdetail-row-bottom-left 
+{
+    width: 24px;
+    float: left;
+    vertical-align: middle;
+}
+
+.vap-stepdetail-row-bottom-left-upper
+{
+    height: 100%; 
+    margin-left: 50%;
+    border: 1px solid rgb(218, 218, 218);    
+    width: 0px;
+    visibility: hidden;
+}
+
+.vap-stepdetail-row-bottom-right
+{
+    width: calc(100% - 25px);
+    display: inline-block;
+    vertical-align: middle;
+    padding-top: 20px;
+    padding-left: 25px;
+    border-left: 2px solid rgb(218, 218, 218);
+    font-weight: normal;    
+}
+
+.vap-itemrow-detail
+{
+    display: inline-block;    
+    width: 97%;    
+}
+
+.vap-itemrow-detail-left
+{ 
+    float: left;    
+    margin-top: 0;
+    width: 42%;
+}
+
+.vap-itemrow-detail-center
+{    
+    width: 40%;
+    float: left;
+    display: inline-block; 
+}
+
+.vap-item-label-second-column
+{
+    float: left;
+    width: 66%;
+    display: inline-block;    
+}
+
+.vap-item-access-label
+{
+    margin: 0 8px 8px 0;
+    float: left;
+    width: 40%;
+}
+
+.vap-item-access-value 
+{
+    display: inline-block; 
+    float: left;
+    width: 56%;  
+}
+
+.vap-stepdetail-active
+{
+    background-color: #EEF5FB !important;    
+}
+
+.vap-stepdetail-inactive
+{
+    background-color: transparent !important;
+}
+
+#vaplist .km-list>li
+{
+    padding: 0;
+    border: none;
+}
+
+.vap-itemrow-detail label
+{    
+    font-weight: normal;
+}
+
+.vap-itemrow-detail-notes
+{
+    margin-top: 10px;
+}
+
+.vap-itemrow-detail-notes-divone
+{
+    width: 17.5%; float: left;
+}
+
+.vap-itemrow-detail-notes-divtwo
+{
+    width: 80%; float: left;
+}
+
+.vap-item-access-label-title
+{    
+    font-weight: bold !important;
+}
+
+.vap-itemrow-detail-right
+{
+    position: absolute;
+    right: 0;
+}
+
+.vap-stepdetail-row-bottom-right-div
+{
+    border-bottom: 2px solid rgb(218, 218, 218);   
+    width: 103%;
+}
+
+.vap-itemrow-detail-sideregion
+{
+    width: 45%;
+    display: inline-block;
+}
+
+#edit-vapstep-modalview
+{
+    width: 825px;
+    text-align: left;
+    height: 585px;
+}
+
+#new-vapplan-modalview
+{
+    width: 500px;
+    text-align: left;
+    height: 500px;
+}
+
+.modalview-edit-row-div-left textarea
+{   
+    resize: none !important;     
+    width: 96%
+}
+
+#vap-new-plan-vapsteps
+{
+     margin-top: 10px
+}
+
+#vap-new-plan-vapsteps .km-list>li
+{
+    padding: 1px !important;
+    cursor: pointer;
+}
+
+.vapstepslist-item
+{
+    min-height: 35px;
+    margin-left: 14px;
+}
+
+.vapstepslist-item label {
+    font-weight: bold;
+    color: #808080;
+}
+
+.vap-new-plan-vapsteps-divone
+{
+    width: 15%; 
+    float: left; 
+    border-right: 2px solid #808080;
+    margin-top: 10px;
+}
+
+.vap-new-plan-vapsteps-divtwo
+{
+    width: 70%; 
+    float: left; 
+    padding-left: 10px;
+    margin-top: 10px;
+}
+
+.vap-new-plan-step-selected
+{
+    background-color: #124C7B !important;
+}
+
+.vap-new-plan-step-selected .vapstepslist-item label
+{
+    color: #fff !important;
+}
+
+.vap-new-plan-step-selected .vap-new-plan-vapsteps-divone
+{
+    border-right: 2px solid white;
+}
+
+#stop-vapplan-modalview
+{
+    width: 500px;
+    text-align: left;
+    height: 300px;
+}
+
+.modalview-edit-row-notes
+{
+    height: 115px;
+}
+
+.modalview-edit-row-notes .modalview-edit-row-div-left-notes
+{
+    height: 115px; width: 100%;
+}

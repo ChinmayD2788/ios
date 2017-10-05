@@ -1,0 +1,20 @@
+﻿<kendo-mobile-view class="crd-view" ng-controller="ScreeningsController">
+	<div id="screeningstab-view" class="crd-view"> 
+        <div class="crd-screenname-container">
+            <div class="crd-screennameheader">Other Screenings</div>
+        </div>
+        <div id="screeningstab-container">
+	        <div ng-repeat="screen in Screenings">
+                <div class="patient-screeningstab-view">                        
+			        <div class="crd-labelwithseperator">{{screen.Title}}</div>
+			        <div id="otherscreenings-listview" ng-repeat="detail in screen.Details">
+                        <div class="container-column">
+				            <span class="crd-pthway-screening-label">{{detail.key}} : </span>
+				            <span class="crd-pathway-screening-value">{{detail.value}}</span>
+			            </div>
+                    </div>  
+		        </div> 
+            </div>
+        </div> 
+    </div> 
+ </kendo-mobile-view>

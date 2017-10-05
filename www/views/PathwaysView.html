@@ -1,0 +1,480 @@
+﻿<div id="PathwaysTabTemplate" ng-controller="PathwaysTabController">
+    <div id="ptchart-pthwy-content" kendo-validator="pathwaysValidator" ng-class="{'active-care-plan-width-787': IsPatientCarePlan && PathwayScreenTitle === ''}">
+        <div id="ptchart-pthwy-surveyheaders">           
+            <div class="crd-screenname-container" ng-if="!IsPatientCarePlan">
+                <div class="crd-screennameheader crd-width-70-percent">{{ PathwayScreenTitle }}</div>
+                <!--<div class="crd-width-30-percent crd-float-right">
+                    <kendo-mobile-button class="crd-float-right" id="cancel-button" ng-if="Buttons.CancelButtonVisible" ng-click="cancelPathways()">Cancel</kendo-mobile-button>
+                    <kendo-mobile-button class="crd-float-right" id="save-button" ng-if="Buttons.SaveButtonVisible" ng-click="savePathways()">Save</kendo-mobile-button>
+                </div>-->
+            </div>
+            <div id="ptchart-pthwy-headers" ng-show="!IsPatientCarePlan">
+                <div ng-repeat="headerItem in HeaderItems">
+                    <div class="crd-ptchart-pthwy-header" ng-if="headerItem.DisplayInUI == true">
+                        <span class="crd-pthwy-header-displayname">{{ headerItem.DisplayName }}:</span>
+                        <span class="crd-pthwy-header-status">{{ headerItem.HeaderDisplayValue }}</span>&nbsp;&nbsp;&nbsp;
+                    </div>
+                </div>
+            </div>
+            <div id="ptchart-dbts-scrn-dd" ng-if="DropDowns.Visible">
+                <div class="ptchart-dbts-scrn-dd-div">
+                    <label class="pthwy-header-status" style="width: 100%">Type</label>
+                    <select id="ptchart-dbts-scrn-dd-types"
+                            name="ptchart-dbts-scrn-dd-types-name"
+                            class="ptchart-dbts-scrn-dd-div-select"
+                            k-data-auto-bind="false" k-data-value-primitive="true" required validationmessage="required"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="DropDowns.Types"
+                            k-ng-model="DropDowns.SelectedType"
+                            k-on-change="onTypeChange()"></select>
+                    <span class="k-invalid-msg" style="margin-top: 5px;" data-for="ptchart-dbts-scrn-dd-types-name"></span>
+                </div>
+                <div class="ptchart-dbts-scrn-dd-div" ng-if="DropDowns.ResultsVisible">
+                    <label class="pthwy-header-status" style="width: 100%">Results</label>
+                    <select id="ptchart-dbts-scrn-dd-results"
+                            name="ptchart-dbts-scrn-dd-results-name"
+                            class="ptchart-dbts-scrn-dd-div-select"
+                            k-data-auto-bind="false" k-data-value-primitive="true" required validationmessage="required"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="DropDowns.Results"
+                            k-ng-model="DropDowns.SelectedResult"
+                            k-on-change="onResultChange()"></select>
+                    <span class="k-invalid-msg" style="margin-top: 5px;" data-for="ptchart-dbts-scrn-dd-results-name"></span>
+                </div>
+                <div class="ptchart-dbts-scrn-dd-div" ng-if="DropDowns.ResultsChildVisible">
+                    <label class="pthwy-header-status" style="width: 100%">{{DropDowns.SelectedResultChildLabel}}</label>
+                    <div id="ptchart-dbts-scrn-dd-selectedresult-list" kendo-mobile-scroller>
+                        <kendo-mobile-list-view k-data-source="DropDowns.ResultsChild">
+                            <div k-template>
+                                <div style="display: inline-block;">
+                                    <label class="crd-kendocheck-smaller">
+                                        <input type="checkbox" id="chk-{{dataItem.Value}}" value="dataItem.IsChecked"
+                                               class="k-checkbox" ng-model="dataItem.IsChecked">
+                                        <label class="k-checkbox-label" for="chk-{{dataItem.Value}}">{{ dataItem.Text }}</label>
+                                    </label>
+                                </div>
+                            </div>
+                        </kendo-mobile-list-view>
+                    </div>
+                </div>
+                <div class="ptchart-dbts-scrn-dd-div" ng-if="DropDowns.ModesVisible">
+                    <label class="pthwy-header-status" style="width: 100%">Mode</label>
+                    <select id="ptchart-dbts-scrn-dd-modes" name="ptchart-dbts-scrn-dd-modes-name" class="ptchart-dbts-scrn-dd-div-select"
+                            k-data-auto-bind="false" k-data-value-primitive="true" required validationmessage="required"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="DropDowns.Modes"
+                            k-ng-model="DropDowns.SelectedMode"></select>
+                    <span class="k-invalid-msg" data-for="ptchart-dbts-scrn-dd-modes-name"></span>
+                </div>
+                <div class="ptchart-dbts-scrn-dd-div">
+                    <label class="pthwy-header-status" style="width: 100%; display: inline-block;">Date</label>
+                    <input kendo-date-picker class="crd-datepicker" id="ptchart-dbts-scrn-dtpicker"
+                           name="ptchart-dbts-scrn-dtpicker" k-ng-model="DropDowns.SelectedDate"
+                           required validationmessage="required" />
+                    <span data-for="ptchart-dbts-scrn-dtpicker" class="k-invalid-msg"></span>
+                </div>
+                <div class="ptchart-dbts-scrn-sensory-pulse-div">
+                    <div class="ptchart-dbts-scrn-dd-div" ng-if="DropDowns.SensoryPulseVisible">
+                        <label class="pthwy-header-status" style="width: 100%">Sensory - Left Foot</label>
+                        <select id="ptchart-dbts-scrn-dd-sensory-left-foot" name="ptchart-dbts-scrn-dd-sensory-left-foot-name" class="ptchart-dbts-scrn-dd-div-select"
+                                k-data-auto-bind="false" k-data-value-primitive="true" required="" validationmessage="required"
+                                kendo-drop-down-list=""
+                                k-data-text-field="'Text'"
+                                k-data-value-field="'Value'"
+                                k-data-source="DropDowns.SensoryOptions"
+                                k-ng-model="DropDowns.SelectedSensoryLeftFoot"></select>
+                        <span class="k-invalid-msg" data-for="ptchart-dbts-scrn-dd-sensory-left-foot-name"></span>
+                    </div>
+                    <div class="ptchart-dbts-scrn-dd-div" ng-if="DropDowns.SensoryPulseVisible">
+                        <label class="pthwy-header-status" style="width: 100%">Sensory - Right Foot</label>
+                        <select id="ptchart-dbts-scrn-dd-sensory-right-foot" name="ptchart-dbts-scrn-dd-sensory-right-foot-name" class="ptchart-dbts-scrn-dd-div-select"
+                                k-data-auto-bind="false" k-data-value-primitive="true" required="" validationmessage="required"
+                                kendo-drop-down-list=""
+                                k-data-text-field="'Text'"
+                                k-data-value-field="'Value'"
+                                k-data-source="DropDowns.SensoryOptions"
+                                k-ng-model="DropDowns.SelectedSensoryRightFoot"></select>
+                        <span class="k-invalid-msg" data-for="ptchart-dbts-scrn-dd-sensory-right-foot-name"></span>
+                    </div>
+                    <div class="ptchart-dbts-scrn-dd-div" ng-if="DropDowns.SensoryPulseVisible">
+                        <label class="pthwy-header-status" style="width: 100%">Pulse - Left Foot</label>
+                        <select id="ptchart-dbts-scrn-dd-pulse-left-foot" name="ptchart-dbts-scrn-dd-pulse-left-foot-name" class="ptchart-dbts-scrn-dd-div-select"
+                                k-data-auto-bind="false" k-data-value-primitive="true" required="" validationmessage="required"
+                                kendo-drop-down-list=""
+                                k-data-text-field="'Text'"
+                                k-data-value-field="'Value'"
+                                k-data-source="DropDowns.PulseOptions"
+                                k-ng-model="DropDowns.SelectedPulseLeftFoot"></select>
+                        <span class="k-invalid-msg" data-for="ptchart-dbts-scrn-dd-pulse-left-foot-name"></span>
+                    </div>
+                    <div class="ptchart-dbts-scrn-dd-div" ng-if="DropDowns.SensoryPulseVisible">
+                        <label class="pthwy-header-status" style="width: 100%">Pulse - Right Foot</label>
+                        <select id="ptchart-dbts-scrn-dd-pulse-right-foot" name="ptchart-dbts-scrn-dd-pulse-right-foot-name" class="ptchart-dbts-scrn-dd-div-select"
+                                k-data-auto-bind="false" k-data-value-primitive="true" required="" validationmessage="required"
+                                kendo-drop-down-list=""
+                                k-data-text-field="'Text'"
+                                k-data-value-field="'Value'"
+                                k-data-source="DropDowns.PulseOptions"
+                                k-ng-model="DropDowns.SelectedPulseRightFoot"></select>
+                        <span class="k-invalid-msg" data-for="ptchart-dbts-scrn-dd-pulse-right-foot-name"></span>
+                    </div>
+                </div>
+                <div style="width: 1%; opacity: 0">"N/A"</div>
+            </div>
+
+            <div id="ptchart-pthwy-buttons" ng-if="!IsPatientCarePlan">
+                <div id="ptchart-pthwy-buttons-surveydetails">
+                    <div class="ptchart-pthwy-surveydetails-row">
+                        <kendo-mobile-button data-align="left" ng-disabled="IsFocusScriptDisabled" class="ptchart-pthwy-icon" k-align="'right'" k-rel="'popover'" href="#ptchart-pthwy-focus-popover">
+                            <span class="icon-pathway-focus"></span>
+                        </kendo-mobile-button>
+                        <label class="crd-pthwy-header-status">Pathway Focus</label>
+                    </div>
+                    <div class="ptchart-pthwy-surveydetails-row">
+                        <kendo-mobile-button data-align="left" ng-disabled="IsFocusScriptDisabled" class="ptchart-pthwy-icon" k-align="'right'" k-rel="'popover'" href="#ptchart-pthwy-carescript-popover">
+                            <span class="icon-carescript"></span>
+                        </kendo-mobile-button>
+                        <label class="crd-pthwy-header-status">Care Script</label>
+                    </div>
+                    <kendo-mobile-pop-over id="ptchart-pthwy-focus-popover" data-container="body" k-popup='{"height": "auto", "width": "15em"}'>
+                        <kendo-mobile-view ng-controller="PathwayPopoverController" class="do-not-destroy">
+                            <div id="ptchart-pthwy-focus-content" class="ptchart-pthwy-popover">{{model.PathwaysFocus}}</div>
+                        </kendo-mobile-view>
+                    </kendo-mobile-pop-over>
+                    <kendo-mobile-pop-over id="ptchart-pthwy-carescript-popover" data-container="body" k-popup='{"height": "auto", "width": "15em"}'>
+                        <kendo-mobile-view ng-controller="PathwayPopoverController" class="do-not-destroy">
+                            <div id="ptchart-pthwy-carescript-content" class="ptchart-pthwy-popover">{{model.CareScript}}</div>
+                        </kendo-mobile-view>
+                    </kendo-mobile-pop-over>
+                </div>
+
+                <div class="ptchart-pthwy-buttons-header-bg">
+                    <kendo-mobile-button id="add-button" ng-if="Buttons.AddButtonVisible" ng-click="addPathways()">Add</kendo-mobile-button>
+                    <kendo-mobile-button id="postpone-button" ng-if="Buttons.PostponeButtonVisible" ng-click="postponePathways()">Postpone</kendo-mobile-button>
+                    <kendo-mobile-button id="save-button" ng-if="Buttons.SaveButtonVisible" ng-click="savePathways()">Save</kendo-mobile-button>
+                    <kendo-mobile-button id="cancel-button" ng-if="Buttons.CancelButtonVisible" ng-click="cancelPathways()">Cancel</kendo-mobile-button>
+                </div>
+            </div>
+            <div id="ptchart-pthwy-ptcareplan" ng-if="IsPatientCarePlan">
+                <div ng-include="Global.Templates.PatientCare.Url"></div>
+            </div>
+               
+                <div ng-if="IsImmunization">
+                    <div class="ptchart-immu-scrn-dd" ng-visible="ImmunizationDD.Visible">
+                        <div class="ptchart-immu-scrn-row">
+
+                            <div class="ptchart-Immu-scrn-dd-div-select-25-per" ng-if="ImmunizationDD.Visible">
+                                <div>
+                                    <label class="pthwy-header-status">Type</label>
+                                </div>
+
+                                <div>
+                                    <select id="ptchart-immu-scrn-dd-types"
+                                            name="ptchart-immu-scrn-dd-types-name"
+                                            class="ptchart-immu-scrn-dd-div-select crd-width-100-percent"
+                                            k-data-auto-bind="false" k-data-value-primitive="true" required validationmessage="required"
+                                            kendo-drop-down-list
+                                            k-data-text-field="'Text'"
+                                            k-data-value-field="'Value'"
+                                            k-data-source="ImmunizationDD.Types"
+                                            k-ng-model="ImmunizationDD.SelectedType"
+                                            k-on-change="onImmunizationTypeChange()"></select>
+                                    <span class="k-invalid-msg" style="margin-top: 5px;" data-for="ptchart-dbts-scrn-dd-types-name"></span>
+                                </div>
+
+                            </div>
+
+
+                            <div class="ptchart-Immu-scrn-dd-div-select-25-per" ng-if="GivenDD.ResultsVisible">
+                                <div>
+                                    <label class="pthwy-header-status">Given</label>
+                                </div>
+                                <div>
+                                    <select id="ptchart-dbts-scrn-dd-results"
+                                            name="ptchart-dbts-scrn-dd-given"
+                                            class="ptchart-immu-scrn-dd-div-select crd-width-100-percent"
+                                            k-data-auto-bind="false" k-data-value-primitive="true"
+                                            kendo-drop-down-list
+                                            k-data-text-field="'Text'"
+                                            k-data-value-field="'Value'"
+                                            k-data-source="ImmunizationDD.GivenOptions"
+                                            k-ng-model="ImmunizationDD.SelectedOption"
+                                            k-on-change="onResultChange()"></select>
+                                    <span class="k-invalid-msg" style="margin-top: 5px;" data-for="ptchart-dbts-scrn-dd-given"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="ptchart-Immu-scrn-dd-div-select-25-per" ng-if="GivenDD.ResultsVisible">
+                                <div>
+                                    <label class="pthwy-header-status">Date</label>
+                                </div>
+                                <div>
+                                    <input kendo-date-picker class="crd-datepicker" id="ptchart-dbts-scrn-dtpicker"
+                                           name="ptchart-dbts-scrn-dtpicker" k-ng-model="Immunization.SelectedDate"
+                                           required validationmessage="required" />
+                                    <span data-for="ptchart-dbts-scrn-dtpicker" class="k-invalid-msg"></span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="ptchart-immu-scrn-row">
+                            <div class="ptchart-Immu-scrn-dd-div-select-25-per" ng-if="GivenDD.ResultsVisible">
+                                <div>
+                                    <label class="pthwy-header-status">Brand Name</label>
+                                </div>
+                                <div>
+                                    <select id="ptchart-dbts-scrn-dd-results"
+                                            name="ptchart-dbts-scrn-dd-brand-name"
+                                            class="ptchart-immu-scrn-dd-div-select crd-width-100-percent"
+                                            k-data-auto-bind="false" k-data-value-primitive="true" required validationmessage="required"
+                                            kendo-drop-down-list
+                                            k-data-text-field="'Text'"
+                                            k-data-value-field="'Value'"
+                                            k-data-source="BrandnameDD.Results"
+                                            k-ng-model="BrandnameDD.SelectedResult"
+                                            ng-disabled="BrandnameDD.IsDisabled"
+                                            k-on-change="onResultChange()"></select>
+                                    <span class="k-invalid-msg" style="margin-top: 5px;" data-for="ptchart-dbts-scrn-dd-brand-name"></span>
+                                </div>
+                            </div>
+                            <div class="ptchart-Immu-scrn-dd-div-select-25-per" ng-if="BrandnameDD.ResultsVisible">
+                                <div>
+                                    <label class="pthwy-header-status">Reason Not Given</label>
+                                </div>
+                                <div>
+                                    <select id="ptchart-dbts-scrn-dd-results"
+                                            name="ptchart-dbts-scrn-dd-reason-not-given"
+                                            class="ptchart-immu-scrn-dd-div-select crd-width-100-percent"
+                                            k-data-auto-bind="false" k-data-value-primitive="true" required validationmessage="required"
+                                            kendo-drop-down-list
+                                            k-data-text-field="'Text'"
+                                            k-data-value-field="'Value'"
+                                            k-data-source="ReasonNotGiven.Reasons"
+                                            k-ng-model="ReasonNotGiven.SelectedReason"
+                                            ng-disabled="ImmunizationDD.bIsGivenNo"
+                                            k-on-change="onResultChange()"></select>
+                                    <span class="k-invalid-msg" style="margin-top: 5px;" data-for="ptchart-dbts-scrn-dd-reason-not-given"></span>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="ptchart-immu-scrn-row">
+                            <div class="ptchart-Immu-scrn-dd-div-select-25-per" ng-if="BrandNameOther.Visible">
+                                <div>
+                                    <label class="pthwy-header-status">Brand Detail</label>
+                                </div>
+                                <div>
+                                    <input id="immu-other" maxlength="50" name="immu-other" type="text" class="k-textbox crd-width-100-percent" placeholder="Other" required
+                                           validationmessage="required" />
+                                </div>
+                            </div>
+
+                            <div class="ptchart-Immu-scrn-dd-div-select-25-per" ng-if="IsMedicalCnd.Visible">
+                                <div>
+                                    <label class="pthwy-header-status">Medical Contr. Detail</label>
+                                </div>
+                                <div>
+                                    <input id="immu-reason-not-given-mc" name="immu-reason-not-given-mc" type="text" class="k-textbox crd-width-100-percent" placeholder="Medical Contr. Detail" required
+                                           validationmessage="required" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="ptchart-immu-scrn-cmt">
+                        <div id="ptchart-immu-scrn-cmt1">
+                            Enter any details to assist in verifying administration of vaccination.
+                        </div>
+                        <div class="crd-width-100-percent">
+                            <div id="ptchart-immu-scrn-cmt2"> Notes for VHN Verification Task</div>
+                            <div>
+                                <textarea id="ptchart-pthwy-comments-cust" ng-disabled="VHNVerificationTaskDisabled" rows="4" cols="60" value=""></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <div id="ptchart-pthwy-surveydetails">
+        <kendo-mobile-list-view id="pathwaysList" class="ptchart-pthwy-listview">
+            <div ng-if="model.IsESRDTreatmentOptionsScreening===true" id="kidneysmart_url">
+                <div class="pathway-externallink"><a ng-click="openLink('http://www.kidneysupportivecare.org/Home.aspx')">http://www.KidneySmart.org</a></div>
+                <div class="pathway-externallink"><a ng-click="openLink('http://homedialysis.org/files/pros/MatchD2009.pdf')">Match-D</a></div>
+            </div>
+            <div ng-repeat="surveyDetail in model.SurveyDetails.data()">
+                <kendo-mobile-list-view ng-if="surveyDetail.QuestionGroups != null" id="surveydetails-{{surveyDetail.SurveyUID}}">
+                    <div ng-repeat="questionGroup in surveyDetail.QuestionGroups">
+                        <span ng-if="(questionGroup.Questions !== null && !questionGroup.IsDefault)">{{questionGroup.Description}}</span>
+                        <kendo-mobile-list-view ng-if="questionGroup.Questions !== null" id="questiongroup-{{questionGroup.QuestionGroupUID}}">
+                            <div id="question-{{question.UID}}-{{question.Order}}" class="rcmdb-ptchart-pthwy-question" ng-show="{{question.IsQuestionVisible}}" ng-repeat="question in questionGroup.Questions">
+                                <div style="width: 50%; float: left">
+                                    <div id="question-text-{{question.UID}}-{{question.Order}}" class="ptchart-pthwy-question-display">
+                                        <label class="ptchart-pthwy-question-label">{{question.DisplayOrder}}</label><label class="ptchart-pthwy-question-label">.</label><label class="ptchart-pthwy-question-text-lbl">{{question.Text}}</label>
+                                    </div>
+                                </div>
+
+                                <div style="width: 50%; float: left;" ng-if="question.Options !== null && question.Options.length > 0">
+                                    <div ng-if="!question.IsMultiple && question.Options.length <= 3" class="crd-displayinlineleft">
+                                        <div id="question-options-{{question.UID}}-{{question.Order}}" ng-repeat="option in question.Options" class="question-options-lessthan-three crd-rnd-radio-big crd-displayinlineleft">
+                                            <label class="crd-ptchart-pthwy-radio-lessthan-three-lbl">
+                                                <input id="{{option.UID}}-{{option.OptionOrder}}" type="radio" name="{{option.QuestionUID}}" class="crd-ptchart-pthwy-question-radio" value="{{option.OptionOrder}}"
+                                                       ng-disabled="option.IsOptionDisabled" ng-model="option.SelectedIndex" ng-change="onGroupRadioChecked(option.QuestionUID, option.UID, option.OptionOrder)" />
+                                                <i></i>
+                                            </label>
+                                            <label class="question-options-lessthan-three-desc" for="{{option.UID}}-{{option.OptionOrder}}">{{option.Description}}</label>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!question.IsMultiple && question.Options.length <= 3" class="question-options-lessthan-three-desc-div">
+                                        <div ng-repeat="option in question.Options">
+                                                <div ng-if="option.IsSelected && option.FreeFormTemplate.DataTypeCode !== 'DATE'" ng-disabled="option.IsRadioGroupDisabled" class="ptchart-pthwy-freeform">
+                                                    <span ng-if="option.FreeFormTemplate.HasFreeForm" class="pathwayView-option-date-spam">{{option.FreeFormTemplate.PreText}}</span>
+                                                <input kendo-numeric-text-box ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'DCML' && option.IsSelected && option.FreeFormTemplate.IsRequired)"
+                                                       id="FreeFormTemplate-{{option.UID}}" name="FreeFormTemplate-{{option.UID}}" data-pretext="{{option.FreeFormTemplate.PreText}}"
+                                                       class="pthwy-numericbox" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled" k-min="{{option.FreeFormTemplate.MinValue}}" k-max="{{option.FreeFormTemplate.MaxValue}}"
+                                                       required k-format="'n0'" k-spinners="false"
+                                                       validationmessage="{{option.FreeFormTemplate.PreText}} should be more than {{option.FreeFormTemplate.MinValue}} and less than {{option.FreeFormTemplate.MaxValue}}." />
+                                                <input kendo-numeric-text-box ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'DCML' && option.IsSelected && !option.FreeFormTemplate.IsRequired)"
+                                                       id="FreeFormTemplate-{{option.UID}}" name="FreeFormTemplate-{{option.UID}}" data-pretext="{{option.FreeFormTemplate.PreText}}"
+                                                       class="pthwy-numericbox" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled "
+                                                       k-min="{{option.FreeFormTemplate.MinValue}}" k-max="{{option.FreeFormTemplate.MaxValue}}" k-format="'n0'" k-spinners="false"
+                                                       validationmessage="{{option.FreeFormTemplate.PreText}} should be more than {{option.FreeFormTemplate.MinValue}} and less than {{option.FreeFormTemplate.MaxValue}}." />
+                                                <input ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'TXT' && option.IsSelected && option.FreeFormTemplate.IsRequired)" type="text"
+                                                       id="FreeFormTemplate-{{option.UID}}" name="FreeFormTemplate-{{option.UID}}"
+                                                       class="k-textbox ptchart-pthwy-freeform-textbox" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled" required validationmessage="required" ng-change="IsPatientCarePlan && onCarePlanSurveyUIChangedFunction()" />
+                                                <input ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'TXT' && option.IsSelected && !option.FreeFormTemplate.IsRequired)" type="text"
+                                                       id="FreeFormTemplate-{{option.UID}}" name="FreeFormTemplate-{{option.UID}}"
+                                                       class="k-textbox ptchart-pthwy-freeform-textbox" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled" style="margin-left: 16px;" />
+                                                <span ng-if="option.FreeFormTemplate.HasFreeForm">{{option.FreeFormTemplate.PostText}}</span>
+                                                <span ng-if="option.FreeFormTemplate.HasFreeForm" class="k-invalid-msg" data-for="FreeFormTemplate-{{option.UID}}"></span>
+                                            </div>
+                                                <div ng-if="option.IsSelected && option.FreeFormTemplate.DataTypeCode === 'DATE' && isESCOPatient" ng-disabled="option.IsRadioGroupDisabled" class="ptchart-pthwy-freeform">
+                                                    <span ng-if="option.FreeFormTemplate.HasFreeForm" class="pathwayView-option-date-spam">{{option.FreeFormTemplate.PreText}}</span>
+                                                    <input kendo-date-picker ng-if="(isESCOPatient && option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'DATE' && option.IsSelected && option.FreeFormTemplate.IsRequired)"
+                                                           id="FreeFormTemplate-{{option.UID}}" name="FreeFormTemplate-{{option.UID}}" data-pretext="{{option.FreeFormTemplate.PreText}}"
+                                                           class="crd-datepicker pathway-date-width-100px" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled"
+                                                           data-datevalid-pathwaytab="date is not valid" data-disdate-msg="required" 
+                                                           k-format="'MM/dd/yyyy'" required validationmessage=" required" k-max="MaxDate" k-rebind="MaxDate" />
+                                                    <input kendo-date-picker ng-if="(isESCOPatient && option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'DATE' && option.IsSelected && !option.FreeFormTemplate.IsRequired)"
+                                                           id="FreeFormTemplate-{{option.UID}}" name="FreeFormTemplate-{{option.UID}}" data-pretext="{{option.FreeFormTemplate.PreText}}"
+                                                           class="crd-datepicker pathway-date-width-100px" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled"
+                                                           data-datevalid-pathwaytab="date is not valid" data-disdate-msg="required" 
+                                                           k-format="'MM/dd/yyyy'" k-max=" maxdate" k-rebind="MaxDate" />
+                                                    <span ng-if="option.FreeFormTemplate.HasFreeForm">{{option.FreeFormTemplate.PostText}}</span>
+                                                    <span ng-if="option.FreeFormTemplate.HasFreeForm" class="k-invalid-msg" data-for="FreeFormTemplate-{{option.UID}}"></span>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="!question.IsMultiple && question.Options.length > 3" class="question-options-morethan-three">
+                                        <div id="question-options-{{question.UID}}-{{question.Order}}">
+                                            <div ng-repeat="option in question.Options">
+                                                <div class="crd-rnd-radio-big question-options-morethan-three-margin">
+                                                    <label class="ptchart-pthwy-question-options-morethan-three-lbl">
+                                                        <input id="{{option.UID}}-{{option.OptionOrder}}" type="radio" name="{{option.QuestionUID}}" class="crd-ptchart-pthwy-question-radio" value="{{option.OptionOrder}}"
+                                                               ng-disabled="option.IsOptionDisabled" ng-model="option.SelectedIndex" ng-change="onGroupRadioChecked(option.QuestionUID, option.UID, option.OptionOrder)" />
+                                                        <i></i>
+                                                    </label>
+                                                    <label class="question-options-morethan-three-desc" for="{{option.UID}}-{{option.OptionOrder}}">{{option.Description}}</label>
+                                                </div>
+
+                                                <div ng-if="option.IsSelected && option.FreeFormTemplate.HasFreeForm" ng-disabled="{{option.IsRadioGroupDisabled}}" class="ptchart-pthwy-freeform"
+                                                     style="display: -webkit-box;margin-left:5px;float:left;">
+                                                    <span ng-if="option.FreeFormTemplate.HasFreeForm">{{option.FreeFormTemplate.PreText}}</span>
+                                                    <input ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'DCML' && option.IsSelected && option.FreeFormTemplate.IsRequired)"
+                                                           class="k-textbox" type="number" name="FreeFormTemplate-{{option.UID}}" data-pretext="{{option.FreeFormTemplate.PreText}}"
+                                                           value="{{option.FreeFormResponse}}" ng-disabled="{{option.IsOptionDisabled}}"
+                                                           min="{{option.FreeFormTemplate.MinValue}}" max="{{option.FreeFormTemplate.MaxValue}}"
+                                                           required ng-model="option.FreeFormResponse"
+                                                           validationmessage="{{option.FreeFormTemplate.PreText}} should be more than {{option.FreeFormTemplate.MinValue}} and less than {{option.FreeFormTemplate.MaxValue}}." />
+                                                    <input ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'DCML' && option.IsSelected && !option.FreeFormTemplate.IsRequired)"
+                                                           type="number" name="FreeFormTemplate-{{option.UID}}" data-pretext="{{option.FreeFormTemplate.PreText}}"
+                                                           class="k-textbox" value="{{option.FreeFormResponse}}" ng-disabled="{{option.IsOptionDisabled}}"
+                                                           min="{{option.FreeFormTemplate.MinValue}}" max="{{option.FreeFormTemplate.MaxValue}}" ng-model="option.FreeFormResponse" />
+                                                    <input ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'TXT' && option.IsSelected && option.FreeFormTemplate.IsRequired)"
+                                                           type="text" name="FreeFormTemplate-{{option.UID}}"
+                                                           class="k-textbox" value="{{option.FreeFormResponse}}" ng-model="option.FreeFormResponse" ng-disabled="{{option.IsOptionDisabled}}"
+                                                           required validationmessage="required" />
+                                                    <input ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'TXT' && option.IsSelected && !option.FreeFormTemplate.IsRequired)"
+                                                           type="text" name="FreeFormTemplate-{{option.UID}}"
+                                                           class="k-textbox" value="{{option.FreeFormResponse}}" ng-model="option.FreeFormResponse" ng-disabled="{{option.IsOptionDisabled}}" />
+                                                    <span>{{option.FreeFormTemplate.PostText}}</span>
+                                                    <span class="k-invalid-msg" data-for="FreeFormTemplate-{{option.UID}}"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div ng-if="question.IsMultiple" style="float: left" id="question-options-{{question.UID}}-{{question.Order}}">
+                                        <div id="question-options-{{question.UID}}-{{question.Order}}">
+                                            <div ng-repeat="option in question.Options">
+                                                <div id="question-options-{{option.QuestionUID}}-{{option.UID}}-{{option.QuestionOrder}}" class="question-options question-options-{{option.QuestionUID}}-{{option.QuestionOrder}}">
+                                                    <kendo-mobile-switch class="question-options-multiple" id="question-options-switch-{{option.QuestionUID}}-{{option.UID}}-{{option.QuestionOrder}}"
+                                                                         k-on-change="onSwitchChange(kendoEvent)"
+                                                                         value="{{option.IsSelected}}" ng-disabled="option.IsOptionDisabled"
+                                                                         k-ng-model="option.IsSelected" k-on-label="'Yes'" k-off-label="'No'">
+                                                    </kendo-mobile-switch>
+                                                    <span class="question-options-switch-description">{{option.Description}}</span>
+                                                    <div ng-if="option.IsSelected" class="ptchart-pthwy-freeform" style="display: -webkit-box; margin-left:15px;">
+                                                        <span ng-if="option.FreeFormTemplate.HasFreeForm">{{option.FreeFormTemplate.PreText}}</span>
+                                                        <input ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'DCML' && option.IsSelected && option.FreeFormTemplate.IsRequired)"
+                                                               type="number" name="FreeFormTemplate-{{option.UID}}" data-pretext="{{option.FreeFormTemplate.PreText}}"
+                                                               class="k-textbox" value="{{option.FreeFormResponse}}" ng-model="option.FreeFormResponse" ng-disabled="{{option.IsOptionDisabled}}"
+                                                               min="{{option.FreeFormTemplate.MinValue}}" max="{{option.FreeFormTemplate.MaxValue}}" required
+                                                               validationmessage="{{option.FreeFormTemplate.PreText}} should be more than {{option.FreeFormTemplate.MinValue}} and less than {{option.FreeFormTemplate.MaxValue}}." />
+                                                        <input ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'DCML' && option.IsSelected && !option.FreeFormTemplate.IsRequired)"
+                                                               type="number" name="FreeFormTemplate-{{option.UID}}" data-pretext="{{option.FreeFormTemplate.PreText}}"
+                                                               class="k-textbox" value="{{option.FreeFormResponse}}" ng-model="option.FreeFormResponse" ng-disabled="{{option.IsOptionDisabled}}"
+                                                               min="{{option.FreeFormTemplate.MinValue}}" max="{{option.FreeFormTemplate.MaxValue}}" />
+                                                        <input ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'TXT' && option.IsSelected && option.FreeFormTemplate.IsRequired)"
+                                                               type="text" name="FreeFormTemplate-{{option.UID}}"
+                                                               class="k-textbox" value="{{option.FreeFormResponse}}" ng-model="option.FreeFormResponse" ng-disabled="{{option.IsOptionDisabled}}"
+                                                               required validationmessage="required" />
+                                                        <input ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'TXT' && option.IsSelected && !option.FreeFormTemplate.IsRequired)"
+                                                               type="text" name="FreeFormTemplate-{{option.UID}}"
+                                                               class="k-textbox" value="{{option.FreeFormResponse}}" ng-model="option.FreeFormResponse" ng-disabled="{{option.IsOptionDisabled}}" />
+                                                        <span>{{option.FreeFormTemplate.PostText}}</span>
+                                                        <span class="k-invalid-msg" data-for="FreeFormTemplate-{{option.UID}}"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </kendo-mobile-list-view>
+                    </div>
+                </kendo-mobile-list-view>
+            </div>
+        </kendo-mobile-list-view>
+
+        <!--Work Around: Have to put below comment section outside as it was not working with template -->
+        <div id="ptchart-pthwy-surveydetails-comments" ng-show="IsSurveydetailsCommentsVisible">
+            <div id="ptchart-pthwy-surveydetails-comments-div1"><label class="rcmdb-ptchart-pthwy-question-display">Comments</label></div>
+            <div id="ptchart-pthwy-surveydetails-comments-div2">
+                <div class="ptchart-pthwy-check-comment">
+                    <textarea id="ptchart-pthwy-comments" class="ptchart-pthwy-comments" ng-disabled="IsSurveydetailsCommentDisabled"
+                              rows="5" cols="60" ng-blur="surveyCommentsBlur()" ng-model="model.SurveyDetails.data()[0].SurveyComments"
+                              value="{{ model.SurveyDetails.data()[0].SurveyComments }}"></textarea>
+                </div>
+                <div class="ptchart-pthwy-check-li">
+                    <div class="ptchart-pthwy-check crd-kendocheck-big">
+                        <input type="checkbox" id="ptchart-pthwy-patient-comment" ng-model="model.SurveyDetails.data()[0].IncludePatientCommentYesNo" class="k-checkbox"
+                               ng-disabled="IsSurveydetailsCommentCheckBoxDisabled" ng-change="HasChanges()">
+                        <label class="k-checkbox-label" for="ptchart-pthwy-patient-comment"><span>Include on Patient ICR Report</span></label>
+                    </div>
+                    <div class="ptchart-pthwy-check crd-kendocheck-big">
+                        <input type="checkbox" id="ptchart-pthwy-provider-comment" ng-model="model.SurveyDetails.data()[0].IncludeProviderCommentYesNo" class="k-checkbox"
+                               ng-disabled="IsSurveydetailsCommentCheckBoxDisabled" ng-change="HasChanges()">
+                        <label class="k-checkbox-label" for="ptchart-pthwy-provider-comment"><span>Include on Provider ICR Report</span></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

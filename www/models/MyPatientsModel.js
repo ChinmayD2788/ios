@@ -1,0 +1,19 @@
+﻿Rounding.Models.MyPatients = function () {
+    var self = this;
+    self.Patients = [];
+    self.DialysisCenters = [];
+    self.SelectDialysisCenter = '';
+    self.PatientFilters = [];
+    self.SortBy = [{ Text: "SIG", IsChecked: false }, { Text: "Shift", IsChecked: false }, { Text: "Schedule", IsChecked: false}];
+    self.LastSortedBy = '';
+    self.AllPatients = [];
+    self.PatientsAlerts = [];
+    self.Total = '';
+    self.AnyAlerts = false;
+    self.ActionItemsShow = false;
+    self.SelectedStatusCategory = '';
+    self.SelectedFlagCategory = '';
+    self.SelectedSigCategory = '';
+    self.SelectedShiftCategory = '';
+    self.SelectedScheduleCategory = '';
+};

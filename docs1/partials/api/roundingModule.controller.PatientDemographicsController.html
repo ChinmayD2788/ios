@@ -1,0 +1,239 @@
+<h1><code ng:non-bindable="">PatientDemographicsController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><ul>
+<li>Controller for PCM Demographics View(RCM/PRL users).</li>
+<li>VersionOne Requirements - <a href="https://www13.v1host.com/DaVitaInc/Task.mvc/Summary?oidToken=Task%3A226733">TK-21707</a></li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_assignedidentifiers">assignedIdentifiers(Val)</h3>
+<div class="assignedidentifiers"><div class="assignedidentifiers-page"><p>Retrieve information on Member Identifiers.</p>
+</div><h5 id="methods_assignedidentifiers_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>Val</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="assignedidentifiers-page"><p>Identifier Details</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getaddresses">getAddresses(addresses)</h3>
+<div class="getaddresses"><div class="getaddresses-page"><p>Get address of the selected patient.</p>
+</div><h5 id="methods_getaddresses_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>addresses</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="getaddresses-page"><p>Address of the selected patient</p>
+</div></td></tr></tbody></table><h5 id="methods_getaddresses_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getaddresses-page"><p>mailingAddress
+Addresses of the selected patient.</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getcareteam">getCareTeam(careteam, showtop3)</h3>
+<div class="getcareteam"><div class="getcareteam-page"><p>CareTeam data for selected patient.</p>
+</div><h5 id="methods_getcareteam_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>careteam</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="getcareteam-page"><p>List of careteam.</p>
+</div></td></tr><tr><td>showtop3</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="getcareteam-page"><p>Boolean value to display careteam as a pop up.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getcomorbids">getComorbids(comorbids, showtop3)</h3>
+<div class="getcomorbids"><div class="getcomorbids-page"><p>Get details for patient&#39;s comorbids.</p>
+</div><h5 id="methods_getcomorbids_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>comorbids</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="getcomorbids-page"><p>List of comorbids</p>
+</div></td></tr><tr><td>showtop3</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="getcomorbids-page"><p>Boolean value to display comorbids as a pop up. </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getcomplaints">getComplaints(complaints, showtop3)</h3>
+<div class="getcomplaints"><div class="getcomplaints-page"><p>Complaints data for selected patient.</p>
+</div><h5 id="methods_getcomplaints_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>complaints</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="getcomplaints-page"><p>List of complaints.</p>
+</div></td></tr><tr><td>showtop3</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="getcomplaints-page"><p>Boolean value to display complaints as a pop up.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getphonedetails">getPhoneDetails(phones)</h3>
+<div class="getphonedetails"><div class="getphonedetails-page"><p>Retrieve patient&#39;s phone information. </p>
+</div><h5 id="methods_getphonedetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>phones</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="getphonedetails-page"><p>Phone Details</p>
+</div></td></tr></tbody></table><h5 id="methods_getphonedetails_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getphonedetails-page"><p>phone
+Phone Details of the patient.</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_setselectedpatientaddress">setSelectedPatientAddress(addresses)</h3>
+<div class="setselectedpatientaddress"><div class="setselectedpatientaddress-page"><p>Set patient address on a global scope. This address will be used for Placements screen.</p>
+</div><h5 id="methods_setselectedpatientaddress_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>addresses</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="setselectedpatientaddress-page"><p>Patient addresses</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopepatientdemographicsmodel">$scope.PatientDemographicsModel</h3>
+<div class="$scopepatientdemographicsmodel"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient Demographics Details.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientgender">$scope.patientGender</h3>
+<div class="$scopepatientgender"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Gender of the patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientmaritalstatus">$scope.patientMaritalStatus</h3>
+<div class="$scopepatientmaritalstatus"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Marital Status of the patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientrace">$scope.patientRace</h3>
+<div class="$scopepatientrace"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Race of the patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientlangauge">$scope.patientLangauge</h3>
+<div class="$scopepatientlangauge"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Langauge of the patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientemailaddress">$scope.patientEmailAddress</h3>
+<div class="$scopepatientemailaddress"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Email address of the patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientcontactpreferredtime">$scope.patientContactPreferredTime</h3>
+<div class="$scopepatientcontactpreferredtime"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Preffered time to contact.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientreligion">$scope.patientReligion</h3>
+<div class="$scopepatientreligion"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Religion of the patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientworkstatus">$scope.patientWorkStatus</h3>
+<div class="$scopepatientworkstatus"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Work Status of the patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientdateoffirstdialysis">$scope.patientDateOfFirstDialysis</h3>
+<div class="$scopepatientdateoffirstdialysis"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Date of the first dialysis of the patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientcontactpreferredday">$scope.patientContactPreferredDay</h3>
+<div class="$scopepatientcontactpreferredday"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Preffered day to contact the patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatienthearingimpairment">$scope.patientHearingImpairment</h3>
+<div class="$scopepatienthearingimpairment"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Hearing Impairment status of the patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientvisionimpairment">$scope.patientVisionImpairment</h3>
+<div class="$scopepatientvisionimpairment"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Vision Impairment status of the patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientcognitiveimpairment">$scope.patientCognitiveImpairment</h3>
+<div class="$scopepatientcognitiveimpairment"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Cognitive Imapirment status of the patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientishavingdiffwalking">$scope.patientIsHavingDiffWalking</h3>
+<div class="$scopepatientishavingdiffwalking"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Walking Difficulty for patient</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientishavingstairshome">$scope.patientIsHavingStairsHome</h3>
+<div class="$scopepatientishavingstairshome"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Difficulty walking stairs for patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientismcotheryn">$scope.patientIsMCOtherYN</h3>
+<div class="$scopepatientismcotheryn"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Other Impairments of the patient.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemedicalrecordnumber">$scope.medicalRecordNumber</h3>
+<div class="$scopemedicalrecordnumber"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s medical record number.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopedavitampi_id">$scope.davitaMPI_ID</h3>
+<div class="$scopedavitampi_id"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patients Davita MPI ID.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemedicareid">$scope.medicareID</h3>
+<div class="$scopemedicareid"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s medicare ID.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepayergroupno">$scope.payerGroupNo</h3>
+<div class="$scopepayergroupno"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s Payer Group no.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopespecialpayorid">$scope.specialPayorID</h3>
+<div class="$scopespecialpayorid"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s special Payer ID.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopessn">$scope.ssn</h3>
+<div class="$scopessn"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s Social Security Number (SSN).</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeusi">$scope.usi</h3>
+<div class="$scopeusi"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s USI number.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientmemberid">$scope.patientMemberID</h3>
+<div class="$scopepatientmemberid"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s ID (MEM ID).</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientdemographicsmodeldob">$scope.PatientDemographicsModel.dob</h3>
+<div class="$scopepatientdemographicsmodeldob"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s DOB.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientdemographicsmodelsig">$scope.PatientDemographicsModel.sig</h3>
+<div class="$scopepatientdemographicsmodelsig"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s SIG.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientdemographicsmodelmemid">$scope.PatientDemographicsModel.memid</h3>
+<div class="$scopepatientdemographicsmodelmemid"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s ID (MEM ID).</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientdemographicsmodelphone">$scope.PatientDemographicsModel.phone</h3>
+<div class="$scopepatientdemographicsmodelphone"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Calls          getPhoneDetails function to acquire patient&#39;s phone details.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientdemographicsmodelmailingaddress">$scope.PatientDemographicsModel.mailingAddress</h3>
+<div class="$scopepatientdemographicsmodelmailingaddress"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Calls getAddresses function to acquire patient&#39;s mailing address.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientdemographicsmodelcomorbidstop3">$scope.PatientDemographicsModel.comorbidstop3</h3>
+<div class="$scopepatientdemographicsmodelcomorbidstop3"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Calls getComorbids function to acquire patient&#39;s comorbids details and displays first 3 records on demographics ribbon.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientdemographicsmodelcomplaintstop3">$scope.PatientDemographicsModel.complaintstop3</h3>
+<div class="$scopepatientdemographicsmodelcomplaintstop3"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Calls getComplaints function to acquire patient&#39;s complaints details and displays first 3 records on demographics ribbon.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientdemographicsmodelcareteamtop3">$scope.PatientDemographicsModel.careteamtop3</h3>
+<div class="$scopepatientdemographicsmodelcareteamtop3"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Calls getCareTeam function to acquire patient&#39;s careteam details and displays first 3 records on demographics ribbon.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientdemographicsmodelcomorbidsother">$scope.PatientDemographicsModel.comorbidsother</h3>
+<div class="$scopepatientdemographicsmodelcomorbidsother"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Calls getComorbids function to acquire patient&#39;s comorbids details. If more than 3 records are present, displays a popover containing the rest</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientdemographicsmodelcomplaintsother">$scope.PatientDemographicsModel.complaintsother</h3>
+<div class="$scopepatientdemographicsmodelcomplaintsother"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Calls getComplaints function to acquire patient&#39;s complaints details. If more than 3 records are present, displays a popover containing the rest</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientdemographicsmodelcareteamother">$scope.PatientDemographicsModel.careteamother</h3>
+<div class="$scopepatientdemographicsmodelcareteamother"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Calls getCareTeam function to acquire patient&#39;s careteam details. If more than 3 records are present, displays a popover containing the rest</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopepatientdemographicsmodelidentifiers">$scope.PatientDemographicsModel.identifiers</h3>
+<div class="$scopepatientdemographicsmodelidentifiers"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Calls assignedIdentifiers function to acquire patients identifiers.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopelandlinephoneno">$scope.landlinePhoneNo</h3>
+<div class="$scopelandlinephoneno"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s landline number.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemobilephoneno">$scope.mobilePhoneNo</h3>
+<div class="$scopemobilephoneno"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s mobile number.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopefaxnumber">$scope.faxNumber</h3>
+<div class="$scopefaxnumber"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s fax number.</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeworkphoneno">$scope.workPhoneNo</h3>
+<div class="$scopeworkphoneno"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s work phone number.</p>
+</div></div>
+</li>
+<li><h3 id="properties_phoneprimaryphone">phone.PrimaryPhone</h3>
+<div class="phoneprimaryphone"><div class="roundingmodule-controller-page roundingmodule-controller-patientdemographicscontroller-page"><p>Patient&#39;s Primary phone number to contact. If Phone.IsPrimary = true, attaches a &quot;(P)&quot; value next to the phone number.</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_updatedemographicsdetails">updateDemographicsDetails</h3>
+<div class="updatedemographicsdetails"><div class="updatedemographicsdetails-page"><p>Subscribe <i> updateDemograpicsDetails</i> to retrieve Patient Details.</p>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_updatedemographicsdetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>event</td><td><a href="" class="label type-hint type-hint-event">event</a></td><td><div class="updatedemographicsdetails-page"><p>subscribe event</p>
+</div></td></tr><tr><td>arg</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="updatedemographicsdetails-page"><p>Patient details for demographics </p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

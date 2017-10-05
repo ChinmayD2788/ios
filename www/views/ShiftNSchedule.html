@@ -1,0 +1,55 @@
+﻿<kendo-mobile-view ng-controller="ShiftNScheduleController" class="crd-view">
+	<div class="crd-screenname-container">
+		<div class="dss-header">		
+			<div class="dss-header-label crd-screennameheader">
+				Dialysis Schedule and Shift
+			</div>
+        
+			<div class="dss-header-shift">
+				<select kendo-drop-down-list
+						k-data-text-field="'Text'"
+						k-data-value-field="'Value'"
+						k-data-source="shifts"
+						style="width: 160px"></select>
+			</div>
+		</div>
+		<div class="day-row-container">
+			<div class="days-container" ng-repeat="x in WeekDays">
+				<a class="{{x[1]? 'schedule-days scheduled' : 'schedule-days'}}" kendo-mobile-button data-day="{{x[0]}}" ng-click="editDaySchedule(x[0], $event)">
+						{{toUpper(x[0])}}
+				</a>
+				<span class="schedule-time" data-day="{{x[0]}}">{{getScheduleTimes(x[0])}}</span>
+			</div>
+		</div>
+		<div class="schedule-edit" style="display: none;">
+			<div class="popup-arrow">
+				&nbsp;
+			</div>
+			<div class="schedule-edit-container vhnrounding-view">
+				<div class="schedule-edit-fields schedule-edit-timepicker">
+					<div class="schedule-edit-lbl">
+						Start Time
+					</div>
+					<div class="schedule-edit-input">
+						<input data-role="timepicker" id="starttime" data-bind="value: StartTime,
+						  events: { change: StartTimeChange }" />
+					</div>
+				</div>
+				<div class="schedule-edit-fields schedule-edit-timepicker">
+					<div class="schedule-edit-lbl">
+						End Time
+					</div>
+					<div class="schedule-edit-input">
+						<input data-role="timepicker" id="endtime" data-bind="value: EndTime,
+						  events: { change: EndTimeChange }" />
+					</div>
+				</div>
+				<div class="schedule-edit-fields schedule-edit-btns">
+				    <kendo-mobile-button k-on-click="saveSchedule()">Save</kendo-mobile-button>
+					<kendo-mobile-button k-on-click="cancelEditDaySchedule()">Cancel</kendo-mobile-button>
+					<kendo-mobile-button k-on-click="clearDaySchedule()" >Clear Time</kendo-mobile-button>
+				</div>
+			</div>
+		</div>
+	</div> 
+     </kendo-mobile-view>

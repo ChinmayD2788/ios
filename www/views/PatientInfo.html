@@ -1,0 +1,474 @@
+﻿<kendo-mobile-view class="crd-view" ng-controller="PatientDemographicsController" id="patient-demographics-id">
+    <!-- Patient Details comes from template -->
+    <div id="ptchart-ptdetails-container" ng-include="Global.Templates.PatientDetails.Url">
+    </div>
+    <!--<div class="crd-screennameheader" ng-if="Global.Objects.IsRCMPRL">Demographics</div>-->
+    <div id="demographics-container">
+        <div id="demographics-ptchart-ptdetails-container">
+            <div class="crd-screennameheader padding-5">Demographics</div>
+            <div class="ptchart-pthwy-buttons-header-bg">
+                <kendo-mobile-button id="Edit-button" ng-show="!IsSaveDemographicsVisible" ng-click="editDemographics()">Edit</kendo-mobile-button>
+                <kendo-mobile-button id="save-button" ng-show="IsSaveDemographicsVisible" ng-click="saveDemographics()">Save</kendo-mobile-button>
+                <kendo-mobile-button id="cancel-button" ng-show="IsSaveDemographicsVisible" ng-click="getDemographics()">Cancel</kendo-mobile-button>
+            </div>
+            <div kendo-tab-strip id="demographics-tab-strip2">
+                <!-- tab list -->
+                <ul>
+                    <li class="crd-tabstrip-header-tabs k-state-active">Mailing</li>
+                    <li class="crd-tabstrip-header-tabs">Home</li>
+                    <li class="crd-tabstrip-header-tabs">Temporary</li>
+                </ul>
+                <!-- Mailing Tab -->
+                <div id="demographics-pts-mailing-address" ng-disabled="!IsSaveDemographicsVisible">
+                    <div class="crd-floatleft">
+                        <div class="crd-width-66-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">Address</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input type="text" class="k-textbox crd-width-96-percent crd-textbox" ng-disabled="!IsSaveDemographicsVisible"
+                                       ng-model="EditDemographics.mailingAddress.address1"/>
+                            </span>
+                        </div>
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">Apt/Suite</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input type="text" class="k-textbox crd-width-95-percent crd-textbox" ng-disabled="!IsSaveDemographicsVisible"
+                                       ng-model="EditDemographics.mailingAddress.address2"/>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="crd-floatleft">
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">City</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input type="text" class="k-textbox crd-width-90-percent crd-textbox" ng-disabled="!IsSaveDemographicsVisible"
+                                       ng-model="EditDemographics.mailingAddress.city" />
+                            </span>
+                        </div>
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">State</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <select id="ptinfo-demographics-scrn-dd-state" ng-disabled="!IsSaveDemographicsVisible"
+                                        name="ptinfo-demographics-scrn-dd-state"
+                                        class="ptchart-immu-scrn-dd-div-select crd-width-95-percent"
+                                        k-data-auto-bind="false" k-data-value-primitive="true"
+                                        kendo-drop-down-list
+                                        k-data-text-field="'Text'"
+                                        k-data-value-field="'Value'"
+                                        k-data-source="EditDemographics.States"
+                                        k-ng-model="EditDemographics.mailingAddress.selectedState"
+                                        k-on-change="onResultChange()"></select>
+                            </span>
+                        </div>
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">Zip</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input class="k-textbox crd-width-95-percent crd-textbox" ng-disabled="!IsSaveDemographicsVisible"
+                                       ng-model="EditDemographics.mailingAddress.zip"
+                                       kendo-masked-text-box k-mask="'00000'" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="crd-floatleft crd-kendocheck-small margin-bottom-10">
+                        <input id="ptinfo-copyto-home-address" type="checkbox" ng-disabled="!IsSaveDemographicsVisible" class="k-checkbox"
+                               value="CopyToHomeAddress" ng-model="EditDemographics.mailingAddress.copyToHomeAddress" />
+                        <label for="ptinfo-copyto-home-address" class="k-checkbox-label">
+                            <span>Copy to Home Address</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Home Tab -->
+                <div id="demographics-pts-home-address" ng-disabled="!IsSaveDemographicsVisible">
+                    <div class="crd-floatleft">
+                        <div class="crd-width-66-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">Address</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input type="text" class="k-textbox crd-width-95-percent crd-textbox" ng-disabled="!IsSaveDemographicsVisible"
+                                       ng-model="EditDemographics.homeAddress.address1" />
+                            </span>
+                        </div>
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">Apt/Suite</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input type="text" class="k-textbox crd-width-95-percent crd-textbox" ng-disabled="!IsSaveDemographicsVisible"
+                                       ng-model="EditDemographics.homeAddress.address2" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="crd-floatleft">
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">City</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input type="text" class="k-textbox crd-width-90-percent crd-textbox" ng-disabled="!IsSaveDemographicsVisible"
+                                       ng-model="EditDemographics.homeAddress.city" />
+                            </span>
+                        </div>
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">State</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <select id="ptinfo-demographics-scrn-dd-state" ng-disabled="!IsSaveDemographicsVisible"
+                                        name="ptinfo-demographics-scrn-dd-state"
+                                        class="ptchart-immu-scrn-dd-div-select crd-width-95-percent"
+                                        k-data-auto-bind="false" k-data-value-primitive="true"
+                                        kendo-drop-down-list
+                                        k-data-text-field="'Text'"
+                                        k-data-value-field="'Value'"
+                                        k-data-source="EditDemographics.States"
+                                        k-ng-model="EditDemographics.homeAddress.selectedState"></select>
+                            </span>
+                        </div>
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">Zip</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input class="k-textbox crd-width-95-percent crd-textbox" 
+                                       ng-model="EditDemographics.homeAddress.zip" ng-disabled="!IsSaveDemographicsVisible"
+                                       kendo-masked-text-box k-mask="'00000'" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Temporary Tab -->
+                <div id="dempographics-pts-temporary-address" ng-disabled="!IsSaveDemographicsVisible">
+                    <div class="crd-floatleft">
+                        <div class="crd-width-66-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">Address</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input type="text" class="k-textbox crd-width-95-percent crd-textbox" 
+                                       ng-model="EditDemographics.tempAddress.address1" ng-disabled="!IsSaveDemographicsVisible" />
+                            </span>
+                        </div>
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">Apt/Suite</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input type="text" class="k-textbox crd-width-95-percent crd-textbox" 
+                                       ng-model="EditDemographics.tempAddress.address2" ng-disabled="!IsSaveDemographicsVisible" />
+                            </span>
+                        </div>
+                    </div>
+                    <div class="crd-floatleft">
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">City</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input type="text" class="k-textbox crd-width-90-percent crd-textbox" 
+                                       ng-model="EditDemographics.tempAddress.city" ng-disabled="!IsSaveDemographicsVisible" />
+                            </span>
+                        </div>
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">State</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <select id="ptinfo-demographics-scrn-dd-state" ng-disabled="!IsSaveDemographicsVisible"
+                                        name="ptinfo-demographics-scrn-dd-state"
+                                        class="ptchart-immu-scrn-dd-div-select crd-width-95-percent"
+                                        k-data-auto-bind="false" k-data-value-primitive="true"
+                                        kendo-drop-down-list
+                                        k-data-text-field="'Text'"
+                                        k-data-value-field="'Value'"
+                                        k-data-source="EditDemographics.States"
+                                        k-ng-model="EditDemographics.tempAddress.selectedState"
+                                        k-on-change="onResultChange()"></select>
+                            </span>
+                        </div>
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">Zip</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input class="k-textbox crd-width-95-percent crd-textbox"
+                                       ng-model="EditDemographics.tempAddress.zip" ng-disabled="!IsSaveDemographicsVisible"
+                                       kendo-masked-text-box k-mask="'00000'" />
+                            </span>
+                        </div>
+                    </div>                                      
+
+                    <div class="crd-floatleft">
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">Start Date</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input kendo-date-picker id="fromDatepicker" name="fromDatepicker" 
+                                       ng-disabled="!IsSaveDemographicsVisible" ng-model="FromDateString"
+                                       k-ng-model="EditDemographics.tempAddress.startDate" k-max="MaxDate" k-rebind="MaxDate"
+                                       k-on-change="fromDateChanged()" />                                
+                            </span>
+                        </div>
+                        <div class="crd-width-33-percent crd-float-left">
+                            <span class="crd-pthway-screening-label">End Date</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                                <input kendo-date-picker id="toDatepicker" name="toDatepicker" 
+                                       ng-disabled="!IsSaveDemographicsVisible" ng-model="ToDateString"
+                                       k-ng-model="EditDemographics.tempAddress.endDate" k-min="MinDate" k-rebind="MinDate"
+                                       k-on-change="toDateChanged()" />
+                            </span>
+                        </div>
+                    </div>                
+                </div>               
+            </div>
+        </div>
+    </div>
+    
+    <div id="demographics-pt-details2" >
+        <!-- Printing Phone & Fax -->
+        <div class="demographics-pts-profile">
+            <span class="crd-pthway-screening-label">Home Phone</span>
+            <span class="crd-pthway-screening-label">Mobile Phone</span>
+            <span class="crd-pthway-screening-label">Work Phone</span>
+            <span class="crd-pthway-screening-label">Fax</span>
+        </div>
+        <div class="crd-floatleft">
+            <span class="crd-width-25-percent crd-float-left">
+                <input class="k-textbox crd-width-90-percent crd-textbox" id="pt-demogrphics-scrn-homephone" ng-disabled="!IsSaveDemographicsVisible"
+                       kendo-masked-text-box ng-model="landlinePhoneNo" k-mask="'(999) 000-0000'" />
+            </span>
+            <span class="crd-width-25-percent crd-float-left">
+                <input class="k-textbox crd-width-90-percent crd-textbox" id="pt-demogrphics-scrn-mobilephone" ng-disabled="!IsSaveDemographicsVisible"
+                       kendo-masked-text-box ng-model="mobilePhoneNo" k-mask="'(999) 000-0000'" />
+            </span>
+            <span class="crd-width-25-percent crd-float-left">
+                <input class="k-textbox crd-width-90-percent crd-textbox" id="pt-demogrphics-scrn-workphone" ng-disabled="!IsSaveDemographicsVisible"
+                       kendo-masked-text-box ng-model="workPhoneNo" k-mask="'(999) 000-0000'" />
+            </span>
+            <span class="crd-width-25-percent crd-float-left">
+                <input class="k-textbox crd-width-90-percent crd-textbox" id="pt-demogrphics-scrn-fax" ng-disabled="!IsSaveDemographicsVisible"
+                       kendo-masked-text-box ng-model="faxNumber" k-mask="'(999) 000-0000'" />
+            </span>
+        </div>
+        <div class="crd-floatleft">
+            <span class="crd-pthway-screening-label demographics-pts-profile-span-50-perc">Email</span>
+            <span class="crd-pthway-screening-label demographics-pts-profile-span-50-perc">Primary Phone</span>
+        </div>
+        <div class="crd-floatleft">
+            <span class="demographics-pts-profile-span-50-perc">
+                <input class="k-textbox crd-width-95-percent crd-textbox" id="pt-demogrphics-scrn-email" 
+                        ng-model="EditDemographics.Email" ng-disabled="!IsSaveDemographicsVisible" />
+            </span>
+            <span class="demographics-pts-profile-span-50-perc">
+                <select id="ptinfo-demographics-scrn-dd-primaryphone" ng-disabled="!IsSaveDemographicsVisible"
+                        name="ptinfo-demographics-scrn-dd-primaryphone"
+                        class="ptchart-immu-scrn-dd-div-select crd-width-95-percent"
+                        k-data-auto-bind="false" k-data-value-primitive="true"
+                        kendo-drop-down-list
+                        k-data-text-field="'Text'"                    
+                        k-data-value-field="'Value'"
+                        k-data-source="EditDemographics.PrimaryPhone"
+                        k-ng-model="EditDemographics.PrimaryPhoneSelected"
+                        required validationmessage="required"></select>
+            </span>
+        </div>
+        <div class="crd-floatleft">
+            <span class="crd-pthway-screening-label demographics-pts-profile-span-50-perc">Language</span>
+            <span class="crd-pthway-screening-label demographics-pts-profile-span-50-perc">Gender</span>
+        </div>
+        <div class="crd-floatleft">
+            <span class="demographics-pts-profile-span-50-perc">
+                <select id="ptinfo-demographics-scrn-dd-language" ng-disabled="!IsSaveDemographicsVisible"
+                        name="ptinfo-demographics-scrn-dd-language"
+                        class="ptchart-immu-scrn-dd-div-select crd-width-95-percent"
+                        k-data-auto-bind="false" k-data-value-primitive="true"
+                        kendo-drop-down-list
+                        k-data-text-field="'Text'"
+                        k-data-value-field="'Value'"
+                        k-data-source="EditDemographics.Languages"
+                        k-ng-model="EditDemographics.LanguageSelected"
+                        required validationmessage="required"></select>
+            </span>
+            <span class="demographics-pts-profile-span-50-perc">
+                <select id="ptinfo-demographics-scrn-dd-gender" ng-disabled="!IsSaveDemographicsVisible"
+                        name="ptinfo-demographics-scrn-dd-gender"
+                        class="ptchart-immu-scrn-dd-div-select crd-width-95-percent"
+                        k-data-auto-bind="false" k-data-value-primitive="true"
+                        kendo-drop-down-list
+                        k-data-text-field="'Text'"
+                        k-data-value-field="'Value'"
+                        k-data-source="EditDemographics.Genders"
+                        k-ng-model="EditDemographics.GenderSelected"
+                        k-on-change="onResultChange()"></select>
+            </span>
+        </div>
+        <div class="crd-floatleft">
+            <span class="crd-pthway-screening-label demographics-pts-profile-span-50-perc">Contact Pref Day</span>
+            <span class="crd-pthway-screening-label demographics-pts-profile-span-50-perc">Contact Pref Time</span>
+            <div class="crd-floatleft">
+                <span class="demographics-pts-profile-span-50-perc">
+                    <select id="ptinfo-demographics-scrn-dd-preday" ng-disabled="!IsSaveDemographicsVisible"
+                            name="ptinfo-demographics-scrn-dd-preday"
+                            class="ptchart-immu-scrn-dd-div-select crd-width-95-percent"
+                            k-data-auto-bind="false" k-data-value-primitive="true"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="EditDemographics.ContactPreferenceDays"
+                            k-ng-model="EditDemographics.ContactPreferenceDaySelected"
+                            k-on-change="onResultChange()" required validationmessage="required"></select>
+                </span>
+                <span class="demographics-pts-profile-span-50-perc">
+                    <select id="ptinfo-demographics-scrn-dd-pretime" ng-disabled="!IsSaveDemographicsVisible"
+                            name="ptinfo-demographics-scrn-dd-pretime"
+                            class="ptchart-immu-scrn-dd-div-select crd-width-95-percent"
+                            k-data-auto-bind="false" k-data-value-primitive="true"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="EditDemographics.ContactPreferenceTimes"
+                            k-ng-model="EditDemographics.ContactPreferenceTimeSelected"
+                            k-on-change="onResultChange()" required validationmessage="required"></select>
+                </span>
+            </div>
+        </div>
+        <div class="crd-floatleft">
+            <span class="crd-pthway-screening-label demographics-pts-profile-span-50-perc">Marital Status</span>
+            <span class="crd-pthway-screening-label demographics-pts-profile-span-50-perc">Race</span>
+            <div class="crd-floatleft">
+                <span class="demographics-pts-profile-span-50-perc">
+                    <select id="ptinfo-demographics-scrn-dd-maritalstatus" ng-disabled="!IsSaveDemographicsVisible"
+                            name="ptinfo-demographics-scrn-dd-maritalstatus"
+                            class="ptchart-immu-scrn-dd-div-select crd-width-95-percent"
+                            k-data-auto-bind="false" k-data-value-primitive="true"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="EditDemographics.MaritalStatuses"
+                            k-ng-model="EditDemographics.MaritalStatusSelected"></select>
+                </span>
+                <span class="demographics-pts-profile-span-50-perc">
+                    <select id="ptinfo-demographics-scrn-dd-race" ng-disabled="!IsSaveDemographicsVisible"
+                            name="ptinfo-demographics-scrn-dd-race"
+                            class="ptchart-immu-scrn-dd-div-select crd-width-95-percent"
+                            k-data-auto-bind="false" k-data-value-primitive="true"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="EditDemographics.Races"
+                            k-ng-model="EditDemographics.RaceSelected"></select>
+                </span>
+            </div>
+        </div>
+        <div class="crd-floatleft">
+            <span class="crd-pthway-screening-label demographics-pts-profile-span-50-perc">Ethnicity</span>
+            <span class="crd-pthway-screening-label demographics-pts-profile-span-50-perc">Working Status</span>
+            <div class="crd-floatleft">
+                <span class="demographics-pts-profile-span-50-perc">
+                    <select id="ptinfo-demographics-scrn-dd-ethnicity" ng-disabled="!IsSaveDemographicsVisible"
+                            name="ptinfo-demographics-scrn-dd-ethnicity"
+                            class="ptchart-immu-scrn-dd-div-select crd-width-95-percent"
+                            k-data-auto-bind="false" k-data-value-primitive="true"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="EditDemographics.Ethnicities"
+                            k-ng-model="EditDemographics.EthnicitySelected"></select>
+                </span>
+                <span class="demographics-pts-profile-span-50-perc">
+                    <select id="ptinfo-demographics-scrn-dd-workingstatus" ng-disabled="!IsSaveDemographicsVisible"
+                            name="ptinfo-demographics-scrn-dd-workingstatus"
+                            class="ptchart-immu-scrn-dd-div-select crd-width-95-percent"
+                            k-data-auto-bind="false" k-data-value-primitive="true"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="EditDemographics.PatientWorkStatuses"
+                            k-ng-model="EditDemographics.PatientWorkStatusSelected"></select>
+                </span>
+            </div>
+        </div>
+    </div>
+   
+    <div id="demographics-container-PatientIDs">
+        <div id="patient-info-id">
+            <div id="patient-info-id-container" kendo-validator="patientInfoIDSValidator">
+                <div class="crd-screennameheader padding-5" ng-if="!Global.Objects.IsRCMPRL">ID</div>
+                <div class="ptchart-pthwy-buttons-header-bg">
+                    <kendo-mobile-button id="Edit-button" ng-show="!IsSavePntInfoIds" ng-click="editPatientInfoIds()">Change ID</kendo-mobile-button>
+                    <kendo-mobile-button id="save-button" ng-show="IsSavePntInfoIds" ng-click="savePatientInfoIds()">Save</kendo-mobile-button>
+                    <kendo-mobile-button id="cancel-button" ng-show="IsSavePntInfoIds" ng-click="cancelPatientInfoIds()">Cancel</kendo-mobile-button>
+                </div>
+                <div class="crd-floatleft">
+                    <div class="margin-left-5">
+                        <span class="crd-pthway-screening-label crd-width-33-percent crd-float-left">SSN</span>
+                        <span class="crd-pthway-screening-label crd-width-33-percent crd-float-left">Member ID</span>
+                        <span class="crd-pthway-screening-label crd-width-33-percent crd-float-left">HRS ID</span>
+                    </div>
+                    <div class="margin-left-5">
+                        <span class="crd-width-33-percent crd-float-left">
+                            <input class="k-textbox crd-width-90-percent crd-textbox" kendo-masked-text-box ng-model="PatientInfoIdentifiers.ssn" k-mask="'000-00-0000'" ng-disabled="!IsSavePntInfoIds" />
+                        </span>
+                        <span class="crd-width-33-percent crd-float-left">
+                            <input class="k-textbox crd-width-90-percent crd-textbox" ng-disabled="true" ng-model="patientMemberID" />
+                        </span>
+                        <span class="crd-width-33-percent crd-float-left">
+                            <input class="k-textbox crd-width-90-percent crd-textbox" ng-model="PatientInfoIdentifiers.HRSID" ng-disabled="!IsSavePntInfoIds" />
+                        </span>
+                    </div>
+                </div>
+                <div class="crd-floatleft">
+                    <div class="margin-left-5">
+                        <span class="crd-pthway-screening-label crd-width-33-percent crd-float-left">Davita MPI ID</span>
+                        <span class="crd-pthway-screening-label crd-width-33-percent crd-float-left">Group/Policy Number</span>
+                        <span class="crd-pthway-screening-label crd-width-33-percent crd-float-left">Medicare ID</span>
+                    </div>
+                    <div class="margin-left-5">
+                        <span class="crd-width-33-percent crd-float-left">
+                            <input class="k-textbox crd-width-90-percent crd-textbox" ng-model="PatientInfoIdentifiers.davitaMPI_ID" ng-disabled="!IsSavePntInfoIds" />
+                        </span>
+                        <span class="crd-width-33-percent crd-float-left">
+                            <input class="k-textbox crd-width-90-percent crd-textbox" ng-model="PatientInfoIdentifiers.medicalRecordNumber" ng-disabled="!IsSavePntInfoIds"
+                                   required validationmessage="required" name="patientinfo-medical-record-number" />
+                            <span class="k-invalid-msg" data-for="patientinfo-medical-record-number"></span>
+                        </span>
+                        <span class="crd-width-33-percent crd-float-left">
+                            <input class="k-textbox crd-width-90-percent crd-textbox" ng-model="PatientInfoIdentifiers.medicareID" ng-disabled="!IsSavePntInfoIds" />
+                        </span>
+                    </div>
+                </div>
+                <div class="crd-floatleft">
+                    <div class="margin-left-5">
+
+                        <span class="crd-pthway-screening-label crd-width-33-percent crd-float-left">Sub Group ID</span>
+                        <span class="crd-pthway-screening-label crd-width-33-percent crd-float-left">Payer Group No.</span>
+                        <span class="crd-pthway-screening-label crd-width-33-percent crd-float-left" ng-if="isGroupModifierVisibile">Group Modifier</span>
+                        <span class="crd-pthway-screening-label crd-width-33-percent crd-float-left" ng-if="!isGroupModifierVisibile"> &nbsp; </span>
+                    </div>
+                    <div class="margin-left-5">
+                        <span class="crd-width-33-percent crd-float-left">
+                            <input class="k-textbox crd-width-90-percent crd-textbox" ng-model="PatientInfoIdentifiers.SubGroupID" ng-disabled="!IsSavePntInfoIds" />
+                        </span>
+                        <span class="crd-width-33-percent crd-float-left">
+                            <input class="k-textbox crd-width-90-percent crd-textbox" ng-model="PatientInfoIdentifiers.payerGroupNo" ng-disabled="!IsSavePntInfoIds" ng-change="payerGroupNoChanged()" />
+                        </span>
+                        <span class="crd-width-33-percent crd-float-left" ng-if="isGroupModifierVisibile">
+                            <select id="ptinfo-demographics-scrn-dd-gender"
+                                    ng-disabled="!IsMemberIdModifierVisible"
+                                    name="ptinfo-demographics-scrn-dd-gender"
+                                    class="ptchart-immu-scrn-dd-div-select crd-width-95-percent"
+                                    k-data-auto-bind="false" k-data-value-primitive="true"
+                                    kendo-drop-down-list
+                                    k-data-text-field="'Text'"
+                                    k-data-value-field="'Value'"
+                                    k-data-source="PatientInfoIdentifiers.MemberIdModifiers"
+                                    k-ng-model="PatientInfoIdentifiers.MemberIdModifierSelected"
+                                    k-on-change="onMemberIdModifiertChange()"></select>
+                        </span> 
+                        <span class="crd-width-33-percent crd-float-left" ng-if="!isGroupModifierVisibile"> &nbsp; </span>                        
+                    </div>
+                </div>
+                <div class="crd-floatleft">
+                    <div class="margin-left-5">
+                        <span class="crd-pthway-screening-label crd-width-33-percent crd-float-left">Special Payor ID</span>
+                        <span class="crd-pthway-screening-label crd-width-33-percent crd-float-left">USI</span>
+                        <span class="crd-pthway-screening-label crd-width-33-percent crd-float-left">&nbsp;</span>
+                    </div>
+                    <div class="margin-left-5">
+                        <span class="crd-width-33-percent crd-float-left">
+                            <input class="k-textbox crd-width-90-percent crd-textbox" ng-disabled="true" ng-model="PatientInfoIdentifiers.specailpayorID" />
+                        </span>
+                        <span class="crd-width-33-percent crd-float-left">
+                            <input class="k-textbox crd-width-90-percent crd-textbox" ng-disabled="true" ng-model="PatientInfoIdentifiers.USI" />
+                        </span>
+                        <span class="crd-width-33-percent crd-float-left">
+                            &nbsp;
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</kendo-mobile-view>

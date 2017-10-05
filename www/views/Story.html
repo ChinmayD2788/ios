@@ -1,0 +1,140 @@
+﻿<kendo-mobile-view class="crd-view" ng-controller="StoryController">
+    <div class="crd-screenname-container">
+        <div class="crd-screennameheader">Story</div>
+    </div>
+    <div class="story_filter">
+        <div class="filter-box story-filter-box-width">
+            <kendo-mobile-button k-rel="'popover'" href="#ContactFilterPopOver" class="filter-btn story-filter-btn-width" k-on-click="clearSelectedFilter()">
+                <span class="filter-box-text">Filter Contacts...</span>
+                <span class="icon-searchfilter right"></span>
+            </kendo-mobile-button>
+            <kendo-mobile-pop-over id="ContactFilterPopOver" k-popup='{"width": "12em"}'>
+                <kendo-mobile-view class="do-not-destroy">
+                    <kendo-mobile-list-view id="story-contacts-filter" k-data-source="model.ContactsFilterCategories">
+                        <kendo-mobile-button k-template class="mypts-dc-btn" k-rel="'popover'" href="{{dataItem.Link}}" k-on-click="onContactFilterClick(dataItem)">
+                            {{ dataItem.Text }}
+                        </kendo-mobile-button>
+                    </kendo-mobile-list-view>
+
+                </kendo-mobile-view>
+            </kendo-mobile-pop-over>
+
+            <kendo-mobile-pop-over id="ContactFilterPopOverOption" k-popup='{"height": "24em", "width": "35em",  "direction": "right"}'>
+                <kendo-mobile-view id="sub-category-pop-over-view">
+                    <div class="story-pop-over-main-div">
+                        <div class="story-pop-over-header-div">
+                            <span class="story-pop-over-header-text">{{model.SelectedContactFilterCategory}}</span>
+                            <kendo-mobile-button class="story-pop-over-close" kendo-touch k-on-click="onClosePopOverClick()">
+                                X
+                            </kendo-mobile-button>
+                        </div>
+                        <div id="story-contacts-filter-options-details-left" ng-repeat="cf in model.ContactsFilterSubCategories">
+                            <div class="crd-kendocheck-small mypts-filter-options-div">
+                                <input id="{{cf.Value}} " type="checkbox" class="k-checkbox" value="{{cf.Value}}" ng-click="onContactSubFilterClick($event)" />
+                                <label for="{{cf.Value}}" class="k-checkbox-label stroy-margin-right-2-pixel story-float-left">
+                                    <span class="story-pop-over-checkbox-label">{{cf.Text}}</span>
+                                </label>
+
+                            </div>
+
+                        </div>
+                        <div class="story-height-10-pixel"></div>
+                    </div>
+                </kendo-mobile-view>
+            </kendo-mobile-pop-over>
+
+        </div>
+        <div class="storyDateFilter">
+            <label class="crd-pthway-screening-label story_date_filter_label">Date Range: </label>
+            <select kendo-drop-down-list id="ddlStoryDateFilter" class="story-date-range-drowdown" k-data-source="model.ContactsRangeFilters" k-data-text-field="'Text'" k-data-value-field="'Value'" ng-model="model.SelectedDateRangeFilter" 
+                    k-on-select="onDateRangeSelect($event)" k-on-change="onDateRangeChange()">
+            </select>
+        </div>
+    </div>
+    <div class="story_filter" ng-if="model.CurrentFilters.length > 0">
+        <div class="stroy-margin-top-10-pixel stroy-margin-bottom-5-pixel stroy-margin-left-20-pixel stroy-margin-right-7-pixel">
+            <span class='storylist_label crd-pthway-screening-label'>CURRENT FILTER: </span>
+            <span class="crd-pathway-screening-value story-font-size-12-pixel stroy-margin-top-3-pixel">{{model.CurrentFilters}}</span>
+        </div>
+    </div>
+    <div class="no-data-available" ng-hide="model.noDataAvailable">No Data Available</div>
+    <div id="story-container" ng-hide="!model.noDataAvailable">
+        <div id="story-container-scroller" class="crd-kendo-mobile-scroller" kendo-mobile-scroller>
+            <div ng-repeat="x in model.FilteredStory">
+                <div>
+                    <div class="storylist_header">
+                        <div class="storylist_header_column_one">
+                            <div class="storylist_header_column_one_one">
+                                <img ng-attr-src="{{ getContactMethod(x.ContactMethod) }}" alt="" class="story-img" />
+                            </div>
+                            <div class="storylist_header_column_one_two">
+                                <div class="storylist_header_ContactDateTime">
+                                    <span class='storylist_label crd-pthway-screening-label'>Date:</span>
+                                    <span class='crd-pathway-screening-value'>{{x.ContactDate |date: 'MMMM dd, yyyy'}}</span>
+                                    <span class='storylist_label crd-pthway-screening-label'>Time:</span>
+                                    <span class='crd-pathway-screening-value'>{{x.ContactDate |date: 'h:mm a'}}</span>
+                                </div>
+                                <div class="storylist_header_EnteredDateTime" ng-if="x.EntryDate">
+                                    <span class='storylist_label crd-pthway-screening-label'>Entered On:</span>
+                                    <span class='crd-pathway-screening-value'>{{x.EntryDate|convertToLocalTime: "MMMM dd, yyyy 'at' h:mm a"}}</span>
+                                    <span class='storylist_header_IsLateEntry' ng-if="x.IsLateEntry">LATE ENTRY</span>
+                                </div>
+                                <div class="storylist_header_ContactReason">
+                                    <span class='storylist_label crd-pthway-screening-label'>Contact Reason:</span>
+                                    <span class='crd-pathway-screening-value'>{{getContactReason(x.ContactReason)}}</span>
+                                </div>
+                                <div class="storylist_header_InternalExternalTeam">
+                                    <span class='storylist_label crd-pthway-screening-label'>{{getTeams(x.InternalTeam, x.ExternalTeam)}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="storylist_header_column_two">
+                            <div class="crd-pthway-screening-label">
+                                <span class="story-float-right">{{getResolution(x.Resolution)}}</span>
+                            </div>
+                            <div class="storylist_header_Direction">
+                                <span class="crd-pthway-screening-label story-float-right">{{getDirection(x.Direction)}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="storylist_separator"></div>
+                </div>
+                <div class="storylist_notes_content">
+                    <div class="storylist_noteDetail">{{ x.Notes[0].NoteDetail }}</div>
+                    <div class="storylist_tags">
+                        <span class="vhnrounding-BlueContactTags storylist_notes_tags">Tags:	{{getTags(x.Notes[0].Tags)}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="story-container-empty-space"></div>
+        </div>
+    </div>
+    <kendo-mobile-modal-view id="daterange-modalview" class="crd-modalview story-date-range-modal-view">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <kendo-mobile-button kendo-touch k-on-click="dateRangeCancel()" k-align="'left'">Cancel</kendo-mobile-button>
+                <span>Custom Date Range</span>
+                <kendo-mobile-button kendo-touch k-on-click="dateRangeOK()" k-align="'right'">OK</kendo-mobile-button>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+        <div class="story-margin-left-30 story-margin-right-30">
+            <div class="story-width-45-per story-float-left">
+                <div class="stroy-margin-top-10-pixel">From:</div>
+                <input type="text" id="fromDateInput" ng-show="model.FromDate" value='{{model.InitFromDate | date:" MMM d, yyyy"}}' readonly class="story-input-from-date-text k-textbox" />
+            </div>
+            <div class="story-width-45-per story-float-right">
+                <div class="stroy-margin-top-10-pixel">To:</div>
+                <input type="text" id="toDateInput" ng-show="model.ToDate" value='{{model.InitToDate | date:" MMM d, yyyy"}}' readonly class="story-input-from-date-text k-textbox" />
+            </div>
+        </div>
+        <div class="story-margin-left-30 story-margin-right-30">
+            <div class="story-width-45-per story-float-left story-border-lightgray">
+                <kendo-calendar id="fromDateCalendar" footer="false" ng-model="model.FromDate" class="story-kendo-calendar" k-on-change="onChangeDate('fromDate')"></kendo-calendar>
+            </div>
+            <div class="story-width-45-per story-float-right story-border-lightgray">
+                <kendo-calendar id="toDateCalendar" footer="false" ng-model="model.ToDate" class="story-kendo-calendar" k-on-change="onChangeDate('toDate')"></kendo-calendar>
+            </div>
+        </div>
+
+    </kendo-mobile-modal-view>
+</kendo-mobile-view>

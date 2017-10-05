@@ -1,0 +1,14 @@
+﻿<div ng-controller="OpenPatientsController">
+    <div id="openpatients-alerts">
+        <div id="openpatients-hide-show" ng-click="openPatientsShowClick()">
+            <div class="alert-fixed" ng-show="Global.Objects.ShowOpenPatients">
+                <span class="alert-span">OPEN PATIENTS (<span class="alert-count">{{ OpenPatientsModel.Total }}</span>)</span>
+            </div>            
+        </div>
+    </div>
+    <div class="datagrid-hide-show">
+        <!--<kendo-grid id="openpatients-grid" k-options="OpenPatientsModel.GridOptions"></kendo-grid>-->            
+        <kendo-grid id="openpatients-grid" k-options="GridOptions" k-rebind="GridOptions" k-ng-delay="GridOptions">
+        </kendo-grid>
+    </div>
+</div>

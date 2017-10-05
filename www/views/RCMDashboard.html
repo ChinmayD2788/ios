@@ -1,0 +1,106 @@
+﻿﻿<kendo-mobile-split-view  k-style="'vertical'"  id="rcm-main-splitview" ng-controller="RCMDashboardController" k-reload="true">  
+    <kendo-mobile-pane id="rcm-bottom-pane" k-layout="'main-default'">   
+        <kendo-mobile-view id="rcm-dashboard-view">           
+            <kendo-mobile-header>
+                <kendo-mobile-nav-bar>  
+                    <kendo-mobile-button class="username-header" k-align="'right'" k-rel="'popover'" href="#logOutPopOver">
+                        <span class="icon-user"></span>
+					    <span>{{ LoggedInUser.FirstName }} {{ LoggedInUser.LastName }}</span>
+                    </kendo-mobile-button> 
+                    <span>My Worklist</span>                                       
+                </kendo-mobile-nav-bar>                                          
+            </kendo-mobile-header> 
+                        
+            <div class="search-area">
+                <!-- RCM DashBoard Filter Box -->
+                <div class="filter-box">
+                    <kendo-mobile-button k-rel="'popover'" href="#popover-rcmdashboard-filterlist" class="filter-btn">
+                        <span class="filter-box-text">Filter Patients...</span>
+                        <span class="icon-searchfilter right"></span>
+                    </kendo-mobile-button>                        
+                </div>
+                <kendo-mobile-pop-over id="popover-rcmdashboard-filterlist"  k-popup='{"width": "20em"}'>
+                    <kendo-mobile-view ng-controller="RCMDashboardFilterController" class="crd-popover-listview do-not-destroy">                
+                        <kendo-mobile-list-view k-data-source="model.FilterList" class="radio-list">                                                
+                            <label k-template>
+                                <input name="worklistfilteritem" type="radio" ng-model="model.RCMDashboardFilterType.Name" value="{{ dataItem.Name }}" 
+                                    ng-click="onFilterClick(dataItem)"/>
+                                    {{ dataItem.Text }} ({{ dataItem.Value }})
+                            </label>                                              
+                        </kendo-mobile-list-view> 
+                    </kendo-mobile-view>   
+                </kendo-mobile-pop-over> 
+
+                <div class="sort-box">
+                    <kendo-mobile-button k-rel="'popover'" href="#popover-rcmdashboard-sortlist" class="sort-btn">
+                        <span class="icon-sort-small display"></span>
+                    </kendo-mobile-button>
+                </div>
+                <kendo-mobile-pop-over id="popover-rcmdashboard-sortlist"  k-popup='{"width": "20em"}'>
+                    <kendo-mobile-view ng-controller="RCMDashboardSortController" class="crd-popover-listview do-not-destroy">                
+                        <kendo-mobile-list-view k-data-source="model.SortList" class="radio-list">                                                
+                            <label k-template>
+                                <input name="worklistsortitem" type="radio" ng-model="model.RCMDashboardSortType.Value" value="{{ dataItem.Value }}" 
+                                    ng-click="onSortClick(dataItem)"/>
+                                {{ dataItem.Text }}
+                            </label>                                              
+                        </kendo-mobile-list-view> 
+                    </kendo-mobile-view>   
+                </kendo-mobile-pop-over>                 
+            </div>            
+
+            <div id="rcmdb-container">       
+                <div id="rcmdb-listview">                     
+                    <div class="rcmdashboard-patients-view" ng-click="onTap(Patient)" ng-repeat="Patient in model.WorkListData.data()">
+                        <div class="rcmdb-left-color-piller">
+                        </div>
+                        <div class="rcmdb-pat-details">
+                            <div class="rcmdashboard-ptheader">
+                                <div class="rcmdashboard-pt-name">
+                                    {{ Patient.LastName }} {{ Patient.FirstName }}
+                                </div>                                
+
+                                <div ng-if="Patient.DOB != null && Patient.DOB != undefined && Patient.DOB != ''">
+                                    DOB: {{ Patient.DOB | date:'MM/dd/yyyy'}}
+                                </div>
+                            </div>
+
+                            <div class="rcmdb-pat-separator">
+                            </div>
+
+                            <div class="rcmdashboard-ptfooter">
+                                <div class="rcmdb-nowrap">Hospitalized: 
+									<span ng-if="Patient.AdmitDate != null && Patient.AdmitDate != undefined && Patient.AdmitDate != ''">                                    
+										{{Patient.AdmitDate | date:'MM/dd/yyyy'}}
+									</span><span> 
+                                    	{{(Patient.DischargeDate)&& Patient.DischargeDate != '' ?  (" - " + (Patient.DischargeDate | date:'MM/dd/yyyy')) : ""}}
+									</span>	
+                                </div>                                    
+                                <div class="rcmdb-width" ng-if="Patient.Facility != null && Patient.Facility != undefined && Patient.Facility != ''">                                    
+                                        {{Patient.Facility}}                                    
+                                </div>                                    
+                                <div ng-class ="((Patient.Unit)&& Patient.Unit !='') || ((Patient.RoomNumber) && Patient.RoomNumber !='') ? 'rcmdb-width' : ''">
+                                    {{Patient.Unit | uppercase }} 
+                                    <span ng-show="(Patient.Unit)&& Patient.Unit !='' && (Patient.RoomNumber) && Patient.RoomNumber !='' ">/</span>
+									{{ Patient.RoomNumber | uppercase }}                                       
+                                </div>                                
+                                <div class="rcmdb-width" ng-if="Patient.PatientAdmitType != null && Patient.PatientAdmitType != undefined && Patient.PatientAdmitType != ''">                                    
+                                     {{Patient.PatientAdmitType}}                                    
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>    
+            </div>                       
+                                                                 
+            <kendo-mobile-footer>
+                <div class="rcmdahsboard-metriclist" ng-repeat="MetricItems in model.MetricListData.data()">
+                    <span class="rcmdb-patients-metrics"> {{MetricItems.Value}} </span>                    
+                    <span class="rcmdb-patients-metrics"> {{MetricItems.Name | uppercase }} </span>                    
+                </div>
+                <div class="openpatients-view" ng-include="Global.Templates.OpenPatients.Url">
+                </div>
+            </kendo-mobile-footer>                         
+        </kendo-mobile-view>
+    </kendo-mobile-pane>
+</kendo-mobile-split-view>

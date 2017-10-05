@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <script src="../libraries/jquery.min.js"></script>
+    <title>Install Rounding </title>
+    <style>
+        a.green-button:link {
+            color: #FFFFFF;    
+            font-size: 20px;
+            padding: 5px;
+            text-decoration: none;    
+            -webkit-appearance: button;
+        }
+
+        @-webkit-keyframes greenPulse 
+        {
+            from { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+            50% { background-color: #91bd09; -webkit-box-shadow: 0 0 18px #91bd09; }
+            to { background-color: #749a02; -webkit-box-shadow: 0 0 9px #333; }
+        }
+ 
+        .green-button:hover
+        {
+            background-color: #749a02;
+        }
+   
+        a.green-button
+        {
+            -webkit-animation-name: greenPulse;
+            -webkit-animation-duration: 2s;
+            -webkit-animation-iteration-count: infinite;                
+        }
+                     
+        .installtext
+        {
+            color: Black; 
+            font: bold 1.8em HelveticaNeue, sans-serif;
+        } 
+       
+    </style>    
+</head>
+<body style="font-family: Arial,Helvetica,sans-serif;  
+    background-image: url('../Images/Rounding_Background.png') !important;
+    background-repeat: repeat-x;    
+    background-color: rgba(128, 179, 249, 0.5) !important;" >
+    <div style="text-align: center; margin-top: 200px;">
+        <br />
+        <!-- <img src="../Images/capellalogo_black.png" width="600px" />-->
+        <br />
+        <br />
+        <span class="installtext">Password: </span>
+        <input class="installtext" type="password" id="txtPassword" />
+        <br />
+        <br />
+        <a class="green-button" id="btnInstall" href="#">Install Rounding</a>
+    </div>    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnInstall').click(function () {
+                if ($('#txtPassword').val() === 'VH@123') {
+                    var loc = 'itms-services://?action=download-manifest&url=' + location.protocol + "//" + location.host;
+                   
+                    var url = location.href.substr(0, location.href.indexOf("#")).toLowerCase();
+                    
+                    //New Configuration changed on 02/18/2015
+                    //only Stage and Prod has same server so just change for stage rest all goes 
+                    //same for location url + '/crdangular/*'
+                    if (url.indexOf('stagecrd') !== -1) {
+                        loc = loc + '/stagecrd/install/iOS/Rounding.plist';
+                    }
+                    else if (url.indexOf('capellawebtrain') !== -1) {
+                        loc = loc + '/crd/install/iOS/Rounding.plist';  //new change for Train Server
+                    }
+                    else {
+                        loc = loc + '/crdangular/install/iOS/Rounding.plist';
+                    }
+
+                    //console.log(loc);
+                    //window.location = 'itms-services://?action=download-manifest&url=' + location.protocol + "//" + location.host + '/crdangular/install/iOS/Rounding.plist';
+                    window.location = loc;
+                } else {
+                    alert('Wrong password...');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

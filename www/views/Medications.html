@@ -1,0 +1,675 @@
+<kendo-mobile-view ng-controller="MedicationsController" class="crd-view">
+    <div class="crd-screennameheader" style="margin-bottom:-40px;float:none;">REVIEW</div>
+
+    <!-- Medication Alerts -->
+    <div id="meds-header-alerts">
+        <div class="meds-no-active-alerts" ng-hide="model.Alerts.MedsActiveVisible">
+            No Alerts
+        </div>
+        <div class="meds-active-alerts" ng-show="model.Alerts.MedsActiveVisible">
+            <span class="icon-priority-overdue"></span>
+            <span class="image-span-inline">Active Alerts Exists</span>
+        </div>
+        <div class="meds-no-mpr-alerts" ng-hide="model.Alerts.MedsMprVisible">
+            No MPR Alerts
+        </div>
+        <div class="meds-mpr-alerts" ng-show="model.Alerts.MedsMprVisible">
+            <span class="icon-priority-overdue"></span>
+            <span class="image-span-inline">MPR < .8 OR > 1.2 Exists</span>
+        </div>
+    </div>
+
+    <!-- Allergies Filters -->
+    <div class="med-filters">
+        <div class="alrg-filter" ng-show="model.Filters.AllergyFilterVisible">
+            <kendo-mobile-button id="btnAddAllergy" k-on-click="onAddAllergyClick()" ng-disabled="model.Filters.AddAllergyDisable">ADD ALLERGY</kendo-mobile-button>
+
+        </div>
+        <div class="alrg-filter" ng-show="model.Filters.AllergyFilterVisible">
+            <div>
+                <kendo-mobile-button id="alrg-filter-trigger" href="#popover-alrg-filter" k-rel="'popover'">Showing {{ model.Filters.AllergyFilter }}</kendo-mobile-button>
+
+                <kendo-mobile-pop-over id="popover-alrg-filter" k-popup='{"width": "20em"}'>
+                    <kendo-mobile-view ng-controller="AllergyFilterController" class="crd-popover-listview do-not-destroy">
+                        <kendo-mobile-list-view class="radio-list">
+                            <li>
+                                <label>
+                                    <input name="alrg" type="radio" ng-model="model.AllergyFilter" value="All" ng-click="onAllergyFilterClick()" />All<div></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input name="alrg" type="radio" ng-model="model.AllergyFilter" value="Allergy Class" ng-click="onAllergyFilterClick()" />Allergy Class<div></div>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input name="alrg" type="radio" ng-model="model.AllergyFilter" value="Medication" ng-click="onAllergyFilterClick()" />Medication<div></div>
+                                </label>
+                            </li>
+                        </kendo-mobile-list-view>
+                    </kendo-mobile-view>
+                </kendo-mobile-pop-over>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medication Filters -->
+    <div class="med-filters">
+        <div class="alrg-filter" ng-hide="model.Filters.AllergyFilterVisible">
+            <kendo-mobile-button href="#popover-meds-menu" k-rel="'popover'">...</kendo-mobile-button>
+            <kendo-mobile-pop-over id="popover-meds-menu" k-popup='{"width": "20em"}'>
+                <kendo-mobile-view ng-controller="MedicationMenuController" class="crd-popover-listview do-not-destroy">
+                    <kendo-mobile-list-view class="logout-list">
+                        <li>
+                            <label class="km-listview-label">
+                                <input name="medmenu" type="radio" value="PerformScreening" ng-click="onMedsMenuClick('PerformScreening')" />
+                                Perform Screening
+                            </label>
+                            <label class="meds-perform-scr-date km-listview-label">
+                                {{ model.ScreeningDate }}
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input name="medmenu" type="radio" value="AddMedicationReview" ng-click="onMedsMenuClick('AddMedicationReview')" />
+                                Add Medication Review
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input name="medmenu" type="radio" value="AddMedication" ng-click="onMedsMenuClick('AddMedication')" />
+                                Add Medication
+                            </label>
+                        </li>
+                    </kendo-mobile-list-view>
+                </kendo-mobile-view>
+            </kendo-mobile-pop-over>
+        </div>
+
+        <!-- modalview for Review Date -->
+        <kendo-mobile-modal-view ng-controller="MedsReviewDateController" id="meds-reviewdate-modalview" class="crd-modalview"
+                                 kendo-validator="medsReviewDateValidator">
+            <kendo-mobile-header>
+                <kendo-mobile-nav-bar>
+                    <kendo-mobile-button kendo-touch k-on-tap="onCreateMedsReviewClick()" k-align="'right'">Save</kendo-mobile-button>
+                    <span>New Medication Review</span>
+                    <kendo-mobile-button kendo-touch k-on-tap="onCancelMedsReviewClick()" k-align="'left'">Cancel</kendo-mobile-button>
+                </kendo-mobile-nav-bar>
+            </kendo-mobile-header>
+
+            <ul class="modalview-ul">
+                <li class="modalview-ul-first-li">
+                    <span>Tap below for a medication review date...</span>
+                </li>
+                <li>
+                    <div id="meds-review-calendar-div">
+                        <kendo-calendar id="meds-review-calendar" class="crd-calendar" name="meds-review-calendar"
+                                        min="model.MinReviewDate" max="model.MaxReviewDate" footer="false" required
+                                        validationmessage="required"></kendo-calendar>
+                        <span class="k-invalid-msg" data-for="meds-review-calendar"></span>
+                    </div>
+                </li>
+                <li class="meds-review-pt-check-li">
+                    <div class="meds-review-pt-check crd-kendocheck-big">
+                        <input type="checkbox" id="meds-review-pt-checkbox" ng-model="model.PatientRefused" class="k-checkbox">
+                        <label class="k-checkbox-label" for="meds-review-pt-checkbox"><span style="font-size: 14px;">Patient refuses to discuss the topic</span></label>
+                    </div>
+                </li>
+            </ul>
+        </kendo-mobile-modal-view>
+
+        <!-- Add Medication Modal View -->
+        <kendo-mobile-modal-view ng-controller="AddMedicationController" id="add-meds-modalview" class="crd-modalview">
+            <kendo-mobile-header>
+                <kendo-mobile-nav-bar>
+                    <kendo-mobile-button kendo-touch k-on-tap="onSaveAddMedsClick()" k-align="'right'">Save</kendo-mobile-button>
+                    <span>Medication Details</span>
+                    <kendo-mobile-button kendo-touch k-on-tap="onCancelAddMedsClick()" k-align="'left'">Cancel</kendo-mobile-button>
+                </kendo-mobile-nav-bar>
+            </kendo-mobile-header>
+
+            <div id="add-meds-fields">
+                <div class="add-meds-field add-meds-esa" ng-show="model.Medication.IsAdd">
+                    <div class="crd-kendocheck-big" style="margin-top: 5px;">
+                        <input type="checkbox" id="esa-checkbox" class="k-checkbox" name="esa-checkbox" ng-model="model.Medication.ESA">
+                        <label class="k-checkbox-label" for="esa-checkbox"><span style="text-transform:none;">ESA/Default</span></label>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-label-name" style="width: {{ model .Medication.IsAdd === true ? '82%;' : '98%;' }} ">
+                    <div class="add-meds-lbl">
+                        Label Name
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input" style="width: 100%;">
+                        <div ng-if="model.Medication.DrugID !== 0">{{ model.Medication.DrugName }}</div>
+                        <div ng-if="model.Medication.DrugID === 0">{{ model.Medication.DrugNameText }}</div>
+                    </div>
+                    <div class="add-meds-input" ng-show="model.Medication.IsAdd">
+                        <!--LookupTypes.ESADrugs-->
+                        <div ng-show="model.Medication.ESA" id="esa-show">
+                            <input kendo-auto-complete class="med-autocomplete" id="aclabelName-esad" name="aclabelName-esad" k-ng-model="model.Medication.SelectedDrug"
+                                   k-data-source="model.ESADrugsList" k-data-text-field="'Text'" k-data-value-field="'Value'"
+                                   k-filter="'contains'" k-value-primitive="false" data-nothidden-msg="required" data-acvalid-msg="value is not valid"
+                                   style="width: 99.5%;" />
+                            <span data-for="aclabelName-esad" class="k-invalid-msg"></span>
+                        </div>
+                        <!--GetMedList-->
+                        <div ng-hide="model.Medication.ESA" id="esa-hide">
+                            <input kendo-auto-complete id="aclabelName-gml" name="aclabelName-gml" class="med-autocomplete" k-ng-model="model.Medication.SelectedDrug"
+                                   k-options="model.LabelNameListConfig" ng-keyup="getLabelNameList($event)" data-nothidden-msg="required" data-acvalid-msg="value is not valid"
+                                   k-value-primitive="false" style="width: 99.5%;" />
+                            <span data-for="aclabelName-gml" class="k-invalid-msg"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        Rx Number
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input">
+                        <div>{{ model.Medication.RxNumber }}</div>
+                    </div>
+                    <div ng-show="model.Medication.IsAdd" class="add-meds-input">
+                        <input type="text" class="k-textbox add-meds-input-size" ng-model="model.Medication.RxNumber" />
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        Written
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input">
+                        <div>
+                            {{ model.Medication.WrittenDate | date: 'MM/dd/yyyy' }}
+                        </div>
+                    </div>
+                    <div ng-show="model.Medication.IsAdd" class="add-meds-input">
+                        <input kendo-date-picker class="crd-datepicker" id="writtendate" name="writtendate" k-ng-model="model.Medication.WrittenDate"
+                               data-datevalid-msg="date is not valid" style="width: 99%;" />
+                        <span data-for="writtendate" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c3">
+                    <div class="add-meds-lbl">
+                        Filled
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input">
+                        <div>
+                            {{ model.Medication.FilledDate | date: 'MM/dd/yyyy' }}
+                        </div>
+                    </div>
+                    <div ng-show="model.Medication.IsAdd" class="add-meds-input">
+                        <input kendo-date-picker class="crd-datepicker" id="filleddate" name="filleddate" k-ng-model="model.Medication.FilledDate"
+                               data-datevalid-msg="date is not valid" style="width: 99%;" />
+                        <span data-for="filleddate" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        Refill Number
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input">
+                        <div>
+                            {{ model.Medication.RefillNumber }}
+                        </div>
+                    </div>
+                    <div ng-show="model.Medication.IsAdd" class="add-meds-input">
+                        <input kendo-numeric-text-box k-min="0" k-max="999999" k-format="'n0'" k-ng-model="model.Medication.RefillNumber" style="height: 100%"
+                               k-spinners="false" k-decimals="0" />
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        Max Refills
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input">
+                        <div>
+                            {{ model.Medication.MaxRefills }}
+                        </div>
+                    </div>
+                    <div ng-show="model.Medication.IsAdd" class="add-meds-input">
+                        <input kendo-numeric-text-box k-min="0" k-max="999999" k-format="'n0'" k-ng-model="model.Medication.MaxRefills" style="height: 100%"
+                               k-spinners="false" k-decimals="0" />
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c3">
+                    <div class="add-meds-lbl">
+                        Discontinued
+                    </div>
+                    <div class="add-meds-input">
+                        <input kendo-date-picker class="crd-datepicker" name="discontinueddate" id="discontinueddate" k-ng-model="model.Medication.DiscontinuedDate"
+                               data-datevalid-msg="date is not valid" data-disdate-msg="required" k-on-change="discontinuedChange()" style="width: 99%;" />
+                        <span data-for="discontinueddate" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c1">
+                    <div class="add-meds-lbl">
+                        Discontinued Reason
+                    </div>
+                    <div class="add-meds-input">
+                        <input type="text" class="k-textbox add-meds-input-size" ng-model="model.Medication.DiscontinueReason"
+                               name="discontinuedreason" id="discontinuedreason" maxlength="250" style="width: 98.5%;" data-disreason-msg="required" />
+                        <span data-for="discontinuedreason" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        Quantity
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input">
+                        <div>
+                            {{ model.Medication.Quantity }}
+                        </div>
+                    </div>
+                    <div ng-show="model.Medication.IsAdd" class="add-meds-input">
+                        <input kendo-numeric-text-box k-min="0" k-max="999999" k-format="'n0'" k-ng-model="model.Medication.Quantity" style="height: 100%"
+                               k-spinners="false" k-decimals="0" />
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        Dose
+                    </div>
+                    <div class="add-meds-input">
+                        <input kendo-numeric-text-box name="dose-numeric" k-format="'n2'" k-min="0.01" k-max="99999.00" data-dose-msg="required" style="height: 100%"
+                               k-spinners="false" k-decimals="2" k-step="0.01" k-ng-model="model.Medication.Dose" />
+                        <span data-for="dose-numeric" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c3">
+                    <div class="add-meds-lbl">
+                        Unit
+                    </div>
+                    <div class="add-meds-input">
+                        <input kendo-auto-complete id="acunit" name="acunit" class="med-autocomplete" k-ng-model="model.Medication.SelectedUnit"
+                               k-data-source="model.UnitOfMeasureList" k-data-text-field="'Text'" k-data-value-field="'Value'"
+                               k-filter="'contains'" k-value-primitive="false" style="width: 98%;" data-acvalid-msg="value is not valid" />
+                        <span data-for="acunit" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        Frequency
+                    </div>
+                    <div class="add-meds-input">
+                        <input kendo-auto-complete id="acfrequency" name="acfrequency" class="med-autocomplete" k-ng-model="model.Medication.SelectedFrequency"
+                               k-data-source="model.FrequencyList" k-data-text-field="'Text'" k-data-value-field="'Value'"
+                               k-filter="'contains'" k-value-primitive="false" style="width: 98%;" data-frequency-msg="required" data-acvalid-msg="value is not valid" />
+                        <span data-for="acfrequency" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        Days Supply
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input">
+                        <div>
+                            {{ model.Medication.DaysSupply }}
+                        </div>
+                    </div>
+                    <div ng-show="model.Medication.IsAdd" class="add-meds-input">
+                        <input style="height: 100%" kendo-numeric-text-box k-format="'n0'" k-min="0" k-max="999999"
+                               k-spinners="false" k-decimals="0" k-ng-model="model.Medication.DaysSupply" />
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c3">
+                    <div class="add-meds-lbl">
+                        Route
+                    </div>
+                    <div class="add-meds-input">
+                        <input kendo-auto-complete id="acroute" name="acroute" class="med-autocomplete" k-ng-model="model.Medication.SelectedRoute"
+                               k-data-source="model.MedAdministrationRouteList" k-data-text-field="'Text'" k-data-value-field="'Value'"
+                               k-filter="'contains'" k-value-primitive="false" style="width: 98%;" data-acvalid-msg="value is not valid" />
+                        <span data-for="acroute" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        Source
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input">
+                        <div ng-if="model.Medication.SelectedSource[0] != null">
+                            {{ model.Medication.SelectedSource[0].Text }}
+                        </div>
+                    </div>
+                    <div ng-show="model.Medication.IsAdd" class="add-meds-input">
+                        <input kendo-auto-complete id="acsource" name="acsource" class="med-autocomplete" k-ng-model="model.Medication.SelectedSource" required validationmessage="required"
+                               k-data-source="model.MedicationSourceList" k-data-text-field="'Text'" k-data-value-field="'Value'"
+                               k-filter="'contains'" k-value-primitive="false" style="width: 98%;" data-acvalid-msg="value is not valid" />
+                        <span data-for="acsource" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        Pres NPI
+                    </div>
+                    <div class="add-meds-input">
+                        <input type="text" class="k-textbox add-meds-input-size" ng-model="model.Medication.PrescNPI" />
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c3">
+                    <div class="add-meds-lbl">
+                        Name
+                    </div>
+                    <div class="add-meds-input">
+                        <input type="text" class="k-textbox add-meds-input-size" ng-model="model.Medication.PrescName" />
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        Pharm Name
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input">
+                        <div>
+                            {{ model.Medication.PharmacyName }}
+                        </div>
+                    </div>
+                    <div ng-show="model.Medication.IsAdd" class="add-meds-input">
+                        <input type="text" class="k-textbox add-meds-input-size" ng-model="model.Medication.PharmacyName" />
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        Phone
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input">
+                        <div>
+                            {{ model.Medication.Phone }}
+                        </div>
+                    </div>
+                    <div ng-show="model.Medication.IsAdd" class="add-meds-input">
+                        <input type="text" class="k-textbox add-meds-input-size masked-phone" ng-model="model.Medication.Phone" />
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c3">
+                    <div class="add-meds-lbl">
+                        City
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input">
+                        <div>
+                            {{ model.Medication.City }}
+                        </div>
+                    </div>
+                    <div ng-show="model.Medication.IsAdd" class="add-meds-input">
+                        <input type="text" class="k-textbox add-meds-input-size" ng-model="model.Medication.City" />
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        State
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input">
+                        <div>
+                            {{ model.Medication.State }}
+                        </div>
+                    </div>
+                    <div ng-show="model.Medication.IsAdd" class="add-meds-input">
+                        <input kendo-auto-complete id="acstate" name="acstate" class="med-autocomplete" k-ng-model="model.Medication.SelectedState"
+                               k-data-source="model.StateList" k-data-text-field="'Text'" k-data-value-field="'Value'"
+                               k-filter="'contains'" k-value-primitive="false" style="width: 98%;" data-acvalid-msg="value is not valid" />
+                        <span data-for="acstate" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c12">
+                    <div class="add-meds-lbl">
+                        Zip
+                    </div>
+                    <div ng-hide="model.Medication.IsAdd" class="add-meds-input">
+                        <div>
+                            {{ model.Medication.ZipCode }}
+                        </div>
+                    </div>
+                    <div ng-show="model.Medication.IsAdd" class="add-meds-input">
+                        <input type="text" class="k-textbox add-meds-input-size masked-zip" ng-model="model.Medication.ZipCode" />
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c3">
+                    <div class="add-meds-lbl">
+                        Indication
+                    </div>
+                    <div class="add-meds-input">
+                        <input kendo-auto-complete id="acindication" name="acindication" class="med-autocomplete" k-ng-model="model.Medication.SelectedIndication"
+                               k-options="model.MedConditionsListConfig" ng-keyup="getMedConditions($event)" k-value-primitive="false"
+                               style="width: 98%;" k-on-change="indicationSelect($event)" data-acvalid-msg="value is not valid" />
+                        <span data-for="acindication" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c2">
+                    <div class="add-meds-lbl">
+                        Substitute
+                    </div>
+                    <div class="add-meds-input">
+                        <input kendo-auto-complete id="acsubstitute" name="acsubstitute" class="med-autocomplete" k-ng-model="model.Medication.SelectedSubstitute"
+                               k-options="model.SubstituteListConfig" ng-keyup="getSubstitutesData($event)" k-value-primitive="false"
+                               style="width: 98.5%;" data-acvalid-msg="value is not valid" />
+                        <span data-for="acsubstitute" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c2">
+                    <div class="add-meds-lbl">
+                        Map Diagnosis
+                    </div>
+                    <div class="add-meds-input">
+                        <input type="text" class="k-textbox add-meds-input-size" name="mapdiagnosis" ng-model="model.Medication.MapDiagnosis"
+                               ng-disabled="model.Medication.MapDiagnosisEnability" style="width: 97%;" data-mapdiag-msg="required" />
+                        <span data-for="mapdiagnosis" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="add-meds-field add-meds-c1">
+                    <div class="add-meds-lbl">
+                        Order Notes
+                    </div>
+                    <div class="add-meds-input">
+                        <input type="text" class="k-textbox add-meds-input-size" ng-model="model.Medication.OrderNote" style="width: 98.5%;" />
+                    </div>
+                </div>
+            </div>
+        </kendo-mobile-modal-view>
+
+        <div class="alrg-filter" ng-hide="model.Filters.AllergyFilterVisible">
+            <div>
+                <kendo-mobile-button id="med-filter-trigger" href="#popover-med-filter" k-rel="'popover'">Showing {{ model.Filters.MedicationFilter }}</kendo-mobile-button>
+
+                <kendo-mobile-pop-over id="popover-med-filter" k-popup='{"width": "20em"}'>
+                    <kendo-mobile-view ng-controller="MedicationFilterController" class="crd-popover-listview do-not-destroy">
+                        <kendo-mobile-list-view class="radio-list">
+                            <li>
+                                <label>
+                                    <input name="meds" type="radio" ng-model="model.MedicationFilter" value="All" ng-click="onMedicationFilterClick()" />All
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input name="meds" type="radio" ng-model="model.MedicationFilter" value="Active" ng-click="onMedicationFilterClick()" />Active
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <input name="meds" type="radio" ng-model="model.MedicationFilter" value="Discontinued" ng-click="onMedicationFilterClick()" />Discontinued
+                                </label>
+                            </li>
+                        </kendo-mobile-list-view>
+                    </kendo-mobile-view>
+                </kendo-mobile-pop-over>
+            </div>
+        </div>
+    </div>
+
+    <!-- Medications Tab Strip -->
+    <div kendo-tab-strip id="medication-tab-strip">
+        <!-- tab list -->
+        <ul>
+            <li class="medtabs k-state-active" ng-click="onTabSelect('Allergies')">ALLERGIES</li>
+            <li class="{{'medtabs ' + ((model.LastReviewDateVisible == true) ? 'medications' : '')}}" ng-click="onTabSelect('Medications')">
+                MEDICATIONS<br />
+                <span ng-show="model.LastReviewDateVisible" class="meds-review-date">Last Review: {{ model.LastReviewDate | date: 'MM/dd/yyyy' }}</span>
+            </li>
+        </ul>
+
+        <!-- Allergies Tab -->
+        <div style="padding: 1em; background: white;" class="medcontent">
+            <div class="alrg-header">
+                <div class="alrg-class" style="float: left">ALLERGY CLASS</div>
+                <div class="alrg" style="float: left">NAME</div>
+                <div class="alrg-delete" style="float: right">DELETE</div>
+                <div class="alrg-symptom" style="float: right">SYMPTOM</div>
+            </div>
+            <div id="alrg-list-scrolls">
+                <kendo-mobile-list-view k-data-source="model.Allergies">
+                    <div k-template class="alrg-content">
+                        <div class="alrg-class">{{ dataItem.AllergyType }}</div>
+                        <div class="alrg">{{ dataItem.AllergyName }}</div>
+                        <div class="alrg-symptom" ng-if="dataItem.Symptom">
+                            <span>{{ dataItem.Symptom }}</span>
+                        </div>
+                        <div class="alrg-symptom" ng-if="dataItem.Symptom == null || dataItem.Symptom == ''">
+                            <span>&nbsp;</span>
+                        </div>
+                        <div class="alrg-delete">
+                            <div class="icon-delete-button" kendo-touch k-on-tap="onDeleteAllergyTap(dataItem)"></div>
+                        </div>
+                    </div>
+                </kendo-mobile-list-view>
+                <div id="add-allergy-div" class="alrg-add alrg-content" ng-show="model.Filters.AddAllergyVisible" kendo-validator="addAllergyValidator">
+                    <div class="add-alrg-class add-alrg-margin">
+                        <select kendo-drop-down-list id="ddlAllergyClass" ng-model="model.AllergyModel.AllergyType">
+                            <option>AllergyClass</option>
+                            <option>Medication</option>
+                        </select>
+                    </div>
+                    <div class="add-alrg add-alrg-margin add-alrg-alrg-autocomplete">
+                        <div id="alrg-autocomplete">
+                            <input kendo-auto-complete id="acAllergy" class="med-autocomplete" ng-model="model.AllergyModel.AllergyName"
+                                   k-options="model.AllergyListConfig" required validationmessage="required" ng-keyup="getAllergyData($event)" />
+                        </div>
+                    </div>
+                    <div class="add-alrg-symptom add-alrg-margin">
+                        <input id="add-alrg-symptom-text" type="text" class="k-textbox" ng-model="model.AllergyModel.Symptom" placeholder="Symptom" />
+                    </div>
+                    <div class="add-alrg-cancel">
+                        <kendo-mobile-button kendo-touch k-on-tap="onCancelAllergyClick()">Cancel</kendo-mobile-button>
+                    </div>
+                    <div class="add-alrg-save">
+                        <kendo-mobile-button kendo-touch k-on-tap="onSaveAllergyClick()">Save</kendo-mobile-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medication Tab -->
+        <div style="padding: 1em; background: white;" class="medcontent">
+            <div class="meds-header">
+                <div class="meds-label" style="float: left">LABEL NAME</div>
+                <div class="meds-dose" style="float: left">DOSE</div>
+                <div class="meds-frequency" style="float: left">FREQUENCY</div>
+                <div class="meds-source" style="float: left">SOURCE</div>
+                <div class="meds-mpr" style="float: left">MPR</div>
+                <div class="meds-alerts" style="float: left">ALERTS</div>
+            </div>
+            <div id="meds-list-scrolls">
+                <div ng-show="model.noDataVisible">No Medications listed for member</div>
+                <kendo-mobile-list-view k-data-source="model.Medications" ng-hide="model.noDataVisible" style="cursor: pointer;">
+                    <div k-template ng-click="showFullMedication(dataItem)" style="padding-top: 1px;">
+                        <div class="meds-content">
+                            <div class="meds-label" ng-if="dataItem.DrugID > 0">{{ dataItem.DrugName }}</div>
+                            <div class="meds-label" ng-if="dataItem.DrugID === 0">{{ dataItem.DrugNameText }}</div>
+                            <div class="meds-dose" ng-if="dataItem.Dose">
+                                <span>{{ dataItem.Dose }}</span>
+                            </div>
+                            <div class="meds-dose" ng-if="dataItem.Dose == null || dataItem.Dose == undefined || dataItem.Dose == ''">
+                                <span>&nbsp;</span>
+                            </div>
+                            <div class="meds-frequency" ng-if="dataItem.Frequency">
+                                <span>{{ getLookupItem("Frequency", dataItem.Frequency) }}</span>
+                            </div>
+                            <div class="meds-frequency" ng-if="dataItem.Frequency == null || dataItem.Frequency == undefined">
+                                <span>&nbsp;</span>
+                            </div>
+                            <div class="meds-source" ng-if="dataItem.Source">
+                                <span>{{ getLookupItem("MedicationSource", dataItem.Source) }}</span>
+                            </div>
+                            <div class="meds-source" ng-if="dataItem.Source == null || dataItem.Source == undefined">
+                                <span>&nbsp;</span>
+                            </div>
+                            <div class="meds-mpr" ng-if="dataItem.MPR">
+                                <span>{{ dataItem.MPR }}</span>
+                            </div>
+                            <div class="meds-mpr" ng-if="dataItem.MPR == null || dataItem.MPR == undefined || dataItem.MPR == ''">
+                                <span>&nbsp;</span>
+                            </div>
+                            <div class="meds-alerts">&nbsp;</div>
+                        </div>
+                        <div id="med-details-{{ dataItem.UID }}" class="med-details">
+                            <div class="meds-header-separator" style="height: 1px !important; margin-top: 15px !important;"></div>
+                            <div class="med-details-header">Medication Details</div>
+                            <div ng-if="dataItem.MedicationStatus == 'A'" class="med-details-c" style="float: right; padding: 5px; height: 115px; width: 15% !important;">
+                                <kendo-mobile-button id="edit-meds" kendo-touch k-on-tap="onMedEditClick(dataItem)">EDIT ENTRY</kendo-mobile-button>
+                            </div>
+                            <div class="med-details-c">
+                                <div class="med-details-label">Label Name</div>
+                                <div class="med-details-value" ng-if="dataItem.DrugID > 0">{{ dataItem.DrugName }}</div>
+                                <div class="med-details-value" ng-if="dataItem.DrugID === 0">{{ dataItem.DrugNameText }}</div>
+                            </div>
+                            <div class="med-details-c">
+                                <div class="med-details-label">Unit</div>
+                                <div ng-if="dataItem.Unit == null || dataItem.Unit == undefined" class="med-details-value">&nbsp;</div>
+                                <div ng-if="dataItem.Unit" class="med-details-value">
+                                    <span>{{ getLookupItem("UnitOfMeasure", dataItem.Unit) }}</span>
+                                </div>
+                            </div>
+                            <div class="med-details-c">
+                                <div class="med-details-label">Rx Number</div>
+                                <div ng-if="dataItem.RxNumber == null || dataItem.RxNumber == undefined" class="med-details-value">&nbsp;</div>
+                                <div ng-if="dataItem.RxNumber" class="med-details-value">
+                                    <span>{{ dataItem.RxNumber }}</span>
+                                </div>
+                            </div>
+                            <div class="med-details-c">
+                                <div class="med-details-label">Frequency</div>
+                                <div ng-if="dataItem.Frequency == null || dataItem.Frequency == undefined" class="med-details-value">&nbsp;</div>
+                                <div ng-if="dataItem.Frequency" class="med-details-value">
+                                    <span>{{ getLookupItem("Frequency", dataItem.Frequency) }}</span>
+                                </div>
+                            </div>
+                            <div class="med-details-c">
+                                <div class="med-details-label">Written</div>
+                                <div ng-if="dataItem.WrittenDate == null || dataItem.WrittenDate == undefined" class="med-details-value">&nbsp;</div>
+                                <div ng-if="dataItem.WrittenDate" class="med-details-value">
+                                    <span>{{ dataItem.WrittenDate | date: 'MM/dd/yyyy'  }}</span>
+                                </div>
+                            </div>
+                            <div class="med-details-c">
+                                <div class="med-details-label">Route</div>
+                                <div ng-if="dataItem.Route == null || dataItem.Route == undefined" class="med-details-value">&nbsp;</div>
+                                <div ng-if="dataItem.Route" class="med-details-value">
+                                    <span>{{ getLookupItem("MedAdministrationRoute", dataItem.Route) }}</span>
+                                </div>
+                            </div>
+                            <div class="med-details-c">
+                                <div class="med-details-label">Filled</div>
+                                <div ng-if="dataItem.FilledDate == null || dataItem.FilledDate == undefined" class="med-details-value">&nbsp;</div>
+                                <div ng-if="dataItem.FilledDate" class="med-details-value">
+                                    <span>{{ dataItem.FilledDate | date: 'MM/dd/yyyy'  }}</span>
+                                </div>
+                            </div>
+                            <div class="med-details-c">
+                                <div class="med-details-label">Source</div>
+                                <div ng-if="dataItem.Source == null || dataItem.Source == undefined" class="med-details-value">&nbsp;</div>
+                                <div ng-if="dataItem.Source" class="med-details-value">
+                                    <span>{{ getLookupItem("MedicationSource", dataItem.Source) }}</span>
+                                </div>
+                            </div>
+                            <div class="med-details-c">
+                                <div class="med-details-label">Dose</div>
+                                <div ng-if="dataItem.Dose == null || dataItem.Dose == undefined" class="med-details-value">&nbsp;</div>
+                                <div ng-if="dataItem.Dose" class="med-details-value">
+                                    <span>{{ dataItem.Dose }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </kendo-mobile-list-view>
+            </div>
+        </div>
+    </div>
+
+</kendo-mobile-view>

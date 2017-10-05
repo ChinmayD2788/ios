@@ -1,0 +1,53 @@
+﻿<kendo-mobile-view class="crd-view" ng-controller="LabsController">
+    <div class="crd-view">
+        <div class="crd-screenname-container">
+            <div class="crd-screennameheader">Labs</div>
+        </div>
+
+        <div class="no-data-available" ng-if="NoDataAvailable">{{NoData}}</div>
+
+        <div id="lab-history-modalview" kendo-mobile-modal-view="modal" k-modal="false">
+            <div class="lab-item-row">
+                <span id="lab-history-modalview-title" ng-class="CurrentLab.ClassNames">{{CurrentLab.LabTypeFullText}}</span>
+
+            </div>
+            <div class="lab-item-row">
+                <span id="lab-history-modalview-goal" class="lab-item-value">{{CurrentLab.GoalRangesFullText}}</span>
+            </div>
+            <div id="lab-history-chart"></div>
+        </div>
+
+        <div id="labs-container">
+            <div class="crd-kendo-mobile-scroller" kendo-mobile-scroller ng-if="!NoDataAvailable">
+                <div  class="labsstab-listview" ng-repeat="x in Labs" ng-click="onLabItemSelected(x)">
+                    <!---  -->
+                    <div class="lab-item-column-one">
+                        <div class="lab-item-row">
+                            <span class="lab-item-label" ng-class="{'crd-greentext':x.Color==='Green','crd-redtext':x.Color==='Red','crd-greytext':x.Color==='Gray'}">{{x.LabTypeText + ' (' + x.Value + ')'}}</span>
+                        </div>
+                        <div class="lab-item-row" ng-if="x.LabType === 'LDL'">
+                            <span ng-repeat="y in x.GoalRanges" class="lab-item-value">{{($index == 0? 'Goal: CKD: ' : ' ') + y}}</span>
+                        </div>
+                        <div class="lab-item-row" ng-if="x.LabType !== 'LDL'">
+                            <span ng-repeat="y in x.GoalRanges" class="lab-item-value">{{($index == 0? 'Goal: ' : ' ') + y}}</span>
+                        </div>
+                    </div>
+                    <div class="lab-item-column-two">
+                        <div class="lab-item-row">
+                            <div class="lab-item-source-drawdate">
+                                <span class="lab-item-value">{{x.DrawDate | date: 'MM/dd/yyyy' }}</span>
+                            </div>
+                        </div>
+                        <div class="lab-item-row">
+                            <div class="lab-item-source-drawdate">
+                                <span class="lab-item-value">{{"Source: " + x.LabSource}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="lab-item-separator">&nbsp;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</kendo-mobile-view>
+

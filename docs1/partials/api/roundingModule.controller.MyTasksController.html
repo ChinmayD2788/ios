@@ -1,0 +1,90 @@
+<h1><code ng:non-bindable="">MyTasksController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-mytaskscontroller-page"><ul>
+<li>Main Controller for My Tasks Screen </li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getactionitems">getActionItems()</h3>
+<div class="getactionitems"><div class="getactionitems-page"><ul>
+<li>Calls MyTasksService.GetActionItems.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_ongetactionitemsretrieved">onGetActionItemsRetrieved(result)</h3>
+<div class="ongetactionitemsretrieved"><div class="ongetactionitemsretrieved-page"><ul>
+<li>Callback function of MyTasksService.GetActionItems</li>
+</ul>
+</div><h5 id="methods_ongetactionitemsretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetactionitemsretrieved-page"><p>returned by MyTasksService.GetActionItems call</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_onsavetaskdelegationretrieved">onSaveTaskDelegationRetrieved(result)</h3>
+<div class="onsavetaskdelegationretrieved"><div class="onsavetaskdelegationretrieved-page"><ul>
+<li>Callback function of MyTasksService.SaveTaskDelegation</li>
+</ul>
+</div><h5 id="methods_onsavetaskdelegationretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onsavetaskdelegationretrieved-page"><p>returned by MyTasksService.SaveTaskDelegation call</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_showmytasks">showMyTasks()</h3>
+<div class="showmytasks"><div class="showmytasks-page"><ul>
+<li>Calls getActionItems which will return Tasks</li>
+<li>Also calls getPatientDetails once tasks are retrieved       </li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_showmytasks">showMyTasks()</h3>
+<div class="showmytasks"><div class="showmytasks-page"><ul>
+<li>This function will be called first when MyTasksController loads</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemytaskmodel">$scope.MyTaskmodel</h3>
+<div class="$scopemytaskmodel"><div class="roundingmodule-controller-page roundingmodule-controller-mytaskscontroller-page"><p>model of MyTasksController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemytaskmodeltaskslist">$scope.MyTaskmodel.Taskslist</h3>
+<div class="$scopemytaskmodeltaskslist"><div class="roundingmodule-controller-page roundingmodule-controller-mytaskscontroller-page"><p>property of $scope.MyTaskmodel used for tasks listview</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_completetask">completeTask</h3>
+<div class="completetask"><div class="completetask-page"><ul>
+<li>ng-click event of completeTask from view </li>
+<li>Sets complete task data task by calling MyTasksService.SetCompleteTaskData and Opens Complete task modal view </li>
+<li>Also navigates to any screen based on dataItem         </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_completetask_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="completetask-page"><p>item of $scope.MyTaskmodel.Taskslist</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_delegatetask">delegateTask</h3>
+<div class="delegatetask"><div class="delegatetask-page"><ul>
+<li>ng-click event of delegateTask from view</li>
+<li>Delegates task by calling MyTasksService.SaveTaskDelegation</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_delegatetask_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="delegatetask-page"><p>item of $scope.MyTaskmodel.Taskslist</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_refreshactionitems">refreshActionItems</h3>
+<div class="refreshactionitems"><div class="refreshactionitems-page"><ul>
+<li>subscriber of refreshActionItems broadcast event which will call getActionItems()</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

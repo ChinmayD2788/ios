@@ -1,0 +1,67 @@
+.lastComorbidDate {
+    padding-right: 7px;
+}
+
+.comorbids-header {
+    font-weight: bold;
+    border-bottom: 2px solid;
+}
+
+#comorbids-content {
+    background-color: #fff !important;
+    border: 1px solid lightgray !important;
+    height: 600px;
+}
+
+#comorbids-listview li {
+    padding: 15px 0px !important;
+}
+
+.comorbids-details {
+    display: none;
+    min-height: 120px !important;
+}
+
+.comorbids-details-active {
+    background-color: #EEF5FB !important;
+    height: 100% !important;
+}
+
+
+.comorbids-details-inactive {
+    background-color: transparent !important;
+}
+
+.comorbids-details-row {
+    padding-top: 10px;
+    clear: both;
+}
+
+.comorbids-details-row-label {
+    padding-top: 7px;
+    padding-bottom: 3px;
+    color: #808285 !important;
+    text-transform: uppercase !important;
+    font-weight: bold;
+}
+
+#add-edit-comorbid-modalview {
+    width: 800px;
+    height: 400px;
+}
+
+#add-edit-comorbid-modalview .k-widget.k-invalid-msg {
+    position: relative;
+}
+
+#comorbids-scroller {
+    height: 550px;
+}
+
+.border-bottom-0px{
+    border-bottom : 0px !important;
+}
+
+.deactivate-icon{
+    width: 75px !important;
+}

@@ -1,0 +1,75 @@
+<h1><code ng:non-bindable="">IndexController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-indexcontroller-page"><ul>
+<li>Controller for Index View</li>
+<li>Called when the app loads/initializes</li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_failure">failure()</h3>
+<div class="failure"><div class="failure-page"><ul>
+<li>Callback function of window.wizUtils.getBundleIdentifier</li>
+<li>Callback function of window.wizUtils.getDeviceWidth</li>
+<li>Displays alert in case of failure        </li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_initialize">initialize()</h3>
+<div class="initialize"><div class="initialize-page"><ul>
+<li>Called first when Index view loads</li>
+<li>Intializes the app</li>
+<li>Calls Configuration.SetServiceUrl</li>
+<li>Calls $scope.bindEvents</li>
+<li>Navigates to Login Screen</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_initializemobileapp">initializeMobileApp(result)</h3>
+<div class="initializemobileapp"><div class="initializemobileapp-page"><ul>
+<li>Callback function of window.wizUtils.getBundleIdentifier</li>
+<li>Calls Configuration.SetServiceUrl to load APIs based on the environment</li>
+<li>Displays NonProdEnvAlert popup      </li>
+<li>Navigates to Login Screen</li>
+</ul>
+</div><h5 id="methods_initializemobileapp_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="initializemobileapp-page"><p>app bundle identifier</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setdeviceheight">setDeviceHeight(width)</h3>
+<div class="setdeviceheight"><div class="setdeviceheight-page"><p>Sets $rootScope.Global.Objects.DeviceHeight property from width</p>
+</div><h5 id="methods_setdeviceheight_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>width</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="setdeviceheight-page"><p>width of the device</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_bindevents">bindEvents</h3>
+<div class="bindevents"><div class="bindevents-page"><p>Binds &#39;deviceready&#39; event</p>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_ondeviceready">onDeviceReady</h3>
+<div class="ondeviceready"><div class="ondeviceready-page"><ul>
+<li>Calls window.wizUtils.getBundleIdentifier</li>
+<li>Calls window.wizUtils.getDeviceWidth</li>
+<li>Binds phonegap events which are required &#39;pause&#39;, &#39;resume&#39;, &#39;offline&#39;</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_receivedevent">receivedEvent</h3>
+<div class="receivedevent"><div class="receivedevent-page"><ul>
+<li>Updates DOM on a Received Event</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,125 @@
+<h1><code ng:non-bindable="">AccessInfoController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-accessinfocontroller-page"><ul>
+<li>Main Controller for Access Info Screen (View Mode). </li>
+<li>Add/Edit functionality is captured in <a href="#/api/roundingModule.controller:AddEditAccessInfoController">roundingModule.controller:AddEditAccessInfoController</a></li>
+<li><a href="#/api/roundingModule.service:AccessInfoService">roundingModule.service:AccessInfoService</a></li>
+<li>VersionOne Requirements - View Access - <a href="https://www13.v1host.com/DaVitaInc/Task.mvc/Summary?oidToken=Task%3A1373">TK-01066</a></li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getlookupitem">getLookupItem(lookupType, item)</h3>
+<div class="getlookupitem"><div class="getlookupitem-page"><p>Gets lookup text based on value from Access Info view   </p>
+</div><h5 id="methods_getlookupitem_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>lookupType</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getlookupitem-page"><p>type of lookup</p>
+</div></td></tr><tr><td>item</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getlookupitem-page"><p>lookup item(containing UID, Value, Text) for which lookup text needs be displayed</p>
+</div></td></tr></tbody></table><h5 id="methods_getlookupitem_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getlookupitem-page"><p>lookup item text</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_ongetpatientaccessmgmtretrieved">onGetPatientAccessMgmtRetrieved(result)</h3>
+<div class="ongetpatientaccessmgmtretrieved"><div class="ongetpatientaccessmgmtretrieved-page"><ul>
+<li>Callback function of AccessInfoService.GetPatientAccessMgmt</li>
+<li>Populates $scope.model.AccessData</li>
+<li>Updates count for Active/InActive Access, Sorts the result</li>
+</ul>
+</div><h5 id="methods_ongetpatientaccessmgmtretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetpatientaccessmgmtretrieved-page"><p>returned by service</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_showaccessinfo">showAccessInfo()</h3>
+<div class="showaccessinfo"><div class="showaccessinfo-page"><ul>
+<li>Calls AccessInfoService.GetPatientAccessMgmt</li>
+<li>Start point of the Access Info screen</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemodel">$scope.model</h3>
+<div class="$scopemodel"><div class="roundingmodule-controller-page roundingmodule-controller-accessinfocontroller-page"><p>Model of AccessInfoController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelaccessdata">$scope.model.AccessData</h3>
+<div class="$scopemodelaccessdata"><div class="roundingmodule-controller-page roundingmodule-controller-accessinfocontroller-page"><p>Property of $scope.model used for Access List</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelaccessstatus">$scope.model.AccessStatus</h3>
+<div class="$scopemodelaccessstatus"><div class="roundingmodule-controller-page roundingmodule-controller-accessinfocontroller-page"><p>Property of $scope.model used for Access Status List</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodellastitemuid">$scope.model.LastItemUID</h3>
+<div class="$scopemodellastitemuid"><div class="roundingmodule-controller-page roundingmodule-controller-accessinfocontroller-page"><p>Property of $scope.model used for Last Item of AccessList</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelaccessdatacount">$scope.model.AccessDataCount</h3>
+<div class="$scopemodelaccessdatacount"><div class="roundingmodule-controller-page roundingmodule-controller-accessinfocontroller-page"><p>Property of $scope.model used to get the count of AccessData</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelshareddata">$scope.model.SharedData</h3>
+<div class="$scopemodelshareddata"><div class="roundingmodule-controller-page roundingmodule-controller-accessinfocontroller-page"><p>Property of $scope.model used for SharedData</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelshareddataactivecount">$scope.model.SharedData.ActiveCount</h3>
+<div class="$scopemodelshareddataactivecount"><div class="roundingmodule-controller-page roundingmodule-controller-accessinfocontroller-page"><p>Property of $scope.model.SharedData used to get the count of Active Access</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelshareddataactiveuid">$scope.model.SharedData.ActiveUID</h3>
+<div class="$scopemodelshareddataactiveuid"><div class="roundingmodule-controller-page roundingmodule-controller-accessinfocontroller-page"><p>Property of $scope.model.SharedData used for ActiveUID</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelshareddatainactiveuids">$scope.model.SharedData.InActiveUIDS</h3>
+<div class="$scopemodelshareddatainactiveuids"><div class="roundingmodule-controller-page roundingmodule-controller-accessinfocontroller-page"><p>Property of $scope.model.SharedData used for InActiveUIDS list</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelshareddatainactivecount">$scope.model.SharedData.InActiveCount</h3>
+<div class="$scopemodelshareddatainactivecount"><div class="roundingmodule-controller-page roundingmodule-controller-accessinfocontroller-page"><p>Property of $scope.model.SharedData used to get the count of InActive Access</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_onaccessaddclick">onAccessAddClick</h3>
+<div class="onaccessaddclick"><div class="onaccessaddclick-page"><ul>
+<li>k-on-tap event of Add Access button from access info view</li>
+<li>Initializes new access and resets boolean flags</li>
+<li>Calls AccessInfoService.SetSelectedAccess</li>
+<li>Opens add/edit accessinfo modal view</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_oneditaccessdetailsclick">onEditAccessDetailsClick</h3>
+<div class="oneditaccessdetailsclick"><div class="oneditaccessdetailsclick-page"><ul>
+<li>k-on-tap event of Edit Access button from access info view</li>
+<li>Resets boolean flags</li>
+<li>Calls AccessInfoService.SetSelectedAccess</li>
+<li>Opens add/edit accessinfo modal view</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_oneditaccessdetailsclick_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="oneditaccessdetailsclick-page"><p>item of $scope.model.AccessData</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_ontoprowclicked">onTopRowClicked</h3>
+<div class="ontoprowclicked"><div class="ontoprowclicked-page"><ul>
+<li>ng-click event of top row in Access List from access info view</li>
+<li>Flips Access Info block and updates the styles for accessinfo steps</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_ontoprowclicked_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ontoprowclicked-page"><p>item of $scope.model.AccessData</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_refreshaccessinfo">refreshAccessInfo</h3>
+<div class="refreshaccessinfo"><div class="refreshaccessinfo-page"><p>Subscriber of refreshAccessInfo event which will call $scope.showAccessInfo()</p>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

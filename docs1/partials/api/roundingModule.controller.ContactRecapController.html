@@ -1,0 +1,324 @@
+<h1><code ng:non-bindable="">ContactRecapController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-contactrecapcontroller-page"><ul>
+<li>Controller for Contact Recap Screen.</li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_$on">$on (ReloadSnippets)()</h3>
+<div class="$on"><div class="-on-reloadsnippets--page"><ul>
+<li>Subscribe event Reload Snippets to run $scope.getSnippets() function</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_onsaveptsnippets">OnSavePtSnippets(result)</h3>
+<div class="onsaveptsnippets"><div class="onsaveptsnippets-page"><ul>
+<li>Calls $scope.getSnippets on saving of snippet</li>
+</ul>
+</div><h5 id="methods_onsaveptsnippets_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onsaveptsnippets-page"><p>Snippet Details </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_contactmethodselected">contactMethodSelected(contactMethod, modifyContact)</h3>
+<div class="contactmethodselected"><div class="contactmethodselected-page"><ul>
+<li>Select contact method on change contact screen</li>
+</ul>
+</div><h5 id="methods_contactmethodselected_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>contactMethod</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="contactmethodselected-page"><p>Contact method selected </p>
+</div></td></tr><tr><td>modifyContact</td><td><a href="" class="label type-hint type-hint-boolean">boolean</a></td><td><div class="contactmethodselected-page"><p>Condition on modifying contact </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_createtagsarray">createTagsArray(tagsValue)</h3>
+<div class="createtagsarray"><div class="createtagsarray-page"><ul>
+<li>Tags in edit topics screen</li>
+</ul>
+</div><h5 id="methods_createtagsarray_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>tagsValue</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="createtagsarray-page"><p>Value of the tags </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getsnippets">getSnippets()</h3>
+<div class="getsnippets"><div class="getsnippets-page"><ul>
+<li>Makes use of ContactRecapService function getSnippets for Snippets retrieval</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_ongetactionitemsretrieved">onGetActionItemsRetrieved(result)</h3>
+<div class="ongetactionitemsretrieved"><div class="ongetactionitemsretrieved-page"><ul>
+<li>Call back function for GetActionItems function</li>
+</ul>
+</div><h5 id="methods_ongetactionitemsretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetactionitemsretrieved-page"><p>Action items result data  </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_ongetptsnippetsretrieved">onGetPtSnippetsRetrieved(result)</h3>
+<div class="ongetptsnippetsretrieved"><div class="ongetptsnippetsretrieved-page"><ul>
+<li>Retrieve Snippets after log in</li>
+</ul>
+</div><h5 id="methods_ongetptsnippetsretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetptsnippetsretrieved-page"><p>snippet data  </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_onsavetaskdelegationretrieved">onSaveTaskDelegationRetrieved(result)</h3>
+<div class="onsavetaskdelegationretrieved"><div class="onsavetaskdelegationretrieved-page"><ul>
+<li>Call back method for saveTaskDelegation service call</li>
+</ul>
+</div><h5 id="methods_onsavetaskdelegationretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onsavetaskdelegationretrieved-page"><p>Delegated task details</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_removebr">removeBr(String)</h3>
+<div class="removebr"><div class="removebr-page"><ul>
+<li>Replace <br/> tag</li>
+</ul>
+</div><h5 id="methods_removebr_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>String</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="removebr-page"><p>String to be replaced</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setdefaultcontactvalues">setDefaultContactValues()</h3>
+<div class="setdefaultcontactvalues"><div class="setdefaultcontactvalues-page"><ul>
+<li>Set Default Values for change contact method on change contact screen</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_show">show()</h3>
+<div class="show"><div class="show-page"><ul>
+<li>Start page of the screen</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_undelegatetask">unDelegateTask(e)</h3>
+<div class="undelegatetask"><div class="undelegatetask-page"><ul>
+<li>Gets called when the task gets undelegated or dropped onto My Tasks section under Contact recap screen for VHN</li>
+</ul>
+</div><h5 id="methods_undelegatetask_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="undelegatetask-page"><p>Delegated task details </p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopeconsideralertfooter">$scope.ConsiderAlertFooter</h3>
+<div class="$scopeconsideralertfooter"><div class="roundingmodule-controller-page roundingmodule-controller-contactrecapcontroller-page"><p>To set up alerts at footer</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopesnippets">$scope.Snippets</h3>
+<div class="$scopesnippets"><div class="roundingmodule-controller-page roundingmodule-controller-contactrecapcontroller-page"><p>Data source for Snippets</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodifiedsnippets">$scope.ModifiedSnippets</h3>
+<div class="$scopemodifiedsnippets"><div class="roundingmodule-controller-page roundingmodule-controller-contactrecapcontroller-page"><p>Data source for modifying Snippets</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopedeletedsnippets">$scope.DeletedSnippets</h3>
+<div class="$scopedeletedsnippets"><div class="roundingmodule-controller-page roundingmodule-controller-contactrecapcontroller-page"><p>Data source for deleted snippets</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemytasks">$scope.MyTasks</h3>
+<div class="$scopemytasks"><div class="roundingmodule-controller-page roundingmodule-controller-contactrecapcontroller-page"><p>model for My Tasks</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopedelegatedtasks">$scope.DelegatedTasks</h3>
+<div class="$scopedelegatedtasks"><div class="roundingmodule-controller-page roundingmodule-controller-contactrecapcontroller-page"><p>model for Delegated Tasks</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeistasksvisible">$scope.isTasksVisible</h3>
+<div class="$scopeistasksvisible"><div class="roundingmodule-controller-page roundingmodule-controller-contactrecapcontroller-page"><p>Boolean value to make Tasks visible</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeshowpathwayscreening">$scope.showPathwayScreening</h3>
+<div class="$scopeshowpathwayscreening"><div class="roundingmodule-controller-page roundingmodule-controller-contactrecapcontroller-page"><p>Show Pathway Screening</p>
+</div></div>
+</li>
+<li><h3 id="properties_$rootscopeglobalcontactsiscontactpostponed">$rootScope.Global.Contacts.IsContactPostPoned</h3>
+<div class="$rootscopeglobalcontactsiscontactpostponed"><div class="roundingmodule-controller-page roundingmodule-controller-contactrecapcontroller-page"><p>Global Property to determine whether contact should be postponed</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeissnippeteditmode">$scope.IsSnippetEditMode</h3>
+<div class="$scopeissnippeteditmode"><div class="roundingmodule-controller-page roundingmodule-controller-contactrecapcontroller-page"><p>Determine where snippet is in edit mode</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeissnippetaddmode">$scope.IsSnippetAddMode</h3>
+<div class="$scopeissnippetaddmode"><div class="roundingmodule-controller-page roundingmodule-controller-contactrecapcontroller-page"><p>Determine where snippet is in add mode</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_contactrecapinit">ContactRecapInit</h3>
+<div class="contactrecapinit"><div class="contactrecapinit-page"><ul>
+<li>Suscribe event ContactRecapInit for use in Contact recap controller. </b></li>
+<li>Initialization of contact recap screen</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_resetnote">ResetNote</h3>
+<div class="resetnote"><div class="resetnote-page"><ul>
+<li>Broadcasted on click of OK button on Spell Check screen</li>
+<li>Subscribed once spell check is completed</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_resetnote_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>event</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="resetnote-page"><p>Suscribed event </p>
+</div></td></tr><tr><td>arg</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="resetnote-page"><p>argument </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_changecontact">changeContact</h3>
+<div class="changecontact"><div class="changecontact-page"><ul>
+<li>Kendo on click event to open change contact pop up on contact recap screen</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_changecontactcancel">changeContactCancel</h3>
+<div class="changecontactcancel"><div class="changecontactcancel-page"><ul>
+<li>Kendo on- click event to revert changes made on change contact screen</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_changecontactok">changeContactOK</h3>
+<div class="changecontactok"><div class="changecontactok-page"><ul>
+<li>Kendo on- click event to save changes for change contact functionality</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_draggableconfig">draggableConfig</h3>
+<div class="draggableconfig"><div class="draggableconfig-page"><ul>
+<li>Gets called when the snippet is dragged on</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_draggablehint">draggableHint</h3>
+<div class="draggablehint"><div class="draggablehint-page"><ul>
+<li>Gets called when the snippet is dragged on</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_draggablehint_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-event">event</a></td><td><div class="draggablehint-page"><p>Drag event </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_edittopics">editTopics</h3>
+<div class="edittopics"><div class="edittopics-page"><ul>
+<li>Kendo on-click event to open Edit topics screen on contact recap</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_edittopicscancel">editTopicsCancel</h3>
+<div class="edittopicscancel"><div class="edittopicscancel-page"><ul>
+<li>Kendo on-click event to revert changes made to edit topics screen</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_edittopicsok">editTopicsOK</h3>
+<div class="edittopicsok"><div class="edittopicsok-page"><ul>
+<li>Kendo on-click event to save changes made to the edit topics screen</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_finalizecontact">finalizeContact</h3>
+<div class="finalizecontact"><div class="finalizecontact-page"><ul>
+<li>Kendo on-click event to finalize patient on contact recap screen</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_homebuttonclick">homeButtonClick</h3>
+<div class="homebuttonclick"><div class="homebuttonclick-page"><ul>
+<li>Makes use of OnHomeClick Common function.</li>
+<li>ng-click event to to navigate to Dashboard for RCM and Patient Chart for VHN</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_ondeletesnippetclick">onDeleteSnippetClick</h3>
+<div class="ondeletesnippetclick"><div class="ondeletesnippetclick-page"><ul>
+<li>AngularJS ng-click event to delete snippets on click</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_ondrop">onDrop</h3>
+<div class="ondrop"><div class="ondrop-page"><ul>
+<li>Gets called when the snippet is dropped on</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_ondrop_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ondrop-page"><p>Drop event </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_oneditdonesnippetclicked">onEditDoneSnippetClicked</h3>
+<div class="oneditdonesnippetclicked"><div class="oneditdonesnippetclicked-page"><ul>
+<li>AngularJS ng-click event to save Snippets on click</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_oneditsnippetclicked">onEditSnippetClicked</h3>
+<div class="oneditsnippetclicked"><div class="oneditsnippetclicked-page"><ul>
+<li>AngularJS click event to edit snippets</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_postponecontact">postPoneContact</h3>
+<div class="postponecontact"><div class="postponecontact-page"><ul>
+<li>Functionality used to postpone a contact on contact recap screen</li>
+<li>Makes us of PostponeContact common functions</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_ptchartbuttonclick">ptChartButtonClick</h3>
+<div class="ptchartbuttonclick"><div class="ptchartbuttonclick-page"><ul>
+<li>ng-click event to navigate to Patient Chart for RCM &amp; VHN</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_taskdraggableconfig">taskDraggableConfig</h3>
+<div class="taskdraggableconfig"><div class="taskdraggableconfig-page"><ul>
+<li>Gets called when a delegated task is dragged on</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_taskdraggableconfig_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-event">event</a></td><td><div class="taskdraggableconfig-page"><p>Drag event </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_taskondrop">taskOnDrop</h3>
+<div class="taskondrop"><div class="taskondrop-page"><ul>
+<li>Gets called when a delegated task is dropped on</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_taskondrop_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-event">event</a></td><td><div class="taskondrop-page"><p>Drop event </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_updatecontactnote">updateContactNote</h3>
+<div class="updatecontactnote"><div class="updatecontactnote-page"><ul>
+<li>Gets called on any change in contact note</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_updatecontactnote_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="updatecontactnote-page"><p>updated contact note</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

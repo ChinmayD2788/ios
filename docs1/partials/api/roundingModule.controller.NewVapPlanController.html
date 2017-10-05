@@ -1,0 +1,106 @@
+<h1><code ng:non-bindable="">NewVapPlanController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-newvapplancontroller-page"><ul>
+<li>Controller for New Vap Plan Modal View</li>
+<li>Child Controller for VAP (Vascular Access Plan) Screen </li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_newplanvalidator">newPlanValidator()</h3>
+<div class="newplanvalidator"><div class="newplanvalidator-page"><ul>
+<li>Creates custom validator using kendo validator using different business rules for new plan modal view</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemodel">$scope.model</h3>
+<div class="$scopemodel"><div class="roundingmodule-controller-page roundingmodule-controller-newvapplancontroller-page"><p>model of NewVapPlanController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodeldesiredpermanentaccess">$scope.model.DesiredPermanentAccess</h3>
+<div class="$scopemodeldesiredpermanentaccess"><div class="roundingmodule-controller-page roundingmodule-controller-newvapplancontroller-page"><p>property of $scope.model used for Desired Permanent Access dropdown</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelvapsteps">$scope.model.VapSteps</h3>
+<div class="$scopemodelvapsteps"><div class="roundingmodule-controller-page roundingmodule-controller-newvapplancontroller-page"><p>property of $scope.model used for Vap Steps List</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelselectedsteporder">$scope.model.SelectedStepOrder</h3>
+<div class="$scopemodelselectedsteporder"><div class="roundingmodule-controller-page roundingmodule-controller-newvapplancontroller-page"><p>property of $scope.model used for Selected Step Order</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelmaxdate">$scope.model.Maxdate</h3>
+<div class="$scopemodelmaxdate"><div class="roundingmodule-controller-page roundingmodule-controller-newvapplancontroller-page"><p>property of $scope.model used for Max Date</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelmindate">$scope.model.Mindate</h3>
+<div class="$scopemodelmindate"><div class="roundingmodule-controller-page roundingmodule-controller-newvapplancontroller-page"><p>property of $scope.model used for Min Date</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelplanstartdateconfig">$scope.model.PlanStartDateConfig</h3>
+<div class="$scopemodelplanstartdateconfig"><div class="roundingmodule-controller-page roundingmodule-controller-newvapplancontroller-page"><p>property of $scope.model used for Plan Start Date datepicker</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelplanstartdate">$scope.model.PlanStartDate</h3>
+<div class="$scopemodelplanstartdate"><div class="roundingmodule-controller-page roundingmodule-controller-newvapplancontroller-page"><p>property of $scope.model used for Plan Start Date</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelaccesstypes">$scope.model.AccessTypes</h3>
+<div class="$scopemodelaccesstypes"><div class="roundingmodule-controller-page roundingmodule-controller-newvapplancontroller-page"><p>property of $scope.model used for Access Type dropdown</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_onaccesstypechanged">onAccessTypeChanged</h3>
+<div class="onaccesstypechanged"><div class="onaccesstypechanged-page"><ul>
+<li>ng-change event of access type change from new plan modal view     </li>
+<li>Calls VapService.GetVapStepDetails</li>
+<li>Changes UI behaviour</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_oncancelnewvapplanclick">onCancelNewVapPlanClick</h3>
+<div class="oncancelnewvapplanclick"><div class="oncancelnewvapplanclick-page"><ul>
+<li>k-on-tap event of Cancel Button of new plan modal view     </li>
+<li>Cancels Patient Vascular Access Plan</li>
+<li>Closes new plan modal view</li>
+<li>Changes UI behaviour</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_onoknewvapplanclick">onOkNewVapPlanClick</h3>
+<div class="onoknewvapplanclick"><div class="onoknewvapplanclick-page"><ul>
+<li>k-on-tap event of Ok Button of new plan modal view     </li>
+<li>Saves Patient Vascular Access Plan</li>
+<li>Calls VapService.SavePatientVascularAccess</li>
+<li>Calls VapService.RefreshVap</li>
+<li>Changes UI behaviour</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_onvapitemselected">onVapItemSelected</h3>
+<div class="onvapitemselected"><div class="onvapitemselected-page"><ul>
+<li>ng-click event of step selection from new plan modal view       </li>
+<li>Changes UI behaviour</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_onvapitemselected_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>dataItem</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onvapitemselected-page"><p>item of VapSteps</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

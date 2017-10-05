@@ -1,0 +1,79 @@
+<h1><code ng:non-bindable="">RCMDashboardService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-service-page roundingmodule-service-rcmdashboardservice-page"><p>Used by RCMDashboardController, RCMDashboardSortController &amp; RCMDashboardFilterController</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">RCMDashboardService($timeout, $rootScope, ServiceConstants, RoundingService);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>$timeout</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="roundingmodule-service-page roundingmodule-service-rcmdashboardservice-page"><p>AngularJS timeout function</p>
+</div></td></tr><tr><td>$rootScope</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="roundingmodule-service-page roundingmodule-service-rcmdashboardservice-page"><p>Global scope object</p>
+</div></td></tr><tr><td>ServiceConstants</td><td><a href="" class="label type-hint type-hint-constant">constant</a></td><td><div class="roundingmodule-service-page roundingmodule-service-rcmdashboardservice-page"><p>Service based constants from Constants.js</p>
+</div></td></tr><tr><td>RoundingService</td><td><a href="" class="label type-hint type-hint-service">service</a></td><td><div class="roundingmodule-service-page roundingmodule-service-rcmdashboardservice-page"><p>Service calls to the API</p>
+</div></td></tr></tbody></table></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getfilterlist">getFilterList()</h3>
+<div class="getfilterlist"><div class="getfilterlist-page"><p>Returns array of objects containing values for filtering patients</p>
+</div><h5 id="methods_getfilterlist_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="getfilterlist-page"><p>filterList Returns array to objects to determine criteria for filteration of patients</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getrcmdashboardfiltertype">getRCMDashboardFilterType()</h3>
+<div class="getrcmdashboardfiltertype"><div class="getrcmdashboardfiltertype-page"><p>Returns value for type of the filter selected</p>
+</div><h5 id="methods_getrcmdashboardfiltertype_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getrcmdashboardfiltertype-page"><p>rcmDashboardFilterType Returns object containing Type of filter to be applied</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getrcmdashboardsorttype">getRCMDashboardSortType()</h3>
+<div class="getrcmdashboardsorttype"><div class="getrcmdashboardsorttype-page"><p>Function used to get values for sorting </p>
+</div><h5 id="methods_getrcmdashboardsorttype_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getrcmdashboardsorttype-page"><p>rcmDashboardSortType Returns objects containing value based on which sorting would take place</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getworklist">getWorklist(data, callBack)</h3>
+<div class="getworklist"><div class="getworklist-page"><ul>
+<li>API Call: worklist/getworklist</li>
+<li>Function is used to retrieve list of patients from the API</li>
+</ul>
+</div><h5 id="methods_getworklist_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getworklist-page"><p>Contains UserID of the current user</p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getworklist-page"><p>$scope.onGetWorklistRetrived function to retrieve patient&#39;s list for RCM role</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setfilterlist">setFilterList(filterlist)</h3>
+<div class="setfilterlist"><div class="setfilterlist-page"><p>This function contains retrieves values based on which filteration is performed</p>
+</div><h5 id="methods_setfilterlist_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>filterlist</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="setfilterlist-page"><p>Array of objects containing values based on which filteration would take place</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setrcmdashboardfiltertype">setRCMDashboardFilterType(filtertype)</h3>
+<div class="setrcmdashboardfiltertype"><div class="setrcmdashboardfiltertype-page"><ul>
+<li>To set type of filter based on the selection from the Filter pop up</li>
+<li>This function is broadcasted globally</li>
+</ul>
+</div><h5 id="methods_setrcmdashboardfiltertype_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>filtertype</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="setrcmdashboardfiltertype-page"><p>Selected filter type on tap</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setrcmdashboardsorttype">setRCMDashboardSortType(sorttype)</h3>
+<div class="setrcmdashboardsorttype"><div class="setrcmdashboardsorttype-page"><ul>
+<li>Function is used to set the sort type so as to perform sorting of patients based on the value retrieved</li>
+<li>This function is broadcasted globally</li>
+</ul>
+</div><h5 id="methods_setrcmdashboardsorttype_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>sorttype</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="setrcmdashboardsorttype-page"><p>Object containing value to perform sorting</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_rcmdashboardsorttype">rcmDashboardSortType</h3>
+<div class="rcmdashboardsorttype"><div class="roundingmodule-service-page roundingmodule-service-rcmdashboardservice-page"><p>Sort type value</p>
+</div></div>
+</li>
+<li><h3 id="properties_rcmdashboardfiltertype">rcmDashboardFilterType</h3>
+<div class="rcmdashboardfiltertype"><div class="roundingmodule-service-page roundingmodule-service-rcmdashboardservice-page"><p>Filter type value</p>
+</div></div>
+</li>
+<li><h3 id="properties_filterlist">filterList</h3>
+<div class="filterlist"><div class="roundingmodule-service-page roundingmodule-service-rcmdashboardservice-page"><p>List of filter values</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

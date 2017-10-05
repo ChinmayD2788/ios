@@ -1,0 +1,424 @@
+﻿<kendo-mobile-split-view  k-style="'vertical'" k-transition="'slide'" id="mypts-main-splitview" ng-controller="MyPatientsController" k-reload="true">
+    <kendo-mobile-pane id="mypts-bottom-pane" k-layout="'main-default'">
+        <kendo-mobile-view>
+            <kendo-mobile-header>
+                <kendo-mobile-nav-bar>
+                    <kendo-mobile-button class="username-header" k-align="'right'" k-rel="'popover'" href="#logOutPopOverMypts">
+                        <span class="icon-user"></span>
+                        <span>{{ LoggedInUser.FirstName }} {{ LoggedInUser.LastName }}</span>
+                    </kendo-mobile-button>
+
+                    <div class="crd-header-center-text">
+                        <div ng-hide="IsSwitchRoster">
+                            <span>My Patients</span>
+                        </div>
+                        <div ng-show="IsSwitchRoster">
+                            <span>{{SwitchedUserName}}'s Patients </span>
+                        </div>
+                    </div>
+                    <kendo-mobile-pop-over id="logOutPopOverMypts" k-popup='{"height": "2em", "width": "15em"}'>
+                        <kendo-mobile-view ng-controller="LogoutPopoverController" class="crd-popover-listview do-not-destroy">
+                            <kendo-mobile-list-view class="logout-list">
+                                <li>
+                                    <label ng-controller="SwitchRosterController">
+                                        <input name="logoutradio" type="radio" value="switchroster" ng-click="switchRoster()" />Switch Roster
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <input name="logoutradio" type="radio" value="logout" ng-click="logout()" />Logout
+                                    </label>
+                                </li>
+                            </kendo-mobile-list-view>
+                        </kendo-mobile-view>
+                    </kendo-mobile-pop-over>
+
+                </kendo-mobile-nav-bar>
+
+                <div class="search-area">
+                    <div class="filter-box">
+                        <kendo-mobile-button k-rel="'popover'" href="#FilterPopOver" class="filter-btn" k-on-click="clearSelectedFilter()">
+                            <span class="filter-box-text">Filter Patients...</span>
+                            <span class="icon-searchfilter right"></span>
+                        </kendo-mobile-button>
+
+                        <kendo-mobile-pop-over ng-controller="MyPatientsDialysisCenterController" id="FilterPopOver" k-popup='{"height": "30em", "width": "18em"}'>
+                            <kendo-mobile-view class="do-not-destroy">
+                                <kendo-mobile-list-view id="mypts-dialysis-center" class="km-listview-link" k-data-source="model.DialysisCenters">
+                                    <kendo-mobile-button k-template class="mypts-dc-btn" k-rel="'popover'" href="\#FilterPopOverOption" k-on-click="onDialysisCenterFilterClick(dataItem.DialysisCenter)">
+                                        {{ dataItem.DialysisCenter }}
+                                    </kendo-mobile-button>
+                                </kendo-mobile-list-view>
+                            </kendo-mobile-view>
+                        </kendo-mobile-pop-over>
+
+                        <kendo-mobile-pop-over  id="FilterPopOverOption" k-popup='{"height": "19em", "width": "35em",  "direction": "right"}'>
+                            <kendo-mobile-view ng-controller="MyPatientsFilterController" class="do-not-destroy">
+                                <div id="mypts-filter-popover-view2">
+                                    <div id="mypts-filter-options-details-left" >
+                                        <div class="crd-modalview-label mypts-margin-top-5-pixels">Status</div>
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-enrolled" type="checkbox" class="k-checkbox" value="Enrolled" ng-click="onAddlFilterClick($event)" />
+                                            <label for="mypts-filter-enrolled" class="k-checkbox-label">
+                                                <span>Enrolled</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-engaged"  type="checkbox" class="k-checkbox"  value="Engaged" ng-click="onAddlFilterClick($event)"/>
+                                            <label for="mypts-filter-engaged" class="k-checkbox-label">
+                                                <span>Engaged</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-assessed" type="checkbox" class="k-checkbox" value="Assessed" ng-click="onAddlFilterClick($event)" />
+                                            <label for="mypts-filter-assessed" class="k-checkbox-label">
+                                                <span>Assessed</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-managed" type="checkbox" class="k-checkbox" value="Managed" ng-click="onAddlFilterClick($event)" />
+                                            <label for="mypts-filter-managed" class="k-checkbox-label">
+                                                <span>Managed</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-transferred" type="checkbox" class="k-checkbox" value="Transferred" ng-click="onAddlFilterClick($event)"/>
+                                            <label  for="mypts-filter-transferred"  class="k-checkbox-label">
+                                                <span>Transferred</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div id="mypts-filter-options-details-center-left">
+                                        <div class="crd-modalview-label mypts-margin-top-5-pixels">Flag</div>
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-readmit" type="checkbox" class="k-checkbox" value="Readmit" ng-click="onAddlFilterClick($event)" />
+                                            <label for="mypts-filter-readmit" class="k-checkbox-label">
+                                                <span> Readmit </span>
+                                            </label>
+                                        </div>
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input  id="mypts-filter-MVP"  type="checkbox" class="k-checkbox" value="MVP" ng-click="onAddlFilterClick($event)" />
+                                            <label  for="mypts-filter-MVP"  class="k-checkbox-label">
+                                                <span>MVP</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div id="mypts-filter-options-details-center">
+                                        <div class="crd-modalview-label mypts-margin-top-5-pixels">Sig</div>
+                                       <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-Sig-High" type="checkbox" class="k-checkbox" value="Sig-High" ng-click="onAddlFilterClick($event)" />
+                                            <label  for="mypts-filter-Sig-High"  class="k-checkbox-label">
+                                                <span>High</span>
+                                            </label>
+
+                                        </div>
+
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-Sig-Medium"  type="checkbox" class="k-checkbox" value="Sig-Medium" ng-click="onAddlFilterClick($event)" />
+                                            <label for="mypts-filter-Sig-Medium"  class="k-checkbox-label">
+                                                <span>Medium</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-Sig-Low"  type="checkbox" class="k-checkbox" value="Sig-Low" ng-click="onAddlFilterClick($event)" />
+                                            <label for="mypts-filter-Sig-Low"  class="k-checkbox-label">
+                                                <span>Low</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div id="mypts-filter-options-details-center-right">
+                                        <div class="crd-modalview-label mypts-margin-top-5-pixels">Shift</div>
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-Shift1"  type="checkbox" class="k-checkbox"  value="1"  ng-click="onAddlFilterClick($event)"  />
+                                            <label for="mypts-filter-Shift1"   class="k-checkbox-label">
+                                                <span>1st </span>
+                                            </label>
+                                        </div>
+
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-Shift2" type="checkbox" class="k-checkbox" value="2" ng-click="onAddlFilterClick($event)" />
+                                            <label  for="mypts-filter-Shift2"   class="k-checkbox-label">
+                                                <span>2nd </span>
+                                            </label>
+                                        </div>
+
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-Shift3" type="checkbox" value="3" class="k-checkbox"  ng-click="onAddlFilterClick($event)" />
+                                            <label  for="mypts-filter-Shift3" class="k-checkbox-label">
+                                                <span>3rd</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-Shift4" type="checkbox" value="4" class="k-checkbox" ng-click="onAddlFilterClick($event)" />
+                                            <label  for="mypts-filter-Shift4"   class="k-checkbox-label">
+                                                <span>4th</span>
+                                            </label>
+                                        </div>
+
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-Shift5" type="checkbox" value="5" class="k-checkbox" ng-click="onAddlFilterClick($event)"/>
+                                            <label  for="mypts-filter-Shift5"   class="k-checkbox-label">
+                                                <span>5th</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div id="mypts-filter-options-details-right">
+                                        <div class="crd-modalview-label mypts-margin-top-5-pixels"></div>
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input id="mypts-filter-center-nocturnal" type="checkbox"  class="k-checkbox" value="C" ng-click="onAddlFilterClick($event)" />
+                                            <label  for="mypts-filter-center-nocturnal"   class="k-checkbox-label">
+                                                <span> Center Nocturnal </span>
+                                            </label>
+                                        </div>
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input type="checkbox" id="mypts-filter-home-hemo" value="H" class="k-checkbox"  ng-click="onAddlFilterClick($event)"/>
+                                            <label for="mypts-filter-home-hemo"   class="k-checkbox-label">
+                                                <span> Home Hemo </span>
+                                            </label>
+                                        </div>
+                                        <div class="crd-kendocheck-small mypts-filter-options-div">
+                                            <input type="checkbox" id="mypts-filter-home-pd" value="P" class="k-checkbox" ng-click="onAddlFilterClick($event)" />
+                                            <label  for="mypts-filter-home-pd"   class="k-checkbox-label">
+                                                <span> Home PD </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="mypts-pop-over-close">
+                                        <kendo-mobile-button kendo-touch k-on-click="onClosePopOverClick()">
+                                            X
+                                        </kendo-mobile-button>
+                                    </div>
+                                    <div id="mypts-filter-options-details-bottom" class="crd-kendocheck-small mypts-filter-options-div">
+                                        <div class="crd-modalview-label mypts-margin-top-5-pixels">Schedule</div>
+                                        <div class="mypts-filter-schedule">
+                                            <input type="checkbox" id="mypts-filter-sun" class="k-checkbox" value="sun" ng-click="onAddlFilterClick($event)" />
+                                            <label for="mypts-filter-sun" class="k-checkbox-label">
+                                                <span>Sun</span>
+                                            </label>
+                                        </div>
+                                        <div class="mypts-filter-schedule">
+                                            <input type="checkbox" id="mypts-filter-mon" class="k-checkbox" value="mon" ng-click="onAddlFilterClick($event)" />
+                                            <label for="mypts-filter-mon" class="k-checkbox-label">
+                                                <span>Mon</span>
+                                            </label>
+                                        </div>
+                                        <div class="mypts-filter-schedule">
+                                            <input type="checkbox" id="mypts-filter-tue" class="k-checkbox" value="tue" ng-click="onAddlFilterClick($event)"/>
+                                            <label for="mypts-filter-tue"  class="k-checkbox-label">
+                                                <span>Tue</span>
+                                            </label>
+                                        </div>
+                                        <div class="mypts-filter-schedule">
+                                            <input type="checkbox" id="mypts-filter-wed" class="k-checkbox" value="wed" ng-click="onAddlFilterClick($event)"/>
+                                            <label for="mypts-filter-wed"  class="k-checkbox-label">
+                                                <span>Wed</span>
+                                            </label>
+                                        </div>
+                                        <div class="mypts-filter-schedule">
+                                            <input type="checkbox" id="mypts-filter-thu"  class="k-checkbox" value="thu" ng-click="onAddlFilterClick($event)" />
+                                            <label  for="mypts-filter-thu" class="k-checkbox-label">
+                                                <span>Thu</span>
+                                            </label>
+                                        </div>
+                                        <div class="mypts-filter-schedule">
+                                            <input type="checkbox" id="mypts-filter-fri" class="k-checkbox" value="fri" ng-click="onAddlFilterClick($event)"/>
+                                            <label for="mypts-filter-fri"  class="k-checkbox-label">
+                                                <span>Fri</span>
+                                            </label>
+                                        </div>
+                                        <div class="mypts-filter-schedule">
+                                            <input type="checkbox" id="mypts-filter-sat" class="k-checkbox" value="sat" ng-click="onAddlFilterClick($event)"/>
+                                            <label for="mypts-filter-sat" class="k-checkbox-label">
+                                                <span>Sat</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </kendo-mobile-view>
+                        </kendo-mobile-pop-over>
+                    </div>
+
+                    <div class="sort-box">
+                        <kendo-mobile-button k-rel="'popover'" href="#mypts-popover-sortlist" class="sort-btn">
+                            <span class="icon-sort-small display"></span>
+                        </kendo-mobile-button>
+                    </div>
+
+                    <kendo-mobile-pop-over id="mypts-popover-sortlist"  k-popup='{"width": "15em"}'>
+                        <kendo-mobile-view ng-controller="MyPatientsSortlistController" class="crd-popover-listview do-not-destroy">
+                            <kendo-mobile-list-view>
+                                <li id="sig">
+                                    <label>
+                                        SIG
+                                        <input name="sort" type="radio"   value="SIG"  ng-click="onSortClick('sig')" />
+                                    </label>
+                                </li>
+                                <li id="shift">
+                                    <label>
+                                        Shift
+                                        <input name="sort" type="radio"   value="Shift" ng-click="onSortClick('shift')" />
+                                    </label>
+                                </li>
+                                <li id="schedule">
+                                    <label>
+                                        Schedule
+                                        <input name="sort" type="radio"   value="Schedule" ng-click="onSortClick('schedule')" />
+                                    </label>
+                                </li>
+                                <li id="lastname">
+                                    <label>
+                                        Last Name
+                                        <input name="sort" type="radio" value="Last Name" ng-click="onSortClick('lastname')" />
+                                    </label>
+                                </li>
+                                <li id="dialysiscenter">
+                                    <label>
+                                        Dialysis Center
+                                        <input name="sort" type="radio" value="Dialysis Center" ng-click="onSortClick('dialysiscenter')" />
+                                    </label>
+                                </li>
+                            </kendo-mobile-list-view>
+                        </kendo-mobile-view>
+                    </kendo-mobile-pop-over>
+
+                    <div class="search-box" >
+                        <input id="mypts-searchText" name="searchText" type="text" placeholder="Search Patient..." class="search-box-text" />
+                        <a class="searchbutton" ng-click="searchPatient()">
+                            <span class="icon-search"></span>
+                        </a>
+                    </div>
+                </div>
+                <div ng-if="(model.SelectDialysisCenter && model.SelectDialysisCenter !== 'ALL PATIENTS') || (model.SelectedStatusCategory && model.SelectedStatusCategory.length>0) || (model.SelectedFlagCategory && model.SelectedFlagCategory.length>0) || (model.SelectedSigCategory && model.SelectedSigCategory.length>0) || (model.SelectedShiftCategory && model.SelectedShiftCategory.length>0) || (model.SelectedScheduleCategory && model.SelectedScheduleCategory.length>0)">
+                    <div class="mypts_separator"></div>
+                    <div class="mypts-current-filter">
+                        <span class="crd-pthway-screening-label">CURRENT FILTERS:</span>
+                        <span ng-if="model.SelectDialysisCenter && model.SelectDialysisCenter !== 'ALL PATIENTS'">
+                            <span class="mypts-current-filter-label">Dialysis Center:</span>
+                            <span class="mypts-current-filter-value">{{model.SelectDialysisCenter | lowercase}}</span>
+                        </span>
+                        <span ng-if="model.SelectedStatusCategory && model.SelectedStatusCategory.length > 0">
+                            <span class="mypts-current-filter-label">Status:</span>
+                            <span class="mypts-current-filter-value">{{model.SelectedStatusCategory | lowercase}}</span>
+                        </span>
+                        <span ng-if="model.SelectedFlagCategory && model.SelectedFlagCategory.length > 0">
+                            <span class="mypts-current-filter-label">Flag:</span>
+                            <span class="mypts-current-filter-value">{{model.SelectedFlagCategory}}</span>
+                        </span>
+                        <span ng-if="model.SelectedSigCategory && model.SelectedSigCategory.length > 0">
+                            <span class="mypts-current-filter-label">Sig:</span>
+                            <span class="mypts-current-filter-value">{{model.SelectedSigCategory}}</span>
+                        </span>
+                        <span ng-if="model.SelectedShiftCategory && model.SelectedShiftCategory.length > 0">
+                            <span class="mypts-current-filter-label">Shift:</span>
+                            <span class="mypts-current-filter-value">{{model.SelectedShiftCategory}}</span>
+                        </span>
+                        <span ng-if="model.SelectedScheduleCategory && model.SelectedScheduleCategory.length > 0">
+                            <span class="mypts-current-filter-label">Schedule:</span>
+                            <span class="mypts-current-filter-value">{{model.SelectedScheduleCategory}}</span>
+                        </span>
+                    </div>
+                </div>
+            </kendo-mobile-header>
+
+
+            <div id="mypts-listview-container">
+                <div id="mypts-listview">
+                    <div class="mypts-patient-view" ng-repeat="Patient in model.Patients" id="{{Patient.ID}}">
+                        <kendo-mobile-button k-on-click="ontap(Patient)" id="pts-info-btn">
+                            <div ng-if="(Patient.Indicators.Color !== null) && (Patient.Indicators.Color !== undefined) && (Patient.Indicators.Color !== 'None')">
+                                <div id="mypts-left-color-piller" class="pat-color" ng-style="{'background-color': setIndicatorColor(Patient.Indicators.Color)}">
+                                </div>
+                                <div class="pat-color info">
+                                    <div class="ptblock-ptheader">
+                                        <div ng-if="(Patient.Indicators.Color !== null) && (Patient.Indicators.Color !== undefined) && (Patient.Indicators.Color !== 'None')">
+                                            <div class="ptblock-ptname" ng-style="{'color' : setIndicatorColor(Patient.Indicators.Color)}">
+                                                {{Patient.Name}}
+                                            </div>
+
+                                            <div id="mypts-mvp" ng-show="Patient.IsFrequentFlier">
+                                                <div class="pat-mvp">
+                                                    <span>MVP</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="pat-mvp-container">
+                                                <div ng-if="(Patient.DOB != null) && (Patient.DOB != undefined) && (Patient.DOB !='')">
+                                                    <div class="ptblock-ptdob">
+                                                        DOB: {{ Patient.DOB | date:'MM/dd/yyyy'}}
+                                                    </div>
+                                                </div>
+                                                <div id="pat-condition-sig" ng-if="(Patient.SIG !== null) && (Patient.SIG !== undefined) && (Patient.SIG !== '')">
+                                                    <div class="sig">
+                                                        SIG:{{Patient.SIG}}
+                                                    </div>
+                                                </div>
+                                                <div class="ptblock-dc">
+                                                    {{ Patient.DialysisCenter }} &nbsp;
+                                                </div>
+                                                <div class="ptblock-shiftschedule">&nbsp;{{ Patient.ptSchedule }} </div>
+                                            </div>
+                                            <div class="pat-separator">
+                                            </div>
+                                            <div class="indicators" ng-repeat="indicator in Patient.Indicators.Indicators">
+                                                <li class="indicator" id="pts-ind-info">
+                                                    <span>{{indicator.Name }} </span>
+                                                    <span ng-if="((indicator.Value !== null) && (indicator.Value !== undefined) && (indicator.Value !== ''))"> <span>:&nbsp;</span> <span ng-bind="indicator.Value"></span></span>
+                                                </li>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </kendo-mobile-button>
+                    </div>
+                </div>
+            </div>
+
+            <kendo-mobile-footer >
+                <div id="mypts-actionitems-view" class="actionitems-view" ng-include="Global.Templates.Alerts.Url">
+                </div>
+                <div class="openpatients-view" ng-include="Global.Templates.OpenPatients.Url">
+                </div>
+            </kendo-mobile-footer>
+
+            <kendo-mobile-modal-view ng-controller="SwitchRosterController" id="switchroster-modalview" class="crd-modalview" k-modal="false">
+                <kendo-mobile-header>
+                    <kendo-mobile-nav-bar>
+                        <kendo-mobile-button  k-align="'left'" ng-click="onMyRoster()"> My Roster </kendo-mobile-button>
+                        <kendo-mobile-button  k-align="'right'" ng-click="onSwitchRoster()"> Switch Roster </kendo-mobile-button>
+                    </kendo-mobile-nav-bar>
+                </kendo-mobile-header>
+                <div id="switchroster-grid"></div>
+            </kendo-mobile-modal-view>
+
+            <kendo-mobile-modal-view id="searchpatients-modalview"  class="crd-modalview">
+                <kendo-mobile-header>
+                    <kendo-mobile-nav-bar>
+                        <div id="redirec-to-pat-div" ng-show="IsDataAvailable">
+                            <kendo-mobile-button k-align="'right'" ng-click="redirectToPatientChart()">Ok</kendo-mobile-button>
+                        </div>
+                        <span class="div-header-text">Patient Search Result</span>
+                        <kendo-mobile-button  k-align="'left'"  ng-click="closeSearchModalDialog()">Cancel</kendo-mobile-button>
+                    </kendo-mobile-nav-bar>
+                </kendo-mobile-header>
+
+                <div id="searchpatients-grid"></div>
+
+                <div id="mypts-search-no-data">
+                    No data found.
+                </div>
+
+                <kendo-mobile-footer ng-show="IsErrorMsg" id="mypts-footer-errormsg">
+                    <img src="Images/Icon_Alert.png" />
+                    {{ ErrorMessage }}
+                </kendo-mobile-footer>
+            </kendo-mobile-modal-view>
+        </kendo-mobile-view>
+    </kendo-mobile-pane>
+</kendo-mobile-split-view>

@@ -1,0 +1,204 @@
+﻿<kendo-mobile-view class="crd-view" ng-controller="PatientPathwaysTabController">
+    <div id="rcmdb-ptchart-pthwy-content" kendo-validator = "patientPathwaysValidator">
+        <div id="rcmdb-ptchart-pthwy-view">
+            <div class="crd-screenname-container">
+                    <div class="rcmdb-pthwy-screen-headername"> {{ PatientPathwaySurveyName }} </div>
+                    <div  id="rcm-ptchart-pthwy-buttons" class="rcmdb-pthchart-pthwy-headerbuttons">
+                        <button kendo-mobile-button ng-if="Buttons.EditButtonVisible" ng-click="EditPatientPathways()"> Edit </button>
+                        <button kendo-mobile-button ng-if="Buttons.SaveButtonVisible"  ng-click="savePatientPathways()"> Save </button>
+                        <button kendo-mobile-button ng-if="Buttons.CancelButtonVisible" ng-click="cancelPatientPathways()" > Cancel </button>
+                    </div>
+				
+            </div>
+            
+            <div ng-if="noActiveAdmissionRecord" class="no-data-available"> No Active Admission Record Selected </div> 
+        </div>
+
+        <div id="rcmdb-ptchart-pthwy-surveydetails" ng-if="!noActiveAdmissionRecord">
+            <kendo-mobile-list-view id="rcmdb-pathwaysList" class="ptchart-pthwy-listview" k-ng-delay="SurveyDetails.data()">
+                <div ng-repeat="surveyDetail in SurveyDetails.data()">
+                    <kendo-mobile-list-view ng-if="surveyDetail.QuestionGroups !== null" id="rcmdbsurveydDetails-{{surveydetail.SurveyID}}">
+                        <div ng-repeat = "questionGroup in surveyDetail.QuestionGroups" class="rcmdb-ptchart-pthwy-survey-questions">
+                            <span ng-if="(questionGroup.Questions !== null && !questionGroup.IsDefault)" class="rcmdb-ptchart-pthwy-survey-desc">{{questionGroup.Description}}</span>
+
+                            <kendo-mobile-list-view ng-if="questionGroup.Questions !==null" id="rcmdb-questiongroup-{{questionGroup.QuestionGroupID}}">
+                                    <div id="rcmdb-question-{{question.UID}}-{{question.Order}}" class="rcmdb-ptchart-pthwy-question" ng-repeat="question in questionGroup.Questions">
+                                        <div style="width:50%; float:left">
+                                            <div id="rcmdb-question-text-{{question.UID}}-{{question.Order}}" class="ptchart-pthwy-question-display">
+                                                <label class="ptchart-pthwy-question-label rcmdb-ptchart-pthwy-question-label"> {{question.Order}}. </label>
+                                                <label class="rcmdb-ptchart-question-text-lbl"> {{question.Text}}</label>
+												<div ng-repeat="option in question.Options" class="rcmdb-pthchart-pthwy-display-text" ng-if="option.IsSelected">
+                                                     <span ng-if="(option.Description ==='Yes' && option.DisplayText !== '')|| (surveyDetail.SurveyTypeCode === 'TreatmentRegimenPathway' && question.IsMultiple && option.Description !=='N/A')" class="icon-status-info"></span>
+                                                     <label class="rcmdb-ptchart-pthwy-displayText"> {{option.DisplayText}} </label>
+												</div>
+                                            </div>
+                                        </div>
+										
+                                    <div style="width:50%; float:left;" ng-if="question.Options !==null && question.Options.length > 0">
+
+                                        <div ng-if="!question.IsMultiple && question.Options.length <=3" class="crd-displayinlineleft">
+                                            <!--kendo-mobile-list-view id="rcmdb-question-options-{{dataItem.UID}}-{{dataItem.Order}}" k-data-source="dataItem.Options"-->
+                                            <div id="rcmdb-question-options-{{question.UID}}-{{question.Order}}" ng-repeat="option in question.Options" class="question-options-lessthan-three crd-rnd-radio-big crd-displayinlineleft">
+                                                <label class="crd-ptchart-pthwy-radio-lessthan-three-lbl">
+                                                    <input id="{{option.UID}}-{{option.OptionOrder}}" type="radio" name="{{option.QuestionUID}}" class="crd-ptchart-pthwy-question-radio" value="{{option.OptionOrder}}"
+                                                           ng-disabled="option.IsOptionDisabled" ng-model="option.SelectedIndex" ng-change="onGroupRadioChecked(option.QuestionUID, option.UID, option.OptionOrder)"/>
+                                                    <i></i>
+                                                </label>
+                                                <label class="question-options-lessthan-three-desc" for="{{option.UID}}-{{option.OptionOrder}}"> {{option.Description}} </label>
+                                            </div>
+
+                                            <div ng-repeat="option in question.Options" class="rcmdb-question-options-lessthan-three-desc-div">
+                                                <div ng-if="option.IsSelected && option.FreeFormTemplate.HasFreeForm" ng-disabled="option.IsRadioGroupDisabled" class="ptchart-pthwy-freeform rcmdb-pthchart-pthwy-freeform">
+
+                                                    <span ng-if="option.FreeFormTemplate.PreText" class="rcmdb-ptchart-pthwy-freeform-pre-txt">{{option.FreeFormTemplate.PreText}}</span>
+
+                                                    <input kendo-numeric-text-box ng-if="(option.FreeFormTemplate.DataTypeCode === 'DCML' && option.FreeFormTemplate.IsRequired)" 
+                                                           name="FreeFormTemplate-{{option.UID}}" 
+                                                           class="pthwy-numericbox required" 
+                                                           ng-model="option.FreeFormResponse" 
+                                                           ng-disabled="option.IsOptionDisabled" k-min="{{option.FreeFormTemplate.MinValue}}" k-max="{{option.FreeFormTemplate.MaxValue}}" 
+                                                           k-format="'n0'" k-spinners="false"
+                                                           required validationMessage="{{option.FreeFormTemplate.PreText}} should be more than {{option.FreeFormTemplate.MinValue}} and less than {{option.FreeFormTemplate.MaxValue}}."/>
+													
+													
+                                                    <input kendo-numeric-text-box ng-if="(option.FreeFormTemplate.DataTypeCode === 'DCML' && !option.FreeFormTemplate.IsRequired)"
+                                                             name="FreeFormTemplate-{{option.UID}}" 
+                                                             value="{{option.FreeFormResponse}}" class="pthwy-numericbox" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled " 
+                                                             k-min="{{option.FreeFormTemplate.MinValue}}" k-max="{{option.FreeFormTemplate.MaxValue}}" k-format="'n0'" k-spinners="false"
+                                                            />
+													
+                                                    <input ng-if="( option.FreeFormTemplate.DataTypeCode === 'TXT' && option.FreeFormTemplate.IsRequired )" type="text" name="FreeFormTemplate-{{option.UID}}"
+                                                           class="k-textbox" class="ptchart-pthwy-freeform-textbox required" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled"
+                                             			   required validationMessage="required"/>
+														   
+                                                    <input ng-if="( option.FreeFormTemplate.DataTypeCode === 'TXT' && !option.FreeFormTemplate.IsRequired )" type="text" name="FreeFormTemplate-{{option.UID}}"
+                                                           class="k-textbox" value="{{option.FreeFormResponse}}" class="ptchart-pthwy-freeform-textbox" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled" />
+
+                                                    <span ng-if="option.FreeFormTemplate.PostText" class="rcmdb-ptchart-pthwy-freeform-post-txt">{{option.FreeFormTemplate.PostText}}</span>
+
+                                                    <div class="rcmdb-ptchart-pthwy-validationMessage">
+                                                         <span data-for="FreeFormTemplate-{{option.UID}}" class="k-invalid-msg"></span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div ng-if="!question.IsMultiple && question.Options.length > 3" class="question-options-morethan-three">
+                                            <div id="rcmdb-question-options-{{question.UID}}-{{question.Order}}">
+                                                <div ng-repeat="option in question.Options">
+                                                    <div class="crd-rnd-radio-big question-options-morethan-three-margin">
+                                                        <label class="ptchart-pthwy-question-options-morethan-three-lbl">
+                                                            <input id="{{option.UID}}-{{option.OptionOrder}}" type="radio" name="{{option.QuestionUID}}" class="crd-ptchart-pthwy-question-radio" value="{{option.OptionOrder}}" 
+                                                                   ng-disabled="option.IsOptionDisabled" ng-model="option.SelectedIndex" ng-change="onGroupRadioChecked(option.QuestionUID, option.UID, option.OptionOrder)"/>
+                                                        </label>
+                                                        <i></i>
+                                                        <label class="question-options-morethan-three-desc" for="{{option.UID}}-{{option.OptionOrder}}"> {{option.Description}} </label>
+                                                    </div>
+
+                                                    <div ng-if="option.IsSelected && option.FreeFormTemplate.HasFreeForm" ng-disabled="{{option.IsRadioGroupDisabled}}" 
+                                                    class="ptchart-pthwy-freeform" style="display: -webkit-box;margin-left:5px;float:left;">
+													
+                                                        <span ng-if="option.FreeFormTemplate.PreText" class="rcmdb-ptchart-pthwy-freeform-pre-txt">{{option.FreeFormTemplate.PreText}}</span>
+														
+                                                        <input kendo-numeric-text-box ng-if="(option.FreeFormTemplate.DataTypeCode === 'DCML' && option.FreeFormTemplate.IsRequired)" 
+                                                           name="FreeFormTemplate-{{option.UID}}" 
+                                                           class="pthwy-numericbox required k-textbox" 
+                                                           ng-model="option.FreeFormResponse" 
+                                                           ng-disabled="option.IsOptionDisabled" k-min="{{option.FreeFormTemplate.MinValue}}" k-max="{{option.FreeFormTemplate.MaxValue}}" 
+                                                           k-format="'n0'" k-spinners="false"
+                                                           required validationMessage="{{option.FreeFormTemplate.PreText}} should be more than {{option.FreeFormTemplate.MinValue}} and less than {{option.FreeFormTemplate.MaxValue}}."/>
+
+                                                        <input kendo-numeric-text-box ng-if="(option.FreeFormTemplate.DataTypeCode === 'DCML' && !option.FreeFormTemplate.IsRequired)"
+                                                             name="FreeFormTemplate-{{option.UID}}" 
+                                                             value="{{option.FreeFormResponse}}" class="pthwy-numericbox k-textbox" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled " 
+                                                             k-min="{{option.FreeFormTemplate.MinValue}}" k-max="{{option.FreeFormTemplate.MaxValue}}" k-format="'n0'" k-spinners="false"
+                                                            />
+															   
+                                                        <input ng-if="(option.FreeFormTemplate.DataTypeCode === 'TXT' && option.FreeFormTemplate.IsRequired)" type="text" name="FreeFormTemplate-{{option.UID}}"
+                                                               class="k-textbox ptchart-pthwy-freeform-textbox required" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled" 
+                                                               required validationMessage="required"/>
+
+                                                        <input ng-if="(FreeFormTemplate.DataTypeCode === 'TXT' && && !option.FreeFormTemplate.IsRequired)" type="text" name="FreeFormTemplate-{{option.UID}}"
+                                                               class="k-textbox ptchart-pthwy-freeform-textbox"   value="{{option.FreeFormResponse}}" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled" />
+															   
+                                                        <span  ng-if="option.FreeFormTemplate.PostText" class="rcmdb-ptchart-pthwy-freeform-post-txt">{{option.FreeFormTemplate.PostText}}</span>
+														
+                                                        <div class="rcmdb-ptchart-pthwy-validationMessage">
+                                                             <span class="k-invalid-msg" data-for="FreeFormTemplate-{{option.UID}}"></span>          
+                                                        </div>
+														
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div ng-if="question.IsMultiple" style="float: left" id="question-options-{{question.UID}}-{{question.Order}}">
+                                            <div id="question-options-{{option.UID}}-{{option.Order}}" >
+                                                <div ng-repeat="option in question.Options">
+                                                    <div id="question-options-{{option.QuestionUID}}-{{option.UID}}-{{option.QuestionOrder}}" class="rcmdb-question-options question-options-{{option.QuestionUID}}-{{option.QuestionOrder}}">
+                                                        <kendo-mobile-switch class="rcmdb-question-options-multiple question-options" id="rcmdb-question-options-switch-{{option.QuestionUID}}-{{option.UID}}-{{option.QuestionOrder}}" 
+                                                                             k-on-change="onSwitchChange(kendoEvent)"
+                                                                             value="{{option.IsSelected}}"  ng-disabled="option.IsOptionDisabled"
+                                                                             k-ng-model="option.IsSelected" k-on-label="'Yes'" k-off-label="'No'">
+                                                        </kendo-mobile-switch>
+
+                                                        <span class="question-options-switch-description rcmdb-multiple-options-switch">{{option.Description}}</span>
+                                                        <div ng-if="option.IsSelected && option.FreeFormTemplate.HasFreeForm" class="ptchart-pthwy-freeform" style="display: -webkit-box;margin-left:15px;">
+                                                            
+                                                            <span ng-if="option.FreeFormTemplate.PreText">{{option.FreeFormTemplate.PreText}}</span>
+
+                                                            <input ng-if="(option.FreeFormTemplate.DataTypeCode === 'DCML' && option.FreeFormTemplate.IsRequired)" type="number" name="FreeFormTemplate-{{option.UID}}" data-pretext="{{option.FreeFormTemplate.PreText}}" 
+                                                                   ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled" class="k-textbox"
+                                                                   min="{{option.FreeFormTemplate.MinValue}}" max="{{option.FreeFormTemplate.MaxValue}}" 
+                                                                   required validationMessage="required"/>
+
+                                                            
+                                                            <input ng-if="(option.FreeFormTemplate.DataTypeCode === 'DCML' && !option.FreeFormTemplate.IsRequired)" type="number" name="FreeFormTemplate-{{option.UID}}" data-pretext="{{option.FreeFormTemplate.PreText}}" 
+                                                                   value="{{option.FreeFormResponse}}" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled" class="k-textbox"
+                                                                   min="{{option.FreeFormTemplate.MinValue}}" max="{{option.FreeFormTemplate.MaxValue}}" 
+                                                                   />
+																   
+                                                            <input ng-if="(option.FreeFormTemplate.DataTypeCode === 'TXT' && option.FreeFormTemplate.IsRequired)" type="text" name="FreeFormTemplate-{{option.UID}}"
+                                                                   ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled" class="k-textbox" value="{{option.FreeFormResponse}}"
+                                                                   required validationMessage="required"/>
+															
+															<input ng-if="(option.FreeFormTemplate.DataTypeCode === 'TXT' && !option.FreeFormTemplate.IsRequired)" 
+                                                                   type="text" name="FreeFormTemplate-{{option.UID}}"
+                                                                   class="k-textbox" value="{{option.FreeFormResponse}}" ng-model="option.FreeFormResponse" ng-disabled="option.IsOptionDisabled"/>
+                                                            
+                                                            <span ng-if="option.FreeFormTemplate.PostText">{{option.FreeFormTemplate.PostText}}</span>
+															<div class="rcmdb-ptchart-pthwy-validationMessage">
+                                                                 <span class="k-invalid-msg" data-for="FreeFormTemplate-{{option.UID}}"></span>
+															</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                            </kendo-mobile-list-view>
+                        </div>
+                    </kendo-mobile-list-view>
+                </div>
+            </kendo-mobile-list-view>
+			
+            <div id="rcmdb-ptchart-pthwy-surveydetails-comments-section">
+                <div id="rcmdb-ptchart-pthwy-surveydetails-comments-div1">
+                    <label class="rcmdb-ptchart-pthwy-question-display">Comments</label>
+                </div>
+                <div id="rcmdb-ptchart-pthwy-surveydetails-comments-div2">
+                    <div class="ptchart-pthwy-check-comment">
+                        <textarea id="rcmdb-ptchart-pthwy-comments" class="ptchart-pthwy-comments rcmdb-ptchart-comment-text-area" ng-disabled="IsSurveydetailsCommentDisabled"
+                                  rows="5" cols="60" ng-blur="surveyCommentsBlur()" ng-model="SurveyDetails.data()[0].SurveyComments" 
+                                  value="{{SurveyDetails.data()[0].SurveyComments}}">
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</kendo-mobile-view>

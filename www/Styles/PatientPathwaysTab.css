@@ -1,0 +1,218 @@
+
+.rcmdb-pthchart-pthwy-headerbuttons
+{
+     font-weight: bold !important; 
+}
+
+#rcmdb-pathwaysList
+{
+     margin-top: 5px;
+}
+
+.rcmdb-ptchart-question-text-lbl
+{
+     margin-left: 2px !important;
+	 display: inline-block;
+	 width: 90% !important;
+	 word-wrap: none;
+	 font-weight: lighter !important;		
+}
+
+.rcmdb-ptchart-pthwy-question
+{
+     min-height: 40px;
+	 margin-top: 15px !important;
+	 margin-bottom: 5px !important;
+	 display: inline-block;
+	 width: 100% !important;
+	 border-bottom-width: thin;
+	 border-bottom-style: dashed;
+	 color: black !important;
+}
+
+.rcmdb-question-options-lessthan-three-desc
+{
+     cursor: pointer;
+     display: inline-block;
+     vertical-align: middle;
+     color: rgb(156,156,156);
+     min-width: 22px;
+     margin-right: 5px;
+     border-radius: 5px;
+     text-shadow: 0 1px rgba(255,255,255,0.8);
+     font-weight: bold;
+     font-size: small;
+     /*margin-bottom: 2px;*/
+}
+
+#rcmdb-pathwaysList .k-widget .k-invalid-msg
+{
+     position: relative;
+	 font-size: small;
+	 white-space: pre-wrap;
+	 margin-right: 5px;
+}
+
+.rcmdb-ptchart-pthwy-survey-desc
+{
+     margin-top: 20px;
+	 margin-left: 5px !important;
+     font-weight: bold !important;
+     font-size: 16px !important;
+	 color: black !important;
+}
+
+.rcmdb-question-options
+{
+     display: -webkit-box;
+	 margin-bottom: 6px !important;
+}
+
+.rcmdb-question-options .km-switch
+{
+     position: relative !important;
+	 margin-top: 0.05rem !important;
+	 margin-left: 1.15rem !important;
+     vertical-align: middle;    
+     cursor: pointer !important;
+     border-radius:5px;
+}
+
+.rcmdb-pthchart-pthwy-display-text
+{
+     /*margin-left: 18px !important;*/
+     display : inline-block !important;
+     width: 90%;
+     font-size: 12px !important;
+     color: grey !important;
+     font-weight: bold !important;
+	 
+}
+
+.rcmdb-pthchart-pthwy-freeform
+{
+     /*margin-left: 15px !important;*/
+	 float: left !important;
+}
+
+.rcmdb-ptchart-pthwy-freeform-pre-txt
+{
+     color: grey !important;
+     font-size: small !important;
+	 font-weight: bold !important;
+	 margin-right: 2px !important;
+}
+
+.rcmdb-ptchart-pthwy-validationMessage 
+{
+     margin-bottom: 4px !important;
+	 margin-top: 7px !important;
+	 font-weight: bold !important;
+}
+
+.rcmdb-question-options-lessthan-three-desc-div
+{
+     display: inline-block;
+     float: left;
+     margin: 5px 0px 5px 5px !important;
+}
+
+.rcmdb-ptchart-pthwy-freeform-post-txt
+{
+     color: grey !important;
+     font-size: small !important;
+	 font-weight: bold !important;
+	 margin-left: 2px !important;
+}
+
+.rcmdb-ptchart-pthwy-question-display
+{
+     color: Black !important;
+	 font-size: 15px !important;
+	 font-weight: bold !important;
+	 margin-left: 3px;
+}
+
+#rcmdb-ptchart-pthwy-surveydetails
+{
+     margin-top: 3px !important; 
+     height: 600px !important;
+     background: white !important;
+     border: 1px solid lightgray !important;
+}
+
+.rcmdb-ptchart-pthwy-displayText
+{
+    display: inline-block;
+    float: left !important;
+    padding-top: 5px;
+}
+
+.rcmdb-ptchart-pthwy-question-label
+{
+    margin-left: 5px !important;
+}
+
+#rcmdb-ptchart-pthwy-content
+{
+    position: fixed !important;
+    width: 100%;
+}
+
+.rcmdb-ptchart-pthwy-survey-questions
+{
+    margin-top:10px;
+    margin-left: 5px;
+      
+}
+
+.rcmdb-pthwy-screen-headername
+{
+      text-transform: uppercase;
+      color: #808285;
+      font-size: 17pt;
+      font-weight: bold;
+      float: left;
+	  /* font-size: 16pt*/
+	  width: calc(100% - 136px);
+}
+
+#rcm-ptchart-pthwy-buttons
+{
+    /*min-width: 136px !important;*/
+    float: right !important;
+}
+
+
+.rcmdb-multiple-options-switch
+{
+    margin-left: -8px;
+    font-weight: normal !important;   
+}
+
+
+#rcmdb-ptchart-pthwy-surveydetails-comments-div2
+{
+    width: 100% !important;
+    margin-left: 3px;
+    float: left !important;
+}
+
+.rcmdb-ptchart-comment-text-area
+{
+    width: 85% !important;
+}
+
+  
+#rcmdb-ptchart-pthwy-surveydetails-comments-section
+{
+    margin: 5px;
+    min-height:110px;
+}
+
+#rcmdb-ptchart-pthwy-surveydetails-comments-div1
+{
+    float: left !important;
+    width: 10% !important;
+}
+

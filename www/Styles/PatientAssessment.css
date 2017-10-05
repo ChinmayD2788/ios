@@ -1,0 +1,287 @@
+#this-screening-scroller {	
+    height: 570px !important;
+    font-weight: 500;
+    border: 1px solid lightgrey;
+}
+.patient-base-line-header-color {
+	color: #2361BE;
+}
+.patient-base-line-one-question {
+	width: 100%;
+    float: left;
+}	
+.patient-base-line-section {
+    background: white;   
+    display: inline-block;
+    width: 100%;
+	min-height: 150px;
+}
+.patient-base-line-left-section {
+	width:60%; 
+	float:left;
+}
+.patient-base-line-right-section {
+	width:40%; 
+	float:left;
+}
+.patient-base-line-section-one{
+	width: 48%; 
+	margin-right:2%; 
+	float:left;
+	height:292px;
+}
+.patient-base-line-section-two {
+	width:50%; 
+	float:left;
+	height:292px;
+}
+.patient-base-line-row {
+	margin: 4px 0 22px 4px;
+    width: 40%;
+    float: left;
+}
+.patient-base-edu-line-row {
+    margin: 5px 0 15px 4px;
+    width: 30%;
+    float: left;
+}
+.patient-base-line-row-right {
+	margin-bottom: 4px;
+	margin-right: 16px;
+	width: 25%; 
+	float: left
+}
+.patient-base-line-row-left {
+	width: 100% !important;
+}
+.patient-base-line-column-right {
+	margin-bottom: 6px;
+}
+.patient-base-line-min-height {
+	min-height: 28px !important;
+}	
+.answer-warning {
+	width: 500px;
+    margin-top: 15px;
+}	
+.patient-base-line-label-column {
+	width: 45% !important;
+    margin-right: 2px  !important;
+    float: left;
+}
+#other-notes {
+    width: 150px !important;
+    margin: 0 !important;
+    padding-left: 3px;
+}
+.four-columns {
+	width: 170px;
+    float:left;
+	display: inline-block;
+}
+.first-column {
+	width: 20%;
+	display: inline;
+}
+.second-column {
+	width: 78%;
+	display: inline;
+	margin-left: 2px;
+}
+.last-column {
+	margin: 2em;
+}
+.only-one-right-column {
+	width: 100%;
+	float:right;
+	padding-right:2%;
+	display: inline;
+}
+.patient-base-disabled {
+	background-color: lightgray;
+}
+.patient-base-enabled {
+	background-color: white;
+}
+
+.patient-base-line-list {
+	width: 50%; 
+	float: left; 
+	list-style-type:none;
+    padding-left: 10px;
+}
+.patient-base-line-list-row {
+    margin-right: 10px;
+    display: inline-block;
+    color: #2361BE;
+}
+.margin-bottom-40 {
+	margin-bottom: 40px;
+}
+#caregiver-options{
+	color: gray;
+    float: left;
+        width: 100%;
+}	
+#caregiver-history{
+	color: gray;
+    float: left;
+        width: 100%;
+}
+#CognitiveImpaired-warning {
+	width: 98%;
+    padding: 5px 0px 0px 10px;
+    float: left;
+}
+.err-margin {
+	margin-top: 5px !important;
+}
+.width-50-pr-left {
+	width: 50% !important; 
+	float: left
+}
+.width-20-pr-left {
+	width: 20% !important; 
+	float: left
+}	
+.width-80-pr-right{
+	width: 80% !important; 
+	float: right
+}
+.width-40-pr-left {
+	width: 40% !important; 
+	float: left
+}
+.width-60-pr-left {
+	width: 60% !important; 
+	float: left
+}
+#ptchart-pthwy-allow-communications-wrapper{
+	position: relative;
+    top: -8px;
+}
+
+_:-ms-fullscreen, :root #ptchart-pthwy-allow-communications-wrapper{
+	top: -22px !important;
+}
+
+.crd-pthway-base-screening-label{
+    font-size: 14px !important;
+    color: #2361BE;
+    padding: 5px 5px;
+}
+#ptchart-patientAssessment-surveyheaders{
+    margin-bottom: 10px;
+}
+.patient-base-line-min-height{
+    padding: 10px 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+.float-left{
+    float:left
+}
+.PatientAsstCheckbox{
+    margin-top: -10px;
+}
+.margin-top-8px{
+     margin-top: 8px;
+}
+.k-state-disabled input,.k-state-disabled{
+    background-color:#dddddd !important;
+}
+.patient-base-line-list li{
+    padding: 5px 0px;
+}
+.caregiverActionButtons{
+    width: 75px !important;
+    background: #124C7B !important;
+    color: #fff !important;
+    border: 1px solid #fff !important;
+}
+.patientAsstCareGiver{
+    width: 190px !important;
+    margin-top: 12px;
+}
+.allow-comm-check-item{
+             width: 210px;
+    margin-top: 18px;
+}
+.allow-communications-chk:disabled{
+     background-color:#dddddd;
+}
+.allow-comm-check{
+    width: 210px;
+    margin-top: 4px;
+}
+#ptchart-pthwy-allow-communications-wrapper{
+    margin-top: -8px;
+    float: right;
+    width: 65px;
+}
+.patient-base-mobility-row-right{  
+	margin-bottom: 4px;
+	float: left;
+    width:65%;
+}
+.patient-ass-blk-baseline-titles{
+   padding:5px 5px 10px 5px!important;
+}
+.renalDiseaseCausesSelectedText{
+    width: 55%;
+}
+.patient-base-risk-questions{
+    margin: 5px 0px;
+}
+.patient-base-risk-questions-label{
+        margin: 3px 5px;
+}
+.caregiver-options-row{
+    float:left;
+    width:100%;
+}
+#patient-asst-screening-scroller{
+    overflow: hidden;
+    background-color: #fff !important;
+    height: 570px;
+    font-weight: 500;
+}
+.pthwy-allow-communications-chk{
+        margin-left: 20px;
+    margin-top: -5px;
+    float:left;
+}
+.careGiverFunctionalityBlock{
+    height: 200px;
+    margin-bottom: 20px;
+}
+#hospitalAdmitDays{
+    border: 1px solid #ccc;
+    height: 20px;
+    padding-left: 2px;
+    border-radius: 3px;
+}
+.margin-right-5{
+    margin-right:5px;
+}
+.margin-left-negative-25{
+    margin-left: -25px;
+}
+
+_:-ms-fullscreen, :root .margin-left-negative-25{
+    margin-left: 0px !important;
+}
+_:-ms-fullscreen, :root .crd-ptchart-pthwy-ICD-radio{
+    position: absolute !important;
+}
+_:-ms-fullscreen, :root #question-options-ICD, #qustions-options-education-risk-factors{
+    margin-right: 20px !important;
+}
+
+_:-ms-fullscreen, :root .crd-ptchart-pthwy-question-radio 
+{
+   position:absolute;
+    -ms-appearance: radio !important;
+    -ms-transform: scale(2, 0) !important;
+}
+

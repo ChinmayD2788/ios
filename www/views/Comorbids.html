@@ -1,0 +1,173 @@
+<kendo-mobile-view ng-controller="ComorbidsController" class="crd-view">
+    <div class="crd-screenname-container">
+        <div class="crd-screennameheader">COMORBIDS</div>
+
+        <div class="crd-float-right">
+
+            <!-- lastComorbidDate -->
+            <span ng-if="IsSNPESCOMarket" class="lastComorbidDate">
+                <span class="lastComorbidDateLabel">Last Comorbid Review</span>
+                <span ng-show="model.LastReviewDateShow" class="lastComorbidDateVal">{{ model.LastReviewDate | date: 'MM/dd/yyyy'}}</span>
+            </span>
+            <!-- /lastComorbidDate -->
+            <!-- Add Review -->
+            <kendo-mobile-button ng-if="IsSNPESCOMarket" ng-click="onComorbidAddReviewClick(event)">ADD Review</kendo-mobile-button>
+            <!-- Add Comorbid -->
+            <kendo-mobile-button k-on-click="onAddEditComorbid(null)">ADD COMORBID</kendo-mobile-button>
+        </div>
+    </div>
+
+    <div id="comorbids-content">
+        <div class="padding-15">
+            <div class="crd-pthway-screening-label comorbids-header">
+                <div class="crd-width-33-percent crd-float-left">COMORBID TYPE</div>
+                <div class="crd-width-33-percent crd-float-left">COMORBID GROUP</div>
+                <div>PROVIDER</div>
+            </div>
+
+            <div id="comorbids-scroller">
+                <kendo-mobile-list-view id="comorbids-listview" k-data-source="model.Comorbids">
+                    <div k-template ng-click="expandComorbidDetails(dataItem)">
+                        <div>
+                            <div class="crd-width-33-percent crd-float-left">{{dataItem.ComorbidCodeText}}</div>
+                            <div class="crd-width-33-percent crd-float-left">{{dataItem.ComorbidGroupCodeText}}</div>
+                            <div class="crd-width-33-percent crd-float-left">{{dataItem.ProviderName}}</div>
+                        </div>
+
+                        <div id="comorbids-details-{{ dataItem.UID }}" class="comorbids-details">
+                            <div class="comorbids-details-row ">
+                                <div class="crd-seperator">&nbsp;</div>
+                                <div class="crd-width-33-percent crd-float-left comorbids-details-row-label">Comorbid Details</div>
+                                <div class="crd-width-33-percent crd-float-left comorbids-details-row-label">Reported Date</div>
+                                <div class="crd-width-33-percent crd-float-left comorbids-details-row-label" ng-if="showDeactivate(dataItem)">Deactivate</div>
+                            </div>
+
+                            <div class="comorbids-details-row">
+                                <div class="crd-width-33-percent crd-float-left">{{dataItem.ComorbidDetailCodeText}}&nbsp;</div>
+                                <div class="crd-width-33-percent crd-float-left">{{ dataItem.ReportedDate | date : "MM/dd/yy"}}</div>
+                                <div class="crd-width-33-percent crd-float-left">
+                                    <div class="crd-width-25-percent crd-displayinlineleft">
+                                        <div class="icon-delete-button deactivate-icon" kendo-touch k-on-tap="deactivateComorbid(dataItem)" ng-if="showDeactivate(dataItem)">&nbsp;</div>
+                                    </div>
+                                    <div class="crd-float-right">
+                                        <kendo-mobile-button kendo-touch k-on-tap="onAddEditComorbid(dataItem)">EDIT</kendo-mobile-button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="comorbids-details-row" ng-if="(dataItem.ComorbidCode === 'BMT' || dataItem.ComorbidCode === 'TRANS')">
+                                <div class="crd-width-33-percent crd-float-left comorbids-details-row-label">Transplant Date</div>
+                            </div>
+
+                            <div class="comorbids-details-row">
+                                <div class="crd-width-33-percent crd-float-left" ng-if="(dataItem.ComorbidCode === 'BMT' || dataItem.ComorbidCode === 'TRANS')">
+                                    {{ dataItem.OnSetDate | date : "MM/dd/yy"}}
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </kendo-mobile-list-view>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Combobid Modal View -->
+    <kendo-mobile-modal-view id="add-edit-comorbid-modalview" class="crd-modalview" kendo-validator="addComorbidValidator">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <kendo-mobile-button kendo-touch k-on-tap="onCancelComorbidDetailsClick()" k-align="'left'">Cancel</kendo-mobile-button>
+                <span>Comorbid Details</span>
+                <kendo-mobile-button kendo-touch k-on-tap="onSavePtComorbid()" k-align="'right'">Save</kendo-mobile-button>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+
+        <div>
+            <div ng-class="{'border-bottom-0px' : model.SelectedComorbid.ComorbidCode.ToolTip}" class="modalview-edit-row">
+                <div class="modalview-edit-row-div-left">
+                    <label>COMORBID TYPE</label>
+                    <select kendo-drop-down-list id="comorbid-type-dropdown" name="comorbidtype" class="modalview-edit-select" k-data-source="model.ComorbidTypes" data-value-field="'Value'" data-text-field="'Text'"
+                            k-ng-model="model.SelectedComorbid.ComorbidCode"
+                            k-on-change="comorbidTypeChanged()" ng-disabled="model.IsEditingComorbid"
+                            required validationmessage="required"></select>
+                    <span class="k-invalid-msg" data-for="comorbidtype"></span>
+                </div>
+
+
+                <div class="modalview-edit-row-div-right">
+                    <label class="crd-inline">REPORTED DATE</label>
+                    <input kendo-date-picker class="crd-datepicker" id="comorbid-reporteddatepicker" name="reporteddate" k-options="DateOptions"
+                           k-ng-model="model.SelectedComorbid.ReportedDate" ng-disabled="model.IsEditingComorbid"
+                           required validationmessage="required" />
+                    <span class="k-invalid-msg" data-for="reporteddate"></span>
+                </div>
+            </div>
+
+            <div class="modalview-edit-row" ng-if="model.SelectedComorbid.ComorbidCode.ToolTip">
+                <div class="modalview-edit-row-div-left" ng-bind="model.SelectedComorbid.ComorbidCode.ToolTip">&nbsp;</div>
+            </div>
+
+            <div class="modalview-edit-row height-auto">
+                <div class="modalview-edit-row-div-left">
+                    <label>COMORBID GROUP</label>
+                    <div ng-bind='model.SelectedComorbid.ComorbidGroupCodeText'>&nbsp;</div>
+                </div>
+                <div class="modalview-edit-row-div-right">
+                    <label>PROVIDER</label>
+                    <select kendo-drop-down-list name="modalview-comorbid-provider" class="modalview-edit-select" k-data-source="model.Providers" data-text-field="'ProviderName'" data-value-field="'UID'"
+                            ng-model="model.SelectedComorbid.MPAUID"></select>
+                </div>
+            </div>
+
+            <div>
+                <div class="modalview-edit-row height-auto" ng-if="model.SelectedComorbid.ComorbidCode && model.SelectedComorbid.ComorbidCode.Children && model.SelectedComorbid.ComorbidCode.Children.length > 0">
+                    <div class="modalview-edit-row-div-left">
+                        <label>COMORBID DETAIL</label>
+                        <select kendo-drop-down-list name="comorbiddetail" class="modalview-edit-select" k-data-source="model.SelectedComorbid.ComorbidCode.Children" data-value-field="'Value'" data-text-field="'Text'"
+                                ng-model="model.SelectedComorbid.ComorbidDetailCode" ng-disabled="model.IsEditingComorbid"
+                                required validationmessage="required"></select>
+                        <span class="k-invalid-msg" data-for="comorbiddetail"></span>
+                    </div>
+                </div>
+
+                <div class="modalview-edit-row height-auto" ng-if="model.SelectedComorbid.ComorbidCode && (model.SelectedComorbid.ComorbidCode.Value === 'BMT' || model.SelectedComorbid.ComorbidCode.Value === 'TRANS')">
+                    <div class="modalview-edit-row-div-right">
+                        <label class=" crd-inline">TRANSPLANT DATE</label>
+                        <input kendo-date-picker class="crd-datepicker" id="comorbid-transplantdatepicker" name="transplantdate" k-options="DateOptions"
+                               k-ng-model="model.SelectedComorbid.OnSetDate" ng-disabled="model.IsEditingComorbid">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </kendo-mobile-modal-view>
+
+
+
+    <!-- Add Review Modal View -->
+    <kendo-mobile-modal-view id="comorbid-reviewdate-modalview" class="crd-modalview">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <kendo-mobile-button kendo-touch k-on-tap="onCreateComorbidReviewClick()" k-align="'right'">Save</kendo-mobile-button>
+                <span>Comorbid Review</span>
+                <kendo-mobile-button kendo-touch k-on-tap="onCancelComorbidReviewClick()" k-align="'left'">Cancel</kendo-mobile-button>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+        <ul class="modalview-ul">
+            <li class="modalview-ul-first-li">
+                <span>Tap below for a comorbid review date...</span>
+            </li>
+            <li>
+                <div id="comorbid-review-calendar-div">
+                    <kendo-calendar id="comorbid-review-calendar" class="crd-calendar" name="comorbid-review-calendar"
+                                    min="model.MinAddReviewDate" max="model.MaxAddReviewDate" footer="false" required
+                                    validationmessage="required"></kendo-calendar>
+                    <span class="k-invalid-msg comorbidtype-invalid-msg" data-for="comorbid-review-calendar"></span>
+                </div>
+            </li>
+        </ul>
+    </kendo-mobile-modal-view>
+    <!-- /Add Review Modal View -->
+
+</kendo-mobile-view>

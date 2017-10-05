@@ -1,0 +1,24 @@
+﻿<kendo-mobile-view ng-controller="LoginController" id="crd-login-view">    
+    <div id="login-header">
+        <!--<img alt="Rounding" src="Images/Capellalogo_Black.png" />-->
+    </div>       
+    <div kendo-validator="loginValidator" id="login-section" class="crd-center">		
+        <kendo-mobile-list-view id="login-ul" >
+            <li>
+                <label for="login-username">Username:</label>
+                <input type="text" id="login-username" class="k-textbox" name="login-username" required 
+                    validationmessage="Username is required" autocorrect="off" autocapitalize="off" 
+                    ng-model="model.UserName"/>               
+            </li>
+            <li>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" class="k-textbox" name="login-password" required
+                    validationmessage="Password is required" ng-model="model.Password"/>                
+            </li>               
+        </kendo-mobile-list-view>
+        <kendo-mobile-button class="crd-center" id="login-button" kendo-touch k-on-tap="login()">Login</kendo-mobile-button>                                                   
+    </div>           
+    <div data-role="footer" id="login-footer">
+        <span>Environment : {{ model.AppEnvironment }}</span> | <span>AppCode : {{ model.AppCode }}</span> | <span>Version : {{ model.Version }}</span>
+    </div>                 
+</kendo-mobile-view>    

@@ -1,0 +1,449 @@
+<kendo-mobile-view ng-controller="PatientAssessmentController" class="crd-view">
+
+    <div id="ptchart-patientAssessment-surveyheaders">
+        <div class="crd-screennameheader">{{ScreenTitle}}</div>
+        <div id="patientAssessment-buttons" class="allscreenings-buttons-header-bg">
+            <button kendo-mobile-button id="postpone-button" ng-click="save('P')">Postpone</button>
+            <button kendo-mobile-button id="save-button" ng-disabled="isSaveBtnDisabled" ng-click="save('C')">Save</button>
+            <button kendo-mobile-button id="cancel-button" ng-click="cancelScreening()">Cancel</button>
+        </div>
+        <div class="lastscreening patient-base-line-section patient-base-line-min-height lastscreening margin-top-8px">
+            <span class="crd-pthway-base-screening-label patient-base-line-header-color">Assessment Date:</span>
+            <input type="text" id="asst-screening-datepicker" name="screening-datepicker-name" kendo-date-picker
+                   k-ng-model="model.Baseline.IPEDate"
+                   k-options="IPEDateOptions" />
+        </div>
+
+    </div>
+    <div class="sections-wrapper">
+        <div id="patient-asst-screening-scroller" kendo-mobile-scroller>
+            <div id="ptchart-pthwy-view" class="crd-view" kendo-validator="patientAssessmentValidator">
+                <div class="lastscreening patient-base-line-section patientAsstScreening">
+                    <div class="crd-pthway-base-screening-label patient-base-line-header-color patient-ass-blk-baseline-titles">Baseline</div>
+                    <div class="patient-base-line-one-question">
+                        <div class="patient-base-line-row">
+                            <label class="ptchart-pthwy-question-text-lbl">Date of First ever Dialysis:</label>
+                        </div>
+                        <div class="patient-base-line-row-right">
+                            <input type="text" id="dialysis-datepicker" name="dialysis-datepicker-name" kendo-date-picker
+                                   ng-model="model.Baseline.FirstEverDialysisDate"
+                                   k-value="model.Baseline.FirstEverDialysisDate"
+                                   placeholder="<MM/dd/yyyy>"
+                                   ng-change="dateValueChange()" />
+                            <span class="k-invalid-msg err-margin" data-for="dialysis-datepicker-name"></span>
+
+                        </div>
+                    </div>
+                    <div class="patient-base-line-one-question">
+                        <div class="patient-base-line-row">
+                            <label class="ptchart-pthwy-question-text-lbl">Settings of First ever Dialysis:</label>
+                        </div>
+                        <div class="patient-base-line-row-right">
+                            <select id="patient-base-dialysis-types"
+                                    name="patient-base-dialysis-types-name"
+                                    class="ptchart-dbts-scrn-dd-div-select"
+                                    k-data-auto-bind="false" k-data-value-primitive="true"
+                                    kendo-drop-down-list
+                                    k-data-text-field="'Text'"
+                                    k-data-value-field="'Value'"
+                                    k-data-source="model.DialysisSettings"
+                                    k-ng-model="model.DialysisSettings.SelectedType"
+                                    k-on-change="onDialysisTypeChange()"></select>
+                            <span class="k-invalid-msg err-margin" data-for="patient-base-dialysis-types-name"></span>
+                        </div>
+                    </div>
+                    <div class="patient-base-line-one-question">
+                        <div class="patient-base-line-row">
+                            <label class="ptchart-pthwy-question-text-lbl">Date of First chronic Dialysis:</label>
+                        </div>
+                        <div class="patient-base-line-row-right renalDiseaseCausesSelectedText">
+                            <input type="text" id="first-chronic-dialysis-datepicker" name="first-chronic-dialysis-datepicker-name" kendo-date-picker
+                                   ng-model="model.Baseline.FirstChronicDialysisDate"
+                                   k-value="model.Baseline.FirstChronicDialysisDate"
+                                   placeholder="<MM/dd/yyyy>"
+                                   data-autogen="DateOfFirstEverDialysisInput"
+                                   ng-change="dateValueChange()" />
+                            <span class="k-invalid-msg err-margin" data-for="first-chronic-dialysis-datepicker-name"></span>
+                        </div>
+                    </div>
+                    <div class="patient-base-line-one-question">
+                        <div class="patient-base-line-row">
+                            <label class="ptchart-pthwy-question-text-lbl">{{ICD[0].Text}}</label>
+                        </div>
+                        <div class="patient-base-line-row-right renalDiseaseCausesSelectedText margin-left-negative-25">
+                            <div id="question-options-ICD" class="crd-rnd-radio-big allscreenings-float-left allscreenings-inline-block" ng-repeat="option in ICD[0].Options">
+                                <!--<kendo-mobile-list-view id="question-options-{{option.Description}}" k-options="menuOptions">-->
+                                <label class="crd-ptchart-pthwy-radio-lessthan-three-lbl">
+                                    <input id="ICD-{{option.OptionOrder}}" type="radio" name="radios-ICD" class="crd-ptchart-pthwy-ICD-radio" value="{{option.OptionOrder}}"
+                                           ng-model="ICD[0].SelectedIndex" ng-click="ICDCodeTypeClick(option.TypeCode)" />
+                                    <i></i>
+                                </label>
+                                <label class="question-options-lessthan-three-desc" for="ICD-{{option.OptionOrder}}">{{option.Description}}</label>
+                                <!--</kendo-mobile-list-view>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="patient-base-line-one-question">
+                        <div class="patient-base-line-row">
+                            <label class="ptchart-pthwy-question-text-lbl">Primary causes of Renal Disease:</label>
+                        </div>
+                        <div class="patient-base-line-row-right renalDiseaseCausesSelectedText">
+                            <select id="patient-base-line-scrn-dd-types-renalDiseaseCauses"
+                                    name="patient-base-line-scrn-dd-types-renalDiseaseCauses-name"
+                                    class="ptchart-dbts-scrn-dd-div-select"
+                                    k-data-auto-bind="false" k-data-value-primitive="true"
+                                    kendo-drop-down-list
+                                    k-data-text-field="'Text'"
+                                    k-data-value-field="'Value'"
+                                    k-data-source="model.RenalDiseaseCauses"
+                                    k-ng-model="model.RenalDiseaseCauses.SelectedType"
+                                    k-on-change="renalDiseaseCausesTypeChange()"></select>
+
+                            <span data-for="patient-base-line-scrn-dd-types-renalDiseaseCauses-name" class="k-invalid-msg"></span>
+                        </div>
+                    </div>
+                    <div class="patient-base-line-one-question">
+                        <div class="patient-base-line-row">
+                            <label class="ptchart-pthwy-question-text-lbl">Number of Hospital Admits in last 90 days:</label>
+                        </div>
+                        <div class="patient-base-line-row-right">
+                            <input id="hospitalAdmitDays" type="text" class="k-textbox" name="NoOfHospitalization"
+                                   ng-model="model.Baseline.NumberOfHospitalization"
+                                   maxlength="2" ng-change="dateValueChange()"
+                                   ng-keyup="keyUp($event)" ng-keypress="keyPress($event)" />
+                        </div>
+                    </div>
+                    <div class="patient-base-line-one-question">
+                        <div class="patient-base-line-row">
+                            <label class="ptchart-pthwy-question-text-lbl">Health Benifits:</label>
+                        </div>
+                        <div class="patient-base-line-row-right">
+                            <div class="ptchart-pthwy-check crd-kendocheck-big patient-base-line-column-right">
+                                <input type="checkbox" id="ptchart-pthwy-patient-va" ng-model="model.Baseline.IsVA" class="k-checkbox" ng-change="onSwitchChange()">
+                                <label class="k-checkbox-label" for="ptchart-pthwy-patient-va"><span>VA</span></label>
+                            </div>
+                            <div class="ptchart-pthwy-check crd-kendocheck-big patient-base-line-column-right">
+                                <input type="checkbox" id="ptchart-pthwy-patient-medicare" ng-model="model.Baseline.IsMedicare" class="k-checkbox" ng-change="onSwitchChange()">
+                                <label class="k-checkbox-label" for="ptchart-pthwy-patient-medicare"><span>Medicare</span></label>
+                            </div>
+                            <div class="ptchart-pthwy-check crd-kendocheck-big patient-base-line-column-right">
+                                <input type="checkbox" id="ptchart-pthwy-patient-medicaid" ng-model="model.Baseline.IsMedicaid" class="k-checkbox" ng-change="onSwitchChange()">
+                                <label class="k-checkbox-label" for="ptchart-pthwy-patient-medicaid"><span>Medicaid</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lastscreening patient-base-line-section margin-top-8px">
+                    <div class="crd-pthway-base-screening-label patient-base-line-header-color patient-ass-blk-baseline-titles">Education and Risk Factors</div>
+                    <div class="patient-base-line-left-section">
+                        <div class="patient-base-line-one-question">
+                            <div class="patient-base-edu-line-row">
+                                <label class="ptchart-pthwy-question-text-lbl">Hearing Impairment:</label>
+                            </div>
+                            <div class="patient-base-line-row-right">
+                                <select id="patient-base-line-scrn-dd-types-hearingImpairments"
+                                        name="patient-base-line-scrn-dd-types-hearingImpairments-name"
+                                        class="ptchart-dbts-scrn-dd-div-select"
+                                        k-data-auto-bind="false" k-data-value-primitive="true" validationmessage="required"
+                                        kendo-drop-down-list
+                                        k-data-text-field="'Text'"
+                                        k-data-value-field="'Value'"
+                                        k-data-source="model.HearingImpairments"
+                                        k-ng-model="model.HearingImpairments.SelectedType"
+                                        k-on-change="hearingImpairmentsTypeChange()"></select>
+
+                                <span class="k-invalid-msg err-margin" data-for="patient-base-line-scrn-dd-types-hearingImpairments-name"></span>
+                            </div>
+                            <div class="ptchart-pthwy-check crd-kendocheck-big patient-base-line-column-right">
+                                <input type="checkbox" id="ptchart-pthwy-patient-read" ng-model="model.Baseline.IsUnableToRead" class="k-checkbox" ng-change="onSwitchChange()">
+                                <label class="k-checkbox-label float-left" for="ptchart-pthwy-patient-read"><span class="float-left PatientAsstCheckbox">Unable to Read</span></label>
+                            </div>
+                        </div>
+                        <div class="patient-base-line-one-question">
+                            <div class="patient-base-edu-line-row">
+                                <label class="ptchart-pthwy-question-text-lbl">Vision Impairment:</label>
+                            </div>
+                            <div class="patient-base-line-row-right">
+                                <select id="patient-base-line-scrn-dd-types-visionImpairments"
+                                        name="patient-base-line-scrn-dd-types-visionImpairments-name"
+                                        class="ptchart-dbts-scrn-dd-div-select"
+                                        k-data-auto-bind="false" k-data-value-primitive="true" validationmessage="required"
+                                        kendo-drop-down-list
+                                        k-data-text-field="'Text'"
+                                        k-data-value-field="'Value'"
+                                        k-data-source="model.VisionImpairments"
+                                        k-ng-model="model.VisionImpairments.SelectedType"
+                                        k-on-change="visionImpairmentsTypeChange()"></select>
+
+                                <span class="k-invalid-msg err-margin" data-for="patient-base-line-scrn-dd-types-visionImpairments-name"></span>
+                            </div>
+                            <div class="ptchart-pthwy-check crd-kendocheck-big patient-base-line-column-right">
+                                <input type="checkbox" id="ptchart-pthwy-cognitive-impairment" ng-model="model.Baseline.IsCognitiveImpaired" class="k-checkbox" ng-change="onSwitchChange()">
+                                <label class="k-checkbox-label  float-left" for="ptchart-pthwy-cognitive-impairment"><span class="float-left PatientAsstCheckbox">Cognitive Impairment</span></label>
+                            </div>
+
+                            <div id="CognitiveImpaired-warning" ng-show="model.Baseline.IsCognitiveImpaired" class="patient-base-line-column-right patient-base-line-header-color">
+                                <div>Cognitive screening necessary. If not completed now, a task will be generated for future completion.</div>
+                            </div>
+                        </div>
+                        <div class="patient-base-line-one-question margin-top-5">
+                            <div class="patient-base-edu-line-row">
+                                <label class="ptchart-pthwy-question-text-lbl">Mobility Impairment :</label>
+                            </div>
+                            <div class="patient-base-mobility-row-right">
+                                <div class="patient-base-line-column-right">
+                                    <kendo-mobile-switch class="question-options-multiple" name="" id=""
+                                                         k-on-change="onSwitchChange(option)" value="{{model.Baseline.IsHavingDiffWalking}}" k-ng-model="model.Baseline.IsHavingDiffWalking"
+                                                         ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                                    </kendo-mobile-switch>
+                                    <span class="question-options-switch-description">
+                                        Dificulty Walking
+                                    </span>
+                                </div>
+                                <div class="patient-base-line-column-right">
+                                    <kendo-mobile-switch class="question-options-multiple" name="" id=""
+                                                         k-on-change="onSwitchChange(option)" value="{{model.Baseline.IsHavingStairsHome}}" k-ng-model="model.Baseline.IsHavingStairsHome"
+                                                         ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                                    </kendo-mobile-switch>
+                                    <span class="question-options-switch-description">
+                                        Stairs in Home
+                                    </span>
+                                </div>
+                                <div class="patient-base-line-column-right">
+                                    <kendo-mobile-switch class="question-options-multiple" name="" id=""
+                                                         k-on-change="onSwitchChange('other')" value="{{model.Baseline.IsMCOtherYesNo}}" k-ng-model="model.Baseline.IsMCOtherYesNo"
+                                                         k-on-label="'Yes'" k-off-label="'No'">
+                                    </kendo-mobile-switch>
+                                    <span class="question-options-switch-description" style="width: 50px !important;">
+                                        Other
+                                    </span>
+                                    <span ng-show="model.Baseline.IsMCOtherYesNo" class="answer-warning">
+                                        <input id="other-notes" type="text" maxlength="500" name="other-notes-name" placeholder="Enter notes" class="surveycomment-textbox required"
+                                               ng-model="model.Baseline.MCOtherNotes"
+                                               value="{{model.Baseline.MCOtherNotes}}"
+                                               ng-required="isSaveBtnClicked && model.Baseline.IsMCOtherYesNo"
+                                               validationmessage="required" />
+
+                                        <span class="k-invalid-msg" data-for="other-notes-name"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="patient-base-line-right-section">
+                        <div class="patient-base-line-one-question patient-base-risk-questions" ng-repeat="question in Questions">
+                            <div class="width-40-pr-left">
+                                <label class="ptchart-pthwy-question-text-lbl patient-base-risk-questions-label">{{question.Text}}</label>
+                            </div>
+                            <div class="width-60-pr-left">
+                                <div class="crd-displayinlineleft">
+                                    <div id="qustions-options-education-risk-factors" class="crd-rnd-radio-big allscreenings-float-left allscreenings-inline-block" ng-repeat="option in question.Options">
+                                        <!--<div id="question-options-{{option.QuestionID}}">-->
+                                        <!--<div class="crd-rnd-radio-big allscreenings-float-left allscreenings-inline-block">-->
+                                        <label class="crd-ptchart-pthwy-radio-lessthan-three-lbl">
+                                            <input id="radio-{{option.QuestionID}}-{{option.OptionOrder}}" type="radio" name="radio-name-{{option.QuestionID}}" class="crd-ptchart-pthwy-question-radio" value="{{option.OptionOrder}}"
+                                                   ng-model="option.IsSelected" ng-click="thingsChange(option.QuestionID)" />
+                                            <i></i>
+                                        </label>
+                                        <label class="question-options-lessthan-three-desc" for="radio-{{option.ID}}-{{option.OptionOrder}}">{{ option.Description }}</label>
+                                        <!--</div>-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lastscreening patient-base-line-section patient-base-line-section-one margin-top-8px">
+                    <div class="crd-pthway-base-screening-label patient-base-line-header-color patient-ass-blk-baseline-titles">Basic Needs Concern</div>
+                    <div class="patient-base-line-row patient-base-line-row-left">
+                        <div class="patient-base-line-column-right">
+                            <kendo-mobile-switch class="question-options-multiple" name="IsTransportationNeededChkBox-name" id="IsTransportationNeededChkBox"
+                                                 k-on-change="onSwitchChange(option)" value="{{model.Baseline.IsTransportationNeeded}}" k-ng-model="model.Baseline.IsTransportationNeeded"
+                                                 ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                            </kendo-mobile-switch>
+                            <span class="question-options-switch-description">
+                                Transportation
+                            </span>
+                        </div>
+                        <div class="patient-base-line-column-right">
+                            <kendo-mobile-switch class="question-options-multiple" name="IsInAbusiveEnvironmentChkBox-name" id="IsInAbusiveEnvironmentChkBox"
+                                                 k-on-change="onSwitchChange(option)" value="{{model.Baseline.IsInAbusiveEnvironment}}" k-ng-model="model.Baseline.IsInAbusiveEnvironment"
+                                                 ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                            </kendo-mobile-switch>
+                            <span class="question-options-switch-description">
+                                Abusive Enviornment
+                            </span>
+                        </div>
+                        <div class="patient-base-line-column-right">
+                            <kendo-mobile-switch class="question-options-multiple" name="IsLivingAloneChkBox-name" id="IsLivingAloneChkBox"
+                                                 k-on-change="onSwitchChange(option)" value="{{model.Baseline.IsLivingAlone}}" k-ng-model="model.Baseline.IsLivingAlone"
+                                                 ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                            </kendo-mobile-switch>
+                            <span class="question-options-switch-description">
+                                Lives Alone
+                            </span>
+                        </div>
+
+
+                        <div class="patient-base-line-column-right">
+                            <kendo-mobile-switch class="question-options-multiple" name="IsInUnsafeEnvironmentChkBox-name" id="IsInUnsafeEnvironmentChkBox"
+                                                 k-on-change="onSwitchChange(option)" value="{{model.Baseline.IsInUnsafeEnvironment}}" k-ng-model="model.Baseline.IsInUnsafeEnvironment"
+                                                 ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                            </kendo-mobile-switch>
+                            <span class="question-options-switch-description">
+                                Unsafe/Unsupportive Environment
+                            </span>
+                        </div>
+                        <div class="patient-base-line-column-right">
+                            <kendo-mobile-switch class="question-options-multiple" name="TransientHomelessChkBox-name" id="TransientHomelessChkBox"
+                                                 k-on-change="onSwitchChange(option)" value="{{model.Baseline.IsTransient}}" k-ng-model="model.Baseline.IsTransient"
+                                                 ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                            </kendo-mobile-switch>
+                            <span class="question-options-switch-description">
+                                Transient/Homeless
+                            </span>
+                        </div>
+                        <div class="patient-base-line-column-right">
+                            <kendo-mobile-switch class="question-options-multiple" name="IsLackingFoodChkBox-name" id="IsLackingFoodChkBox"
+                                                 k-on-change="onSwitchChange(option)" value="{{model.Baseline.IsLackingFood}}" k-ng-model="model.Baseline.IsLackingFood"
+                                                 ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                            </kendo-mobile-switch>
+                            <span class="question-options-switch-description">
+                                Lack of Food
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lastscreening patient-base-line-section patient-base-line-section-two margin-top-8px">
+                    <div class="crd-pthway-base-screening-label patient-base-line-header-color patient-ass-blk-baseline-titles">Treatment Options Discussed</div>
+                    <div class="patient-base-line-row patient-base-line-row-left">
+                        <div class="patient-base-line-column-right">
+                            <kendo-mobile-switch class="question-options-multiple" name="IsTOHomeHemoYesNoChkBox-name" id="IsTOHomeHemoYesNoChkBox"
+                                                 k-on-change="onSwitchChange(option)" value="{{model.Baseline.IsTOHomeHemoYesNo}}" k-ng-model="model.Baseline.IsTOHomeHemoYesNo"
+                                                 ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                            </kendo-mobile-switch>
+                            <span class="question-options-switch-description">
+                                Home Hemo
+                            </span>
+                        </div>
+                        <div class="patient-base-line-column-right">
+                            <kendo-mobile-switch class="question-options-multiple" name="IsTOPDYesNoChkBox-name" id="IsTOPDYesNoChkBox"
+                                                 k-on-change="onSwitchChange(option)" value="{{model.Baseline.IsTOPDYesNo}}" k-ng-model="model.Baseline.IsTOPDYesNo"
+                                                 ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                            </kendo-mobile-switch>
+                            <span class="question-options-switch-description">
+                                PD
+                            </span>
+                        </div>
+                        <div class="patient-base-line-column-right">
+                            <kendo-mobile-switch class="question-options-multiple" name="IsTOInCenterYesNoChkBox-name" id="IsTOInCenterYesNoChkBox"
+                                                 k-on-change="onSwitchChange(option)" value="{{model.Baseline.IsTOInCenterYesNo}}" k-ng-model="model.Baseline.IsTOInCenterYesNo"
+                                                 ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                            </kendo-mobile-switch>
+                            <span class="question-options-switch-description">
+                                In-Center Hemo
+                            </span>
+                        </div>
+                        <div class="patient-base-line-column-right">
+                            <kendo-mobile-switch class="question-options-multiple" name="IsTOTransplantYesNoChkBox-name" id="IsTOTransplantYesNoChkBox"
+                                                 k-on-change="onSwitchChange(option)" value="{{model.Baseline.IsTOTransplantYesNo}}" k-ng-model="model.Baseline.IsTOTransplantYesNo"
+                                                 ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                            </kendo-mobile-switch>
+                            <span class="question-options-switch-description">
+                                Transplant
+                            </span>
+                        </div>
+                        <div class="patient-base-line-column-right">
+                            <kendo-mobile-switch class="question-options-multiple" name="IsTONoTreatmentYesNoChkBox-name" id="IsTONoTreatmentYesNoChkBox"
+                                                 k-on-change="onSwitchChange(option)" value="{{model.Baseline.IsTONoTreatmentYesNo}}" k-ng-model="model.Baseline.IsTONoTreatmentYesNo"
+                                                 ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                            </kendo-mobile-switch>
+                            <span class="question-options-switch-description">
+                                No Treatment
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lastscreening patient-base-line-section patient-base-line-header-color careGiverFunctionalityBlock margin-top-8px">
+                    <div class="patient-base-line-row patient-base-line-row-left">
+                        <div ng-repeat="careGiverQuestionGroup in model.Baseline.PathwayVM.QuestionGroups">
+                            <kendo-mobile-list-view>
+                                <div id="question-{{question.UID}}-{{question.Order}}" ng-repeat="question in careGiverQuestionGroup.Questions">
+                                    <div class="width-50-pr-left">
+                                        <div id="question-text-{{question.UID}}-{{question.Order}}" class="ptchart-pthwy-question-display">
+                                            <label class="ptchart-pthwy-question-text-lbl">{{question.Text}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="width-50-pr-left" ng-if="question.Options !== null && question.Options.length > 0">
+                                        <div class="crd-displayinlineleft">
+                                            <div id="question-options-CareGiver" class="crd-rnd-radio-big allscreenings-float-left allscreenings-inline-block" ng-repeat="option in question.Options">
+                                                <!--<kendo-mobile-list-view id="question-options-{{option.Description}}" k-options="menuOptions">-->
+                                                    <label class="crd-ptchart-pthwy-radio-lessthan-three-lbl">
+                                                        <input id="caregiver-{{option.QuestionUID}}-{{option.UID}}" type="radio" name="caregiver-{{option.QuestionUID}}-{{option.UID}}"
+                                                               class="crd-ptchart-pthwy-question-radio" value="{{option.OptionOrder}}" ng-checked="option.IsSelected" ng-value="{{option.OptionOrder}}"
+                                                               ng-model="option.IsSelected" ng-click="careGiverSwitchChange(option)" />
+                                                        <i></i>
+                                                    </label>
+                                                    <label class="question-options-lessthan-three-desc" for="caregiver-{{option.QuestionUID}}-{{option.UID}}">{{option.Description}}</label>
+                                                <!--</kendo-mobile-list-view>-->                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </kendo-mobile-list-view>
+                        </div>
+                    </div>
+                    <div id="caregiver-options" ng-if="model.CareGiverOptions.IsVisible">
+                        <div class="caregiver-options-row">
+                            <div class="four-columns margin-left-5 margin-right-5">
+                                <label class="ptchart-pthwy-question-text-lbl first-column">Name</label>
+                                <span class="second-column">
+                                    <input kendo-masked-text-box id="provider-fullname" class="k-textbox" name="Name"
+                                           ng-model="model.ProvidersTemp[0].name"
+                                           ng-disabled="model.CareGiverOptions.IsDisabled" />
+                                    <span class="k-invalid-msg" data-for="Name"></span>
+                                </span>
+                            </div>
+                            <div class="four-columns margin-left-5">
+                                <label class="ptchart-pthwy-question-text-lbl first-column">Phone</label>
+                                <span class="second-column">
+                                    <input kendo-masked-text-box id="provider-phone" class="k-textbox" name="Phone"
+                                           ng-model="model.ProvidersTemp[0].PhoneNumber"
+                                           k-mask="'000-000-0000'"
+                                           ng-disabled="model.CareGiverOptions.IsDisabled" />
+                                </span>
+                            </div>
+                            <div class="four-columns allow-comm-check-item">
+                                <label class="ptchart-pthwy-question-text-lbl first-column">&nbsp;</label>
+                                <span class="allow-comm-check crd-kendocheck-big patient-base-line-column-right">
+                                    <label class="ptchart-pthwy-question-text-lbl first-column" for="ptchart-pthwy-allow-communications">Allow Communications:</label>
+                                    <span class="second-column" id="ptchart-pthwy-allow-communications-wrapper">
+                                        <input type="checkbox" id="ptchart-pthwy-allow-communications"
+                                               ng-disabled="model.CareGiverOptions.IsDisabled" ng-model="model.ProvidersTemp[0].allowCommunication" class="k-checkbox" ng-change="onSwitchChange()">
+                                        <label class="k-checkbox-label pthwy-allow-communications-chk" for="ptchart-pthwy-allow-communications"></label>
+                                    </span>
+                                </span>
+                            </div>
+                            <div id="patientAssessment-caregiver-buttons" class="allscreenings-buttons-header-bg patientAsstCareGiver">
+                                <button kendo-mobile-button id="edit-button" ng-click="editCareGiver()" ng-if="model.CareGiverOptions.IsEditVisible" class="caregiverActionButtons">Edit</button>
+                                <button kendo-mobile-button id="add-button" ng-click="addCareGiver()" ng-if="model.CareGiverOptions.IsAddVisible" class="caregiverActionButtons">Add</button>
+                                <button kendo-mobile-button id="save-button" ng-click="saveCareGiver()" ng-if="model.CareGiverOptions.IsSaveVisible" ng-disabled="model.ProvidersTemp[0].name ==null" class="caregiverActionButtons">Save</button>
+                                <button kendo-mobile-button id="delete-button" ng-click="cancelCareGiver(1)" ng-if="model.CareGiverOptions.IsCancelVisible" class="caregiverActionButtons">Cancel</button>
+                                <button kendo-mobile-button id="delete-button" ng-click="deleteCareGiver()" ng-if="model.CareGiverOptions.IsDeleteVisible" class="caregiverActionButtons">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="caregiver-history">
+                        <p>
+                            <ul class="patient-base-line-list">
+                                <li><label class="patient-base-line-list-row">Last Caregiver&nbsp;:</label><label ng-bind="model.lastProviders[0] ? model.lastProviders[0].name : ''"></label></li>
+                                <li><label class="patient-base-line-list-row">End Date&nbsp;:</label><label ng-bind="getDateString(model.lastProviders[0].EndDate)"></label></li>
+                            </ul>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</kendo-mobile-view>			

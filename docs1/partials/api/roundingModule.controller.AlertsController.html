@@ -1,0 +1,84 @@
+<h1><code ng:non-bindable="">AlertsController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-alertscontroller-page"><p>Controller Name: AlertsController</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getalerts">getAlerts()</h3>
+<div class="getalerts"><div class="getalerts-page"><p>get action items of Type Alert </p>
+</div></div>
+</li>
+<li><h3 id="methods_onalertselected">onAlertSelected(selectedRow)</h3>
+<div class="onalertselected"><div class="onalertselected-page"><p>Alert selected from Grid showing message confirm whether user wants to acknowledge </p>
+</div><h5 id="methods_onalertselected_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>selectedRow</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onalertselected-page"><p>selectedrow contain patient information.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_onalertselectionacknowledge">onAlertSelectionAcknowledge(result)</h3>
+<div class="onalertselectionacknowledge"><div class="onalertselectionacknowledge-page"><p>After showing above message confirm whether user wants to acknowledge,set the selected Patient locally   </p>
+</div><h5 id="methods_onalertselectionacknowledge_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onalertselectionacknowledge-page"><p>set patient.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_ongetactionitemsretrieved">onGetActionItemsRetrieved(result)</h3>
+<div class="ongetactionitemsretrieved"><div class="ongetactionitemsretrieved-page"><p>service based call back function of GetActionItems Service call </p>
+</div><h5 id="methods_ongetactionitemsretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetactionitemsretrieved-page"><p>return result data of WebApi call.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_onupdatealertcompleted">onUpdateAlertCompleted(result)</h3>
+<div class="onupdatealertcompleted"><div class="onupdatealertcompleted-page"><p>service based call back function of UpdateAlert Service call </p>
+</div><h5 id="methods_onupdatealertcompleted_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onupdatealertcompleted-page"><p>return result data of WebApi call.</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopealertsmodelactionitemsshow">$scope.AlertsModel.ActionItemsShow</h3>
+<div class="$scopealertsmodelactionitemsshow"><div class="roundingmodule-controller-page roundingmodule-controller-alertscontroller-page"><ul>
+<li>Show All Actionitems after update alerts.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopealertsmodeltotal">$scope.AlertsModel.Total</h3>
+<div class="$scopealertsmodeltotal"><div class="roundingmodule-controller-page roundingmodule-controller-alertscontroller-page"><ul>
+<li>Total is set on the base of result.data.length after onGetActionItemsRetrieved .</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopealertsmodelmorethanfivepatients">$scope.AlertsModel.MoreThanFivePatients</h3>
+<div class="$scopealertsmodelmorethanfivepatients"><div class="roundingmodule-controller-page roundingmodule-controller-alertscontroller-page"><ul>
+<li>open all five patients this value will set to true.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopealertsmodelpatientalerts">$scope.AlertsModel.PatientAlerts</h3>
+<div class="$scopealertsmodelpatientalerts"><div class="roundingmodule-controller-page roundingmodule-controller-alertscontroller-page"><ul>
+<li>Intializing model PatientAlerts .</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopealertsmodelselectedrow">$scope.AlertsModel.SelectedRow</h3>
+<div class="$scopealertsmodelselectedrow"><div class="roundingmodule-controller-page roundingmodule-controller-alertscontroller-page"><ul>
+<li>selected row for patient will hold entire object for selected patient.</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_$watch">$watch</h3>
+<div class="$watch"><div class="-scope-watch-page"><p>Tracking changes of Alerts Total.helpful when contact postponed from contact recap screen.This $watch update total count of Alert. </p>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_actionitemsshowclick">actionItemsShowClick</h3>
+<div class="actionitemsshowclick"><div class="actionitemsshowclick-page"><p>Animation for Alerts Show/hide alerts slide updown </p>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,159 @@
+﻿#demographics-container
+{
+    height: 128px !important;
+    padding-top: 20px;    
+}
+
+.demographics-pts-profile
+{ 
+    width: 100% !important;
+    margin-top: 9px !important;
+    line-height: 15px !important;
+    float: left !important;
+}
+
+#demographics-pt-details
+{
+    padding-top: 1px;
+    background: white; 
+    min-height: 550px !important;
+    text-transform: uppercase;
+    padding-left: 5px;    
+    border: 1px solid lightgray !important;
+    border-top: 0px solid lightgray !important;
+}
+
+.demographics-tab
+{
+    border-color: transparent !important;
+    height: 60px !important;
+    padding: 0px !important;
+}
+
+#demographics-tab-strip
+{
+    margin-top: 12px;
+    background: white !important;
+    box-shadow: none !important;
+}
+
+.demographics-impairments-id-header
+{
+    width: 100% !important;
+    float: left !important;
+    padding: 10px 0px 0px 0px !important;
+}
+
+#demographics-ptchart-ptdetails-container
+{
+    background-color: white; 
+    border: 1px solid lightgray; 
+    min-height: 100px;
+    margin-bottom: 5px !important;
+}
+
+/* rcm-demographics-pts-details*/
+.demographics-pts-profile span
+{
+    width: 25% !important;
+    float: left !important;
+}
+
+.demographics-pts-display-ppty
+{
+    display: block !important;
+}
+
+.demographics-pts-impairments
+{
+    width: 25% !important;
+    float: left !important;
+}
+
+.demographics-separator
+{
+    width: 100% !important;
+    border: 1px solid lightgray !important;
+}
+
+.demographics-pts-tabstrip-details div
+{
+    width: 50% !important;
+    word-wrap: break-word !important;
+    float: left !important;
+}
+
+
+.demographics-pts-tabstrip-details
+{
+    width: 100% !important;
+    margin-top: 6px !important;
+    float: left !important;
+}
+
+.rcm-demographics-pts-values 
+{
+    width: 100% !important;
+    float: left !important;
+}
+
+#demographics-ptchart-ptdetails-container 
+{
+    background-color: white; 
+    border: 1px solid lightgray; 
+    min-height: 100px;
+}
+
+/* Patientdemographics2 */
+
+#demographics-tab-strip2
+{
+    margin-top: 40px;
+    background: white !important;
+    box-shadow: none !important;
+    border: none;
+}
+
+#demographics-pt-details2
+{
+    padding-top: 150px;
+    background: white;
+    min-height: 525px !important;    
+    padding-left: 5px;    
+    border: 1px solid lightgray !important;
+    border-top: 0px solid lightgray !important;
+}
+
+.demographics-pts-profile-span-50-perc
+{
+    width: 50% !important;
+    float: left !important;
+    font-size: 14px !important;    
+    color: #76787B;
+    /*padding: 5px 0px;*/      
+}
+
+.demographics-pts-profile-span-33-perc {    
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: #76787B;
+    padding: 5px 0px;
+    text-transform: uppercase !important;
+}
+
+#demographics-ptchart-ptdetails-container-id 
+{
+    background-color: white; 
+    border: 1px solid lightgray; 
+    min-height: 212px;
+}
+
+#patient-info-id {   
+    padding-top: 20px;    
+}
+
+#patient-info-id-container {
+    background-color: white;
+    border: 1px solid lightgray;
+    min-height: 300px;
+}

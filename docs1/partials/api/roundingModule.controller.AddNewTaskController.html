@@ -1,0 +1,121 @@
+<h1><code ng:non-bindable="">AddNewTaskController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-addnewtaskcontroller-page"><ul>
+<li>Child controller of MyTaskController</li>
+<li>This will be called on click event of Add New Task button</li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_followuptasks">followupTasks()</h3>
+<div class="followuptasks"><div class="followuptasks-page"><ul>
+<li>Filters lookup of FollowupTask for the CurrentRole which is using angular.forEach</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_oncreatenewtaskcompleted">onCreateNewTaskCompleted(result)</h3>
+<div class="oncreatenewtaskcompleted"><div class="oncreatenewtaskcompleted-page"><ul>
+<li>Callback function of MyTasksService.AddTask </li>
+<li>Calls MyTasksService.RefreshActionItems to broadcast refreshActionItems</li>
+</ul>
+</div><h5 id="methods_oncreatenewtaskcompleted_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="oncreatenewtaskcompleted-page"><p>returned by MyTasksService.AddTask call</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemytaskmodel">$scope.MyTaskmodel</h3>
+<div class="$scopemytaskmodel"><div class="roundingmodule-controller-page roundingmodule-controller-addnewtaskcontroller-page"><p>model of AddNewTaskController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemytaskmodelpatientname">$scope.MyTaskmodel.PatientName</h3>
+<div class="$scopemytaskmodelpatientname"><div class="roundingmodule-controller-page roundingmodule-controller-addnewtaskcontroller-page"><p>property of model of AddNewTaskController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemytaskmodeltask">$scope.MyTaskmodel.Task</h3>
+<div class="$scopemytaskmodeltask"><div class="roundingmodule-controller-page roundingmodule-controller-addnewtaskcontroller-page"><p>property of model of AddNewTaskController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemytaskmodeltaskdescription">$scope.MyTaskmodel.TaskDescription</h3>
+<div class="$scopemytaskmodeltaskdescription"><div class="roundingmodule-controller-page roundingmodule-controller-addnewtaskcontroller-page"><p>property of model of AddNewTaskController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemytaskmodelduedate">$scope.MyTaskmodel.DueDate</h3>
+<div class="$scopemytaskmodelduedate"><div class="roundingmodule-controller-page roundingmodule-controller-addnewtaskcontroller-page"><p>property of model of AddNewTaskController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemytaskmodelminduedate">$scope.MyTaskmodel.MinDueDate</h3>
+<div class="$scopemytaskmodelminduedate"><div class="roundingmodule-controller-page roundingmodule-controller-addnewtaskcontroller-page"><p>property of model of AddNewTaskController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemytaskmodeladdnewtaskvisible">$scope.MyTaskmodel.AddNewTaskVisible</h3>
+<div class="$scopemytaskmodeladdnewtaskvisible"><div class="roundingmodule-controller-page roundingmodule-controller-addnewtaskcontroller-page"><p>property of model of AddNewTaskController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemytaskmodelselecttasktypevisible">$scope.MyTaskmodel.SelectTaskTypeVisible</h3>
+<div class="$scopemytaskmodelselecttasktypevisible"><div class="roundingmodule-controller-page roundingmodule-controller-addnewtaskcontroller-page"><p>property of model of AddNewTaskController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemytaskmodelselectduedatevisible">$scope.MyTaskmodel.SelectDueDateVisible</h3>
+<div class="$scopemytaskmodelselectduedatevisible"><div class="roundingmodule-controller-page roundingmodule-controller-addnewtaskcontroller-page"><p>property of model of AddNewTaskController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemytaskmodeltasktypes">$scope.MyTaskmodel.TaskTypes</h3>
+<div class="$scopemytaskmodeltasktypes"><div class="roundingmodule-controller-page roundingmodule-controller-addnewtaskcontroller-page"><p>property of model of AddNewTaskController</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_closemodalviewaddnewtask">closeModalViewAddNewTask</h3>
+<div class="closemodalviewaddnewtask"><div class="closemodalviewaddnewtask-page"><ul>
+<li>ng-click event of cancel button on Add New Task modal view </li>
+<li>Changes UI behaviour</li>
+<li>Closes the modal view for add new task</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_createnewtask">createNewTask</h3>
+<div class="createnewtask"><div class="createnewtask-page"><ul>
+<li>ng-click event of Create button</li>
+<li>Creates new task by calling MyTasksService.AddTask            </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_createnewtask">createNewTask</h3>
+<div class="createnewtask"><div class="createnewtask-page"><ul>
+<li>ng-click event of Back button on Add New Task modal view </li>
+<li>Changes UI behaviour           </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_selectduedate">selectDueDate</h3>
+<div class="selectduedate"><div class="selectduedate-page"><ul>
+<li>ng-click event of Due Date textbox</li>
+<li>Changes UI behaviour      </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_selecttasktype">selectTaskType</h3>
+<div class="selecttasktype"><div class="selecttasktype-page"><ul>
+<li>ng-click event of Task Type textbox</li>
+<li>Changes UI behaviour      </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

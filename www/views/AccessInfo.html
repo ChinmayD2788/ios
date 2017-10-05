@@ -1,0 +1,249 @@
+﻿<kendo-mobile-view ng-controller="AccessInfoController" class="crd-view" > 
+    <div class="crd-inline">
+        <div class="crd-screennameheader">ACCESS ENTRIES</div>
+        <div style="float: right;">
+            <kendo-mobile-button kendo-touch k-on-tap="onAccessAddClick()" k-align="'right'">ADD ACCESS</kendo-mobile-button> 
+        </div>
+    </div>
+    <div id="accessinfolist">                               
+        <kendo-mobile-list-view k-data-source="model.AccessData" id="accessinfolistview">
+            <div k-template class="accessinfo-stepdetail-row" id="accessinfo-stepdetail-row-{{ dataItem.UID }}">                
+                <div id="top-{{ dataItem.UID }}" class="accessinfo-stepdetail-row-top" ng-click="onTopRowClicked(dataItem)">
+                    <div class="accessinfo-stepdetail-row-top-left">
+                        <div style="width: 60px">
+                            <div class="accessinfo-stepdetail-row-top-left-upper"></div>                              
+                            <div ng-if="getLookupItem('AccessStatus', dataItem.AccessStatus) === model.AccessStatus.Active" 
+                                 class="crd-circle-border-skyblue accessinfo-stepdetail-row-top-left-middle"></div> 
+                            <div ng-if="getLookupItem('AccessStatus', dataItem.AccessStatus) != model.AccessStatus.Active"
+                                 class="crd-circle-border-grey accessinfo-stepdetail-row-top-left-middle"></div>                                                                                                                                     
+                            <div class="accessinfo-stepdetail-row-top-left-lower"></div>
+                        </div>
+                    </div>
+                    <div class="accessinfo-stepdetail-row-top-right" id="accessinfo-stepdetail-row-top-right-{{ dataItem.UID }}">
+                        <div class="accessinfo-stepdetail-header">  
+                            <div style="float: left">{{ getLookupItem('AccessType', dataItem.AccessType) + " Placed - " + 
+                                                        getLookupItem('AccessStatus', dataItem.AccessStatus) + " Access"}}
+                            </div>
+                            <div class="accessinfo-stepdetail-row-placeddate">
+                                 {{ dataItem.PlacedDate | date: 'MM-dd-yy' }}                          
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="accessinfo-bottom-{{ dataItem.UID }}" class="accessinfo-stepdetail-row-bottom">
+                    <div class="accessinfo-stepdetail-row-bottom-left">
+                        <div class="accessinfo-stepdetail-row-bottom-left-upper"></div>                                                                                  
+                    </div>
+                    <div class="accessinfo-stepdetail-row-bottom-right">    
+                        <div id="accessinfo-stepdetail-row-bottom-right-{{ dataItem.UID }}">
+                            <div class="accessinfo-itemrow-detail">  
+                                <div class="accessinfo-itemrow-detail-left">
+					                <label class="accessinfo-item-access-label accessinfo-item-access-label-title">Access Details</label>                               			                    
+                                </div>                                             
+                                <div class="accessinfo-itemrow-detail-right">
+                                    <kendo-mobile-button kendo-touch k-on-tap="onEditAccessDetailsClick(dataItem)" style="float: right">Edit Access</kendo-mobile-button> 
+                                </div> 
+                            </div>
+                            <div class="accessinfo-itemrow-detail">
+                                <div class="accessinfo-itemrow-detail-left">
+					                <label class="accessinfo-item-access-label">Access Type</label>
+                                    <label class="accessinfo-item-access-value">{{ getLookupItem('AccessType', dataItem.AccessType) }}</label>
+			                    </div>
+                                <div class="accessinfo-itemrow-detail-center">                                    
+                                    <div>
+                                        <label class="accessinfo-item-access-label">Last Resort/ Plan Contraindicated</label>
+                                        <label ng-if="dataItem.LastAccess === true" class="accessinfo-item-access-value">Yes</label>
+                                        <label ng-if="dataItem.LastAccess === false" class="accessinfo-item-access-value">No</label>                                
+                                    </div>                                                                   
+                                </div>                            
+                            </div>
+                            <div class="accessinfo-itemrow-detail">
+                                <div class="accessinfo-itemrow-detail-left">
+					                <label class="accessinfo-item-access-label">In Use At Enroll?</label>
+                                    <label ng-if="dataItem.IsInUseAtEnrollment === true" class="accessinfo-item-access-value">Yes</label>
+                                    <label ng-if="dataItem.IsInUseAtEnrollment === false" class="accessinfo-item-access-value">No</label> 
+			                    </div>
+                                <div ng-if="getLookupItem('AccessStatus', dataItem.AccessStatus) === model.AccessStatus.InActive" class="accessinfo-itemrow-detail-center">
+                                    <label class="accessinfo-item-access-label">In-Active Reason</label>
+                                    <label class="accessinfo-item-access-value">
+                                        {{ getLookupItem('AccessInactiveReason', dataItem.InActiveReason) }}
+                                    </label>                                                                   
+                                </div> 
+                                <div ng-if="dataItem.LastAccess === true" class="accessinfo-itemrow-detail-center">
+                                    <label class="accessinfo-item-access-label">Last Resort Reason</label>
+                                    <label class="accessinfo-item-access-value">
+                                        {{ getLookupItem('LastAccessReason', dataItem.LastAccessReason) }}
+                                    </label>                                                                   
+                                </div>                              
+                            </div>
+                            <div class="accessinfo-itemrow-detail">
+                                <div class="accessinfo-itemrow-detail-left">
+					                <label class="accessinfo-item-access-label">Est. Placed Date</label>
+                                    <label class="accessinfo-item-access-value">{{ dataItem.PlacedDate | date: 'MM/dd/yyyy' }}</label>                               
+			                    </div>
+                                <div class="accessinfo-itemrow-detail-center">
+                                    <label class="accessinfo-item-access-label">Side</label>
+                                    <label class="accessinfo-item-access-value">
+                                        {{ getLookupItem('AccessSide', dataItem.Side) }}
+                                    </label>                               
+                                </div>
+                            </div>
+                            <div class="accessinfo-itemrow-detail">
+                                <div class="accessinfo-itemrow-detail-left">
+					                <label class="accessinfo-item-access-label">Access Status</label>
+                                    <label class="accessinfo-item-access-value">{{ getLookupItem('AccessStatus', dataItem.AccessStatus) }}</label>                               
+			                    </div>
+                                <div class="accessinfo-itemrow-detail-center">
+                                    <label class="accessinfo-item-access-label">Region</label>
+                                    <label class="accessinfo-item-access-value">
+                                        {{ getLookupItem('AccessRegion', dataItem.Region) }}
+                                    </label>                               
+                                </div>                            
+                            </div>
+                            <div class="accessinfo-itemrow-detail">
+                                <div ng-if="getLookupItem('AccessStatus', dataItem.AccessStatus) === model.AccessStatus.Active" class="accessinfo-itemrow-detail-left">
+                                     <label class="accessinfo-item-access-label">Est. Date Activated</label>
+                                     <label class="accessinfo-item-access-value">{{ dataItem.ActivateDate | date: 'MM/dd/yyyy' }}</label>                                                                                                          
+                                </div>
+                                <div ng-if="getLookupItem('AccessStatus', dataItem.AccessStatus) === model.AccessStatus.InActive" class="accessinfo-itemrow-detail-left">
+                                     <label class="accessinfo-item-access-label">Est. Date Inactivated</label>
+                                     <label class="accessinfo-item-access-value">{{ dataItem.InActiveDate | date: 'MM/dd/yyyy' }}</label>                                                                   
+                                </div>
+                                <div class="accessinfo-itemrow-detail-center">
+                                    <label class="accessinfo-item-access-label">Extremity</label>
+                                    <label class="accessinfo-item-access-value">
+                                        {{ getLookupItem('AccessBodyPart', dataItem.Extremity) }}
+                                    </label>                               
+                                </div>   
+                            </div>                    
+                        </div>   
+                    </div>    
+                </div>  
+            </div>              
+        </kendo-mobile-list-view>   
+    </div>
+
+    <!-- Add Access Modal View -->
+    <kendo-mobile-modal-view ng-controller="AddEditAccessInfoController" id="add-edit-accessinfo-modalview" class="crd-modalview">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>  
+                <kendo-mobile-button kendo-touch k-on-tap="onCancelAccessDetailsClick()" k-align="'left'">Cancel</kendo-mobile-button> 
+                <span>Access Details</span>                    
+                <kendo-mobile-button  kendo-touch k-on-tap="onSaveAccessDetailsClick()" k-align="'right'">Save</kendo-mobile-button>                 
+            </kendo-mobile-nav-bar>            
+        </kendo-mobile-header>
+        <div>
+            <div class="modalview-edit-row">                        
+                <div class="modalview-edit-row-div-left">
+                    <label>Access Type</label>
+                    <select kendo-drop-down-list id="modalview-access-add-accesstype" class="modalview-edit-select" 
+                            ng-model="model.SelectedAccess.AccessType" k-options="model.AccessTypesConfig" 
+                            ng-disabled="model.SelectedAccess.IsAccessTypeDisabled" ng-change="onAccessTypeChange()">                           
+                    </select>                 
+                </div>     
+                <div class="modalview-edit-row-div-right crd-kendocheck-big">
+                    <input type="checkbox" id="access-add-lastresort" ng-model="model.SelectedAccess.LastAccess" class="k-checkbox"
+                           ng-disabled="model.SelectedAccess.IsLastAccessDisabled" ng-change="onAddLastResortChange()">
+			        <label class="k-checkbox-label" for="access-add-lastresort"><span>LAST RESORT/ PLAN CONTRAINDICATED</span></label>                                             				
+                </div> 
+            </div>
+            <div class="modalview-edit-row" ng-show="model.SelectedAccess.LastAccess">
+                <div class="modalview-edit-row-div-left">
+                    <label>Last Resort Reason</label>
+                    <select kendo-drop-down-list name="modalview-access-add-lastresortreason" class="modalview-edit-select" 
+                            id="modalview-access-add-lastresortreason" ng-model="model.SelectedAccess.LastAccessReason" 
+                            k-options="model.LastAccessReasonsConfig" data-lastresortreasonrequired-msg="">
+                    </select>       
+                    <span data-for="modalview-access-add-lastresortreason" class="k-invalid-msg"></span>
+                </div> 
+            </div>
+            <div class="modalview-edit-row">
+                <div class="modalview-edit-row-div-left crd-kendocheck-big">
+                    <input type="checkbox" id="access-add-isinuse" ng-model="model.SelectedAccess.IsInUseAtEnrollment" class="k-checkbox">
+			        <label class="k-checkbox-label" for="access-add-isinuse"><span>In use at enrollment?</span></label>       
+                </div>
+                <div class="modalview-edit-row-div-right">
+                    <label>Side</label>
+                    <select kendo-drop-down-list name="modalview-access-side" class="modalview-edit-select" 
+                            id="modalview-access-side" ng-model="model.SelectedAccess.Side" 
+                            k-options="model.AccessSidesConfig">
+                    </select>       
+                </div>  
+            </div>
+            <div class="modalview-edit-row">
+                <div class="modalview-edit-row-div-left">
+                    <label class="crd-inline">Est. Placed Date</label>   
+                    <input kendo-date-picker class="crd-datepicker" id="modalview-access-add-placeddate" name="modalview-access-add-placeddate" 
+                           k-ng-model="model.SelectedAccess.PlacedDate" k-format="'MM/dd/yyyy'" data-placeddtlessthanactivate-msg=""
+                           data-placeddtlessthaninactivate-msg="" data-placeddtlessthanterm-msg=""/>
+                    <span data-for="modalview-access-add-placeddate" class="k-invalid-msg"></span>
+                </div>
+                <div class="modalview-edit-row-div-right">
+                    <label>Region</label>
+                    <select kendo-drop-down-list name="modalview-access-region" class="modalview-edit-select" 
+                            id="modalview-access-region" ng-model="model.SelectedAccess.Region" k-options="model.AccessRegionsConfig">
+                    </select>       
+                </div>  
+            </div>
+            <div class="modalview-edit-row">
+                <div class="modalview-edit-row-div-left">
+                    <label>Access Status</label>
+                    <select kendo-drop-down-list name="modalview-access-add-accessstatus" class="modalview-edit-select" 
+                            id="modalview-access-add-accessstatus" ng-model="model.SelectedAccess.AccessStatus" 
+                            k-options="model.AccessStatusConfig" data-activestatusexists-msg="" data-statusrequired-msg=""
+                            data-inactivestatusmorethanthree-msg="">
+                    </select>   
+                    <span data-for="modalview-access-add-accessstatus" class="k-invalid-msg"></span>
+                </div>
+                <div class="modalview-edit-row-div-right">
+                    <label>Extremity</label>
+                    <select kendo-drop-down-list name="modalview-access-accessbodypart" class="modalview-edit-select" 
+                            id="modalview-access-accessbodypart" ng-model="model.SelectedAccess.Extremity" k-options="model.AccessExtremityConfig">
+                    </select>       
+                </div>  
+            </div>
+            <div class="modalview-edit-row" ng-show="model.SelectedAccess.AccessStatus === 'A'">
+                <div class="modalview-edit-row-div-left">
+                    <label class="crd-inline">Est. Date Activated</label>
+                    <input kendo-date-picker class="crd-datepicker" id="modalview-access-add-activatedate" name="modalview-access-add-activatedate" 
+                           k-ng-model="model.SelectedAccess.ActivateDate" k-format="'MM/dd/yyyy'" data-activatedtrequired-msg="" 
+                           data-activatedtgreaterthantoday-msg="" data-activatedtlessthaninactivate-msg=""/>
+                    <span data-for="modalview-access-add-activatedate" class="k-invalid-msg"></span>   
+                </div>
+            </div>
+            <div class="modalview-edit-row" ng-show="model.SelectedAccess.AccessStatus === 'I'">
+                <div class="modalview-edit-row-div-left">
+                    <label class="crd-inline">Est. Date Inactivated</label>
+                    <input kendo-date-picker class="crd-datepicker" id="modalview-access-add-inactivateddate" name="modalview-access-add-inactivateddate" 
+                           k-ng-model="model.SelectedAccess.InActiveDate" k-format="'MM/dd/yyyy'"  data-inactivatedtrequired-msg="" data-inactivatedtlessthanactivate-msg=""/>
+                    <span data-for="modalview-access-add-inactivateddate" class="k-invalid-msg"></span>     
+                </div>
+                <div class="modalview-edit-row-div-right">
+                    <label>In-Active Reason</label>
+                    <select kendo-drop-down-list name="modalview-access-add-inactivereason" class="modalview-edit-select" 
+                            id="modalview-access-add-inactivereason" ng-model="model.SelectedAccess.InActiveReason"
+                            k-options="model.AccessInactiveReasonConfig" data-inactivereasonrequired-msg="">
+                    </select>       
+                    <span data-for="modalview-access-add-inactivereason" class="k-invalid-msg"></span>
+                </div>  
+            </div>
+            <div class="modalview-edit-row" ng-show="model.SelectedAccess.AccessStatus === 'T'">
+                <div class="modalview-edit-row-div-left">
+                    <label class="crd-inline">Termininated Date</label>
+                    <input kendo-date-picker class="crd-datepicker" id="modalview-access-add-termininatedate" name="modalview-access-add-termininatedate" 
+                           k-ng-model="model.SelectedAccess.TermDate" k-format="'MM/dd/yyyy'" data-termeddtrequired-msg="" data-termeddtlessthantoday-msg=""/> 
+                    <span data-for="modalview-access-add-termininatedate" class="k-invalid-msg"></span>                      
+                </div>
+                <div class="modalview-edit-row-div-right">
+                    <label>Termination Reason</label>
+                    <select kendo-drop-down-list name="modalview-access-add-termreason" class="modalview-edit-select" 
+                            id="modalview-access-add-termreason" ng-model="model.SelectedAccess.TermReason" 
+                            k-options="model.AccessTermReasonConfig" data-termedreasonrequired-msg="">
+                    </select>
+                    <span data-for="modalview-access-add-termreason" class="k-invalid-msg"></span>       
+                </div>  
+            </div>
+        </div>    
+    </kendo-mobile-modal-view>         
+</kendo-mobile-view>

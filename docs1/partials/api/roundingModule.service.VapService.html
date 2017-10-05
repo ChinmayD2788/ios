@@ -1,0 +1,102 @@
+<h1><code ng:non-bindable="">VapService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-service-page roundingmodule-service-vapservice-page"><ul>
+<li>VapService is being used by VapController, EditVapStepController, NewVapPlanController and StopVapPlanController</li>
+<li>This will be used for all service calls for VAP (Vascular Access Plan) Screen</li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getcopyactivatevapstepdetails">GetCopyActivateVapStepDetails()</h3>
+<div class="getcopyactivatevapstepdetails"><div class="getcopyactivatevapstepdetails-page"><ul>
+<li>Returns local variable copyActivateVapStepDetails</li>
+</ul>
+</div><h5 id="methods_getcopyactivatevapstepdetails_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getcopyactivatevapstepdetails-page"><p>copyActivateVapStepDetails local variable copyActivateVapStepDetails</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getcopyvapstepdetails">GetCopyVapStepDetails()</h3>
+<div class="getcopyvapstepdetails"><div class="getcopyvapstepdetails-page"><ul>
+<li>Returns local variable copyVapStepDetails</li>
+</ul>
+</div><h5 id="methods_getcopyvapstepdetails_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getcopyvapstepdetails-page"><p>copyVapStepDetails local variable copyVapStepDetails</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getpatientvascularaccessplan">GetPatientVascularAccessPlan(data, callback)</h3>
+<div class="getpatientvascularaccessplan"><div class="getpatientvascularaccessplan-page"><ul>
+<li>Calls GetPatientVascularAccessPlan api &#39;Clinical/GetPatientVascularAccessPlan&#39; using RoundingService </li>
+</ul>
+</div><h5 id="methods_getpatientvascularaccessplan_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getpatientvascularaccessplan-page"><p>$.param({ &#39;&#39; : $rootScope.Global.Objects.SelectedPatient.UID })</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getpatientvascularaccessplan-page"><p>$scope.onPatientVascularAccessPlanRetrieved</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getvapstepdetails">GetVapStepDetails(data, callback)</h3>
+<div class="getvapstepdetails"><div class="getvapstepdetails-page"><ul>
+<li>Calls GetVapStepDetails api &#39;Clinical/GetVapStepDetails&#39; using RoundingService </li>
+</ul>
+</div><h5 id="methods_getvapstepdetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getvapstepdetails-page"><p>{ &quot;patientUID&quot;: $rootScope.Global.Objects.SelectedPatient.UID, &quot;permanentAccess&quot;: self.model.DesiredPermanentAccess }</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getvapstepdetails-page"><p>inline function</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_refreshvap">RefreshVap()</h3>
+<div class="refreshvap"><div class="refreshvap-page"><ul>
+<li>Broadcasts refreshVap</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_savepatientvascularaccess">SavePatientVascularAccess(data, callback)</h3>
+<div class="savepatientvascularaccess"><div class="savepatientvascularaccess-page"><ul>
+<li>Calls SavePatientVascularAccess api &#39;Clinical/SavePatientVascularAccess&#39; using RoundingService </li>
+</ul>
+</div><h5 id="methods_savepatientvascularaccess_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="savepatientvascularaccess-page"><p>access data to be saved</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="savepatientvascularaccess-page"><p>inline function</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setcopyactivatevapstepdetails">SetCopyActivateVapStepDetails(activateVapStepDetails)</h3>
+<div class="setcopyactivatevapstepdetails"><div class="setcopyactivatevapstepdetails-page"><ul>
+<li>Sets local variable copyActivateVapStepDetails</li>
+</ul>
+</div><h5 id="methods_setcopyactivatevapstepdetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>activateVapStepDetails</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="setcopyactivatevapstepdetails-page"><p>activate vap step details in screen</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setcopyvapstepdetails">SetCopyVapStepDetails(vapStepDetails)</h3>
+<div class="setcopyvapstepdetails"><div class="setcopyvapstepdetails-page"><ul>
+<li>Sets local variable copyVapStepDetails</li>
+</ul>
+</div><h5 id="methods_setcopyvapstepdetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>vapStepDetails</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="setcopyvapstepdetails-page"><p>vap step details in screen</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setselectedaccess">SetSelectedAccess(step)</h3>
+<div class="setselectedaccess"><div class="setselectedaccess-page"><ul>
+<li>Sets local variable selectedStep</li>
+</ul>
+</div><h5 id="methods_setselectedaccess_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>step</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="setselectedaccess-page"><p>selected step in screen</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getselectedstep">getSelectedStep()</h3>
+<div class="getselectedstep"><div class="getselectedstep-page"><ul>
+<li>Returns local variable selectedStep</li>
+</ul>
+</div><h5 id="methods_getselectedstep_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getselectedstep-page"><p>selectedStep local variable selectedStep</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_selectedstep">selectedStep</h3>
+<div class="selectedstep"><div class="roundingmodule-service-page roundingmodule-service-vapservice-page"><p>local variable</p>
+</div></div>
+</li>
+<li><h3 id="properties_copyvapstepdetails">copyVapStepDetails</h3>
+<div class="copyvapstepdetails"><div class="roundingmodule-service-page roundingmodule-service-vapservice-page"><p>local variable</p>
+</div></div>
+</li>
+<li><h3 id="properties_copyactivatevapstepdetails">copyActivateVapStepDetails</h3>
+<div class="copyactivatevapstepdetails"><div class="roundingmodule-service-page roundingmodule-service-vapservice-page"><p>local variable</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

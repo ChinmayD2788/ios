@@ -1,0 +1,62 @@
+<h1><code ng:non-bindable="">PatientPathwaysTabService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-service-page roundingmodule-service-patientpathwaystabservice-page"><ul>
+<li><b> Used by Patient Pathways Tab Contoroller. </b></li>
+<li><b> Used to make service calls for Patient Pathways for RCM Role.</b></li>
+</ul>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">PatientPathwaysTabService(ServiceConstants, RoundingService);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>ServiceConstants</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="roundingmodule-service-page roundingmodule-service-patientpathwaystabservice-page"><p>Common Constants.</p>
+</div></td></tr><tr><td>RoundingService</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="roundingmodule-service-page roundingmodule-service-patientpathwaystabservice-page"><p>Common Function.</p>
+</div></td></tr></tbody></table></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getpatientsurveydetails">getPatientSurveyDetails(data, method, dataType, callBack)</h3>
+<div class="getpatientsurveydetails"><div class="getpatientsurveydetails-page"><ul>
+<li><b> Service Call </b></li>
+<li><b> API : <i> User/GetPatientSurveyDetails </i></b></li>
+<li><b>Load Survey for a new patient or open an existing survey on load.</b></li>
+</ul>
+</div><h5 id="methods_getpatientsurveydetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getpatientsurveydetails-page"><p><b><i>Patient Details to be retrieved.</i></b></p>
+</div></td></tr><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getpatientsurveydetails-page"><p><b><i>Method: GET/POST. </i></b></p>
+</div></td></tr><tr><td>dataType</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getpatientsurveydetails-page"><p><b><i> DataType of the return object.</i></b></p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getpatientsurveydetails-page"><p><b><i>$scope.onGetPatientSurveyDetailsRetrieved.</i></b></p>
+</div></td></tr></tbody></table><h5 id="methods_getpatientsurveydetails_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getpatientsurveydetails-page"><ul>
+<li>Patient Details.</li>
+</ul>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getsurveydetails">getSurveyDetails(data, method, dataType, callBack)</h3>
+<div class="getsurveydetails"><div class="getsurveydetails-page"><ul>
+<li><b> Service Call </b></li>
+<li><b> API : <i> User/GetSurveyDetails </i></b></li>
+<li><b>Load Survey for a new patient</b></li>
+</ul>
+</div><h5 id="methods_getsurveydetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getsurveydetails-page"><p><b><i> Patient Details to be retrieved.</i></b></p>
+</div></td></tr><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getsurveydetails-page"><p><b><i> Method: GET/POST </b></i></p>
+</div></td></tr><tr><td>dataType</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getsurveydetails-page"><p><b><i> DataType of the return object.</i></b></p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getsurveydetails-page"><p><b></i> $scope.onGetPatientSurveyDetailsRetrieved.</b></i></p>
+</div></td></tr></tbody></table><h5 id="methods_getsurveydetails_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getsurveydetails-page"><ul>
+<li>Patient Details</li>
+</ul>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_savesurveydetails">saveSurveyDetails(data, method, dataType, callBack)</h3>
+<div class="savesurveydetails"><div class="savesurveydetails-page"><ul>
+<li><b> Service Call </b></li>
+<li><b> API : <i> api/Pathways/SaveSurveyDetails</i></li>
+<li><b> Use : Save survey after completion </b></li>
+</ul>
+</div><h5 id="methods_savesurveydetails_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="savesurveydetails-page"><p><b><i> Survey details to be saved</b></i></p>
+</div></td></tr><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="savesurveydetails-page"><p><b><i>Method: GET/POST.</p>
+</div></td></tr><tr><td>dataType</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="savesurveydetails-page"><p><b><i>DataType of the object example .JSON </b></i></p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="savesurveydetails-page"><p><b><i>$scope.onSaveSurveyDetailsCompleted.</b></i></p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

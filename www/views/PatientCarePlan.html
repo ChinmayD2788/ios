@@ -1,0 +1,276 @@
+﻿<div id="add-edit-activecareplan-modalview-{{IsEdit}}" ng-controller="PatientCarePlanController">
+    <div class="border-none padding-15">
+        <div class="active-care-plan-details-col-1">
+            <div class="active-care-plan-label-value">
+                <div class="active-care-plan-details-div-label">
+                    <label>Care Plan Topic</label>
+                </div>
+                <div class="active-care-plan-details-div-content">
+                    <select ng-disabled="IsEdit" id="active-care-plan-dd-care-plan-topic"
+                            name="active-care-plan-dd-care-plan-topic"
+                            class="modalview-edit-select"
+                            k-data-auto-bind="false"
+                            k-data-value-primitive="true" required validationmessage="required"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="ParentChild.CarePlanTopic.Topics"
+                            k-ng-model="ParentChild.CarePlanTopic.SelectedTopic"
+                            k-on-change="onCarePlanTopicChange(ParentChild.CarePlanTopic.SelectedTopic);"></select>
+                    <span class="k-invalid-msg"  data-for="active-care-plan-dd-care-plan-topic"></span>
+                </div>
+            </div>
+            <div class="active-care-plan-label-value">
+                <div class="active-care-plan-details-div-label">
+                    <label>Importance</label>
+                </div>
+                <div class="active-care-plan-details-div-content">
+                    <select id="active-care-plan-dd-importance"
+                            name="active-care-plan-dd-importance"
+                            class="modalview-edit-select"
+                            k-data-auto-bind="false"
+                            k-data-value-primitive="true"
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="ParentChild.Importance.Level"
+                            k-ng-model="ParentChild.Importance.SelectedLevel"
+                            kendo-drop-down-list
+                            required validationmessage="required"></select>
+                    <span class="k-invalid-msg" data-for="active-care-plan-dd-importance"></span>
+                </div>
+            </div>
+            <div class="active-care-plan-label-value">
+                <div class="active-care-plan-details-div-label">
+                    <label>Confidence Level</label>
+                </div>
+                <div class="active-care-plan-details-div-content">
+                    <select id="active-care-plan-dd-confidence-level"
+                            name="active-care-plan-dd-confidence-level"
+                            class="modalview-edit-select"
+                            k-data-auto-bind="false"
+                            k-data-value-primitive="true"
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="ParentChild.GoalConfidenceLevel.Source"
+                            k-ng-model="ParentChild.GoalConfidenceLevel.SelectedLevel"
+                            k-on-change="onConfidenceLevelChange(ParentChild.GoalConfidenceLevel.SelectedLevel);"
+                            kendo-drop-down-list
+                            required validationmessage="required"></select>
+                    <span class="k-invalid-msg" data-for="active-care-plan-dd-confidence-level"></span>
+                </div>
+            </div>
+            <div class="active-care-plan-label-value">
+                <div class="active-care-plan-details-div-label">
+                    <label>Status</label>
+                </div>
+                <div class="active-care-plan-details-div-content">
+                    <select id="active-care-plan-scrn-dd-status"
+                            name="Status"
+                            class="modalview-edit-select"
+                            k-data-auto-bind="false"
+                            k-data-value-primitive="true"
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="ParentChild.GoalStatus.Source"
+                            k-ng-model="ParentChild.GoalStatus.SelectedStatus"
+                            k-on-change="onStatusChange(ParentChild.GoalStatus.SelectedStatus);"
+                            kendo-drop-down-list
+                            required data-goalstatusrequired-msg=" "
+                            data-goalstatusnotstartorinprg-msg=" "></select>
+                    <span class="k-invalid-msg" data-for="active-care-plan-scrn-dd-status"></span>
+                </div>
+            </div>
+            <div class="active-care-plan-label-value" ng-click="onClinicalRelevanceClicked()">
+                <div class="active-care-plan-details-div-label">
+                    <label>Clinical Relevance</label>
+                </div>
+                <div class="active-care-plan-details-div-content">
+                    <select ng-disabled="IsEdit" id="active-care-plan-scrn-dd-Clinical-Relavance"
+                            name="active-care-plan-scrn-dd-Clinical-Relavance"
+                            class="modalview-edit-select"
+                            k-data-auto-bind="false"
+                            k-data-value-primitive="true"
+                            kendo-drop-down-list
+                            required validationmessage="required"></select>
+                    <span class="k-invalid-msg" data-for="active-care-plan-scrn-dd-Clinical-Relavance"></span>
+                    <script id="template" type="text/x-kendo-template">
+                        <span class="clinical-relevance-color #:data.ClinicalRelevanceToColor#"> &nbsp; </span>#= data.Text #
+                    </script>
+                </div>
+            </div>
+            <div class="active-care-plan-label-value">
+                <div class="active-care-plan-details-div-label">
+                    <label>Priority</label>
+                </div>
+                <div class="active-care-plan-details-div-content">
+                    <select id="active-care-plan-scrn-dd-Priority"
+                            name="Priority"
+                            class="modalview-edit-select"
+                            k-data-auto-bind="false"
+                            k-data-value-primitive="true"
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="ParentChild.Priority.Source"
+                            k-ng-model="ParentChild.Priority.SelectedPriority"
+                            k-on-change="onPriorityChange(ParentChild.Priority.SelectedPriority);"
+                            kendo-drop-down-list></select>
+                </div>
+            </div>
+            <div class="active-care-plan-label-value">
+                <div class="active-care-plan-details-div-label">
+                    <label>Care Plan Name</label>
+                </div>
+                <div class="active-care-plan-details-div-content">
+                    <input ng-disabled="IsEdit" type="text" class="k-textbox crd-width-93-percent" ng-model="ParentChild.Careplanname" id="careplannametxt" name="careplannametxt" required validationmessage="required" />
+                    <span class="k-invalid-msg" data-for="careplannametxt"></span>
+                </div>
+            </div>
+            <div class="active-care-plan-label-value">
+                <div>
+                    <div class="active-care-plan-details-div-label">Behavior Plan </div>
+                    <div>
+                        <textarea id="activecareplan-behavior" name="activecareplan-behavior" class="crd-width-89-percent behavior-plan-text-area-width" ng-model="ParentChild.BehavioralPlan" rows="8" cols="45" value="" required validationmessage="required" ></textarea>
+                        <span data-for="activecareplan-behavior" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="active-care-plan-details-col-2">
+            <div class="active-care-plan-label-value">
+                <div class="crd-width-50-percent crd-float-left">
+                    <div class="active-care-plan-details-div-label">
+                        <label> Start Date</label>
+                    </div>
+                    <div class="active-care-plan-details-div-content">
+                        <div ng-if="IsEdit == true">
+                            <input ng-disabled="IsEdit" kendo-date-picker class="crd-datepicker" id="ptcare-plan-scrn-dtpicker"
+                                   name="ptcare-plan-scrn-dtpicker" k-ng-model="Date.StartDate" k-format="'MM/dd/yyyy'" k-on-change="onCarePlanDateValChangedFunction();"
+                                   required validationmessage="required" />
+                            <span data-for="ptcare-plan-scrn-dtpicker" class="k-invalid-msg"></span>
+                        </div>
+                        <div ng-if="IsEdit == false">
+                            <input ng-disabled="IsEdit" kendo-date-picker class="crd-datepicker margin-bottom-5" id="ptcare-plan-scrn-dtpicker-add"
+                                   name="ptcare-plan-scrn-dtpicker-add" k-ng-model="Date.StartDate" k-format="'MM/dd/yyyy'" k-options="monthPickerConfig"
+                                   required validationmessage="required" k-on-change="onCarePlanDateValChangedFunction();" />
+                            <span data-for="ptcare-plan-scrn-dtpicker-add" class="k-invalid-msg"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="crd-width-50-percent crd-float-left">
+                    <div class="active-care-plan-details-div-label">
+                        <label> Due Date</label>
+                    </div>
+                    <div class="active-care-plan-details-div-content">
+                        <input kendo-date-picker class="crd-datepicker margin-bottom-5" id="active-care-plan-scrn-duedate-dtpicker"
+                               name="active-care-plan-scrn-duedate-dtpicker" k-ng-model="Date.DueDate" k-format="'MM/dd/yyyy'"
+                               required validationmessage="required" data-duedtlessthancreatedate-msg="" k-on-change="onCarePlanDateValChangedFunction();" />
+                        <span class="k-invalid-msg" data-for="active-care-plan-scrn-duedate-dtpicker"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="crd-width-50-percent crd-float-right">
+                <div class="extensionsLink">
+                    <div ng-if="IsEdit" id="Patient-Care-Plan-Extensions">
+                        <kendo-mobile-button href="#popover-careplan-extensions" k-rel="'popover'" class="patient-care-plan-extensions">
+                            <label class="ExtensionsCnt">Extensions({{extensionsCnt}})</label>
+                        </kendo-mobile-button>
+                        <kendo-mobile-pop-over id="popover-careplan-extensions" data-popup='{ "direction": "bottom" }' k-popup='{"height": "11em", "width": "35em"}' class="margin-left-minus-7-em">
+                            <kendo-mobile-view id="careplan-extensions-view" class="crd-popover-listview do-not-destroy">
+                                <kendo-mobile-list-view class="logout-list">
+                                    <li class="popoverList">
+                                        <div class="CarePlanExtensionsBlock">
+                                            <div class="CarePlanExtensionsBlockRow">
+                                                <div class="PreviousDueDateCls text-align-left">Previous Due Date</div>
+                                                <div class="UpdatedDateCls text-align-left">Updated Date</div>
+                                                <div class="UpdatedUserNameCls text-align-left">Updated By</div>
+                                            </div>
+                                            <div class="CarePlanExtensionsBlockRow" ng-repeat="PtGoalHistoryRecord in GoalDueDateHistory">
+                                                <div class="PreviousDueDateCls text-align-left">{{ PtGoalHistoryRecord.PreviousDueDate | date: 'MM/dd/yyyy'}}</div>
+                                                <div class="UpdatedDateCls text-align-left">{{ PtGoalHistoryRecord.UpdatedDate | date: 'MM/dd/yyyy'}}</div>
+                                                <div class="UpdatedUserNameCls text-align-left">{{ PtGoalHistoryRecord.UpdatedUserName | date: 'MM/dd/yyyy'}}</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </kendo-mobile-list-view>
+                            </kendo-mobile-view>
+                        </kendo-mobile-pop-over>
+                    </div>
+                </div>
+            </div>
+            <div class="active-care-plan-label-value">
+                <div class="crd-width-50-percent crd-float-left">
+                    <div class="active-care-plan-details-div-label">
+                        <label>Complete Date</label>
+                    </div>
+                    <div class="active-care-plan-details-div-content active-careplan-completed-date">
+                        <input ng-disabled="(ParentChild.GoalStatus.SelectedStatus.Value ==='' || ParentChild.GoalStatus.SelectedStatus.Value ==='I' || ParentChild.GoalStatus.SelectedStatus.Value ==='N')" kendo-date-picker class="crd-datepicker margin-bottom-5" id="ptchart-dbts-scrn-dtpicker-completeddate"
+                               name="ptchart-dbts-scrn-dtpicker-completeddate" k-ng-model="Date.CompletedDate" k-format="'MM/dd/yyyy'"
+                               required validationmessage="required" data-completedtlessthancreatedate-msg="" k-on-change="onCarePlanDateValChangedFunction();" />
+                        <span data-for="ptchart-dbts-scrn-dtpicker-completeddate" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+                <div class="crd-width-50-percent crd-float-left">
+                    <div class="active-care-plan-details-div-label">
+                        <label> Review Date</label>
+                    </div>
+                    <div class="active-care-plan-details-div-content">
+                        <input kendo-date-picker class="crd-datepicker" k-ng-model="Date.ReviewDate" k-format="'MM/dd/yyyy'" id="active-care-plan-scrn-reviewdate-dtpicker" k-on-change="onCarePlanDateValChangedFunction();" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="crd-width-50-percent crd-float-right">
+                <div class="extensionsLink">
+                    <div ng-if="IsEdit" id="Patient-Care-Plan-Reviews">
+                        <kendo-mobile-button href="#popover-careplan-review" k-rel="'popover'" class="patient-care-plan-extensions">
+                            <label class="ExtensionsCnt">Reviews({{reviewCnt}})</label>
+                        </kendo-mobile-button>
+                        <kendo-mobile-pop-over id="popover-careplan-review" data-popup='{ "direction": "bottom" }' k-popup='{"height": "11em", "width": "35em"}' class="margin-left-minus-7-em">
+                            <kendo-mobile-view id="careplan-review-date-view" class="crd-popover-listview do-not-destroy">
+                                <kendo-mobile-list-view class="logout-list">
+                                    <li class="popoverList">
+                                        <div class="CarePlanExtensionsBlock">
+                                            <div class="CarePlanExtensionsBlockRow">
+                                                <div class="PreviousDueDateCls text-align-left">Review Date</div>
+                                                <div class="UpdatedDateCls text-align-left">Updated Date</div>
+                                                <div class="UpdatedUserNameCls text-align-left">Updated By</div>
+                                            </div>
+                                            <div class="CarePlanExtensionsBlockRow" ng-repeat="PtGoalReviewHistoryRecord in GoalReviewDateHistory">
+                                                <div class="PreviousDueDateCls text-align-left">{{ PtGoalReviewHistoryRecord.GoalReviewDate | date: 'MM/dd/yyyy'}}</div>
+                                                <div class="UpdatedDateCls text-align-left">{{ PtGoalReviewHistoryRecord.UpdatedDate | date: 'MM/dd/yyyy'}}</div>
+                                                <div class="UpdatedUserNameCls text-align-left">{{ PtGoalReviewHistoryRecord.UpdatedUserName | date: 'MM/dd/yyyy'}}</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </kendo-mobile-list-view>
+                            </kendo-mobile-view>
+                        </kendo-mobile-pop-over>
+                    </div>
+                </div>
+            </div>
+            <div class="active-care-plan-label-value">
+                <div class="active-care-plan-details-div-label active-care-plan-barrier-label">
+                    <label>Barrier</label>
+                    <span ng-if="!IsBarrierSelected" style="color:red"> Select a barrier</span>
+                </div>
+                <div ng-repeat="(key,option) in ParentChild.BarrierOption" style="padding-bottom:5px !important;">
+                    <kendo-mobile-switch class="question-options-multiple" id="{{option.Id}}" name="active-care-plan-switch"
+                                         k-on-change="onSwitchChange(ParentChild.BarrierOption[key].Id);"
+                                         value="{{option.Value}}"
+                                         k-ng-model="ParentChild.BarrierOption[key].Value"
+                                         k-on-label="'Yes'"
+                                         k-off-label="'No'"
+                                         required validationmessage="required">
+                    </kendo-mobile-switch>
+                    <span class="question-options-switch-description" >{{option.Text}}</span>
+                    <span class="BarrierTextClass">
+                        <span ng-if="key == 8 && HasOtherBarries">
+                            <input id="active-care-paln-other-txt" type="text" class="k-textbox" ng-model="ParentChild.OtherBarrierNotes" name="OtherBarrierNotes" required validationmessage="required" />
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,134 @@
+﻿#rcm-dashboard-view .km-content
+{
+    background-color: #f0f0f0;
+}
+
+#rcmdb-container
+{
+    background-color: #f0f0f0;
+    display: inline-block;
+    border-top: 1px solid #aaa;
+    width: 100%;
+}
+
+#rcmdb-listview
+{    
+    height: 557px;
+    margin: 20px 0px 0px 85px;
+    vertical-align: middle;
+    font-weight: bold;
+    color: #72706D;
+    background-color: #f0f0f0;          
+}
+
+.rcmdashboard-patients-view
+{   
+    display: inline-block;    
+    width: 257px;
+    float: left;   
+    margin-bottom: 20px;
+    margin-right: 40px;
+}
+
+.rcmdashboard-patients-view div, .rcmdashboard-ptheader div
+{
+    float: left;
+}
+
+.rcmdashboard-patients-view .rcmdb-pat-separator
+{
+    clear: both;
+    background-color: #C0C0C0 !important;
+    width: 100%;
+    height: 1px;
+    border: none !important;    
+}
+
+.rcmdb-left-color-piller
+{
+    height: 195px !important;
+    background-color: #124C7B;
+    width: 7px !important;
+    border-bottom-left-radius: 5px !important;
+    border-top-left-radius: 5px !important;    
+}
+
+.rcmdashboard-ptheader
+{
+    width: calc(100% - 5px);
+    min-height: 50px;
+    font-size: 13px;
+    margin-left: 5px !important;
+    margin-top: 10px !important;
+    text-transform: uppercase !important;
+}
+
+.rcmdashboard-pt-name
+{
+    font-size: 16px;
+    margin-bottom: 5px;
+    width: 100%;
+    text-transform: uppercase !important;      
+    word-wrap: break-word;  
+}
+
+.rcmdashboard-ptfooter
+{
+    width: calc(100% - 5px);
+    min-height: 60px;
+    font-size: 12px;
+    margin-left: 5px !important;
+    margin-top: 10px !important;
+    /*text-transform: uppercase !important;*/
+}
+
+.rcmdashboard-ptfooter div
+{
+    margin-bottom: 5px;
+}
+
+.rcmdb-pat-details
+{    
+    height: 195px !important;
+    width: 250px !important;
+    background-color: White !important;
+    border-bottom-right-radius: 5px !important;
+    border-top-right-radius: 5px !important;
+    border-bottom-left-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+    border-top: 1px solid lightgray !important;
+    border-right: 1px solid lightgray !important;
+    border-bottom: 1px solid lightgray !important;
+    border-left: 0px solid lightgray !important;  
+    /*position: fixed;*/
+    display: inline-block;  
+}
+    
+.rcmdb-patients-metrics
+{
+    color: White !important;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
+
+.rcmdahsboard-metriclist
+{
+    float: left !important;
+    border-right: 1px solid #fff;
+    height: 100% !important;
+    padding: 8px 0px 0px 0px;
+}
+
+.rcmdb-width
+{
+	width: 100%;
+	float: left;
+}
+
+.rcmdb-nowrap
+{
+	white-space: nowrap;
+}

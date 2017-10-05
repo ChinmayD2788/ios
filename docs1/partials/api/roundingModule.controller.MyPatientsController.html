@@ -1,0 +1,277 @@
+<h1><code ng:non-bindable="">MyPatientsController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>Controller for My Patients screen.</li>
+<li>VersionOne Requirements - View Access - <a href="https://www13.v1host.com/DaVitaInc/Task.mvc/Summary?oidToken=Task%3A328561">TK-28503</a></li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_compare">compare(a, b)</h3>
+<div class="compare"><div class="compare-page"><ul>
+<li>As the name suggests, this function is used to compare two object/values for schedule.</li>
+<li>Used for sorting purpose, It is part of sub-function call for grid.              </li>
+</ul>
+</div><h5 id="methods_compare_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>a</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="compare-page"><p>a - an object .</p>
+</div></td></tr><tr><td>b</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="compare-page"><p>b- an object. </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getdistinct">getDistinct(array)</h3>
+<div class="getdistinct"><div class="getdistinct-page"><ul>
+<li>Returns the distinct id&#39;s.                </li>
+</ul>
+</div><h5 id="methods_getdistinct_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>array</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getdistinct-page"><p>passed array object </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getphonenumber">getPhoneNumber(phones)</h3>
+<div class="getphonenumber"><div class="getphonenumber-page"><ul>
+<li>Returns formated phone numbers. It is one of the sub-function.</li>
+</ul>
+</div><h5 id="methods_getphonenumber_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>phones</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="getphonenumber-page"><p>Array containing phone details  Eg: PhoneNumber, StartDate, IsPrimary etc.</p>
+</div></td></tr></tbody></table><h5 id="methods_getphonenumber_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getphonenumber-page"><p>phonenumber
+Phone number in a string format.</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_ongetpatientsretrived">onGetPatientsRetrived(result)</h3>
+<div class="ongetpatientsretrived"><div class="ongetpatientsretrived-page"><ul>
+<li>Service based callback function which returns all patients.It will set 2 models 
+$scope.model.Patients = patientSchedule(result.data) and 
+$scope.model.AllPatients = $scope.model.Patients ,
+which will be used throughout the view for all search/filter/sort operations.             </li>
+</ul>
+</div><h5 id="methods_ongetpatientsretrived_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetpatientsretrived-page"><p>Array containing details of all the patients .</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_onsearchpatientretrieved">onSearchPatientRetrieved(result)</h3>
+<div class="onsearchpatientretrieved"><div class="onsearchpatientretrieved-page"><ul>
+<li>Service based call back function which returns search patients data</li>
+</ul>
+</div><h5 id="methods_onsearchpatientretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onsearchpatientretrieved-page"><p>result dataset of WebApi call MyPatientsService.SearchPatient.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_patientschedule">patientSchedule(data)</h3>
+<div class="patientschedule"><div class="patientschedule-page"><ul>
+<li>Patient&#39;s dialysis scheduled to be displayed. </li>
+</ul>
+</div><h5 id="methods_patientschedule_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="patientschedule-page"><p>return/yield (of WebApi call MyPatientsService.GetPatients).</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_searchpatientvm">searchPatientVM(data)</h3>
+<div class="searchpatientvm"><div class="searchpatientvm-page"><ul>
+<li>Sub-function call to extend JSON&#39;s property &quot;FormatedDOB&quot;,&quot;FormatedPhone&quot; in the patients model from &quot;onSearchPatientRetrieved&quot; call back</li>
+</ul>
+</div><h5 id="methods_searchpatientvm_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="searchpatientvm-page"><p>data-(WebApi call MyPatientsService.SearchPatient) .</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopeisswitchroster">$scope.IsSwitchRoster</h3>
+<div class="$scopeisswitchroster"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>will be used to show or hide Alerts.Intialized from global variable $rootScope.Global.Objects.LoggedInUser.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeloggedinuser">$scope.LoggedInUser</h3>
+<div class="$scopeloggedinuser"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>set value of current login user from global variable $rootScope.Global.Objects.IsUserSwitched.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeconsideralertfooter">$scope.ConsiderAlertFooter</h3>
+<div class="$scopeconsideralertfooter"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>To set up alerts at footer.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeiserrormsg">$scope.IsErrorMsg</h3>
+<div class="$scopeiserrormsg"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>IsErrorMsg boolen property come along with error ErrorMessage property only show errormessage if this property will true .</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeerrormessage">$scope.ErrorMessage</h3>
+<div class="$scopeerrormessage"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>dispaly error message for search patient.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeisdataavailable">$scope.IsDataAvailable</h3>
+<div class="$scopeisdataavailable"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>will set true when model for mypatient will be filled..</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_roundingmodulemypatientscontrollermodel">roundingModule.MyPatientsController.model</h3>
+<div class="roundingmodulemypatientscontrollermodel"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>Intializing model with new Rounding.Models.MyPatients(); .</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopesearchselectedpatient">$scope.SearchSelectedPatient</h3>
+<div class="$scopesearchselectedpatient"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>Data source will be set after Searched Selected patient.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelpatients">$scope.model.Patients</h3>
+<div class="$scopemodelpatients"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>filled patients list with patientschedule it will call patientSchedule(result.data) to set model</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelallpatients">$scope.model.AllPatients</h3>
+<div class="$scopemodelallpatients"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>filled patients back up copy to use everytime after set the filter or sort operation.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelpatientvm">$scope.model.PatientVM</h3>
+<div class="$scopemodelpatientvm"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>array containing searched patient details.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodellastsortedby">$scope.model.LastSortedBy</h3>
+<div class="$scopemodellastsortedby"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>String value containing parameter on which last sorting of patients was performed.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelselectdialysiscenter">$scope.model.SelectDialysisCenter</h3>
+<div class="$scopemodelselectdialysiscenter"><div class="roundingmodule-controller-page roundingmodule-controller-mypatientscontroller-page"><ul>
+<li>Selection of dialysis center.</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_clearselectedfilter">clearSelectedFilter</h3>
+<div class="clearselectedfilter"><div class="clearselectedfilter-page"><ul>
+<li>AngularJS ng-click event.It will reset all checkboxes(filters).              </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_closesearchmodaldialog">closeSearchModalDialog</h3>
+<div class="closesearchmodaldialog"><div class="closesearchmodaldialog-page"><ul>
+<li>ng-click event of Search Modal window to close the &quot;Patient Search Result&quot; screen.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_griddatabound">griddataBound</h3>
+<div class="griddatabound"><div class="griddatabound-page"><ul>
+<li>Grid.griddataBound event called to bind data with #searchpatients-grid </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_griddatabound_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="griddatabound-page"><p>Event parameter e contains property and subevents of grid.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_offswitchrosterevent">offSwitchRosterEvent</h3>
+<div class="offswitchrosterevent"><div class="offswitchrosterevent-page"><ul>
+<li>Subscribed event used to switch roster. It will check first boolean global variable <b><i>$rootScope.Global.Objects.IsUserSwitched</i></b> true then set the first and last name .</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_onaddlfilterclick">onAddlFilterClick</h3>
+<div class="onaddlfilterclick"><div class="onaddlfilterclick-page"><ul>
+<li>Subscribed event handler for &quot;MyPatientsFilterController&quot; broadcasted event &quot;onAddlFilterClick&quot; used when user clicks on one of the filters.                </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_onaddlfilterclick_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>event</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onaddlfilterclick-page"><p>The object contain event related methods and properties.</p>
+</div></td></tr><tr><td>arg</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onaddlfilterclick-page"><p>The object contain list of filters.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_ondialysiscenterfilter">onDialysisCenterFilter</h3>
+<div class="ondialysiscenterfilter"><div class="ondialysiscenterfilter-page"><ul>
+<li>Subscribed event handler for &quot;MyPatientsDialysisCenterController&quot; broadcasted event &quot;onDialysisCenterFilter&quot; used when when dialysis center is filtered.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_ondialysiscenterfilter_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>event</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ondialysiscenterfilter-page"><p>The object contain event related methods and properties.</p>
+</div></td></tr><tr><td>arg</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ondialysiscenterfilter-page"><p>The object contain dialysiscenter name.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_onsortclick">onSortClick</h3>
+<div class="onsortclick"><div class="onsortclick-page"><ul>
+<li>Angular JS ng-click event will call for sort patients on the base of incoming value selected from filterpopover controller checkbox.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_onsortclick_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>val</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="onsortclick-page"><p>Parameter either one(shift,sig,schedule)</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_ontap">ontap</h3>
+<div class="ontap"><div class="ontap-page"><ul>
+<li>k-on-click event gets fired when user taps on any patient on Mypatients screen.</li>
+<li>Calls function &quot;openPatients&quot; to navigate to Patient Chart.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_ontap_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>patient</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ontap-page"><p>patient - parameter/object is coming from $scope of the listview click.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_openpatients">openPatients</h3>
+<div class="openpatients"><div class="openpatients-page"><ul>
+<li>Navigate to &quot;Patient Chart&quot; screen for the selected Patient.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_openpatients_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>patient</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="openpatients-page"><p>selected patient from &quot;My Patients&quot; screen.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_redirecttopatientchart">redirectToPatientChart</h3>
+<div class="redirecttopatientchart"><div class="redirecttopatientchart-page"><ul>
+<li>AngularJS ng-click will be fired when the users taps on &quot;Ok&quot; button on &quot;Patient Search Result&quot; screen.              </li>
+<li>It redirects user to patient chart screen and will take either the name or memberid as parameter. </li>
+<li>It first searches for the patient in Open Patients list, if found it navigates to patient chart or
+else will call createpresavecontact method.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_searchpatient">searchPatient</h3>
+<div class="searchpatient"><div class="searchpatient-page"><ul>
+<li>AngularJS ng-click event. Calls &quot;MyPatientsService.SearchFilter&quot;. </li>
+<li>Search the patient entered in the &quot;searchText&quot;</li>
+<li>returned result will be displayed in new window.              </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_setindicatorcolor">setIndicatorColor</h3>
+<div class="setindicatorcolor"><div class="setindicatorcolor-page"><ul>
+<li>Will be used to set the color for the patient on &quot;My Patients&quot; screen as left side pillar(red, green,ember etc). </li>
+<li>Makes use of &quot;SetIndicatorColor&quot; common function.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_setindicatorcolor_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>indicator</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="setindicatorcolor-page"><p>Color set for the selected patient</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_show">show</h3>
+<div class="show"><div class="show-page"><ul>
+<li>This event call very first time and every call when controller loads.
+It will set some of the default values like action filters and call &quot;GetPatients&quot; and &quot;GetActionItems&quot; 
+service calls<br>MyPatientsService.GetPatients  .</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

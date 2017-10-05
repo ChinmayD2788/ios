@@ -1,0 +1,53 @@
+﻿.pink-bgcolor 
+{
+	background-color:#FDD7E4;
+}
+
+#fluidreviewtab-container
+{
+    height: 700px;
+    overflow: hidden;
+}
+
+#fluidReviewTabChart
+{
+    height: 400px;
+}
+
+#fluidReviewTabGrid
+{
+    margin-top: 10px !important;
+    height: 240px;
+}
+
+_:-ms-fullscreen, :root #fluidReviewTabGrid{
+    margin-top: 10px !important;
+    height:auto;
+}
+
+_:-ms-fullscreen, :root #fluidReviewTabGrid .k-grid-content{
+    overflow-y:scroll !important;
+    height:220px !important;
+}
+
+#fluidReviewTabGrid.k-grid td {
+    border-style: solid;
+    border-width: 0 0 0 1px;
+    padding: 0px !important;
+    overflow: hidden;
+    line-height: 2em;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+    text-indent: 5px !important;
+    color: #000 !important;
+}
+
+#fluidreviewtab-container .km-widget {
+    color: #000;
+}
+#fluidReviewTabGrid .k-grid-content{
+    height: auto !important;
+}
+#fluidReviewTabGrid .k-grid-header .k-header{
+   background-image: none !important;
+}

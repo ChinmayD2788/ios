@@ -1,0 +1,273 @@
+﻿.ptchart-header-homeicon.km-widget.km-button {
+    background: transparent !important;
+    border: 1px solid #124C7B !important;
+    border-radius: 50%;
+    box-shadow: none !important;
+    /*float: right !important;*/
+    padding-left: 0.4em;
+    padding-right: 0.6em;
+    width: 50px !important;
+}
+
+.ptchart-header-homeicon.km-state-active {             
+    border: 1px solid #fff !important;
+    border-radius: 50%;
+    background-color: #124C7B !important;
+}
+#side-root .km-content
+{
+    border-right: 1px solid rgba(0,0,0,0.3) !important;
+}
+#ptchart-mvp {
+    background-color: #ffffff;
+    border-radius: 2px !important;
+    padding: 2px;
+    color: #DC6060;
+    font-size: 16px !important;
+}
+
+.ptchart-view-ptmetrics {
+    width: 6px;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    float: left;
+    position: absolute;
+}
+
+#ptchart-side-pane {
+    -ms-flex-positive: 0.5 !important;
+    -webkit-box-flex: 0.5 !important; /*for Safari*/
+    -webkit-flex: 0.5 !important; /*for Chrome */
+    -moz-flex-positive: 0.5 !important;
+    background-color: White;
+    position: relative;
+    border-radius: 0px !important;
+    border-width: 0px !important;
+    width: 30% !important;
+}
+
+    #ptchart-side-pane .km-list {
+        border: none;
+    }
+
+        #ptchart-side-pane .km-list > li {
+            color: #7A7A7A !important;
+            border-right: none !important;
+            padding-left: .7em;
+            box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+        }
+
+            #ptchart-side-pane .km-list > li:last-child {
+                border-bottom-right-radius: 0px !important;
+                border-bottom-left-radius: 0px !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+            }
+
+            #ptchart-side-pane .km-list > li:first-child {
+                background: #B0CFEA;
+                border-top-right-radius: 0px !important;
+                border-top-left-radius: 0px !important;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+                border-top: 1px solid rgba(0, 0, 0, 0.2);
+            }
+
+.km-ios .km-splitview .km-navbar {
+    border-top-right-radius: none !important;
+    border-top-left-radius: none !important;
+    border-bottom-right-radius: none !important;
+    border-bottom-left-radius: none !important;
+}
+
+/*used in Javscript*/
+.metrics {
+    font-weight: normal !important;
+    font-size: 11px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    line-height: 12px !important;
+    text-transform: none !important;
+    max-width: 90% !important;
+    display: block;
+}
+
+#ptchart-view-pathway-screening {
+    /*height: 100%;*/
+    vertical-align: middle;
+    background-color: #124C7B;
+    border: 0px solid !important;
+    border-radius: 0px !important;
+    float: left;
+}
+
+.ptchart-header-submenu-crumb-separator {
+    border-top: 1px solid white !important;
+    /*width: 25px !important;*/
+    width: 30px !important;
+    margin: 24px -4px 24px 0px !important;
+    vertical-align: middle !important;
+    display: inline-block;
+}
+
+.ptchartSubMenuText {
+    color: #124C7B !important;
+}
+
+.ptchart-menutext {
+    padding: 10px 8px 10px 18px !important;
+    display: block;
+    text-transform: uppercase !important;
+    font-weight: bold;
+}
+
+.submenu-tab-selected-background {
+    background-color: #B0CFEA !important;
+    background: #B0CFEA !important;
+}
+
+#ptchart-view-submenus-list .km-ios .km-splitview .km-view > :first-child {
+    border-radius: 0px !important;
+}
+
+#ptchart-top-pane {
+    max-height: 50px;
+}
+
+#ptchart-bottom-pane {
+    max-height: 50px;
+}
+#ptchart-view-menus-submenus .hide:after {
+    display: none !important;
+}
+
+#ptchart-view-tabs-pathway .hide:after {
+    display: none;
+}
+
+#ptchart-view-menus-tabs .hide:after {
+    display: none;
+}
+
+.ptchart-header-submenu-crumb.km-widget.km-button {
+    border: 1px solid #fff !important;
+    font-weight: normal;
+    border-radius: 15px !important;
+    float: left;
+    background-color: transparent !important;
+    background-image: none !important;
+    -webkit-box-shadow: none !important;
+    text-decoration: none !important;
+    height: 32px;
+    color: #fff;
+    vertical-align: middle !important;
+    text-transform: none !important;
+    margin-left: 10px;
+    /* margin-top: 8px*/
+    margin-top: 9px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.ptchart-header-submenu-crumb.km-button.km-state-active {
+    color: #124C7B !important;
+    background-color: white !important;
+    border-color: #124C7B !important;
+    border-width: 0px !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+}
+
+    .ptchart-header-submenu-crumb.km-button.km-state-active .km-text {
+        color: #124C7B !important;
+    }
+
+.ptchart-header-tab-crumb.km-widget.km-button {
+    border: 1px solid #fff !important;
+    font-weight: normal;
+    border-radius: 15px !important;
+    background-color: white !important;
+    background-image: none !important;
+    -webkit-box-shadow: none !important;
+    padding: 7px 8px !important;
+    text-decoration: none !important;
+    height: 32px;
+    color: #fff;
+    text-transform: none !important;
+    vertical-align: middle;
+}
+
+#ptchart-view-pathway-screening-tabs-list .km-listview-link::after {
+    display: none;
+}
+
+#ptchart-pathway-screening-btn {
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    border-radius: 0px !important;
+    background-color: #124C7B;
+    -moz-box-shadow: inset 0 0 0px #000000 !important;
+    -webkit-box-shadow: inset 0 0 0px #000000 !important;
+    color: #fff !important;
+    background-image: none !important;
+    /*margin: 15px 0px 0px 0px !important;*/
+    border: 0px none !important;
+    font-size: 13px;
+}
+
+#ptchart-pathway-screening-span {
+    margin-top: 12px;
+}
+
+#pathway-screening-detail.km-widget.km-popup.km-pane {
+    border-color: #fff !important;
+    padding-left: 0px !important;
+    margin-top: 30px;
+}
+
+#pathway-screening-detail.km-popup-wrapper {
+    padding: 0px !important;
+}
+
+div.km-popup-wrapper.k-popup.k-group.k-reset.k-state-border-up.km-up {
+    padding: 0px 0px 15px !important;
+}
+
+#ptchart-view-menus-submenus.km-list > li {
+    padding: .7em 0em .7em 0em !important;
+}
+
+#ptchart-view-submenus-list div.km-state-active {
+    background-color: #124C7B;
+}
+
+#ptchart-view-menus-tabs.km-list > li {
+    padding: .7em 0em .7em 0em !important;
+}
+
+#ptchart-view-tabs-list div.km-state-active {
+    background-color: #124C7B;
+}
+
+#ptchart-view-tabs-pathway div.km-state-active {
+    background-color: #124C7B;
+}
+
+#ptchart-view-tabs-pathway.km-list > li {
+    padding: .7em 0em .7em 0em !important;
+}
+
+.ptchart-actionitems-view
+{    
+     width: 70%;   
+}
+
+.ptchart-actionitems-view .alert-fixed
+{
+    text-align: center;
+}
+.margin-left-5-px{
+    margin-left: 5px;
+}

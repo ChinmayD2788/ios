@@ -1,0 +1,297 @@
+﻿<kendo-mobile-view class="crd-view" ng-controller="PatientDemographicsController">
+    <!-- Patient Details comes from template -->
+    <div id="ptchart-ptdetails-container" ng-include="Global.Templates.PatientDetails.Url">
+    </div>
+    
+    <div class="crd-screennameheader" ng-if="Global.Objects.IsRCMPRL">Demographics</div>
+
+    
+
+
+    <div id="demographics-container">
+        
+        <div id="demographics-ptchart-ptdetails-container">
+            <div class="crd-screennameheader" ng-if="!Global.Objects.IsRCMPRL">Demographics</div>
+            <div class="ptchart-pthwy-buttons-header-bg">
+                <kendo-mobile-button id="Edit-button">Edit</kendo-mobile-button>
+                <kendo-mobile-button id="save-button">Save</kendo-mobile-button>
+                <kendo-mobile-button id="cancel-button">Cancel</kendo-mobile-button>
+            </div>
+            
+            <div kendo-tab-strip id="demographics-tab-strip2">
+
+                <!-- tab list -->
+                <ul>
+                    <li class="crd-tabstrip-header-tabs k-state-active">MAILING</li>
+                    <li class="crd-tabstrip-header-tabs">HOME</li>
+                    <li class="crd-tabstrip-header-tabs">TEMPORARY</li>
+                </ul>
+                <!-- Mailing Tab -->
+                <div id="demographics-pts-mailing-address"> <!--class="demographics-tab">-->
+                    <div class="demographics-pts-tabstrip-details">
+                        <div>
+                            <span class="crd-pthway-screening-label">ADDRESS </span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values" style="width:100%" >
+                                <input kendo-auto-complete id="pt-demogrphics-scrn-mailingaddress"  ng-model="PatientDemographicsModel.mailingAddress.address1" required validationmessage="required" />
+                               </span>
+                        </div>
+                        <!--<div>
+                        <span class="crd-pthway-screening-label ">EMAIL </span>
+                        <span class="crd-pathway-screening-value rcm-demographics-pts-values ">{{ patientEmailAddress }}</span>
+                    </div>-->
+                        <div>
+                            <span class="crd-pthway-screening-label ">APT/Suite </span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values ">
+                                <input kendo-auto-complete id="pt-demogrphics-scrn-mailingaddress" ng-model="PatientDemographicsModel.mailingAddress.address1" required validationmessage="required" />
+
+
+                                {{ patientEmailAddress }}
+                            </span>
+
+                        </div>
+
+                        <div>
+                            <span class="crd-pthway-screening-label ">City </span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values ">
+                                {{ patientEmailAddress }}
+                            </span>
+                        </div>
+
+                        <div>
+                            <span class="crd-pthway-screening-label ">State </span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+
+
+                                <select id="ptinfo-demographics-scrn-dd-state"
+                                        name="ptinfo-demographics-scrn-dd-state"
+                                        class="ptchart-immu-scrn-dd-div-select"
+                                        k-data-auto-bind="false" k-data-value-primitive="true"
+                                        kendo-drop-down-list
+                                        k-data-text-field="'Text'"
+                                        k-data-value-field="'Value'"
+                                        k-data-source="EditDemographicsCopy.State"
+                                        k-ng-model="EditDemographicsCopy.State.Selected"
+                                        k-on-change="onResultChange()"></select>
+
+                                <!--<span class="k-invalid-msg" style="margin-top: 5px;" data-for="ptchart-dbts-scrn-dd-results-name"></span>-->
+
+
+
+                            </span>
+                        </div>
+                        <div>
+                            <span class="crd-pthway-screening-label ">Zip </span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values ">{{ patientEmailAddress }}</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Home Tab -->
+                <div id="demographics-pts-home-address" class="demographics-tab">
+                    <div class="demographics-pts-tabstrip-details">
+                        <span class="crd-pthway-screening-label">ADDRESS </span>
+                        <span class="crd-pathway-screening-value rcm-demographics-pts-values"> {{ PatientDemographicsModel.mailingAddress.homeaddress }} </span>
+                    </div>
+                </div>
+
+                <!-- TEMPORARY -->
+
+                <div id="dempographics-pts-temporary-address" class="demographics-tab">
+                    <div class="demographics-pts-tabstrip-details">
+                        <div>
+                            <span class="crd-tab-label crd-pthway-screening-label">ADDRESS</span>
+                            <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+
+                                <input kendo-auto-complete id="pt-demogrphics-scrn-tepmaddress" ng-model="landlinePhoneNo" required validationmessage="required" />
+                                {{ PatientDemographicsModel.mailingAddress.tempaddress }}
+
+
+                            </span>
+                        </div>
+                        <div>
+                            <div>
+                                <span class="crd-tab-label crd-pthway-screening-label">Start Date </span>
+                                <span class="crd-pathway-screening-value rcm-demographics-pts-values">{{ PatientDemographicsModel.mailingAddress.tempaddstartdate }}</span>
+                            </div>
+                            <div>
+                                <span class="crd-tab-label crd-pthway-screening-label">End Date </span>
+                                <span class="crd-pathway-screening-value rcm-demographics-pts-values">{{ PatientDemographicsModel.mailingAddress.tempaddenddate }}</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>    
+        </div>
+
+    <div id="demographics-pt-details2">
+        <!-- Printing phone & Fax -->
+        <div class="demographics-pts-profile">
+            <div>
+                <span class="crd-pthway-screening-label">HOME PHONE</span>
+                <span class="crd-pthway-screening-label">MOBILE PHONE</span>
+                <span class="crd-pthway-screening-label">WORK PHONE</span>
+                <span class="crd-pthway-screening-label">FAX </span>
+            </div>
+            <div>
+                <span class="crd-pathway-screening-value">
+                    <input kendo-auto-complete id="pt-demogrphics-scrn-homephone" ng-model="landlinePhoneNo" required validationmessage="required" />
+                </span>              
+                   
+                <span class="crd-pathway-screening-value">
+                    <input kendo-auto-complete id="pt-demogrphics-scrn-mobilephone" ng-model="mobilePhoneNo" required validationmessage="required" />
+                </span>
+                
+                <span class="crd-pathway-screening-value">
+                    <input kendo-auto-complete id="pt-demogrphics-scrn-workphone" ng-model="workPhoneNo" required validationmessage="required" />
+                </span>
+                
+                <span class="crd-pathway-screening-value">
+                    <input kendo-auto-complete id="pt-demogrphics-scrn-fax" ng-model="faxNumber" required validationmessage="required" />
+                </span>               
+                
+            </div>
+        </div>
+
+        <!--<div class="demographics-pts-profile">-->
+        <div>
+            <div>
+                <span class="crd-pthway-screening-label"> Email </span>
+                <span class="crd-pthway-screening-label"> Primary Phone </span>                
+                <span class="crd-pthway-screening-label"> Language </span>
+                <span class="crd-pthway-screening-label"> Gender </span>
+            </div>
+            <div>
+                <span class="crd-pathway-screening-value"> 
+                <input kendo-auto-complete id="pt-demogrphics-scrn-fax" ng-model="email" required validationmessage="required" /></span>
+                <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                    <select id="ptinfo-demographics-scrn-dd-primaryphone"
+                            name="ptinfo-demographics-scrn-dd-primaryphone"
+                            class="ptchart-immu-scrn-dd-div-select"
+                            k-data-auto-bind="false" k-data-value-primitive="true"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="EditDemographicsCopy.PrimaryPhone"
+                            k-ng-model="EditDemographicsCopy.PrimaryPhone.Selected"
+                            k-on-change="onResultChange()">
+
+                    </select>
+                </span>
+
+                <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                    <select id="ptinfo-demographics-scrn-dd-language"
+                            name="ptinfo-demographics-scrn-dd-language"
+                            class="ptchart-immu-scrn-dd-div-select"
+                            k-data-auto-bind="false" k-data-value-primitive="true"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="EditDemographicsCopy.Language"
+                            k-ng-model="EditDemographicsCopy.Language.Selected"
+                            k-on-change="onResultChange()">
+
+                    </select>
+                </span>
+
+                <span class="crd-pathway-screening-value rcm-demographics-pts-values">
+                    <select id="ptinfo-demographics-scrn-dd-gender"
+                            name="ptinfo-demographics-scrn-dd-gender"
+                            class="ptchart-immu-scrn-dd-div-select"
+                            k-data-auto-bind="false" k-data-value-primitive="true"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="EditDemographicsCopy.Gender"
+                            k-ng-model="EditDemographicsCopy.Gender.Selected"
+                            k-on-change="onResultChange()">
+
+                    </select>
+                </span>
+
+
+
+
+            </div>
+        </div>
+
+        <div  >
+             
+            <div>
+                <span class="crd-pthway-screening-label"> CONTACT PREF DAY  </span>
+                <span class="crd-pthway-screening-label"> CONTACT PREF TIME </span>                
+            </div>
+            <div>
+                <span class="crd-pathway-screening-value">
+                    <select id="ptinfo-demographics-scrn-dd-preday"
+                            name="ptinfo-demographics-scrn-dd-preday"
+                            class="ptchart-immu-scrn-dd-div-select"
+                            k-data-auto-bind="false" k-data-value-primitive="true"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="EditDemographicsCopy.ContactPreferenceDay"
+                            k-ng-model="EditDemographicsCopy.ContactPreferenceDay.Selected"
+                            k-on-change="onResultChange()"></select> 
+                </span>
+                <span class="crd-pathway-screening-value">
+                    <select id="ptinfo-demographics-scrn-dd-pretime"
+                            name="ptinfo-demographics-scrn-dd-pretime"
+                            class="ptchart-immu-scrn-dd-div-select"
+                            k-data-auto-bind="false" k-data-value-primitive="true"
+                            kendo-drop-down-list
+                            k-data-text-field="'Text'"
+                            k-data-value-field="'Value'"
+                            k-data-source="EditDemographicsCopy.ContactPreferenceTime"
+                            k-ng-model="EditDemographicsCopy.ContactPreferenceTime.Selected"
+                            k-on-change="onResultChange()"></select> </span>
+                
+            </div>
+        </div>
+
+
+        <div id="demographics-ptdetails-patient-information">
+            
+
+            <div class="demographics-pts-profile">
+                <div>
+                    <span class="crd-pthway-screening-label">SSN</span>
+                    <span class="crd-pthway-screening-label">MEMBER ID</span>
+                    <span class="crd-pthway-screening-label">DAVITA MPI ID</span>                    
+                    <span class="crd-pthway-screening-label">MEDICAL RECORD NO. </span>
+                </div>
+                <div>
+                    <span class="crd-pathway-screening-value"> <input kendo-auto-complete id="pt-demogrphics-scrn-ssn" ng-model="ssn" required validationmessage="required" /> </span>
+                    <span class="crd-pathway-screening-value"> <input kendo-auto-complete id="pt-demogrphics-scrn-patientMemberID" ng-model="patientMemberID" required validationmessage="required" /> </span>
+                    <span class="crd-pathway-screening-value"> <input kendo-auto-complete id="pt-demogrphics-scrn-davitaMPI_ID" ng-model="davitaMPI_ID" required validationmessage="required" />  </span>
+                    <span class="crd-pathway-screening-value"> <input kendo-auto-complete id="pt-demogrphics-scrn-medicalRecordNumber" ng-model="medicalRecordNumber" required validationmessage="required" /> </span>
+                </div>
+            </div>
+
+            <div class="demographics-pts-profile">
+                <div>
+                    <span class="crd-pthway-screening-label">MEDICARE ID</span>
+                    <span class="crd-pthway-screening-label">Payer Grp No.</span>
+                    <span class="crd-pthway-screening-label">Special Payor ID</span>
+                    <span class="crd-pthway-screening-label">USI</span>
+                </div>
+                <div>
+                    
+                    <span class="crd-pathway-screening-value"> <input kendo-auto-complete id="pt-demogrphics-scrn-medicareID" ng-model="medicareID" required validationmessage="required" /> </span>
+                    <span class="crd-pathway-screening-value"> <input kendo-auto-complete id="pt-demogrphics-scrn-payerGroupNo" ng-model="payerGroupNo" required validationmessage="required" /> </span>
+                    <span class="crd-pathway-screening-value"> <input kendo-auto-complete id="pt-demogrphics-scrn-specialPayorID" ng-model="specialPayorID" required validationmessage="required" />  </span>
+                    <span class="crd-pathway-screening-value"> <input kendo-auto-complete id="pt-demogrphics-scrn-usi" ng-model="usi" required validationmessage="required" /> </span>
+
+                
+                
+                
+                 </div>
+            </div>
+        </div>
+    </div>
+</kendo-mobile-view>

@@ -1,0 +1,261 @@
+<h1><code ng:non-bindable="">PathwaysTabController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>Controller for VHN Pathways</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_haschanges">HasChanges()</h3>
+<div class="haschanges"><div class="-scope-haschanges-page"><ul>
+<li>Find any changes on pathway survery detail</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_populatedropdowns">populateDropDowns()</h3>
+<div class="populatedropdowns"><div class="-scope-populatedropdowns-page"><ul>
+<li>Changes UI for diabetic screening</li>
+<li>Populates drop downs with filtered types and results collections</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_populateresultchilddropdown">populateResultChildDropDown()</h3>
+<div class="populateresultchilddropdown"><div class="-scope-populateresultchilddropdown-page"><ul>
+<li>Changes UI for diabetic screening</li>
+<li>Populates child lookpups using selected result dropdown value</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_setsurveytype">setSurveyType()</h3>
+<div class="setsurveytype"><div class="-scope-setsurveytype-page"><p>Sets survey type based on selected menu item of Patient Chart</p>
+</div></div>
+</li>
+<li><h3 id="methods_showpathway">showPathway()</h3>
+<div class="showpathway"><div class="-scope-showpathway-page"><ul>
+<li>Calls Survey Details or Patient&#39;s Survey Details to display pathway</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_bindsurveydetails">bindSurveyDetails()</h3>
+<div class="bindsurveydetails"><div class="bindsurveydetails-page"><ul>
+<li>Set survey details properties   </li>
+<li>Set default values for pathway</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_getpathwayheaderdata">getPathwayHeaderData()</h3>
+<div class="getpathwayheaderdata"><div class="getpathwayheaderdata-page"><ul>
+<li>Calls PathwaysTabService.GetPathwayHeaderData</li>
+<li>Populates Pathway Headers Data</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_getpatientsurveydetails">getPatientSurveyDetails()</h3>
+<div class="getpatientsurveydetails"><div class="getpatientsurveydetails-page"><ul>
+<li>Calls PathwaysTabService.GetPatientSurveyDetails</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_getprepopulatedresponse">getPrepopulatedResponse()</h3>
+<div class="getprepopulatedresponse"><div class="getprepopulatedresponse-page"><ul>
+<li>Calls PathwaysTabService.GetPrePopulatedResponse</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_getsurveydetails">getSurveyDetails()</h3>
+<div class="getsurveydetails"><div class="getsurveydetails-page"><ul>
+<li>Calls PathwaysTabService.GetSurveyDetails</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_onaddptdiabscreeningcompleted">onAddPtDiabScreeningCompleted(result)</h3>
+<div class="onaddptdiabscreeningcompleted"><div class="onaddptdiabscreeningcompleted-page"><ul>
+<li>Service based call back function of AddPtDiabScreening Service call </li>
+<li>Calls showPathway after successfully adding diabetic screening</li>
+</ul>
+</div><h5 id="methods_onaddptdiabscreeningcompleted_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onaddptdiabscreeningcompleted-page"><p>returned result data of WebApi call</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_ongetpathwayheaderdataretrieved">onGetPathwayHeaderDataRetrieved(result)</h3>
+<div class="ongetpathwayheaderdataretrieved"><div class="ongetpathwayheaderdataretrieved-page"><p>Service based call back function of GetPathwayHeaderData Service call </p>
+</div><h5 id="methods_ongetpathwayheaderdataretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetpathwayheaderdataretrieved-page"><p>returned result data of WebApi call</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_ongetpatientsurveydetailsretrieved">onGetPatientSurveyDetailsRetrieved(result)</h3>
+<div class="ongetpatientsurveydetailsretrieved"><div class="ongetpatientsurveydetailsretrieved-page"><ul>
+<li>Service based call back function of GetPatientSurveyDetails Service call </li>
+<li>Calls $scope.bindSurveyDetails if patient survey detail is found</li>
+<li>Calls $scope.getSurveyDetails if patient survey detail is not found </li>
+</ul>
+</div><h5 id="methods_ongetpatientsurveydetailsretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetpatientsurveydetailsretrieved-page"><p>returned result data of WebApi call</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_ongetprepopulatedresponseretrieved">onGetPrePopulatedResponseRetrieved(result)</h3>
+<div class="ongetprepopulatedresponseretrieved"><div class="ongetprepopulatedresponseretrieved-page"><ul>
+<li>Service based call back function of GetPrePopulatedResponse Service call </li>
+<li>Sets the prepopulated response and if required make the same service call for next question</li>
+</ul>
+</div><h5 id="methods_ongetprepopulatedresponseretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetprepopulatedresponseretrieved-page"><p>returned result data of WebApi call</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_ongetsurveydetailsretrieved">onGetSurveyDetailsRetrieved(result)</h3>
+<div class="ongetsurveydetailsretrieved"><div class="ongetsurveydetailsretrieved-page"><ul>
+<li>Service based call back function of GetSurveyDetails Service call </li>
+<li>Calls $scope.bindSurveyDetails</li>
+<li>Starts the chain of getPrepopulatedResponse </li>
+</ul>
+</div><h5 id="methods_ongetsurveydetailsretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetsurveydetailsretrieved-page"><p>returned result data of WebApi call</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_onsavesurveydetailscompleted">onSaveSurveyDetailsCompleted(result)</h3>
+<div class="onsavesurveydetailscompleted"><div class="onsavesurveydetailscompleted-page"><ul>
+<li>Service based call back function of SaveSurveyDetails Service call</li>
+<li>Calls $scope.getPathwayHeaderData and $scope.getPatientSurveyDetails after successfully saving survey detail</li>
+</ul>
+</div><h5 id="methods_onsavesurveydetailscompleted_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onsavesurveydetailscompleted-page"><p>return result data of WebApi call.</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemodel">$scope.model</h3>
+<div class="$scopemodel"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>model of PathwaysTabController</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelsurveydetails">$scope.model.SurveyDetails</h3>
+<div class="$scopemodelsurveydetails"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>property of $scope.model used for SurveyDetails</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelcopysurveydetails">$scope.model.CopySurveyDetails</h3>
+<div class="$scopemodelcopysurveydetails"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>property of $scope.model used for CopySurveyDetails</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopebuttons">$scope.Buttons</h3>
+<div class="$scopebuttons"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>property of $scope used for Buttons</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopedropdowns">$scope.DropDowns</h3>
+<div class="$scopedropdowns"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>property of $scope used for DropDowns</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelradiooption">$scope.model.RadioOption</h3>
+<div class="$scopemodelradiooption"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>property of $scope.model used for RadioOption</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelsurveytype">$scope.model.SurveyType</h3>
+<div class="$scopemodelsurveytype"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>property of $scope.model used for SurveyType</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeselectedsurveytype">$scope.SelectedSurveyType</h3>
+<div class="$scopeselectedsurveytype"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>Selected survey type, default value null</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopecontactnotetext">$scope.ContactNoteText</h3>
+<div class="$scopecontactnotetext"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>Contact note text, default value &quot;&quot;</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeissurveydetailscommentsvisible">$scope.IsSurveydetailsCommentsVisible</h3>
+<div class="$scopeissurveydetailscommentsvisible"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>Boolean value to make survey comments visible, default value true</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeissurveydetailscommentcheckboxdisabled">$scope.IsSurveydetailsCommentCheckBoxDisabled</h3>
+<div class="$scopeissurveydetailscommentcheckboxdisabled"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>Boolean value to make survey comments checkbox disable, default value true</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeissurveydetailscommentdisabled">$scope.IsSurveydetailsCommentDisabled</h3>
+<div class="$scopeissurveydetailscommentdisabled"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>Boolean value to make survey comments disable, default value true</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeispathwaystab">$scope.IsPathwaysTab</h3>
+<div class="$scopeispathwaystab"><div class="roundingmodule-controller-page roundingmodule-controller-pathwaystabcontroller-page"><p>Boolean value for pathways tab, default value false</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_addpathways">addPathways</h3>
+<div class="addpathways"><div class="addpathways-page"><ul>
+<li>ng-click event of add button</li>
+<li>Displays the blank survey detail     </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_cancelpathways">cancelPathways</h3>
+<div class="cancelpathways"><div class="cancelpathways-page"><ul>
+<li>ng-click event of cancel button</li>
+<li>Cancels the survey detail changes      </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_ongroupradiochecked">onGroupRadioChecked</h3>
+<div class="ongroupradiochecked"><div class="ongroupradiochecked-page"><ul>
+<li>ng-change event of input type radio </li>
+<li>Display survey question and/or pre-populated option based on response     </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_onresultchange">onResultChange</h3>
+<div class="onresultchange"><div class="onresultchange-page"><ul>
+<li>ng-chnage event of select result</li>
+<li>Populates drop downs based on business rules</li>
+<li>Changes UI for diabetic screening </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_onswitchchange">onSwitchChange</h3>
+<div class="onswitchchange"><div class="onswitchchange-page"><ul>
+<li>k-on-change event of kendo mobile swtich </li>
+<li>Display survey question and/or pre-populated option based on response    </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_ontypechange">onTypeChange</h3>
+<div class="ontypechange"><div class="ontypechange-page"><ul>
+<li>ng-change event of select type </li>
+<li>Changes UI for diabetic screening</li>
+<li>Display result dropdown based on selected type value     </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_postponepathways">postponePathways</h3>
+<div class="postponepathways"><div class="postponepathways-page"><ul>
+<li>ng-click event of postpone button</li>
+<li>Postpones the survey detail changes</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_savepathways">savePathways</h3>
+<div class="savepathways"><div class="savepathways-page"><ul>
+<li>ng-click event of save button</li>
+<li>Saves the survey detail      </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_surveycommentsblur">surveyCommentsBlur</h3>
+<div class="surveycommentsblur"><div class="surveycommentsblur-page"><ul>
+<li>ng-blur event of survey comment text area</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

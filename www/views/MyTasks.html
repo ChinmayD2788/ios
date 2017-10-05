@@ -1,0 +1,200 @@
+﻿﻿<kendo-mobile-view ng-controller="MyTasksController" class="crd-view">
+
+    <!-- Patient Details comes from template -->
+    <div id="ptchart-ptdetails-container" ng-include="Global.Templates.PatientDetails.Url">
+    </div>
+
+    <!-- Screen Header -->
+    <div class="crd-screennameheader" id="mytasks-screenheader">
+        <label style="float: left">MY TASKS</label>
+        <kendo-mobile-button k-rel="'modalview'" href="#modalview-add-newtask" style="float: right">Add New Task</kendo-mobile-button>
+    </div>
+
+    <!-- Add Task Modal View -->
+    <kendo-mobile-modal-view ng-controller="AddNewTaskController" id="modalview-add-newtask" class="crd-modalview"
+                             kendo-validator="addTaskValidator">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar ng-show="MyTaskmodel.AddNewTaskVisible">
+                <kendo-mobile-button kendo-touch k-on-tap="closeModalViewAddNewTask()" k-align="'left'">Cancel</kendo-mobile-button>
+                <span>Add New Task</span>
+                <kendo-mobile-button kendo-touch k-on-tap="createNewTask()" k-align="'right'">Create</kendo-mobile-button>
+            </kendo-mobile-nav-bar>
+            <kendo-mobile-nav-bar ng-show="MyTaskmodel.SelectTaskTypeVisible">
+                <kendo-mobile-button kendo-touch k-on-tap="goToAddTaskType()" k-align="'left'">Back</kendo-mobile-button>
+                <span>Select Task Type</span>
+            </kendo-mobile-nav-bar>
+            <kendo-mobile-nav-bar ng-show="MyTaskmodel.SelectDueDateVisible">
+                <kendo-mobile-button kendo-touch k-on-tap="goToAddTaskType()" k-align="'left'">Back</kendo-mobile-button>
+                <span>Select Date</span>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+
+        <ul class="add-newtask-ul" ng-show="MyTaskmodel.AddNewTaskVisible">
+            <li class="modalview-ul-first-li">
+                <span style="line-height: 45px;">Create a new task by filling in all fields below and tapping 'Create'</span>
+            </li>
+            <li>
+                <ul kendo-mobile-list-view id="add-newtask-tasktypes">
+                    <li>
+                        <label class="crd-modalview-label">TASK TYPE:</label>
+                        <input type="text" class="k-textbox" id="addtask-task-type" name="addtask-task-type" placeholder="Select a value" required
+                               validationmessage="required" ng-model="MyTaskmodel.Task" ng-click="selectTaskType()" />
+                        <span class="arrow-after right-arrow"></span>
+                        <span class="k-invalid-msg" data-for="addtask-task-type"></span>
+                    </li>
+                    <li>
+                        <label class="crd-modalview-label">PATIENT:</label>
+                        <input type="text" class="k-textbox" readonly ng-model="MyTaskmodel.PatientName" />
+                    </li>
+                    <li id="task-description" ng-show="IsVisibleDueDatePnl">
+                        <label class="crd-modalview-label">
+                            TASK:
+                            <textarea type="text" class="k-textbox" name="addtask-task-description" placeholder="Enter Task Description"
+                                      ng-model="MyTaskmodel.TaskDescription" id="addtask-task-description-textarea-one" rows="4"
+                                      required validationmessage="required" pattern=".*\S+.*"></textarea>
+                        </label>
+                        <span class="k-invalid-msg" data-for="addtask-task-description"></span>
+                    </li>
+                    <li ng-show="IsVisibleDueDatePnl">
+                        <label class="crd-modalview-label">DUE DATE:</label>
+                        <input type="text" class="k-textbox" readonly ng-model="MyTaskmodel.DueDate" ng-click="selectDueDate()" />
+                        <span class="arrow-after right-arrow"></span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul class="modalview-ul" ng-show="MyTaskmodel.SelectTaskTypeVisible">
+            <li class="modalview-ul-first-li">
+                <span>Select the Task Type for {{ MyTaskmodel.PatientName }}</span>
+            </li>
+            <li>
+                <kendo-mobile-list-view id="select-tasktype-list" k-data-source="MyTaskmodel.TaskTypes" class="radio-list">
+                    <label k-template>
+                        <input name="task" type="radio" ng-model="MyTaskmodel.Task" value="{{ dataItem.Text }}" />
+                        {{ dataItem.Text }}
+                        <div></div>
+                    </label>
+                </kendo-mobile-list-view>
+            </li>
+        </ul>
+        <div ng-show="MyTaskmodel.SelectDueDateVisible">
+            <div id="newtask-duedate-calendar-div">
+                <kendo-calendar id="newtask-duedate-calendar" class="crd-calendar" ng-model="MyTaskmodel.DueDate" min="MyTaskmodel.MinDueDate"></kendo-calendar>
+            </div>
+        </div>
+    </kendo-mobile-modal-view>
+
+    <!-- Tasks List -->
+    <div id="ptchart-mytasks">
+        <!--<busy-indicator config="actionItemsBusyMessage"></busy-indicator>-->
+        <kendo-mobile-list-view id="select-tasktypes" k-data-source="MyTaskmodel.Taskslist">
+            <div k-template>
+                <div class="mytasks-taskdescription">
+                    <div ng-if="dataItem.TaskTextColor == 'Red'">
+                        <span class="icon-overdue">&nbsp;</span>
+                        <span class="crd-redtext">{{ dataItem.Description }}</span>
+                    </div>
+                    <div ng-if="dataItem.TaskTextColor == 'Yellow'">
+                        <span class="crd-yellowtext">{{ dataItem.Description }}</span>
+                    </div>
+                    <div ng-if="dataItem.TaskTextColor == 'Green'">
+                        <span class="crd-greytext">{{ dataItem.Description }}</span>
+                    </div>
+                    <div ng-if="dataItem.IsTaskCompletable == false" class="mytask-not-completeable">
+                        <span class="icon-block">&nbsp;</span>
+                        <span class="task-completedincpp">Must be completed in Capella</span>
+                    </div>
+                </div>
+                <div class="mytasks-task-actions">
+                    <div class="mytasks-task-duedate">
+                        <a ng-if="dataItem.IsTaskCompletable" ng-click="completeTask(dataItem)">
+                            <span ng-if="dataItem.TaskTextColor == 'Red'" class="crd-redtext">
+                                Due: {{ dataItem.DueDate | date: 'MM/dd/yyyy' }}
+                            </span>
+                            <span ng-if="dataItem.TaskTextColor == 'Yellow'" class="crd-yellowtext">
+                                Due: {{ dataItem.DueDate | date: 'MM/dd/yyyy' }}
+                            </span>
+                            <div ng-if="dataItem.TaskTextColor == 'Green'" class="crd-greytext">
+                                Due: {{ dataItem.DueDate | date: 'MM/dd/yyyy' }}
+                            </div>
+                        </a>
+                        <span ng-if="dataItem.IsTaskCompletable == false && dataItem.TaskTextColor == 'Red'" class="crd-redtext">
+                            Due: {{ dataItem.DueDate | date: 'MM/dd/yyyy' }}
+                        </span>
+                        <span ng-if="dataItem.IsTaskCompletable == false && dataItem.TaskTextColor == 'Yellow'" class="crd-yellowtext">
+                            Due: {{ dataItem.DueDate | date: 'MM/dd/yyyy' }}
+                        </span>
+                        <div ng-if="dataItem.IsTaskCompletable == false && dataItem.TaskTextColor == 'Green'" class="crd-greytext">
+                            Due: {{ dataItem.DueDate | date: 'MM/dd/yyyy' }}
+                        </div>
+                    </div>
+                    <div class="mytasks-actions">
+                        <!--<a ng-if="dataItem.IsDelegatable && (dataItem.DelegatedDate == null || dataItem.DelegatedDate == undefined)">
+                            
+                        </a>-->
+                        
+                        <kendo-mobile-button id="mytask-btnrolepopover" k-rel="'popover'" href="\#RolePopOver"
+                                             k-on-click="openDelegateToPopOver(dataItem)"
+                                             ng-if="dataItem.IsDelegatable && (dataItem.DelegatedDate == null || dataItem.DelegatedDate == undefined)">
+                            <span class="icon-delegatetask">&nbsp;</span>
+                            <span id="dlgtasktext">Delegate Task</span>
+
+                        </kendo-mobile-button>
+                                                 
+                           <span ng-if="dataItem.IsDelegatable && (dataItem.DelegatedDate != null || dataItem.DelegatedDate != undefined)">
+                            <span class="delegated-task">Delegated to {{ dataItem.DelegateRole }} on : {{ dataItem.DelegatedDate | date: 'MM/dd/yyyy' }}</span>
+                        </span>
+                        <a ng-if="dataItem.IsTaskCompletable" ng-click="completeTask(dataItem)">
+                            <span class="icon-completetask">&nbsp;</span>
+                            <span>Complete Task</span>
+                        </a>
+                    </div>
+                </div>                
+            </div>
+
+
+        </kendo-mobile-list-view>
+             
+        
+        <kendo-mobile-pop-over id="RolePopOver" k-popup='{"width": "12em"}'>
+            <kendo-mobile-view class="crd-popover-listview do-not-destroy">
+                <!--<ul class="km-listview km-list">-->
+                <kendo-mobile-list-view class="logout-list">
+                    <li>
+                        <label>
+                            <input name="ccrole" type="radio" ng-click="delegateTask('CC')" />CC
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input name="vharole" type="radio" ng-click="delegateTask('VHA')" />VHA
+                        </label>                        
+                    </li>
+                </kendo-mobile-list-view>
+                <!--</ul>-->
+            </kendo-mobile-view>
+        </kendo-mobile-pop-over>
+        
+    </div>
+
+    <!--Complete Task Modal View-->
+    <kendo-mobile-modal-view ng-controller="CompleteTaskController" id="modalview-completetask" class="crd-modalview">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>
+                <kendo-mobile-button kendo-touch k-on-tap="closeModalViewCompleteTask()" k-align="'left'">Cancel</kendo-mobile-button>
+                <kendo-mobile-button kendo-touch k-on-tap="completeNewTask()" k-align="'right'">Save</kendo-mobile-button>
+            </kendo-mobile-nav-bar>
+        </kendo-mobile-header>
+        <ul kendo-mobile-list-view>
+            <li id="updatetask-comments">
+                <label class="crd-modalview-label">
+                    COMMENTS:
+                    <textarea type="text" class="k-textbox" name="addtask-task-description" placeholder="Enter Comments..."
+                              ng-model="MyTaskmodel.Comments" id="addtask-task-description-textarea-two" rows="8"></textarea>
+                </label>
+                <span class="k-invalid-msg" data-for="addtask-task-description"></span>
+            </li>
+        </ul>
+    </kendo-mobile-modal-view>
+</kendo-mobile-view> 

@@ -1,0 +1,359 @@
+﻿<kendo-mobile-view ng-controller="VapController" class="crd-view">
+    <div class="crd-inline">         
+         <div class="crd-floatleft">
+              <div id="vap-screenname-div1" class="crd-screennameheader">
+                  <label>VASCULAR ACCESS PLAN - </label>
+                  <label>{{ model.ActiveVapStepDetail.PermanentAccessType }}</label>
+              </div>
+              <div id="vap-screenname-div2">
+                   <kendo-mobile-button kendo-touch k-on-tap="onStopPlanClicked()" style="float: right;" ng-show="model.StopPlanVisible">STOP</kendo-mobile-button>
+                   <kendo-mobile-button kendo-touch k-on-tap="onNewPlanClicked()" style="float: right;" ng-hide="model.StopPlanVisible">NEW PLAN</kendo-mobile-button>               
+              </div>
+         </div>                      
+         <div id="vap-headers">
+             <div style="float: left">
+                <label>Plan Start Date :</label>                      
+                <label>{{ model.ActiveVapStepDetail.StartDate | date: 'MM/dd/yyyy' }} -</label>                                    
+             </div>
+             <div class="vap-headers-div">
+                <label>Desired Permanent Access :</label>
+                <label>{{ model.ActiveVapStepDetail.PermanentAccessType }} -</label>                                           
+             </div> 
+             <div class="vap-headers-div">
+                 <label>Current Step :</label>
+                 <label>{{ model.ActiveVapStepDetail.CurrentStep }}</label>                          
+             </div>                
+         </div>
+    </div>     
+    <!-- vap list view --> 
+    <div id="vaplist">
+        <kendo-mobile-list-view k-data-source="model.ActiveVapStepDetail.StepDetails">
+            <div k-template class="vap-stepdetail-row" id="vap-stepdetail-row-{{ Order }}">
+                <div id="top-{{ dataItem.UID }}" class="vap-stepdetail-row-top" ng-click="onTopRowClicked(dataItem)">
+                    <div class="vap-stepdetail-row-top-left">
+                        <div class="vap-stepdetail-row-top-left-div">
+                            <div class="vap-stepdetail-row-top-left-upper"></div>                              
+                            <div class="{{ dataItem.CircleImage }} vap-stepdetail-row-top-left-middle"></div>                                                                                                                                                                 
+                            <div class="vap-stepdetail-row-top-left-lower"></div>
+                        </div>
+                    </div>
+                    <div class="vap-stepdetail-row-top-right" id="vap-stepdetail-row-top-right-{{ dataItem.UID }}">
+                        <div class="vap-stepdetail-header">  
+                            <div style="float: left">{{ dataItem.StepDescription}} </div>     
+                            <div ng-if="dataItem.IsCurrent === true" class="vap-stepdetail-row-date">
+                                {{ dataItem.AnticipatedDate | date: 'MM/dd/yy' }} (Anticipated)
+                            </div> 
+                            <div ng-if="dataItem.CompleteDate" class="vap-stepdetail-row-date">
+                                {{ dataItem.CompleteDate | date: 'MM/dd/yy' }} 
+                            </div>                                                
+                        </div>
+                    </div>
+                </div>
+
+                <div id="vap-bottom-{{ dataItem.UID }}" class="vap-stepdetail-row-bottom">
+                    <div class="vap-stepdetail-row-bottom-left">
+                        <div class="vap-stepdetail-row-bottom-left-upper"></div>                                                                                  
+                    </div>
+                    <div class="vap-stepdetail-row-bottom-right">  
+                         <div id="vap-stepdetail-row-bottom-right-{{ dataItem.UID }}">
+                             <div ng-if="dataItem.IsCurrent === true" class="vap-itemrow-detail">  
+                                 <div class="vap-itemrow-detail-left">
+					                 <label class="vap-item-access-label accessinfo-item-access-label-title">In Progress</label>                               			                    
+                                 </div>                                             
+                                 <div class="vap-itemrow-detail-right">
+                                     <kendo-mobile-button kendo-touch k-on-tap="onEditVapStepClick(dataItem)" style="float: right">Edit Step</kendo-mobile-button> 
+                                 </div> 
+                             </div>                         
+                             <div class="vap-itemrow-detail">  
+                                 <div ng-if="dataItem.StepCode === 'PatientAcceptance'" class="vap-itemrow-detail-left">                                        
+					                 <label class="vap-item-access-label">Agreed Date :</label>
+                                     <label class="vap-item-access-value">{{ dataItem.AgreeDate | date: 'MM/dd/yy' }}</label>
+			                     </div>
+                                 <div ng-if="dataItem.StepCode != 'PatientAcceptance'" class="vap-itemrow-detail-left">                                        
+					                 <label class="vap-item-access-label">Appt. Date :</label>
+                                     <label class="vap-item-access-value">{{ dataItem.SchedDate | date: 'MM/dd/yy' }}</label>
+			                     </div>
+                                 <div ng-if="dataItem.StepCode === 'PatientAcceptance'" class="vap-itemrow-detail-center">                                                                         
+                                     <label class="vap-item-access-label">Refused Date :</label>
+                                     <label class="vap-item-access-value">{{ dataItem.RefuseDate | date: 'MM/dd/yy' }}</label>                                                                                                                                      
+                                 </div>   
+                                 <div ng-if="dataItem.StepCode != 'PatientAcceptance'" class="vap-itemrow-detail-center">                                        
+					                 <label class="vap-item-access-label">Complete Date :</label>
+                                     <label class="vap-item-access-value">{{ dataItem.CompleteDate | date: 'MM/dd/yy' }}</label>
+			                     </div>    
+                             </div>
+                             <div ng-if="dataItem.StepCode === 'PatientAcceptance' && (dataItem.RefusalReason != null && dataItem.RefusalReason != undefined && dataItem.RefusalReason != '')" class="vap-itemrow-detail">  
+                                 <div class="vap-itemrow-detail-left">
+					                 <label class="vap-item-access-label">Refused Reason :</label>   
+                                     <label class="vap-item-access-value">{{ dataItem.RefusalReason }}</label>                            			                    
+                                 </div>                                             
+                                 <div class="vap-itemrow-detail-center">
+                                    
+                                 </div> 
+                             </div> 
+                             <div ng-if="dataItem.IsSideRegionVisible === true" class="vap-itemrow-detail">
+                                 <div class="vap-itemrow-detail-left">                                     
+					                 <label class="vap-item-access-label">Side :</label>   
+                                     <label class="vap-item-access-value">{{ getLookupItem('AccessSide', dataItem.Side) }}</label>                                         
+                                 </div>
+                                 <div class="vap-itemrow-detail-center">                                     
+                                     <label class="vap-item-access-label">Region :</label>   
+                                     <label class="vap-item-access-value">{{ getLookupItem('AccessRegion',dataItem.Region) }}</label>                                                             			                    
+                                 </div>   
+                             </div>  
+                             <div ng-if="dataItem.IsSideRegionVisible === true" class="vap-itemrow-detail">                                         
+                                 <div class="vap-itemrow-detail-left">                                     
+                                     <label class="vap-item-access-label">Extremity :</label>   
+                                     <label class="vap-item-access-value">{{ getLookupItem('AccessBodyPart',dataItem.Extremity) }}</label>  
+                                 </div>
+                                 <div class="vap-itemrow-detail-center crd-kendocheck-small">    
+                                     <label class="vap-item-access-label">Beltline :</label>
+                                     <label class="vap-item-access-value crd-kendocheck-smaller">
+                                        <input type="checkbox" id="vap-item-access-beltline-{{ dataItem.UID }}" ng-model="dataItem.BeltLine"
+                                            class="k-checkbox" ng-disabled="true">
+			                            <label class="k-checkbox-label" for="vap-item-access-beltline-{{ dataItem.UID }}"></label>  
+                                     </label>                                                                                                                 
+                                 </div> 
+                             </div> 
+                             <div ng-if="dataItem.StepCode != 'PatientAcceptance' && ((dataItem.DelayReason != null && dataItem.DelayReason != undefined && dataItem.DelayReason != '') || (dataItem.DelayReasonOther != null && dataItem.DelayReasonOther != undefined && dataItem.DelayReasonOther != ''))" class="vap-itemrow-detail">
+                                 <div ng-if="dataItem.DelayReason" class="vap-itemrow-detail-left">
+					                 <label class="vap-item-access-label">Delay Reason :</label>   
+                                     <label class="vap-item-access-value">{{ dataItem.DelayReason }}</label>                            			                    
+                                 </div>  
+                                 <div ng-if="dataItem.DelayReasonOther" class="vap-itemrow-detail-center">
+					                 <label class="vap-item-access-label">Delay Reason Other :</label>   
+                                     <label class="vap-item-access-value">{{ dataItem.DelayReasonOther }}</label>                            			                    
+                                 </div>
+                             </div>   
+                             <div class="vap-itemrow-detail" ng-if="dataItem.StepCode != 'PatientAcceptance'">                                         
+                                 <div class="vap-itemrow-detail-left">
+                                     <label class="vap-item-access-label" for="vap-item-access-skipped-{{ dataItem.UID }}">Skip Step :</label>
+                                     <label class="vap-item-access-value crd-kendocheck-smaller">
+                                        <input type="checkbox" id="vap-item-access-skipped-{{ dataItem.UID }}" ng-model="dataItem.IsSkipped"
+                                            class="k-checkbox" ng-disabled="true">
+			                            <label class="k-checkbox-label" for="vap-item-access-skipped-{{ dataItem.UID }}"></label>  
+                                     </label>                                       
+                                 </div> 
+                             </div>
+                             <div class="vap-itemrow-detail vap-itemrow-detail-notes">
+                                 <div class="vap-itemrow-detail-notes-divone">
+					                 <label>Notes :</label>  
+                                 </div>
+                                 <div class="vap-itemrow-detail-notes-divtwo">
+                                     <label>{{ dataItem.Note }}</label>
+                                 </div>                                                                 			                                                 
+                             </div> 
+                         </div>
+                    </div>   
+                </div>                    
+            </div>            
+        </kendo-mobile-list-view>
+    </div>
+
+    <!-- Edit Vap Step modal View -->
+    <kendo-mobile-modal-view ng-controller="EditVapStepController" id="edit-vapstep-modalview" class="crd-modalview">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>  
+                <kendo-mobile-button kendo-touch k-on-tap="onCancelVapStepClick()" k-align="'left'">Cancel</kendo-mobile-button>                                     
+                <kendo-mobile-button  kendo-touch k-on-tap="onSaveVapStepClick()" k-align="'right'">Save</kendo-mobile-button>                 
+            </kendo-mobile-nav-bar>            
+        </kendo-mobile-header>
+        <!-- First Step -->
+        <div ng-show="model.IsFirstStep" id="edit-vapstep-firststep">
+            <div class="modalview-edit-row">                        
+                <div class="modalview-edit-row-div-left crd-kendoradio-big">
+                    <input type="radio" name="modalview-vap-agreed-radio" id="modalview-vap-agreed-radio" class="k-radio"
+                           ng-model="model.Step.HasAgreed" value="true" ng-change="onHasAgreedChange()">
+                    <label class="k-radio-label" for="modalview-vap-agreed-radio"><span>Agreed</span></label>                 
+                </div>     
+                <div class="modalview-edit-row-div-right">
+                    <label class="crd-inline">Agreed Date</label>   
+                    <input kendo-date-picker class="crd-datepicker" id="modalview-vap-agreeddate" name="modalview-vap-agreeddate" 
+                           k-ng-model="model.Step.AgreeDate" k-options="model.AgreeDateConfig" ng-disabled="model.Step.HasAgreed === 'false'"  
+                           ng-required="model.Step.HasAgreed === 'true'" validationmessage="required" data-datevalid-msg=""/>
+                    <span data-for="modalview-vap-agreeddate" class="k-invalid-msg"></span>                                     				
+                </div> 
+            </div>
+            <div class="modalview-edit-row">                        
+                <div class="modalview-edit-row-div-left crd-kendoradio-big">
+                    <input type="radio" name="modalview-vap-refused-radio" id="modalview-vap-refused-radio" class="k-radio"
+                           ng-model="model.Step.HasAgreed" value="false" ng-change="onHasAgreedChange()">
+                    <label class="k-radio-label" for="modalview-vap-refused-radio"><span>Refused</span></label>                 
+                </div>     
+                <div class="modalview-edit-row-div-right">
+                    <label class="crd-inline">Refused Date</label>   
+                    <input kendo-date-picker class="crd-datepicker" id="modalview-vap-refuseddate" name="modalview-vap-refuseddate" 
+                           ng-model="model.Step.RefuseDate" k-options="model.RefuseDateConfig" ng-disabled="model.Step.HasAgreed === 'true'" 
+                           ng-required="model.Step.HasAgreed === 'false'" validationmessage="required" data-datevalid-msg=""/>
+                    <span data-for="modalview-vap-refuseddate" class="k-invalid-msg"></span>                                      				
+                </div> 
+            </div>
+            <div class="modalview-edit-row">                        
+                <div class="modalview-edit-row-div-left">
+                    <label>Refused Reason</label>
+                    <select kendo-drop-down-list name="modalview-vap-refusedreason" class="modalview-edit-select" id="modalview-vap-refusedreason" 
+                            ng-model="model.Step.RefusalReasonCode" k-options="model.RefusedReasonsConfig" 
+                            ng-disabled="model.Step.HasAgreed === 'true'" ng-required="model.Step.HasAgreed === 'false'" validationmessage="required">
+                    </select>  
+                    <span data-for="modalview-vap-refusedreason" class="k-invalid-msg"></span>              
+                </div>                     
+            </div>
+            <div class="modalview-edit-row modalview-edit-row-notes">                        
+                <div class="modalview-edit-row-div-left modalview-edit-row-div-left-notes">
+                    <label>Notes</label>
+                    <textarea ng-model="model.Step.Note" rows="4" cols="60"></textarea>                                                       
+                </div>                     
+            </div>
+        </div>
+        <!-- Rest Steps -->
+        <div ng-hide="model.IsFirstStep" id="edit-vapstep-reststep">
+            <div class="modalview-edit-row">                        
+                <div class="modalview-edit-row-div-left">
+                    <label class="crd-inline">Appointment Date</label>   
+                    <input kendo-date-picker class="crd-datepicker" id="modalview-vap-apptdate" name="modalview-vap-apptdate" 
+                           k-ng-model="model.Step.SchedDate" k-options="model.ApptDateConfig" data-apptdaterequired-msg="" data-datevalid-msg=""/>
+                    <span data-for="modalview-vap-apptdate" class="k-invalid-msg"></span>                  
+                </div>     
+                <div class="modalview-edit-row-div-right">
+                    <label class="crd-inline">Complete Date</label>   
+                    <input kendo-date-picker class="crd-datepicker" id="modalview-vap-completedate" name="modalview-vap-completedate" 
+                           k-ng-model="model.Step.CompleteDate" k-options="model.CompleteDateConfig" ng-disabled="model.Step.IsSkipped" data-daterequired-msg="" 
+                           data-datevalid-msg="" data-completedategreaterthantoday-msg="" data-completedatelessthanprior-msg="" />
+                    <span data-for="modalview-vap-completedate" class="k-invalid-msg"></span>                                      				
+                </div> 
+            </div>
+            <div class="modalview-edit-row" ng-show="model.Step.IsSideRegionVisible">                        
+                <div class="modalview-edit-row-div-left">
+                    <label>Side</label>   
+                    <select kendo-drop-down-list name="modalview-vap-accesssides" class="modalview-edit-select" 
+                            id="modalview-vap-accesssides" ng-model="model.Step.Side" k-options="model.AccessSidesConfig" 
+                            ng-required="model.Step.IsSideRegionVisible" validationmessage="required">
+                    </select>
+                    <span data-for="modalview-vap-accesssides" class="k-invalid-msg"></span>                  
+                </div>     
+                <div class="modalview-edit-row-div-right">
+                    <label>Region</label>   
+                    <select kendo-drop-down-list name="modalview-vap-accessregions" class="modalview-edit-select"
+                            id="modalview-vap-accessregions" ng-model="model.Step.Region" k-options="model.AccessRegionsConfig"
+                            ng-required="model.Step.IsSideRegionVisible" validationmessage="required"></select>
+                    <span data-for="modalview-vap-accessregions" class="k-invalid-msg"></span>                                        				
+                </div> 
+            </div>
+            <div class="modalview-edit-row" ng-show="model.Step.IsSideRegionVisible">                        
+                <div class="modalview-edit-row-div-left">
+                    <label>Extremity</label>   
+                    <select kendo-drop-down-list name="modalview-vap-extremities" class="modalview-edit-select"
+                            id="modalview-vap-extremities" ng-model="model.Step.Extremity" k-options="model.ExtremitiesConfig"
+                            ng-required="model.Step.IsSideRegionVisible" validationmessage="required"></select>
+                    <span data-for="modalview-vap-extremities" class="k-invalid-msg"></span>                  
+                </div>     
+                <div class="modalview-edit-row-div-right crd-kendocheck-big">
+                    <input type="checkbox" id="modalview-vap-beltline" ng-model="model.Step.BeltLine" class="k-checkbox">
+			        <label class="k-checkbox-label" for="modalview-vap-beltline"><span>Beltline</span></label>                    
+                </div> 
+            </div>
+            <div class="modalview-edit-row" ng-show="model.Step.IsDelayReasonVisible">                        
+                <div class="modalview-edit-row-div-left">
+                    <label>Delay Reason</label>   
+                    <select kendo-drop-down-list name="modalview-vap-delayreasons" class="modalview-edit-select"
+                            id="modalview-vap-delayreasons" ng-model="model.Step.DelayReason" k-options="model.DelayReasonsConfig"
+                            data-delayreasonrequired-msg=""></select>  
+                    <span data-for="modalview-vap-delayreasons" class="k-invalid-msg"></span>                                    
+                </div>                     
+            </div>
+            <div class="modalview-edit-row" ng-show="model.Step.DelayReason === 'C14'">                        
+                <div class="modalview-edit-row-div-left" style="width: 100%;">
+                    <label>Delay Reason Other</label>   
+                    <input type="text" class="k-textbox crd-input" name="modalview-vap-delayreasonother" id="modalview-vap-delayreasonother" 
+                           ng-model="model.Step.DelayReasonOther" maxlength="1000" ng-required="model.Step.DelayReason === 'C14'" 
+                           validationmessage="required" />                    
+                    <span data-for="modalview-vap-delayreasonother" class="k-invalid-msg"></span>                  
+                </div>                     
+            </div>
+            <div class="modalview-edit-row">                        
+                <div class="modalview-edit-row-div-left crd-kendocheck-big">                    
+                    <input type="checkbox" id="modalview-vap-isskipped" ng-model="model.Step.IsSkipped" class="k-checkbox"
+                           ng-change="onIsSkippedChange()">
+			        <label class="k-checkbox-label" for="modalview-vap-isskipped"><span>Skip Step</span></label>                    
+                </div> 
+            </div>
+            <div class="modalview-edit-row modalview-edit-row-notes">                        
+                <div class="modalview-edit-row-div-left modalview-edit-row-div-left-notes">                    
+                    <label>Notes</label>
+                    <textarea ng-model="model.Step.Note" rows="4" cols="60"></textarea>                      
+                </div> 
+            </div>
+        </div>
+    </kendo-mobile-modal-view>
+    <!-- Edit Vap Step modal View -->
+
+    <!-- New Vap Plan modal View -->
+    <kendo-mobile-modal-view ng-controller="NewVapPlanController" id="new-vapplan-modalview" class="crd-modalview">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>  
+                <kendo-mobile-button kendo-touch k-on-tap="onCancelNewVapPlanClick()" k-align="'left'">Cancel</kendo-mobile-button>                                     
+                <kendo-mobile-button kendo-touch k-on-tap="onOkNewVapPlanClick()" k-align="'right'">Ok</kendo-mobile-button>                 
+            </kendo-mobile-nav-bar>            
+        </kendo-mobile-header>    
+        <div>
+            <div class="modalview-edit-fullrow">                                        
+                <label class="crd-inline">Plan Start Date</label>   
+                <input kendo-date-picker class="crd-datepicker" id="modalview-vap-planstartdate" name="modalview-vap-planstartdate" 
+                       k-ng-model="model.PlanStartDate" k-options="model.PlanStartDateConfig" k-format="'MM/dd/yyyy'" required data-required-msg="required" 
+                       data-datevalid-msg=""/>
+                <span data-for="modalview-vap-planstartdate" class="k-invalid-msg"></span>                                                       
+            </div>
+            <div class="modalview-edit-fullrow">
+                <label>Desired Permanent Access</label>   
+                <select kendo-drop-down-list name="modalview-vap-desiredaccess" class="modalview-edit-select"
+                        id="modalview-vap-desiredaccess" ng-model="model.DesiredPermanentAccess" k-data-source="model.VAPAccessTypes"
+                        k-data-text-field="'Text'" k-data-value-field="'Value'"
+                        required data-required-msg="required" ng-change="onAccessTypeChanged()"></select>  
+                <span data-for="modalview-vap-desiredaccess" class="k-invalid-msg"></span>
+            </div>
+        </div>   
+        <div id="vap-new-plan-vapsteps">
+            <kendo-mobile-list-view k-data-source="model.VapSteps">
+                <div k-template id="newplan-step-{{ dataItem.Order }}" class="vapstepslist-item" ng-click="onVapItemSelected(dataItem)">
+                    <div class="vap-new-plan-vapsteps-divone">   
+                        <label>Step - {{ dataItem.CustomOrder }}</label>              
+                    </div>
+                    <div class="vap-new-plan-vapsteps-divtwo">
+                        <label>{{ dataItem.StepDescription }}</label> 
+                    </div>
+                </div>
+            </kendo-mobile-list-view>
+        </div>
+    </kendo-mobile-modal-view> 
+
+    <!-- Stop Vap Plan modal View -->
+    <kendo-mobile-modal-view ng-controller="StopVapPlanController" id="stop-vapplan-modalview" class="crd-modalview">
+        <kendo-mobile-header>
+            <kendo-mobile-nav-bar>  
+                <kendo-mobile-button kendo-touch k-on-tap="onCancelStopVapPlanClick()" k-align="'left'">Cancel</kendo-mobile-button>                                     
+                <kendo-mobile-button kendo-touch k-on-tap="onStopVapPlanClick()" k-align="'right'">Stop</kendo-mobile-button>                 
+            </kendo-mobile-nav-bar>            
+        </kendo-mobile-header>    
+        <div>
+            <div class="modalview-edit-fullrow">                                        
+                <label class="crd-inline">Stop Date</label>   
+                <input kendo-date-picker class="crd-datepicker" id="modalview-vap-planstopdate" name="modalview-vap-planstopdate" 
+                       k-ng-model="model.PlanStopDate" k-format="'MM/dd/yyyy'" required data-required-msg="required" data-datevalid-msg=""/>
+                <span data-for="modalview-vap-planstopdate" class="k-invalid-msg"></span>                                                       
+            </div>
+            <div class="modalview-edit-fullrow">
+                <label>Stop Reason</label>   
+                <select kendo-drop-down-list name="modalview-vap-stopreason" class="modalview-edit-select" id="modalview-vap-stopreason"
+                        ng-model="model.StopReason" k-options="model.StopReasonsConfig" required data-required-msg="required">
+                </select>  
+                <span data-for="modalview-vap-stopreason" class="k-invalid-msg"></span>
+            </div>
+            <div class="modalview-edit-row modalview-edit-row-notes" ng-show="model.StopReason === 'OT'">                        
+                <div class="modalview-edit-row-div-left modalview-edit-row-div-left-notes">                    
+                    <label>Stop Reason Notes</label>
+                    <textarea ng-model="model.StopReasonOther" rows="4" cols="60"></textarea>                      
+                </div> 
+            </div>
+        </div>           
+    </kendo-mobile-modal-view> 
+</kendo-mobile-view>

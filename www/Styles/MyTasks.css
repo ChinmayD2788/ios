@@ -1,0 +1,266 @@
+﻿#ptchart-ptdetails-container 
+{
+    background-color: white; 
+    border: 1px solid lightgray; 
+    min-height: 100px;
+}
+
+#mytasks-screenheader
+{
+    margin: 10px 0px; 
+    width: 100%;
+}
+
+#ptchart-ptdetails
+{ 
+    margin: 10px;
+    display: inline-block; 
+    border-radius: 2px;
+    color: #999999; 
+    width: calc(100% - 20px);
+    font-size: 13px !important;
+    font-weight: normal !important;
+    vertical-align: top;
+    background-color: White; 
+    min-height: 100px; 
+}
+
+.ptchart-ptdetails-div
+{
+    width: 25%; 
+    float: left;
+}
+
+.ptchart-ptdetails-div .km-button
+{ 
+    font-weight: bold;
+    background-color: transparent !important;
+    background-image: none !important; 
+    text-decoration: none;
+    padding: 5px !important;
+    text-align: left !important;
+    border: 0px none !important;
+    border-radius: 0px !important;
+    box-shadow: none !important;
+    color: Black !important;
+    display: inline !important;
+}
+
+.ptchart-ptdetails-bold
+{
+    font-size: 14px;
+    font-weight: bold;
+    color: #76787B;
+    /*padding-top: 5px;*/
+    padding-bottom: 5px;
+}
+
+#ptchart-ptdetails-dob
+{
+    float: left;
+}
+
+.pat-condn
+{
+    font-size: 14px !important;
+    color: white;
+    border-radius: 3px;
+    background-color: #73716E;
+    margin-left: 15px;
+    vertical-align: middle !important;
+    float: left!important;
+}
+
+.ptdetails-address-view
+{
+    margin: 15px 15px 0 0;
+    word-wrap: break-word !important;
+    text-transform: uppercase;
+}
+
+#ptchart-mytasks 
+{
+    margin-top: 50px;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    color: #999999; 
+    width: 100%;
+    font-size: 13px !important;
+    font-weight: normal !important;
+    vertical-align: top; 
+    background-color: White; 
+    /*position: fixed !important;*/ 
+    height: 465px !important;
+}
+
+.add-newtask-ul
+{
+    width: 100%; 
+    margin: 0px auto 20px; 
+    padding: 0; 
+    list-style-type: none;
+}
+
+#add-newtask-tasktypes>li
+{
+    line-height: 0.5em; 
+}
+
+#add-newtask-tasktypes input
+{
+    width: 70%; 
+    float: left;
+    font-size: 12px !important;
+}
+
+#modalview-add-newtask
+{
+    width: 500px; 
+    min-height: 350px;
+}
+
+#select-tasktype-list label, #select-tasktypes label
+{
+    font-size: 14px; 
+    color: #9E9FA1;
+}
+
+#newtask-duedate-calendar-div
+{
+    color: #9E9FA1;
+    text-align: center;
+}
+
+#add-newtask-tasktypes .k-widget.k-invalid-msg
+{
+    float: right;
+}
+
+#task-description
+{
+    vertical-align: middle;
+}
+
+#task-description .k-widget.k-invalid-msg
+{
+    top: 5px; 
+    left: 325px; 
+    position: relative;
+}
+
+.task-completedincpp
+{
+    font-size: 12px;
+    color: #C3C3C3;
+}
+
+.mytasks-taskdescription
+{
+    float: left;
+    width: 55%;
+}
+
+.mytasks-task-actions
+{
+    float: right;
+    font-size: 13px !important; 
+    font-weight: 600; 
+}
+
+.mytasks-actions
+{
+    color: #56A0D3 !important;
+    font-weight: normal !important;
+    margin-top: 10px;
+}
+
+.delegated-task
+{
+    color: #808285 !important;
+    font-style: italic;
+    margin-top: 8px;
+}
+
+.mytasks-task-duedate 
+{ 
+    text-align: right;
+}
+
+#updatetask-comments
+{
+    height: 150px;
+}
+
+#updatetask-comments .k-widget.k-invalid-msg
+{
+    bottom: 20px;
+    left: 385px;
+    position: relative;
+}
+
+#addtask-task-description-textarea-one
+{
+    resize: none; border: 1px inset; width: 69%;
+}
+
+#select-tasktypes
+{
+    height: 500px;
+}
+
+.mytask-not-completeable
+{
+    margin-top: 10px;
+}
+
+
+#modalview-completetask 
+{
+    width: 500px;
+    min-height: 200px;
+}
+
+
+#addtask-task-description-textarea-two
+{
+    resize: none; 
+    border: 1px inset;
+    width: 70%; 
+    margin-top: 4px;
+}
+
+.ptchart-ptdetails-comorbids
+{
+    padding-left: 20px !important;
+}
+/*#select-tasktype-list li {
+border-width: 0 0 1px 0;
+}*/
+
+#mytask-btnrolepopover
+{
+    color: #56A0D3 !important;    
+    text-transform: none;
+    border-style: none!important;
+    font-size: 13px !important;
+    padding: 0;       
+}
+
+
+#mytask-btnrolepopover.km-button:active, #mytask-btnrolepopover.k-button:active{
+    color: #56A0D3 !important;
+    background-color: white !important;
+    border-color: transparent !important;
+    border-width: 0px !important;
+    background-image: none !important;
+    box-shadow: none !important;   
+}
+
+#dlgtasktext{
+    color: #56A0D3 !important;
+}
+
+#RolePopOver.km-popup.km-pane
+{
+ min-height:75px;
+}

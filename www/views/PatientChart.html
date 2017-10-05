@@ -1,0 +1,90 @@
+<kendo-mobile-split-view  k-style="'vertical'" id="ptchart-main-splitview" ng-controller="PatientChartHeaderController" k-reload="true">
+	<kendo-mobile-pane id="ptchart-top-pane" k-layout="'side-default'" >
+		<kendo-mobile-view>
+			<kendo-mobile-header class="crd-headerbg">
+				<kendo-mobile-nav-bar>
+					<div id="ptChartHeader" data-align="left" style="visibility:hidden" >
+                        <kendo-mobile-button kendo-touch class="ptchart-header-submenu-crumb" k-on-tap="ptChartButtonClick()">Pt Chart</kendo-mobile-button>
+						<span class="ptchart-header-submenu-crumb-separator"></span>
+                        <kendo-mobile-button class="ptchart-header-tab-crumb">
+                            <span id="selectedMenuText" class="ptchartSubMenuText">xxxxxxxxxxxxxxxxx</span>
+                        </kendo-mobile-button>
+					</div>
+
+					<span id="ptchart-mvp">MVP</span>
+					<span class="crd-header-center-text">{{ model.Patient.Name }} </span>                 
+					<span class="crd-header-center-text-memid">(Mem ID : {{ model.Patient.ID }})</span>					
+					
+                    <kendo-mobile-button class="username-header" k-align="'right'" k-rel="'popover'" href="#logOutPopOver">
+                        <span class="icon-user"></span>
+                        <span>{{ model.LoggedInUser.FirstName }} {{ model.LoggedInUser.LastName }}</span>
+                    </kendo-mobile-button>
+
+                    <kendo-mobile-button kendo-touch k-on-tap="home()" k-align="'right'" class="ptchart-header-homeicon">
+                        <span class="homeicon"></span>
+                    </kendo-mobile-button>						
+					
+				</kendo-mobile-nav-bar>
+			</kendo-mobile-header>
+		</kendo-mobile-view>
+	</kendo-mobile-pane>
+
+    <kendo-mobile-pane id="ptchart-middle-pane" k-layout="'main-default'">
+        <kendo-mobile-split-view id="ptchart-splitview" k-style="'horizontal'" ng-controller="PatientChartMenuController" >
+            
+            <!--Menu-->
+            <kendo-mobile-pane id="ptchart-side-pane" k-layout="'side-default'">
+                <kendo-mobile-view id="side-root" style="display: block !important;" k-layout="'mobile-tabstrip'">
+                    <div id="ptchart-view-submenus-list">
+                        <kendo-mobile-list-view k-data-source="model.PatientChartMenu.SubMenus" id="ptchart-view-menus-submenus" k-on-click="subMenuClick(kendoEvent)">
+                            <div k-template>
+                                <span ng-style="{ 'background-color': dataItem.FrontColor }" class="ptchart-view-ptmetrics">&nbsp;</span>
+                                <a id="{{ dataItem.UID }}-{{ dataItem.Screen }}" ng-class="{{dataItem.LiClass}}">
+                                    {{ dataItem.Text }}
+                                    <br/>
+                                    <span ng-bind-html="dataItem.MetricsHtml | unsafe"></span>
+                                </a>
+                            </div>
+                        </kendo-mobile-list-view>
+                    </div>
+
+                    <div id="ptchart-view-tabs-list">
+                        <kendo-mobile-list-view id="ptchart-view-menus-tabs" k-data-source="model.PatientChartMenu.Tabs" k-on-click="loadSubTabs(kendoEvent)">
+                            <div k-template>
+                                <a id='{{dataItem.UID}}-{{dataItem.Screen}}' class="hide km-listview-link ptchart-menutext">{{ dataItem.Text }}<span ng-if="dataItem.Text ==='Active Care Plans'" class="margin-left-5-px">({{activeCarePlanCount}})</span></a>
+                            </div>
+                        </kendo-mobile-list-view>
+                    </div>
+                    <!--<kendo-mobile-footer id="ptchart-view-pathway-screening" ng-show="ShowPathwayScreening">
+                        <kendo-mobile-button id="ptchart-pathway-screening-btn" k-align="'right'" k-rel="'popover'" href="#pathway-screening-detail">
+                            <div id="ptchart-pathway-screening-span"></div>
+                        </kendo-mobile-button>
+                        <kendo-mobile-pop-over id="pathway-screening-detail" k-popup='{"height": "30em", "width": "12.8em"}'>
+                            <kendo-mobile-view ng-controller="PatientChartPathwayController" class="do-not-destroy">
+                                <kendo-mobile-list-view id="ptchart-view-tabs-pathway" k-on-click="pathwayTabClick(kendoEvent)" k-data-source="model.PathwayScreeningMenu.SubMenus">
+                                    <div k-template>
+                                        <a id='{{dataItem.UID}}-{{dataItem.Screen}}' class="hide km-listview-link ptchart-menutext">{{ dataItem.Text }}</a>
+                                    </div>
+                                </kendo-mobile-list-view>
+                            </kendo-mobile-view>
+                        </kendo-mobile-pop-over>
+                    </kendo-mobile-footer>-->
+                    <kendo-mobile-footer></kendo-mobile-footer>
+                </kendo-mobile-view>               
+            </kendo-mobile-pane>
+
+            <!--Views-->
+            <kendo-mobile-pane id="ptchart-splitview-main-pan" k-layout="'main-default'" k-reload="true">
+                <kendo-mobile-view style="display: block !important;"></kendo-mobile-view>
+                <kendo-mobile-layout k-id="'main-default'">
+                    <kendo-mobile-footer>                        
+                        <div class="actionitems-view ptchart-actionitems-view" ng-include="Global.Templates.Alerts.Url">
+                        </div>
+                        <div class="openpatients-view" ng-include="Global.Templates.OpenPatients.Url">
+                        </div>                       
+                    </kendo-mobile-footer>
+                </kendo-mobile-layout>
+            </kendo-mobile-pane>                           
+        </kendo-mobile-split-view>              
+    </kendo-mobile-pane>       
+</kendo-mobile-split-view>

@@ -1,0 +1,180 @@
+﻿#accessinfolist
+{   
+    width: 100%;
+    margin-top: 10px;
+    border: 2px solid rgb(218, 218, 218);
+}
+
+.accessinfo-stepdetail-row
+{   
+    background-color: white;    
+    color: #808285;
+    font-weight: bold;
+}
+
+.accessinfo-stepdetail-row-placeddate
+{
+    float: right; 
+    margin-right: 5px;
+}
+
+.accessinfo-stepdetail-row-top-left
+{
+    width: 50px;
+    float: left;
+    vertical-align: middle;
+    height: 36px;
+}
+
+.accessinfo-stepdetail-row-top-left-upper
+{
+    height: 14px;    
+    margin-left: 24px;
+    border: 1px solid rgb(218, 218, 218);   
+    width: 0px;
+}
+
+.accessinfo-stepdetail-row-top-left-middle
+{
+    margin-left: 18px;
+}
+
+.accessinfo-stepdetail-row-top-left-lower
+{
+    height: 25px;  
+    margin-left: 24px;
+    border: 1px solid rgb(218, 218, 218);  
+    width: 0px;
+}
+
+.accessinfo-stepdetail-row-top-right
+{
+    width: calc(100% - 50px);
+    display: inline-block;
+    vertical-align: middle;
+    border-bottom: 2px solid rgb(218, 218, 218);
+    padding: 15px 0px;
+    border-bottom-color: #E3E3E4;    
+    cursor: pointer;
+}
+
+.accessinfo-stepdetail-row-bottom
+{
+    display: none;    
+    font-size: 12px;        
+}
+
+.accessinfo-stepdetail-row-bottom-left 
+{
+    width: 24px;
+    float: left;
+    vertical-align: middle;
+}
+
+.accessinfo-stepdetail-row-bottom-left-upper
+{
+    height: 100%; 
+    margin-left: 50%;
+    border: 1px solid rgb(218, 218, 218);    
+    width: 0px;
+    visibility: hidden;
+}
+
+.accessinfo-stepdetail-row-bottom-right
+{
+    width: calc(100% - 25px);
+    display: inline-block;
+    vertical-align: middle;
+    padding-top: 20px;
+    padding-left: 25px;
+    border-left: 2px solid rgb(218, 218, 218);
+    font-weight: normal;    
+}
+
+.accessinfo-itemrow-detail
+{
+    display: inline-block;    
+    width: 100%;    
+}
+
+.accessinfo-itemrow-detail-left
+{ 
+    float: left;    
+    margin-top: 0;
+    width: 42%;
+}
+
+.accessinfo-itemrow-detail-center
+{    
+    width: 57%;
+    float: right;
+    display: inline-block; 
+}
+
+.accessinfo-item-label-second-column
+{
+    float: left;
+    width: 66%;
+    display: inline-block;    
+}
+
+.accessinfo-item-access-label
+{
+    margin: 0 8px 8px 0;
+    float: left;
+    width: 60%;
+}
+
+.accessinfo-item-access-value 
+{
+    display: inline-block; 
+    float: left;
+    width: 34%;  
+}
+
+.accessinfo-stepdetail-active
+{
+    background-color: #EEF5FB !important;    
+}
+
+.accessinfo-stepdetail-inactive
+{
+    background-color: transparent !important;
+}
+
+#accessinfolist .km-list>li
+{
+    padding: 0;
+    border: none;
+}
+
+.accessinfo-itemrow-detail label
+{
+    color: #A7AAAF;
+    font-weight: normal;
+}
+
+.accessinfo-item-access-label-title
+{
+    color: #A7AAAF;
+    font-weight: bold !important;
+}
+
+.accessinfo-itemrow-detail-right
+{
+    position: absolute;
+    right: 0;
+}
+
+.accessinfo-stepdetail-row-bottom-right-div
+{
+    border-bottom: 2px solid rgb(218, 218, 218);   
+    width: 103%;
+}
+
+#add-edit-accessinfo-modalview
+{
+    width: 825px;
+    text-align: left;
+    height: 500px;
+}

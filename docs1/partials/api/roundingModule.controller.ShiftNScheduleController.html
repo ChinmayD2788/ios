@@ -1,0 +1,88 @@
+<h1><code ng:non-bindable="">ShiftNScheduleController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-shiftnschedulecontroller-page"><p>Controller for  the Dialysis Schedule and Shift Screen</p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_editdayschedule">editDaySchedule(day, $event)</h3>
+<div class="editdayschedule"><div class="-scope-editdayschedule-page"><p>Using to edit the Day Schedule.</p>
+</div><h5 id="methods_editdayschedule_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>day</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="-scope-editdayschedule-page"><p>day string.</p>
+</div></td></tr><tr><td>$event</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-editdayschedule-page"><p>Angular Event variable</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_saveschedule">saveSchedule(d)</h3>
+<div class="saveschedule"><div class="-scope-saveschedule-page"><p>Using to send save Schedule request to Service.</p>
+</div><h5 id="methods_saveschedule_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>d</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-saveschedule-page"><p>Scheduler object</p>
+</div></td></tr></tbody></table><h5 id="methods_saveschedule_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="-scope-saveschedule-page"><p>data
+Scheduler object</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_toupper">toUpper(str)</h3>
+<div class="toupper"><div class="-scope-toupper-page"><p>Using to upper-case String.</p>
+</div><h5 id="methods_toupper_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>str</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="-scope-toupper-page"><p>any string.</p>
+</div></td></tr></tbody></table><h5 id="methods_toupper_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="-scope-toupper-page"><p>up</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_data">Data()</h3>
+<div class="data"><div class="data-page"><p>Using to  get objects: Schedule, ScheduledTime, ClearSelectedDaySchedule, and boolean SaveInProgress.</p>
+</div><h5 id="methods_data_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="data-page"><p>itself properties</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_canceleditdayschedule">cancelEditDaySchedule()</h3>
+<div class="canceleditdayschedule"><div class="canceleditdayschedule-page"><p>Using to cancel Edit Day Schedule.</p>
+</div></div>
+</li>
+<li><h3 id="methods_cancelschedule">cancelSchedule()</h3>
+<div class="cancelschedule"><div class="cancelschedule-page"><p>Using to cancel Schedule.</p>
+</div></div>
+</li>
+<li><h3 id="methods_cleardayschedule">clearDaySchedule()</h3>
+<div class="cleardayschedule"><div class="cleardayschedule-page"><p>Using to clear Day Schedule.</p>
+</div></div>
+</li>
+<li><h3 id="methods_converhours">converHours(h, m)</h3>
+<div class="converhours"><div class="converhours-page"><p>Using to convert time to AM/PM with mask &quot;00 : 00 A&quot;.</p>
+</div><h5 id="methods_converhours_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>h</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="converhours-page"><p>(hours)</p>
+</div></td></tr><tr><td>m</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="converhours-page"><p>(minutes)</p>
+</div></td></tr></tbody></table><h5 id="methods_converhours_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="converhours-page"><p>data (schedule object)</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_onpatientscheduleretrieved">onPatientScheduleRetrieved(result)</h3>
+<div class="onpatientscheduleretrieved"><div class="onpatientscheduleretrieved-page"><p>callBack for get Schedule data service method </p>
+</div><h5 id="methods_onpatientscheduleretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="onpatientscheduleretrieved-page"><p>Result object
+Schedule Details </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_preparesaverequest">prepareSaveRequest(d)</h3>
+<div class="preparesaverequest"><div class="preparesaverequest-page"><p>Using to populate the Schedule object.</p>
+</div><h5 id="methods_preparesaverequest_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>d</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="preparesaverequest-page"><p>Scheduler object</p>
+</div></td></tr></tbody></table><h5 id="methods_preparesaverequest_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="preparesaverequest-page"><p>data (schedule object)</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_setscheduletimes">setScheduleTimes(str)</h3>
+<div class="setscheduletimes"><div class="setscheduletimes-page"><p>Using to set Schedule time.</p>
+</div><h5 id="methods_setscheduletimes_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>str</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="setscheduletimes-page"><p>Scheduler object</p>
+</div></td></tr></tbody></table><h5 id="methods_setscheduletimes_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="setscheduletimes-page"><p>ScheduleTimes</p>
+</div></td></tr></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopeschedule">$scope.Schedule</h3>
+<div class="$scopeschedule"><div class="roundingmodule-controller-page roundingmodule-controller-shiftnschedulecontroller-page"><p>the Current Schedule, default value []</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeweekdays">$scope.WeekDays</h3>
+<div class="$scopeweekdays"><div class="roundingmodule-controller-page roundingmodule-controller-shiftnschedulecontroller-page"><p>Week days schedule boolean array, default values &#39;false&#39; of all day names </p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopescheduledday">$scope.scheduledDay</h3>
+<div class="$scopescheduledday"><div class="roundingmodule-controller-page roundingmodule-controller-shiftnschedulecontroller-page"><p>json object , default values: day = null; data = null</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,438 @@
+﻿#meds-header-alerts
+{
+    background-color: #DC6060;
+    color: #FDFDFF;
+    border-radius: 5px;
+    border-bottom-color: #BC5454;
+    border-top-color: #E18F8F;
+    border-left-color: #E18F8F;
+    border-right-color: #E18F8F;
+    height: 40px;
+    width: 100%;
+    margin-top: 40px;   
+    border-style: solid;
+    border-width: 2px;
+    font-weight: bold;
+}
+
+/*.meds-active-alerts:before, .meds-mpr-alerts:before
+{
+    content: url('../Images/Icon_Priority_Overdue.png');
+}*/
+
+#meds-header-alerts div {
+    float: left;
+    margin: 12px;
+}
+
+#medication-tab-strip
+{
+    border: none;
+    margin-top: 12px;
+    min-height: 490px;
+    position: inherit;
+}
+
+#medication-tab-strip .k-tab-on-top
+{
+    border-bottom-color: rgb(192, 192, 192) !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-bottom-style: solid !important;
+    border-bottom-width: 0px !important;
+    border-left-color: rgb(192, 192, 192) !important;
+    border-left-style: solid !important;
+    border-left-width: 1px !important;
+    border-right-color: rgb(192, 192, 192) !important;
+    border-right-style: solid !important;
+    border-right-width: 1px !important;
+    border-top-color: rgb(192, 192, 192) !important;
+    border-top-left-radius: 4px !important;
+    border-top-right-radius: 4px !important;
+    border-top-style: solid !important;
+    border-top-width: 1px !important;
+    background-color: rgb(255, 255, 255) !important;
+}
+
+#medication-tab-strip .k-tab-on-top a {
+    color: #808285 !important;
+    background-color: transparent;
+    font-weight: bold;
+}
+
+#medication-tab-strip .k-tabstrip-items :not(.k-tab-on-top) {
+    border: 0px;    
+}
+
+.medtabs a {
+    color: white !important;
+    background-color: #BCBEC0;
+    padding: 0px;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 8px;
+    height: 16px;
+    border-radius: 4px !important;
+    font-weight: bold;
+}
+
+.medtabs.medications
+{
+    padding-bottom : 0px !important;
+}
+
+.medcontent, .medtabs
+{
+    border-color: silver !important;
+}
+
+.medcontent
+{
+    color: #808285 !important;
+}
+
+#alrg-list-scrolls, #meds-list-scrolls
+{
+    height: 455px;
+}
+
+_:-ms-fullscreen, :root #alrg-list-scrolls, #meds-list-scrolls
+{
+    height: 620px;
+}
+
+.alrg-header, .meds-header
+{
+    font-weight: bold;
+    border-bottom: 2px solid;
+}
+
+.alrg-header, .alrg-content, .meds-header, .meds-content
+{
+    width: 100%;
+    height: 20px;
+    margin-top: 15px;
+}
+
+.alrg-header div, .alrg-content div, .meds-header div, .meds-content div
+{
+    float: left;
+}
+
+.alrg-class
+{
+    width: 150px;
+}
+
+.alrg
+{
+    min-width: 150px;
+    width: calc(100% - 350px);
+}
+
+.alrg-symptom
+{
+    width: 150px;
+}
+
+.alrg-delete
+{
+    width: 50px;
+}
+
+#alrg-list-scrolls .km-list>li, #meds-list-scrolls .km-list>li
+{
+    padding: 0;    
+}
+
+.alrg-delete .icon-delete-button
+{
+    margin-left: 12px;
+}
+
+.meds-label
+{
+    width: calc(100% - 440px);
+}
+
+.meds-mpr, .meds-alert, .meds-alerts
+{
+    width: 50px;
+}
+.meds-dose
+{
+    width:60px;
+}
+
+.meds-frequency
+{
+    width: 85px;
+}
+
+.meds-source
+{
+    width: 135px;
+}
+
+.meds-review-date
+{
+    width: 100%;
+}
+
+.meds-review-date, .meds-perform-scr-date {
+    font-size: smaller;
+    font-weight: normal;
+    font-style: italic;
+    color: inherit;
+    clear: both;
+}
+
+.alrg-filter {
+    float: right;
+}
+
+.alrg-filter, .meds-filter {
+    margin: 9px 9px 9px 0px;
+}
+
+.med-filters {
+    margin-top: 3px;
+}
+
+.med-filters div {
+    float: right;
+}
+
+.alrg-add
+{   
+    width: calc(100% - 10px);
+    /*border-width: 1px; border-color: rgb(192, 192, 192); border-style: solid;*/ 
+    height: 50px;
+    border-radius: 7px;
+    background-color: #FFF;
+}
+
+.add-alrg-class
+{
+    width: 115px;
+}
+
+.add-alrg-margin
+{
+    margin-top: 6px;    
+}
+
+.add-alrg-class .k-dropdown
+{
+    width: auto;
+    font-size: 15px;
+    font-weight:bold;
+}
+
+.add-alrg-symptom
+{    
+    margin-left: 20px;
+}
+
+#add-alrg-symptom-text
+{
+    width: 150px;
+}
+
+.add-alrg-cancel, .add-alrg-save
+{
+    width: 65px;
+    margin-top: 6px;
+    float: right !important;
+}
+
+
+#acAllergy:-ms-input-placeholder ,#add-alrg-symptom-text:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #9E9C9A !important;
+}
+
+#alrg-autocomplete .med-autocomplete
+{
+    width: 280px;
+}
+
+.add-alrg-alrg-autocomplete 
+{
+    margin-left: 20px;
+}
+
+.meds-perform-scr-date
+{
+    color: rgb(116, 104, 104);
+    padding-top: 0px !important;   
+}
+
+#meds-reviewdate-modalview {
+    width: 560px;
+    text-align: center;
+    height: 405px;
+}
+
+#meds-review-calendar-div
+{
+    color: #9E9FA1;
+    text-align: center;
+}
+
+.meds-review-pt-check-li {    
+    color: #9E9FA1;    
+    border-top: 1px inset;
+    width: 100%;
+    float: left;
+}
+
+.meds-review-pt-check {
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 85px;
+}
+
+#add-meds-modalview
+{
+    width: 820px;
+    text-align: left;
+    height: 704px;
+}
+
+.add-meds-input
+{
+    text-transform: none;
+    font-weight: bold;
+}
+
+.add-meds-input .k-tooltip-validation {
+    font-weight: normal;
+}
+
+.add-meds-input .k-numerictextbox input {  
+    height: 1.65em !important;
+}
+
+.add-meds-input-size
+{
+    height: 20px !important; 
+    width: 95%;   
+}
+
+.add-meds-lbl
+{
+    font-size: 10px;
+}
+
+.add-meds-lbl, .add-meds-input
+{
+    clear: both;
+    margin: 2px;
+}
+
+.add-meds-field
+{
+    padding: 5px;
+    border: 1px solid #CCCCCC;
+    color: #808080;
+    text-transform: uppercase;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: normal;
+    float: left;
+    height: 59px;
+}
+
+.add-meds-esa
+{
+    width: 15%;
+}
+.add-meds-label-name
+{
+    width: calc(85% - 5px);
+}
+.add-meds-c12
+{
+    width: calc(33% - 4px);
+}
+.add-meds-c3
+{
+    width: calc(31% - 4px);
+}
+.add-meds-c1
+{
+    width: calc(99% - 5px);
+}
+.add-meds-c2
+{
+    width: calc(49% - 5px);
+}
+
+/*.med-autocomplete 
+{
+    height: 25px !important;
+}   */
+
+.med-details
+{
+    display: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding-left: 15px;
+    min-height: 160px;
+}
+.med-details-header
+{
+    padding: 10px 0px 10px 0px;
+}
+.med-details-c
+{
+    padding: 0px 0px 10px 0px;
+    width: 40%;
+    float: left;
+}
+.med-details-c div
+{
+    float: left;
+}
+.med-details-label
+{
+    width: 90px;
+    color: #A7AAAF;
+}
+.med-details-value
+{
+    width: calc(100% - 100px);
+}
+#edit-meds
+{
+    float: right;
+}
+.med-details-active
+{
+    background-color: #EEF5FB !important;    
+}
+.med-details-inactive
+{
+    background-color: transparent !important;
+}
+
+.meds-header-separator
+{
+    clear: both;
+    background-color: #C0C0C0 !important;
+    width: 100%;
+    height: 3px;
+    border: none !important;
+    margin-top: 7px;
+}
+
+#add-meds-modalview .k-widget.k-invalid-msg
+{
+    position: relative;
+}
+
+#medication-tab-strip .k-tabstrip-items .k-state-active{
+    padding-bottom: 15px;
+}

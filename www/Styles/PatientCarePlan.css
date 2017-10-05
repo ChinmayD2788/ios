@@ -1,0 +1,387 @@
+﻿.goals-item-row{
+    float: left;
+    width: 100%;
+    padding: 7px 0px;
+}
+.goals-item-column-one{
+    float: left;
+    width: 40%;
+}
+.goals-item-column-two{
+    float: left;
+    width: 60%;
+}
+.goals-item-row-label,.goals-item-row-val{
+    color:#000000;
+    font-size: 13px !important;
+    text-align:justify;
+}
+.goals-item-row-label{
+    font-weight: bold;
+}
+.goals-item-row-care-topic{
+    font-size: 14px !important;
+    color:#007aff;
+}
+.crd-width-20-percent{
+    width:20% !important;
+}
+.crd-width-80-percent{
+    width:80% !important;
+}
+.goals-tab-listview{
+    width: 98%;
+    float: left;
+    margin: 0% 1%;
+    padding: 5px 0px;
+}
+.goals-tab-listview-bottom{
+    border-bottom: 1px solid #ddd;   
+}
+
+/* below CSS updated by AM  */
+
+.patient-care-plan-overdue
+{
+    width: 2%;
+    float: left;
+    margin-right: 5px !important;
+    margin-left: 5px !important;
+}
+
+.patient-care-plan-topic
+{
+    width: 30%;
+    float: left;
+}
+
+.clinical-relevance
+{
+    width:30%;
+    float: left;
+    margin-right: 10px;
+}
+.duedate
+{
+    width: 20%;
+    float: left;
+}
+
+.status{
+    width: 15%;
+    float: left;
+}
+
+
+.active-care-plan-details
+{
+    display: none;
+    /*text-transform: uppercase;*/
+    font-size: 12px;
+    /*padding-left: 15px;*/
+    /*min-height: 235px;*/
+    background-color: #EEF5FB !important;
+}
+
+
+#activecareplans-content
+{
+    background-color: #fff !important;
+    border: 1px solid lightgray !important;
+    height: 600px;
+}
+
+#activecareplan-list-scrolls
+{
+    height: 550px !important;
+}
+
+
+
+.active-care-plan-details-value
+{
+    width:60%;  /*calc(100% - 100px);*/    
+    padding-left:5px;
+}
+
+.active-care-plan-details-label
+{
+    width: 40%;
+    color: #A7AAAF;
+}
+
+.active-care-plan-details-c
+{
+    padding: 0px 0px 10px 0px;
+    width: 100%;
+    float: left;
+}
+.active-care-plan-details-c div
+{
+    float: left;
+}
+
+#add-patientcareplan-modalview
+{
+    width: 820px;
+    height: 700px;
+}
+
+.active-care-plan-details-div-label
+{
+    width: 150px;
+    float: left;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #808080;
+    font-family: inherit;
+    font-size: 12px;
+}
+
+.active-care-plan-details-div-content
+{
+    width: 95%;
+    float: left;
+}
+
+
+.active-care-plan-details-padding
+{
+    padding-top:5px;
+   /* padding-bottom:10px;*/
+    display: inline-block;
+    width: 100%;
+}
+
+.active-care-plan-details-col-1
+{
+    /*padding-top:5px;*/
+    /*display: inline-block;*/
+    width: 55%;
+    float:left;
+    /*padding-left: 25px !important;*/
+}
+
+.active-care-plan-details-col-2
+{
+    /*padding-top:5px;*/
+    /*display: inline-block;
+    width: 35%;*/
+    width: 45%;
+    float:left;
+    /*padding-left: 10px !important;*/
+}
+
+.active-care-plan-label-value{
+    display:inline-block !important;
+    margin-top:5px !important;
+    margin-bottom:5px !important;
+    width:100% !important;
+}
+
+.active-care-plan-barrier-label{
+    width: 100% !important;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom:10px !important;
+}
+
+.active-care-plan-width-787{
+    width: 787px;
+    padding: 15px;
+}
+
+#add-patientcareplan-modalview .crd-view
+{
+    overflow: visible !important;
+}
+
+#careplannametxt{
+    width:76%;
+}
+
+#activeCarePlanList > li{
+    padding: 0px !important;
+}
+
+.active-care-plan-container-empty-space{
+    height:50px !important;
+    width:100% !important;
+    vertical-align:bottom !important;
+    float:left;
+}
+
+.padding-top-15-px{
+    padding-top: 15px !important;
+}
+
+.padding-bottom-25-px{
+    padding-bottom: 25px !important;
+}
+/******* Extensions Block CSS ***********/
+.ExtensionsCnt{
+    color:#537799 !important;
+}
+.CarePlanExtnBlock .popover {
+    height: 125px !important;
+    max-width: 330px !important;
+    border-radius: 5px;
+    width: 330px !important;
+    top: 15px !important;
+    padding: 0px;
+}
+.CarePlanExtnBlock button {
+    background: transparent;
+    border: 0px;
+    outline: none;
+}
+.CarePlanExtnBlockMargin{
+    margin-left: -5px !important;
+}
+.CarePlanExtnText{
+    font-size: 8pt;
+    font-weight: bold;
+}
+.CarePlanExtensionsBlockRow{
+    float: left;
+    width: 100%;
+    height: 20px;
+    border-bottom: 1px solid #ddd;   
+}        
+.PreviousDueDateCls{
+    float: left;
+    width: 120px;
+    height: 16px;
+    padding: 3px !important;
+}
+.UpdatedDateCls{
+    float: left;
+    width: 90px;
+    height: 16px;
+    padding: 3px !important;
+}
+.UpdatedUserNameCls{
+    float: left;
+    width: 155px;
+    height: 20px;
+    padding: 3px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.CarePlanExtensionsBlock{            
+    /*height: 120px;
+    overflow-y: auto;*/
+    overflow: hidden;
+    padding: 3px !important;
+}
+
+.popoverList {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border-width: 0px !important;
+}
+
+#popover-careplan-extensions.km-popup.km-pane {
+    padding-bottom:5px !important;
+    padding-top:5px !important;
+    background-color: #fff !important;
+}
+
+#popover-careplan-review.km-popup.km-pane {
+    padding-bottom:5px !important;
+    padding-top:5px !important;
+    background-color: #fff !important;
+}
+
+.text-align-left{
+    text-align:left;
+}
+.extensionsLink{
+    float: left;
+    /*margin-left: 2px;*/
+    height: 25px;
+}
+.extensionsLink .active-care-plan-label-value{
+    height: 15px;
+    padding: 0px;
+    margin: 0px;
+}
+#careplannametxt:disabled{
+    background-color: #dddddd !important;
+    color: #2e2e2e;
+}
+
+.active-care-plan-detail-panel{
+    width: 100%;
+    float:left;
+     background-color: #EEF5FB !important;
+}
+
+.active-care-plan-edit{
+    float: right;
+    padding: 5px; 
+    height: 115px;
+    margin-right:15px !important;
+}
+
+.active-care-plan-view-details-panel-col{
+    width:40%;
+    float:left;
+}
+.BarrierTextClass{
+    float: right;
+    width: 150px;
+    margin-right: 50px;
+}
+/* Clinical Relevance Color Coding CSS */
+.clinical-relevance-color {
+    width: 10px;
+    height: 10px;
+}
+.ClinicalRelevanceRed,
+.ClinicalRelevanceYellow,
+.ClinicalRelevanceNone,
+.ClinicalRelevanceGreen {
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+}
+.ClinicalRelevanceRed {
+    background-color: #ff0000;    
+    margin: 3px 5px 3px 3px;
+    padding: 0px 4px;
+}
+.ClinicalRelevanceYellow {
+    background-color: #ffa500;    
+    margin: 3px 5px 3px 3px;
+    padding: 0px 4px;
+}
+.ClinicalRelevanceNone {
+    background-color: transparent;
+}
+.ClinicalRelevanceGreen {
+    background-color: green;    
+    margin:3px 5px 3px 3px;
+    padding: 0px 4px;
+}
+/*  /Clinical Relevance Color Coding CSS */
+
+.margin-left-minus-7-em{
+    margin-left:-7em;
+}
+
+#Patient-Care-Plan-Extensions .patient-care-plan-extensions,
+#Patient-Care-Plan-Reviews .patient-care-plan-extensions
+{
+    padding:0px !important;
+    margin-top:-1px !important;
+    margin-bottom:5px !important;
+}
+
+_:-ms-fullscreen, :root #popover-careplan-review.km-pane.km-popup, #popover-careplan-extensions.km-pane.km-popup {
+    height: 11em !important;
+    width: 35em !important;
+    margin-left: -20em !important;
+}
+

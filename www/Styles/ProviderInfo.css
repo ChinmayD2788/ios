@@ -1,0 +1,85 @@
+.provider-header {
+    font-weight: bold;
+    border-bottom: 2px solid;
+	height: 40px;
+    padding: 10px;
+}
+
+.provider-pop-menu {
+	float: right;
+	margin-right:24px;
+}
+
+#provider-scroller {
+	height:600px;
+}
+
+#provider-content {
+	background-color: #fff !important;
+    border: 1px solid lightgray !important;
+}
+
+.provider-icon{
+	margin-left: 40px;
+    margin-top: 5px;
+}
+
+.padding-10 {
+   padding: 10px 4px !important;
+}
+
+.width-8-percent {
+   width: 8% !important;
+}
+
+.width-18-percent {
+   width: 18% !important;
+}
+
+.height-90 {
+	height: 90px !important;
+}
+
+.icon-padding{
+	padding-left: 17px;
+	padding-top: 8px;
+}
+
+.margin-left-50 {
+    margin-left: 50px !important;
+}	
+
+.padding-left-8{
+ 	padding-left: 8px;
+}
+
+.provider-col {
+    width: 15%;
+	float: left;
+}
+
+.provider-selected-col {
+	background-color: #B0CFEA !important;
+}
+
+.add-provider-wrap {
+	width: 600px;
+    padding: 10px 20px;
+}	
+
+/*.add-provider-row {
+	height: 50px;
+	width: 100%;
+}*/
+
+.add-provider-column {
+	width: 25% !important;
+    margin: 5px 15px;
+    float: left;
+}
+
+.add-provider-column-long {
+	width: 44% !important;
+    margin: 5px 15px;
+    float: left;
+}

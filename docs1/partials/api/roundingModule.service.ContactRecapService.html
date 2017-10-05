@@ -1,0 +1,93 @@
+<h1><code ng:non-bindable="">ContactRecapService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-service-page roundingmodule-service-contactrecapservice-page"><ul>
+<li>Used by ContactRecapController &amp; Edit Snippets Controller.</li>
+</ul>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage"><pre class="prettyprint linenums">ContactRecapService(ServiceConstants, RoundingService, $rootScope, $timeout);</pre>
+<h4 id="usage_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>ServiceConstants</td><td><a href="" class="label type-hint type-hint-constant">constant</a></td><td><div class="roundingmodule-service-page roundingmodule-service-contactrecapservice-page"><p>Common Constants</p>
+</div></td></tr><tr><td>RoundingService</td><td><a href="" class="label type-hint type-hint-service">service</a></td><td><div class="roundingmodule-service-page roundingmodule-service-contactrecapservice-page"><p>Service used to make API calls </p>
+</div></td></tr><tr><td>$rootScope</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="roundingmodule-service-page roundingmodule-service-contactrecapservice-page"><p>AngularJS global scope object </p>
+</div></td></tr><tr><td>$timeout</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="roundingmodule-service-page roundingmodule-service-contactrecapservice-page"><p>AngularJS timeout function</p>
+</div></td></tr></tbody></table></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getactionitems">getActionItems(data, method, dataType, callBack)</h3>
+<div class="getactionitems"><div class="getactionitems-page"><ul>
+<li>Service Call </li>
+<li>API called : User/GetActionItems</li>
+<li>Called upon selection of a new patient or existing patient from Open Patients list </li>
+</ul>
+</div><h5 id="methods_getactionitems_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getactionitems-page"><p>actionItem filter</p>
+</div></td></tr><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getactionitems-page"><p>Method: GET/POST </p>
+</div></td></tr><tr><td>dataType</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getactionitems-page"><p>data type of the returned value</p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getactionitems-page"><p>onGetActionItemsRetrieved</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getsnippets">getSnippets(data, method, dataType, callBack)</h3>
+<div class="getsnippets"><div class="getsnippets-page"><ul>
+<li>Service Call</li>
+<li>API:  GetSnippets </li>
+<li>Called upon selection of a patient from Open Patients list and upon finalize </li>
+</ul>
+</div><h5 id="methods_getsnippets_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getsnippets-page"><p>Snippet details to be retrieved </p>
+</div></td></tr><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getsnippets-page"><p>Method: GET/POST </p>
+</div></td></tr><tr><td>dataType</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getsnippets-page"><p>data type of the returned value </p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="getsnippets-page"><p>$scope.onGetPtSnippetsRetrieved </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_gettextarea">getTextArea()</h3>
+<div class="gettextarea"><div class="gettextarea-page"><ul>
+<li>This function is used to get text area</li>
+</ul>
+</div><h5 id="methods_gettextarea_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="gettextarea-page"><ul>
+<li>Returns a string containing the word under spell check</li>
+</ul>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_reloadsnippets">reloadSnippets()</h3>
+<div class="reloadsnippets"><div class="reloadsnippets-page"><ul>
+<li>Broadcast event Reloads snippet globally to share the code across multiple controllers</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_savesnippets">saveSnippets(data, method, dataType, callBack)</h3>
+<div class="savesnippets"><div class="savesnippets-page"><ul>
+<li>Service Call </li>
+<li>API: User/SaveSnippets  </li>
+<li>Functions gets called upon any change in snippets. Exmaple add, edit ,delete etc</li>
+</ul>
+</div><h5 id="methods_savesnippets_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="savesnippets-page"><p>Snippet details to be retrieved </p>
+</div></td></tr><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="savesnippets-page"><p>Method: GET/POST </p>
+</div></td></tr><tr><td>dataType</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="savesnippets-page"><p>data type of the returned value </p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="savesnippets-page"><p>onCreateSnippetSaveClicked </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_savetaskdelegation">saveTaskDelegation(data, method, dataType, callBack)</h3>
+<div class="savetaskdelegation"><div class="savetaskdelegation-page"><ul>
+<li>Service Call </li>
+<li>API called : User/SaveTaskDelegation</li>
+<li>Role : VHN </li>
+<li>Called upon click of Delegate Task on My Tasks screen list </li>
+</ul>
+</div><h5 id="methods_savetaskdelegation_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="savetaskdelegation-page"><p>actionItem filter </p>
+</div></td></tr><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="savetaskdelegation-page"><p>Method: GET/POST  </p>
+</div></td></tr><tr><td>dataType</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="savetaskdelegation-page"><p>data type of the returned value</p>
+</div></td></tr><tr><td>callBack</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="savetaskdelegation-page"><p>onSaveTaskDelegationRetrieved </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_settextarea">setTextArea(data, arr)</h3>
+<div class="settextarea"><div class="settextarea-page"><ul>
+<li>Used to set Text Area</li>
+</ul>
+</div><h5 id="methods_settextarea_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="settextarea-page"><p>word set for spell check</p>
+</div></td></tr><tr><td>arr</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="settextarea-page"><p>Array containing the word under spell check</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

@@ -1,0 +1,14 @@
+﻿<div ng-controller="AlertsController">
+    <div id="actionitems-alerts">
+        <div id="alerts-hide-show" ng-click="actionItemsShowClick()">
+            <!-- AlertsShow Property Comes from Parent model-->
+            <div class="alert-fixed" ng-show="Global.Objects.ShowAlerts">
+                <span class="icon-alert"></span>
+                <span class="alert-span">ALERTS (<span class="alert-count">{{AlertsModel.Total}}</span>)</span>
+            </div>          
+        </div>
+    </div>
+    <div class="datagrid-hide-show">
+        <div kendo-grid id="alerts-grid" k-options="AlertsGridOptions" k-ng-delay="AlertsGridOptions"></div>
+    </div>    
+</div>

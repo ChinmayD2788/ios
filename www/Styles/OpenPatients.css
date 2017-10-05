@@ -1,0 +1,41 @@
+﻿.openpatients-view
+{ 
+    background-color: #124C7B;
+    border-top: 2px solid #03355F;
+    width: 30%;
+    color: #ffffff;
+    vertical-align: bottom;        
+    position: relative;    
+    display: inline-block;
+    float: right;
+}
+
+#openpatients-alerts {
+    border-bottom: 1px solid #03355F;
+    line-height: 50px;
+    margin-left: 20px;
+}
+
+#openpatients-fixed span {
+    vertical-align: middle;
+}
+
+#openpatients-grid .icon-delete-button {
+    float: left;
+    margin: 3px 10px -10px;
+}
+
+#openpatients-grid .k-grid-header {
+    display: none;
+}
+
+.openpatients-name {
+    float: left;
+    width: 115px;
+}                                                    
+
+#openpatients-hide-show
+{
+    text-align: right;
+    margin-right: 20px;
+}

@@ -1,0 +1,129 @@
+<h1><code ng:non-bindable="">PatientChartMenuController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-patientchartmenucontroller-page"><ul>
+<li>Controller for Patient Chart Menus.</li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_ongetmoaretrieved">onGetMoaRetrieved(result)</h3>
+<div class="ongetmoaretrieved"><div class="ongetmoaretrieved-page"><ul>
+<li>Call back function &quot;onGetMoaRetrieved &quot;</li>
+</ul>
+</div><h5 id="methods_ongetmoaretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetmoaretrieved-page"><p>Web API call return data </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_ongetptclinicalmetricretrieved">onGetPtClinicalMetricRetrieved(result)</h3>
+<div class="ongetptclinicalmetricretrieved"><div class="ongetptclinicalmetricretrieved-page"><ul>
+<li>Call back function onGetPtClinicalMetricRetrieved to retrieve patients clinical metric details.</li>
+</ul>
+</div><h5 id="methods_ongetptclinicalmetricretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetptclinicalmetricretrieved-page"><p>Web API call return data </p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemodel">$scope.model</h3>
+<div class="$scopemodel"><div class="roundingmodule-controller-page roundingmodule-controller-patientchartmenucontroller-page"><ul>
+<li>Patientchart menu intialized.</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="properties_$scopeconsideralertfooter">$scope.ConsiderAlertFooter</h3>
+<div class="$scopeconsideralertfooter"><div class="roundingmodule-controller-page roundingmodule-controller-patientchartmenucontroller-page"><ul>
+<li>Set to true if any alerts are present.</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_loadpathway">LoadPathway</h3>
+<div class="loadpathway"><div class="loadpathway-page"><ul>
+<li>Subscribed event broadcasted from &quot;PatientChartService&quot;.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_addtag">addTag</h3>
+<div class="addtag"><div class="addtag-page"><ul>
+<li>&quot;addTag&quot; handles the addTag call whenever user opens new screen.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_addtag_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>screen</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="addtag-page"><p>Screen name the user taps on to be displayed </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_loadsubtabs">loadSubTabs</h3>
+<div class="loadsubtabs"><div class="loadsubtabs-page"><ul>
+<li>load Sub menu tabs in the left pane</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_loadsubtabs_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="loadsubtabs-page"><p>Submenu tab details</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_loadtabs">loadTabs</h3>
+<div class="loadtabs"><div class="loadtabs-page"><ul>
+<li>loads tabs from model PatientChartMenu  </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_loadtabs_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="loadtabs-page"><p>Object containing screen details. Eg: screen name , UID etc.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_navigatetopaneview">navigateToPaneView</h3>
+<div class="navigatetopaneview"><div class="navigatetopaneview-page"><ul>
+<li>NavigateToPaneView is sub-function call of &quot;showDetailView&quot; and  &quot;showpathway&quot; </li>
+<li>Called when switching menus/view</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_navigatetopaneview_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>switchView</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="navigatetopaneview-page"><p>String containing URL of the view to navigate to.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_show">show</h3>
+<div class="show"><div class="show-page"><ul>
+<li>Start point of the screen.</li>
+<li>Will call whenever &quot;PatientChartMenuController&quot; loads. It will call &quot;PatientChartService.GetPtClinicalMetric &quot;
+&quot;PatientChartService.SetPatientUid&quot; and &quot;PatientChartService.GetMoa&quot;           </li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_showdetailview">showDetailView</h3>
+<div class="showdetailview"><div class="showdetailview-page"><ul>
+<li>loads the final view in right pane of split view based on tab selected in the left pane  .</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_showdetailview_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="showdetailview-page"><p>Object containing screen details Eg: screen name , UID etc. to navigate to on tap. </p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_showpathway">showpathway</h3>
+<div class="showpathway"><div class="showpathway-page"><ul>
+<li>Showpathway is called from multiple controllers ie &quot;PathwayTabController&quot; &amp; &quot;PatientChartController&quot;. </li>
+<li>First call &quot;PatientChartService.GetPathwayParam&quot; to get the screen name, set the secreen name to $rootScope.Global.Objects.SelectedPathwayMenu
+on the basis of screen name it will either load the detailview or navigate to the screen.</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_submenuclick">subMenuClick</h3>
+<div class="submenuclick"><div class="submenuclick-page"><ul>
+<li>Loads main screen for sub menu</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_submenuclick_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>e</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="submenuclick-page"><p>Contain { &quot;Screen&quot;: e.dataItem.Screen, &quot;UID&quot;: e.dataItem.UID}</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+</div>

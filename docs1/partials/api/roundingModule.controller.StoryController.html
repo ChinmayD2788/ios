@@ -1,0 +1,76 @@
+<h1><code ng:non-bindable="">StoryController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-storycontroller-page"><p>Controller for Story Screen. </p>
+<p>VersionOne Requirements - <a href="https://www13.v1host.com/DaVitaInc/Task.mvc/Summary?oidToken=Task%3A1338">TK-01031</a> and <a href="https://www13.v1host.com/DaVitaInc/Task.mvc/Summary?oidToken=Task%3A48300">TK-04242</a> </p>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getcontactmethod">getContactMethod(method)</h3>
+<div class="getcontactmethod"><div class="getcontactmethod-page"><p>Get a Method to populate The Contact Information</p>
+</div><h5 id="methods_getcontactmethod_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>method</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getcontactmethod-page"><p>passing the Method Abbreviation</p>
+</div></td></tr></tbody></table><h5 id="methods_getcontactmethod_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getcontactmethod-page"><p>CommonFunctions.GetContactMethod(method)</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getcontactreason">getContactReason(reason)</h3>
+<div class="getcontactreason"><div class="getcontactreason-page"><p>Get a Reason to populate The Contact Information</p>
+</div><h5 id="methods_getcontactreason_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>reason</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getcontactreason-page"><p>passing the Reason Abbreviation</p>
+</div></td></tr></tbody></table><h5 id="methods_getcontactreason_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getcontactreason-page"><p>LookUp.GetValueByKey(LookupTypes.ContactReason, reason).Text</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getdirection">getDirection(direction)</h3>
+<div class="getdirection"><div class="getdirection-page"><p>Get the Direction to populate The Contact Information</p>
+</div><h5 id="methods_getdirection_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>direction</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getdirection-page"><p>passing the Direction Abbreviation</p>
+</div></td></tr></tbody></table><h5 id="methods_getdirection_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getdirection-page"><p>LookUp.GetValueByKey(LookupTypes.Resolution, resolution).Text</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getresolution">getResolution(resolution)</h3>
+<div class="getresolution"><div class="getresolution-page"><p>Get The Resolution to populate The Contact Information</p>
+</div><h5 id="methods_getresolution_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>resolution</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getresolution-page"><p>passing the Resolution Abbreviation</p>
+</div></td></tr></tbody></table><h5 id="methods_getresolution_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getresolution-page"><p>LookUp.GetValueByKey(LookupTypes.Resolution, resolution).Text</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_gettag">getTag(tag)</h3>
+<div class="gettag"><div class="gettag-page"><p>Get a Tag to populate The Contact Information</p>
+</div><h5 id="methods_gettag_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>tag</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="gettag-page"><p>passing the Tag Abbreviation</p>
+</div></td></tr></tbody></table><h5 id="methods_gettag_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="gettag-page"><p>LookUp.GetValueByKey(LookupTypes.Tags, tag).Text</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_gettags">getTags(tags)</h3>
+<div class="gettags"><div class="gettags-page"><ul>
+<li>Get Tags to populate The Contact Information</li>
+</ul>
+</div><h5 id="methods_gettags_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>tags</td><td><a href="" class="label type-hint type-hint-array">array</a></td><td><div class="gettags-page"><p>passing the Array of Tags Abbreviations</p>
+</div></td></tr></tbody></table><h5 id="methods_gettags_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="gettags-page"><p>Tags Text</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getteams">getTeams(intTeam, extTeam)</h3>
+<div class="getteams"><div class="getteams-page"><ul>
+<li>Get Teams to populate The Contact Information</li>
+</ul>
+</div><h5 id="methods_getteams_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>intTeam</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getteams-page"><p>passing the Internal Team Abbreviation</p>
+</div></td></tr><tr><td>extTeam</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getteams-page"><p>passing the External Team Abbreviation</p>
+</div></td></tr></tbody></table><h5 id="methods_getteams_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="getteams-page"><p>intTeamText + &quot; - &quot; + extTeamText</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_ongetptcontactsretrieved">onGetPtContactsRetrieved(result)</h3>
+<div class="ongetptcontactsretrieved"><div class="ongetptcontactsretrieved-page"><p>callBack for get Story data service method </p>
+</div><h5 id="methods_ongetptcontactsretrieved_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetptcontactsretrieved-page"><p>Story Details </p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopestory">$scope.Story</h3>
+<div class="$scopestory"><div class="roundingmodule-controller-page roundingmodule-controller-storycontroller-page"><p>Scope Property, default value []</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopenodataavailable">$scope.noDataAvailable</h3>
+<div class="$scopenodataavailable"><div class="roundingmodule-controller-page roundingmodule-controller-storycontroller-page"><p>Scope Property, default value true</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>

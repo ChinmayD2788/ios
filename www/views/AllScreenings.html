@@ -1,0 +1,311 @@
+﻿<kendo-mobile-view class="crd-view" ng-controller="AllScreeningsController" ng-class="{'screening-pam-view' : model.IsPAMScreening}">
+    <div id="ptchart-pthwy-view" class="crd-view" kendo-validator="allScreeningsValidator">
+        <div id="ptchart-allscreenings-surveyheaders">
+            <div class="crd-screenname-container">
+                <div class="crd-screennameheader">{{PathwayScreenTitle}}</div>
+                <div id="allscreenings-buttons" class="allscreenings-buttons-header-bg">
+                    <button kendo-mobile-button id="add-button" ng-if="Buttons.AddButtonVisible" ng-click="addPathways()">Add</button>
+                    <button kendo-mobile-button id="postpone-button" ng-if="Buttons.PostponeButtonVisible" ng-click="postPoneScreening()">Postpone</button>
+                    <button kendo-mobile-button id="save-button" ng-if="Buttons.SaveButtonVisible" ng-click="saveScreening()">Save</button>
+                    <button kendo-mobile-button id="cancel-button" ng-if="Buttons.CancelButtonVisible" ng-click="cancelScreening()">Cancel</button>
+                </div>
+            </div>
+
+            <div id="lastscreening-details" class="lastscreening" ng-if="CanAddSurvey=== true">
+                <div id="lastscreening-data">
+                    <table ng-if="model.SurveyDetail.UID >0">
+                        <tr>
+                            <td class="lastscreening-div">
+                                <div class="crd-pthway-screening-label">Screening Date</div>
+                                <div class="crd-pathway-screening-value">{{ model.SurveyDetail.StartDate | date: 'MM/dd/yyyy' }}</div>
+                            </td>
+                            <td class="lastscreening-div">
+                                <div class="crd-pthway-screening-label">Score</div>
+                                <div class="crd-pathway-screening-value">
+                                    <span ng-show="model.SurveyDetail.Score >= 0">{{model.SurveyDetail.Score}}</span>
+                                    <span ng-show="!model.SurveyDetail.Score">-</span>
+                                </div>
+                                
+                            </td>
+                            <td class="lastscreening-div">
+                                <div class="crd-pthway-screening-label">Completed Date</div>
+                                <div class="crd-pathway-screening-value">{{ model.SurveyDetail.CompletedDate | date: 'MM/dd/yyyy'}}</div>
+                            </td>
+                            <td class="lastscreening-div">
+                                <div class="crd-pthway-screening-label">Level</div>
+                                <div class="crd-pathway-screening-value">{{ model.SurveyDetail.Level}}</div>
+                            </td>
+                            <td class="lastscreening-div">
+                                <div class="crd-pthway-screening-label lastscreening-label">Level Comments</div>
+                                <div class="crd-pathway-screening-value lastscreening-label">{{ model.SurveyDetail.LevelComments}}</div>
+                            </td>
+                            <td ng-if="model.SurveyDetail.RefusalReasonCode == 'PatientRefused'" class="lastscreening-div">
+                                <div class="crd-pthway-screening-label">Patient Refused</div>
+                                <div class="crd-pathway-screening-value">YES</div>
+                            </td>
+                            <td ng-if="!IsDepressionScreening && model.SurveyDetail.RefusalReasonCode == 'PatientMedicallyUnableToComplete'" class="lastscreening-div">
+                                <div class="crd-pthway-screening-label">Patient Medically Unable To Complete Screening</div>
+                                <div class="crd-pathway-screening-value">{{model.SurveyDetail.SurveyComments}}</div>
+                            </td>
+                            <!--<td ng-if="model.SurveyDetail.RefusalReasonCode == 'PatientExempt'" class="lastscreening-div">
+                                <div class="crd-pthway-screening-label">Patient Exempt</div>
+                                <div class="crd-pathway-screening-value">YES</div>
+                            </td>-->
+                        </tr>
+						<tr ng-if="model.SurveyDetail.RefusalReasonCode == 'CaregiverSurveyRequired'">
+							 <td class="lastscreening-div">
+                                <div class="crd-pthway-screening-label">Caregiver Survey Required</div>
+                                <div class="crd-pathway-screening-value">YES</div>
+                            </td>
+						</tr>
+                    </table>
+                </div>
+            </div>
+            <!-- Display the Screening Date -->
+            <div ng-if="IsAddingSurvey === true" ng-class="model.IsCognitiveScreening || model.IsPAMScreening ? 'lastscreening cognetive-header-height' : 'lastscreening'">
+                <div class="lastscreening-div-editone">
+                    <div class="crd-pthway-screening-label">
+                        Screening Date
+                    </div>
+                    <div>
+                        <input id="screening-datepicker" ng-disabled="disableScreeingDate" kendo-date-picker k-options="monthPickerConfig" />
+					</div>
+                </div> 
+                
+                <div ng-if="IsDepressionScreening || IsCognitiveScreening || IsPAMScreening" class="lastscreening-div-editone crd-kendocheck-small"
+                     ng-class="{ 'patient-refused-survey-required-div-2chkboxes' : IsCognitiveScreening || IsPAMScreening,  'patient-refused-survey-required-div' : IsDepressionScreening && !Global.Objects.SelectedPatient.IsESCOMarket}">
+                    <input id="ptrefusedchkbox" type="checkbox" class="k-checkbox"
+                           ng-model="model.IsPatientRefused" ng-disabled="model.IsPatientRefusedDisabled" ng-click="ptRefused()" />
+                    <label for="ptrefusedchkbox" class="k-checkbox-label">
+                        <span>Patient Refused Survey</span>
+                    </label>
+                </div>
+
+                <!-- Commented as a part of fix for ROUND-411 -->
+                <!--<div id="ptExemptdiv" ng-if="IsDepressionScreening && Global.Objects.SelectedPatient.IsESCOMarket" class="lastscreening-div-edittwo crd-kendocheck-small patient-refused-survey-required-div-2chkboxes">
+                    <input id="escoPatientExemptChkBox" type="checkbox" class="k-checkbox" ng-model="model.IsEscoPatientExempt" ng-disabled="model.IsEscoPatientExemptDisabled" ng-click="escoPatientExempted()" />
+                    <label for="escoPatientExemptChkBox" class="k-checkbox-label">
+                        <span>Patient Exempt</span>
+                    </label>
+                </div>-->
+
+
+                <div ng-if="IsPAMScreening" class="lastscreening-div-edittwo crd-kendocheck-small patient-refused-survey-required-div-2chkboxes">
+                    <input id="cgsurveyreqdchkbox" type="checkbox" ng-model="model.IsCaregiverSurveyRequired" ng-disabled="model.IsCaregiverSurveyRequiredDisabled" class="k-checkbox" ng-click="cgChanged()" />
+                    <label for="cgsurveyreqdchkbox" class="k-checkbox-label">
+                        <span>Caregiver Survey Required</span>
+                    </label>
+                </div>
+
+              
+                <div ng-if="IsCognitiveScreening" class="lastscreening-div-edittwo crd-kendocheck-small patient-refused-survey-required-div-2chkboxes">
+                    <div class="crd-displayinlineleft">
+                        <input id="ptmedicallunabletocomplte" type="checkbox" ng-model="model.IsPatientMedicallyUnableToComplete" ng-disabled="model.IsPatientMedicallyUnableToCompleteDisabled" class="k-checkbox" ng-click="ptMedicallyUnableToCompleteChanged()" />
+                        <label for="ptmedicallunabletocomplte" class="k-checkbox-label">
+                            <span>Patient Medically Unable To Complete Screening</span>
+                        </label>
+                    </div>
+                    
+                    <div ng-if="model.IsPatientMedicallyUnableToComplete">
+                        <input type="text" maxlength="500" name="Comment" placeholder="Enter Comments" class="surveycomment-textbox required"
+                               ng-model="model.SurveyDetails.data()[0].SurveyComments"
+                               value="{{model.SurveyDetails.data()[0].SurveyComments}}"
+                               required validationmessage="required" />
+
+                        <span class="k-invalid-msg" data-for="Comment"></span>
+                    </div>
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+        <div ng-if="IsPAMScreening" class="questiongroup-answers-header">
+            <div class="questiongroup-answers-header-row">
+                <div ng-repeat="headerLabel in model.HeaderLabels">
+                    <label class="questiongroup-answer">{{ headerLabel.text}}</label>
+                </div>
+            </div>
+        </div>
+        <div id="screening-scroller" ng-class="IsPAMScreening? 'allscreenings-listview-pam' : 'allscreenings-listview'">
+
+            <kendo-mobile-list-view k-ng-delay="model.SurveyDetails" class="allscreenings-SurveyDetails">
+                <div ng-repeat="surveyDetail in model.SurveyDetails.data()">
+                    <div id="kidneysmart_windowcontainer"></div>
+                    <div ng-if="model.IsPainAssessmentScreening==true" id="kidneysmart_url" class="lastscreening-div">
+                        <a href="http://www.kidneyeol.org/Files/PainBrochure9-09.aspx" target="_blank">http://www.kidneyeol.org/Files/PainBrochure9-09.aspx</a>
+                    </div>
+                    <div ng-if="ShowToolTip==true" id="allscreenings-survey-tooltip">
+                        <div class="lastscreening-div">
+                            <div class="crd-pathway-screening-value">{{ToolTip}}</div>
+                        </div>
+                    </div>
+
+                    <kendo-mobile-list-view ng-if="surveyDetail.QuestionGroups !== null" id="surveydetails-{{surveyDetail.SurveyUID}}" class="allscreenings-listview">
+                        <div ng-repeat="questionGroup in surveyDetail.QuestionGroups">
+                            <span id="questiongroup-description-{{questionGroup.QuestionGroupUID}}" class="questiongroup-text" ng-if="(questionGroup.Questions !== null && !questionGroup.IsDefault)">{{ questionGroup.Description }}</span>
+
+                            <kendo-mobile-list-view ng-if="questionGroup.Questions !== null" id="questiongroup-{{questionGroup.QuestionGroupUID}}">
+                                <div ng-if="IsPAMScreening">
+                                    <div ng-repeat="question in questionGroup.Questions">
+                                        <div id="question-{{question.UID}}-{{question.Order}}" class="allscreenings-question">
+                                            <div id="question-text-{{question.UID}}-{{question.Order}}" class="question-text">
+                                                <div class="allscreenings-onequestion-wrap">
+                                                    <label style="float: left; margin-right: 10px;">{{question.Order}}.</label>
+                                                    <div ng-if="question.ToolTip != null && question.ToolTip != undefined" kendo-tooltip k-content="'{{question.ToolTip}}'" class="icon-question-tooltipicon"></div>
+                                                    <!--<div class="allscreenings-onequestion-wrap">-->
+                                                    <span>{{question.Text}}</span>
+                                                    <div class="allscreenings-onequestion-displaytext-wrap" ng-if="!question.IsMultiple" ng-repeat="option in question.Options">
+                                                        <div class="allscreenings-displaytext" ng-if="(option.IsSelected && option.DisplayText.length > 0)">
+                                                            <span class="icon-status-info"></span>
+                                                            <span class="allscreenings-onequestion-displaytext">{{option.DisplayText}}</span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div ng-if="question.Options !== null && question.Options.length > 0" class="allscreenings-inline-block allscreenings-width-50-prsnt">
+                                                    <div ng-if="!question.IsMultiple && question.Options.length > 3" class="question-options-morethan-three questiongroup-answers-row">
+                                                        <kendo-mobile-list-view id="question-options-{{question.UID}}-{{question.Order}}">
+                                                            <div ng-repeat="option in question.Options" class="crd-rnd-radio-big questiongroup-answer" ng-class="option.IsSelected? option.ColorClass : ''">
+                                                                <label class="ptchart-pthwy-question-options-morethan-three-lbl">
+                                                                    <input id="{{option.UID}}-{{option.OptionOrder}}" type="radio" name="{{option.QuestionUID}}" class="crd-ptchart-pthwy-question-radio" value="{{option.OptionOrder}}"
+                                                                           ng-disabled="option.IsOptionDisabled" ng-model="option.SelectedIndex" ng-click="thingsChange(option.QuestionUID, option.UID, option.OptionOrder)" />
+                                                                    <i></i>
+                                                                </label>
+                                                            </div>
+
+                                                        </kendo-mobile-list-view>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-if="!IsPAMScreening">
+                                    <div ng-repeat="question in questionGroup.Questions">
+                                        <div id="question-{{question.UID}}-{{question.Order}}" class="allscreenings-question">
+                                            <div id="question-text-{{question.UID}}-{{question.Order}}" class="question-text">
+                                                <div class="allscreenings-onequestion-wrap">
+                                                    <label style="float: left; margin-right: 10px;">{{question.Order}}.</label>
+                                                    <div ng-if="question.ToolTip != null && question.ToolTip != undefined" kendo-tooltip k-content="'{{question.ToolTip}}'" class="icon-question-tooltipicon"></div>
+                                                    <!--<div class="allscreenings-onequestion-wrap">-->
+                                                    <span>{{question.Text}}</span>
+                                                    <div class="allscreenings-onequestion-displaytext-wrap" ng-if="!question.IsMultiple" ng-repeat="option in question.Options">
+                                                        <div class="allscreenings-displaytext" ng-if="(option.IsSelected && option.DisplayText.length > 0)">
+                                                            <span class="icon-status-info"></span>
+                                                            <span class="allscreenings-onequestion-displaytext">{{option.DisplayText}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div ng-if="question.IsMultiple" ng-repeat="option in question.Options">
+                                                        <div class="allscreenings-displaytext" ng-show="!option.IsOptionTextHidden && option.IsSelected && !option.isOptionTextAlreadyShown">
+                                                            <!---->
+                                                            <span class="icon-status-info"></span>
+                                                            <label class="allscreenings-onequestion-displaytext"> {{option.DisplayText}}</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-if="question.Options !== null && question.Options.length > 0" class="allscreenings-inline-block allscreenings-width-50-prsnt">
+                                                    <div ng-if="!question.IsMultiple && question.Options.length <= 3  && model.IsAdl == true" class="question-options-lessthan-three">
+                                                        <kendo-mobile-list-view id="question-options-{{question.Order}}" k-options="menuOptions">
+                                                            <div ng-repeat="option in question.Options" class="adlsreeningclass radioclass vertical-options">
+                                                                <label>
+                                                                    <input id="{{option.UID}}-{{option.OptionOrder}}" type="radio" name="{{ option.QuestionUID }}" value="{{ option.OptionOrder }}"
+                                                                           ng-disabled="option.IsOptionDisabled" ng-model="option.SelectedIndex" ng-click="thingsChange(option.QuestionUID, option.UID, option.OptionOrder)" />
+                                                                    <i></i>
+                                                                </label>
+                                                                <label class="allscreenings-options-lessthan-three-desc" for="{{option.UID}}-{{option.OptionOrder}}">{{ option.Description }}</label>
+                                                            </div>
+                                                        </kendo-mobile-list-view>
+
+                                                    </div>
+
+                                                    <div ng-if="!question.IsMultiple && question.Options.length <= 3 && model.IsAdl == false" class="question-options-lessthan-three">
+                                                        <kendo-mobile-list-view id="question-options-{{question.UID}}-{{question.Order}}" k-options="menuOptions">
+                                                            <div ng-repeat="option in question.Options" class="crd-rnd-radio-big allscreenings-float-left allscreenings-inline-block">
+                                                                <label class="crd-ptchart-pthwy-radio-lessthan-three-lbl">
+                                                                    <input id="radio-{{option.UID}}" type="radio" name="{{option.QuestionUID}}" class="crd-ptchart-pthwy-question-radio" value="{{option.OptionOrder}}"
+                                                                           ng-disabled="option.IsOptionDisabled" ng-model="option.SelectedIndex" ng-click="thingsChange(option.QuestionUID, option.UID, option.OptionOrder)" />
+                                                                    <i></i>
+                                                                </label>
+                                                                <label class="question-options-lessthan-three-desc" for="{{option.UID}}-{{option.OptionOrder}}">{{ option.Description }}</label>
+                                                            </div>
+                                                            <div ng-repeat="option in question.Options" class="crd-rnd-radio-big allscreenings-float-left allscreenings-inline-block">
+                                                                <div ng-if="option.IsSelected && option.FreeFormTemplate.HasFreeForm" class="allscreenings-pthwy-freeform">
+                                                                    <input ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'TXT' && option.IsSelected && option.FreeFormTemplate.IsRequired)"
+                                                                           type="text"
+                                                                           name="FreeFormTemplate-{{option.UID}}"
+                                                                           class="k-textbox"
+                                                                           value="{{option.FreeFormResponse}}"
+                                                                           ng-model="option.FreeFormResponse"
+                                                                           maxlength="100"
+                                                                           required validationmessage="Enter Comments"
+                                                                           ng-disabled="model.IsTextBoxDisabled" ng-blur="onFreeFormTextChanged(question,option)"/>
+                                                                    <span class="k-invalid-msg" data-for="FreeFormTemplate-{{option.UID}}"></span>
+                                                                </div>
+                                                            </div>
+                                                        </kendo-mobile-list-view>
+                                                    </div>
+
+                                                    <div ng-if="!question.IsMultiple && question.Options.length > 3" class="question-options-morethan-three">
+                                                        <kendo-mobile-list-view id="question-options-{{question.UID}}-{{question.Order}}">
+                                                            <div ng-repeat="option in question.Options" class="crd-rnd-radio-big">
+                                                                <label class="ptchart-pthwy-question-options-morethan-three-lbl">
+                                                                    <input id="{{option.UID}}-{{option.OptionOrder}}" type="radio" name="{{option.QuestionUID}}" class="crd-ptchart-pthwy-question-radio" value="{{option.OptionOrder}}"
+                                                                           ng-disabled="option.IsOptionDisabled" ng-model="option.SelectedIndex" ng-click="thingsChange(option.QuestionUID, option.UID, option.OptionOrder)" />
+                                                                    <i></i>
+                                                                </label>
+                                                                <label class="question-options-morethan-three-desc question-options-morethan-three-desc-screenings" for="{{option.UID}}-{{option.OptionOrder}}">{{ option.Description }}</label>
+                                                            </div>                                                            
+                                                            <div ng-repeat="option in question.Options" class="crd-rnd-radio-big allscreenings-float-left allscreenings-inline-block">
+                                                                <div ng-if="option.IsSelected && option.FreeFormTemplate.HasFreeForm" class="allscreenings-pthwy-freeform" id="screenings-freeform-text">
+                                                                    <input ng-if="(option.FreeFormTemplate.HasFreeForm && option.FreeFormTemplate.DataTypeCode === 'TXT' && option.IsSelected && option.FreeFormTemplate.IsRequired)"
+                                                                           type="text"
+                                                                           name="FreeFormTemplate-{{option.UID}}"
+                                                                           id="more-than-three-options-screenings"
+                                                                           class="k-textbox"
+                                                                           value="{{option.FreeFormResponse}}"
+                                                                           ng-model="option.FreeFormResponse"
+                                                                           maxlength="100"
+                                                                           required validationmessage="Enter Comments"
+                                                                           ng-disabled="model.IsTextBoxDisabled" ng-blur="onFreeFormTextChanged(question,option)" />
+                                                                    <span class="k-invalid-msg" data-for="FreeFormTemplate-{{option.UID}}"></span>
+                                                                </div>
+                                                            </div>
+                                                        </kendo-mobile-list-view>
+                                                    </div>
+                                                    <div ng-if="question.IsMultiple" class="allscreenings-float-left" id="question-options-{{question.UID}}-{{question.Order}}">
+                                                        <!-- -->
+                                                        <kendo-mobile-list-view id="question-options-{{question.UID}}-{{question.Order}}">
+                                                            <div ng-repeat="option in question.Options" id="question-options-{{option.QuestionUID}}-{{option.UID}}-{{option.QuestionOrder}}"
+                                                                 class="question-options question-options-{{option.QuestionUID}}-{{option.QuestionOrder}}">
+                                                                <kendo-mobile-switch class="question-options-multiple" name="{{option.UID}}" id="{{option.UID}}"
+                                                                                     k-on-change="onSwitchChange(option.QuestionUID, option.UID,kendoEvent, option.OptionOrder)" value="{{option.IsSelected}}" k-ng-model="option.IsSelected"
+                                                                                     ng-disabled="option.IsOptionDisabled" k-on-label="'Yes'" k-off-label="'No'">
+                                                                </kendo-mobile-switch>
+                                                                <span class="question-options-switch-description question-options-switch-description-screenings">
+                                                                    {{option.Description}}
+                                                                </span>
+                                                            </div>
+                                                        </kendo-mobile-list-view>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </kendo-mobile-list-view>
+                        </div>
+                    </kendo-mobile-list-view>
+                </div>
+            </kendo-mobile-list-view>
+        </div>
+        <div ng-if="IsPAMScreening" class="screening-footergroup">
+            <div ng-repeat="headerLabel in model.HeaderLabels" class="screening-footergroup-answer">
+                <span ng-class="headerLabel.className" class="screening-footer-box"></span>
+                <label class="screening-footer-label">{{ headerLabel.text}}</label>
+            </div>
+        </div>
+    </div>
+</kendo-mobile-view>

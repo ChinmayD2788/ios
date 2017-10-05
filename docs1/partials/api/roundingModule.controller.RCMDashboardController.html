@@ -1,0 +1,87 @@
+<h1><code ng:non-bindable="">RCMDashboardController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardcontroller-page"><ul>
+<li>Main Controller for RCM Dashboard Screen</li>
+<li>Filter functionality is captured in <a href="#/api/roundingModule.controller:RCMDashboardFilterController">roundingModule.controller:RCMDashboardFilterController</a></li>
+<li>Sort functionality is captured in <a href="#/api/roundingModule.controller:RCMDashboardSortController">roundingModule.controller:RCMDashboardSortController</a></li>
+<li><a href="#/api/roundingModule.service:RCMDashboardService">roundingModule.service:RCMDashboardService</a></li>
+<li>VersionOne Requirements - Home Screen/Worklist - Patient Details - <a href="https://www13.v1host.com/DaVitaInc/Task.mvc/Summary?oidToken=Task%3A186708">TK-19119</a></li>
+<li>Supress Ability to switch roster - <a href="https://www13.v1host.com/DaVitaInc/Task.mvc/Summary?oidToken=Task%3A185673">TK-19065</a></li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_ongetworklistretrived">onGetWorklistRetrived(result)</h3>
+<div class="ongetworklistretrived"><div class="ongetworklistretrived-page"><p>Call back function for GetWorkList service call</p>
+</div><h5 id="methods_ongetworklistretrived_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>result</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ongetworklistretrived-page"><p>Contains Filter list, metric list and program detail data</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_show">show()</h3>
+<div class="show"><div class="show-page"><p>Start point of the screen</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemodel">$scope.model</h3>
+<div class="$scopemodel"><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardcontroller-page"><p>Model to store data for RCM Dashboard</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelworklistdata">$scope.model.WorkListData</h3>
+<div class="$scopemodelworklistdata"><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardcontroller-page"><p>Data source for worklist</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelcopyworklistdata">$scope.model.CopyWorkListData</h3>
+<div class="$scopemodelcopyworklistdata"><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardcontroller-page"><p>Create a copy of work list data</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelmetriclistdata">$scope.model.MetricListData</h3>
+<div class="$scopemodelmetriclistdata"><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardcontroller-page"><p>Data source for metric list</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelfilterlistdata">$scope.model.FilterListData</h3>
+<div class="$scopemodelfilterlistdata"><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardcontroller-page"><p>Data source for filter list</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelrcmdashboardsort">$scope.model.RCMDashboardSort</h3>
+<div class="$scopemodelrcmdashboardsort"><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardcontroller-page"><p>Store patient data for sorting</p>
+</div></div>
+</li>
+<li><h3 id="properties_$scopemodelrcmdashboardfilter">$scope.model.RCMDashboardFilter</h3>
+<div class="$scopemodelrcmdashboardfilter"><div class="roundingmodule-controller-page roundingmodule-controller-rcmdashboardcontroller-page"><p>Store patient data for filtering</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_ontap">onTap</h3>
+<div class="ontap"><div class="ontap-page"><p>Gets called when the user taps on any patient from the My Worklist screen</p>
+</div><div class="inline"></div>
+<div class="inline"></div>
+<h5 id="events_ontap_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>patient</td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="ontap-page"><p>Details of the selected patient</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_setrcmdashboardfiltertype">setRCMDashboardFilterType</h3>
+<div class="setrcmdashboardfiltertype"><div class="setrcmdashboardfiltertype-page"><ul>
+<li>Subscriber of setRCMDashboardFilterType broadcasts</li>
+<li>Filters worklist&#39;s patients list</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+<li><h3 id="events_setrcmdashboardsorttype">setRCMDashboardSortType</h3>
+<div class="setrcmdashboardsorttype"><div class="setrcmdashboardsorttype-page"><ul>
+<li>Subscriber of setRCMDashboardSortType broadcasts</li>
+<li>Sorts worklist&#39;s patients list</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

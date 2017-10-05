@@ -1,0 +1,111 @@
+﻿
+#hospitalizations-container
+{
+    height: 600px !important;
+}
+
+#hospitalizationtab-listview .km-content
+{
+    height: 93%;
+}
+    
+
+#patient-hospitalizationtab-view
+{
+    height: 210px;
+    margin-bottom: 20px;
+}
+
+#hospitalizationtab-listview .km-ios
+{
+    background-color: White !important;
+    height: 100% !important;
+    background-position: 0 0;
+}
+    
+
+#hospitalizationtab-header
+{
+    margin-left: 15px;
+}
+
+.hospitalizationtab-row-one, .hospitalizationtab-row-row-two
+{   
+    width: 100%;
+	height: 20px;
+}
+
+.hospitalizationtab-row 
+{
+    width: 100%;
+    float: left; 
+	margin-bottom: 4px;
+}
+
+.hospitalizationtab-row-one-column-one
+{
+    width: 60%;
+    float: left;
+}
+
+.hospitalizationtab-row-two-column-one
+{
+    width: 33%;
+    float: left;
+}
+
+.hospitalizationtab-row-two-column-two
+{
+    width: 27%;
+    float: left; 
+    font-size: larger;
+    color: #0673C1;
+}
+
+.hospitalizationtab-row-two-column-three
+{
+    width: 40%;
+    float: left;
+}
+
+.hospitalizationtab_label
+{
+    vertical-align: top;
+    margin-right: 4px;
+}
+
+.hospitalizationtab-separator
+{
+    clear: both;
+    background-color: #595959;
+    height: 2px;
+    border: none !important;
+    margin: 5px 15px 5px 15px;
+}
+
+#hospitalizationtab-footer
+{
+    margin-left: 42px;
+}
+
+#hospitalizationtab-footer .hospitalizationtab-row 
+{    
+    color: #68ABDA;
+    /*font-style: italic;*/
+    font-size: medium;
+}
+
+#hospitalizationtab-footer .hospitalizationtab-row 
+{
+    color: #ABABAB;
+    font-size: medium;    
+}
+
+.hospitalizationtab-note
+{
+    color: red;
+    /*color:#76787B;
+    font-style: italic;
+    margin-bottom: 4px;
+    font-weight: bold;*/
+}

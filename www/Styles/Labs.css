@@ -1,0 +1,74 @@
+﻿.lab-item-label
+{
+    font-size: 17px !important;
+    font-weight: bold !important;
+    color: #76787B;
+    padding: 5px 0px;
+    text-transform: uppercase !important;
+}
+
+.lab-item-value
+{
+    color: #999999;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    vertical-align: top;
+    padding: 5px 0px;
+}
+
+.lab-item-source-drawdate
+{
+    margin-right: 5px;
+    float: right;
+}
+
+.lab-item-row
+{
+    min-height: 20px;
+    margin: 10px;
+}
+
+.lab-item-column-one
+{
+    width: 80% !important;
+    float: left !important;
+}
+
+.lab-item-column-two
+{
+    width: 20% !important;
+    float: right !important;
+}
+
+.lab-item-separator
+{
+    clear: both;
+    background-color: #ffffff !important;
+    width: 100%;
+    height: 3px;
+    border-bottom: 1px solid lightgray !important;
+    margin-top: 7px;
+    float: left;
+}
+
+#lab-history-modalview
+{
+    width: 700px; 
+    height: 550px;
+    background-color: white; 
+}
+
+#lab-history-chart
+{
+    margin-left: auto;
+    margin-right: auto;
+    width: 680px;
+    margin-top: 10px;
+    vertical-align: bottom;
+}
+
+.lab-chart-tooltip
+{
+    color: white;
+}
+ 

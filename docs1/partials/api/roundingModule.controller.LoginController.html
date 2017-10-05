@@ -1,0 +1,49 @@
+<h1><code ng:non-bindable="">LoginController</code>
+<div><span class="hint">controller in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-controller-page roundingmodule-controller-logincontroller-page"><ul>
+<li>Controller for Login View</li>
+<li><a href="#/api/roundingModule.service:LoginService">roundingModule.service:LoginService</a></li>
+<li>Calls LoginService.GetClientVersion when loads</li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_loginfailed">loginFailed()</h3>
+<div class="loginfailed"><div class="loginfailed-page"><p>Unblocks UI if Login fails</p>
+</div></div>
+</li>
+<li><h3 id="methods_loginsuccessful">loginSuccessful()</h3>
+<div class="loginsuccessful"><div class="loginsuccessful-page"><ul>
+<li>Callback function of LoginService.Authenticate success    </li>
+<li>Calls LoginService.UpdateLookUps</li>
+<li>Calls &#39;Utility/GetMenus&#39; api to get menus</li>
+<li>Calls &#39;Account/GetClientConfig&#39; api to get client configuration</li>
+<li>Calls &#39;Contacts/GetPreSaveContacts&#39; api to get pre save contacts based on result it navigates to MyPatients or ContactRecap or RCMDashboard screen</li>
+</ul>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_$scopemodel">$scope.model</h3>
+<div class="$scopemodel"><div class="roundingmodule-controller-page roundingmodule-controller-logincontroller-page"><p>model of LoginController returned by LoginService.SetVersion</p>
+</div></div>
+</li>
+</ul>
+</div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_login">login</h3>
+<div class="login"><div class="login-page"><ul>
+<li>k-on-tap event of Login button in Login view    </li>
+<li>Calls LoginService.Authenticate</li>
+</ul>
+</div><div class="inline"></div>
+<div class="inline"></div>
+</div>
+</li>
+</ul>
+</div>
+</div>

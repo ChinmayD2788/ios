@@ -1,0 +1,83 @@
+<h1><code ng:non-bindable="">AccessInfoService</code>
+<div><span class="hint">service in module <code ng:non-bindable="">roundingModule</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="roundingmodule-service-page roundingmodule-service-accessinfoservice-page"><ul>
+<li>AccessInfoService is being used by AccessInfoController and AddEditAccessInfoController</li>
+<li>This will be used for all service calls for AccessInfo Screen</li>
+</ul>
+</div></div>
+<div class="member method"><h2 id="methods">Methods</h2>
+<ul class="methods"><li><h3 id="methods_getpatientaccessmgmt">GetPatientAccessMgmt(data, callback)</h3>
+<div class="getpatientaccessmgmt"><div class="getpatientaccessmgmt-page"><ul>
+<li>Calls GetPatientAccessMgmt api &#39;Clinical/GetPatienttAccessMgmt&#39; using RoundingService </li>
+</ul>
+</div><h5 id="methods_getpatientaccessmgmt_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getpatientaccessmgmt-page"><p>{ patientUID: $rootScope.Global.Objects.SelectedPatient.UID, IsIPE: false }</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="getpatientaccessmgmt-page"><p>$scope.onGetPatientAccessMgmtRetrieved</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_getselectedaccess">GetSelectedAccess()</h3>
+<div class="getselectedaccess"><div class="getselectedaccess-page"><ul>
+<li>Returns local variable selectedAccess</li>
+</ul>
+</div><h5 id="methods_getselectedaccess_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getselectedaccess-page"><p>selectedAccess</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_getshareddata">GetSharedData()</h3>
+<div class="getshareddata"><div class="getshareddata-page"><ul>
+<li>Returns local variable sharedData which needs to be shared between controllers</li>
+</ul>
+</div><h5 id="methods_getshareddata_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="getshareddata-page"><p>shareddata</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_newaccessmodel">NewAccessModel()</h3>
+<div class="newaccessmodel"><div class="newaccessmodel-page"><ul>
+<li>Initializes and returns new Access Model</li>
+</ul>
+</div><h5 id="methods_newaccessmodel_returns">Returns</h5><table class="variables-matrix"><tr><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="newaccessmodel-page"><p>new accessModel</p>
+</div></td></tr></table></div>
+</li>
+<li><h3 id="methods_refreshaccessinfo">RefreshAccessInfo()</h3>
+<div class="refreshaccessinfo"><div class="refreshaccessinfo-page"><ul>
+<li>Broadcasts refreshAccessInfo which will call $scope.showAccessInfo</li>
+</ul>
+</div></div>
+</li>
+<li><h3 id="methods_savepatientaccessmgmt">SavePatientAccessMgmt(data, callback)</h3>
+<div class="savepatientaccessmgmt"><div class="savepatientaccessmgmt-page"><ul>
+<li>Calls SavePatientAccessMgmt api &#39;Clinical/SavePatientAccessMgmt&#39; using RoundingService </li>
+</ul>
+</div><h5 id="methods_savepatientaccessmgmt_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>data</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="savepatientaccessmgmt-page"><p>{ patientUID: $rootScope.Global.Objects.SelectedPatient.UID, IsIPE: false }</p>
+</div></td></tr><tr><td>callback</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="savepatientaccessmgmt-page"><p>inline function</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setselectedaccess">SetSelectedAccess(access)</h3>
+<div class="setselectedaccess"><div class="setselectedaccess-page"><ul>
+<li>Sets local variable selectedAccess</li>
+</ul>
+</div><h5 id="methods_setselectedaccess_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>access</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="setselectedaccess-page"><p>selected access in screen</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="methods_setshareddata">SetSharedData(shared)</h3>
+<div class="setshareddata"><div class="setshareddata-page"><ul>
+<li>Sets local variable sharedData which needs to be shared between controllers</li>
+</ul>
+</div><h5 id="methods_setshareddata_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>shared</td><td><a href="" class="label type-hint type-hint-object">Object</a></td><td><div class="setshareddata-page"><p>shared data</p>
+</div></td></tr></tbody></table></div>
+</li>
+</ul>
+</div>
+<div class="member property"><h2 id="properties">Properties</h2>
+<ul class="properties"><li><h3 id="properties_selectedaccess">selectedAccess</h3>
+<div class="selectedaccess"><div class="roundingmodule-service-page roundingmodule-service-accessinfoservice-page"><p>local variable</p>
+</div></div>
+</li>
+<li><h3 id="properties_shareddata">sharedData</h3>
+<div class="shareddata"><div class="roundingmodule-service-page roundingmodule-service-accessinfoservice-page"><p>local variable</p>
+</div></div>
+</li>
+</ul>
+</div>
+</div>
